@@ -3,7 +3,7 @@ DESCRIPCIÓN
 Nuestra propuesta es una web de venta de videojuegos. En ella se encontrará una buena gama de videojuegos de diferentes géneros y plataformas.
 A continuación, se detallaran las características más importantes.
 
-PARTE PÚBLICA
+PARTE PÚBLICA 
 Esta es la parte de la web a la que cualquier persona tiene acceso, en ella se verán los productos, que, en esta propuesta, son los videojuegos y también sus categorías. Adicionalmente se podrán ver las ofertas que ofrece nuestra web, así como los desarrolladores de los videojuegos.
 
 ENTIDADES PÚBLICAS
