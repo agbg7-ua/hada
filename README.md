@@ -7,7 +7,7 @@ A continuación, se detallaran las características más importantes.
 Esta es la parte de la web a la que cualquier persona tiene acceso, en ella se verán los productos, que, en esta propuesta, son los videojuegos y también sus categorías. Adicionalmente se podrán ver las ofertas que ofrece nuestra web, así como los desarrolladores de los videojuegos.
 
 ## ENTIDADES PÚBLICAS
-- Juegos (productos): Es la base de nuestra web, lo que se le ofrece al comprador, vendemos videojuegos, pueden haber tanto nuevos como de segunda mano. Esta entidad tendrá tanto el nombre del juego, como una breve descripción, el año de lanzamiento, plataforma/s en el que se juega, los idiomas, los requisitos del sistema y la clasificación según la edad del mismo.
+- Juegos (productos): Es la base de nuestra web, lo que se le ofrece al comprador, vendemos videojuegos. Esta entidad tendrá tanto el nombre del juego, como una breve descripción, el año de lanzamiento, plataforma/s en el que se juega, los idiomas, los requisitos del sistema y la clasificación según la edad del mismo. También ofrecermos las valoraciones de cada uno de los productos, en caso de haber.
 
 - Categoría de los productos: Esta entidad hace referencia principalmente a los distintos tipos de genéros de videojuegos que se encuentran disponibles en la web. Esta constará con el nombre del género, una breve descripción de este, el tipo de audiencia a la que va dirigido, mecánicas de ese tipo de juegos, las habilidades más valoradas en ese tipo de género y las dificultades que pueden presentar estos.
 
