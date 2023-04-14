@@ -7,16 +7,16 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{115FCD19-81E1-4EE2-8C3D-410F8F16EE2C}</ProjectGuid>
+    <ProjectGuid>{5B4E8AC4-964A-4E8B-8AA1-CB3FABD1CCFE}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>vidWeb</RootNamespace>
-    <AssemblyName>vidWeb</AssemblyName>
+    <RootNamespace>tiendaWeb</RootNamespace>
+    <AssemblyName>tiendaWeb</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44381</IISExpressSSLPort>
+    <IISExpressSSLPort>44327</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -94,9 +94,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>52069</DevelopmentServerPort>
+          <DevelopmentServerPort>50368</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44381/</IISUrl>
+          <IISUrl>https://localhost:44327/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
