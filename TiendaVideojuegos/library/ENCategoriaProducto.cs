@@ -39,13 +39,6 @@ namespace library
             set { _imagen = value; }
         }
 
-        public ENCategoriaProducto()
-        {
-            this.nombre = "";
-            this.descripcion = "";
-            this.imagen = "";
-        }
-
         public ENCategoriaProducto(string nombre, string descripcion, string imagen) 
         {
             this.nombre = nombre;
