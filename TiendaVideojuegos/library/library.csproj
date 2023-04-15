@@ -42,7 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CADCategoriaProducto.cs" />
+    <Compile Include="CADProducto.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="ENCategoriaProducto.cs" />
+    <Compile Include="ENProducto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
