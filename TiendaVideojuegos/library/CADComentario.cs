@@ -24,5 +24,21 @@ namespace library
         {
             return true;
         }
+         public ENComentario filterProducto(int producto)
+        {
+            ENComentario en = new ENComentario();
+            return en;
+        }
+         public ENComentario filterValoracion(int valoracion)
+        {
+            ENComentario en = new ENComentario();
+            return en;
+        }
+         public ENComentario filterFecha(DateTime fecha)
+        {
+            ENComentario en = new ENComentario();
+            return en;
+        }
+
     }
 }

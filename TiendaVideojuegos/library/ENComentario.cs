@@ -70,6 +70,21 @@ namespace library
             CADComentario cad = new CADComentario();
             return cad.showComentario(this);
         }
+        public ENComentario filterProducto(int producto)
+        {
+            CADComentario cad = new CADComentario();
+            return cad.filterProducto(producto);
+        }
+        public ENComentario filterValoracion(int valoracion)
+        {
+            CADComentario cad = new CADComentario();
+            return cad.filterValoracion(valoracion);
+        }
+        public ENComentario filterFecha(DateTime fecha)
+        {
+            CADComentario cad = new CADComentario();
+            return cad.filterFecha(fecha);
+        }
 
 
     }
