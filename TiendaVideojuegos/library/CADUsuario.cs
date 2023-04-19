@@ -8,5 +8,17 @@ namespace library
 {
     class CADUsuario
     {
+        public bool createUsuario(ENUsuario usu)
+        {
+            return true;
+        }
+        public bool updateUsuario(ENUsuario usu)
+        {
+            return true;
+        }
+        public bool deleteUsuario(ENUsuario usu)
+        {
+            return true;
+        }
     }
 }
