@@ -9,6 +9,7 @@ namespace library
 {
     class ENProducto
     {
+        // Todos las variables con respaldo
         private int _id;
         public int id
         {
@@ -129,5 +130,9 @@ namespace library
             DataSet a = c.deleteProducto(this, i);
             return a;
         }
+
+        /// Buscar por precio de producto (entre dos valores (máx y min))
+        /// Buscar por clasificación
+        /// Buscar por categoría
     }
 }

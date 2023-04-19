@@ -7,6 +7,29 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
 
+
+// CREATE TABLE [dbo].[Producto] (
+// [id]            INT IDENTITY(1, 1) NOT NULL,
+
+// [id_categoria]      INT   	       NOT NULL,
+
+// [id_desarrollador]  INT            NOT NULL,
+
+// [nombre]           	VARCHAR (45)   NOT NULL,
+
+// [pvp] 		DECIMAL (7,2)  NULL,
+// [descripcion]       TEXT NOT NULL,
+// [fecha_salida]      DATE           NOT NULL,
+// [clasificacion]     INT            NULL,
+// [imagen]            VARCHAR (MAX)  NULL,
+// [mostrar]           BIT DEFAULT((0)) NOT NULL,
+// PRIMARY KEY CLUSTERED ([id] ASC),
+// UNIQUE NONCLUSTERED([nombre] ASC),
+// CONSTRAINT[fk_Producto_CategoriaProducto] FOREIGN KEY([id_categoria]) REFERENCES[dbo].[CategoriaProducto]([id]),
+// CONSTRAINT[fk_Producto_Desarrollador] FOREIGN KEY([id_desarrollador]) REFERENCES[dbo].[Desarrollador]([id])
+// );
+
+
 namespace library
 {
     class CADProducto
