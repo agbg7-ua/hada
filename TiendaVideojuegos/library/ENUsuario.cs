@@ -90,5 +90,10 @@ namespace library
             CADUsuario cad = new CADUsuario();
             return cad.deleteUsuario(this);
         }
+        public bool showUsuario()
+        {
+            CADUsuario cad = new CADUsuario();
+            return cad.showUsuario(this);
+        }
     }
 }

@@ -50,7 +50,26 @@ namespace library
             this.text = coment.text;
             this.valoracion = coment.valoracion;
         }
-
+        public bool createComentario()
+        {
+            CADComentario cad = new CADComentario();
+            return cad.createComentario(this);
+        }
+        public bool updateComentario()
+        {
+            CADComentario cad = new CADComentario();
+            return cad.updateComentario(this);
+        }
+        public bool deleteComentario()
+        {
+            CADComentario cad = new CADComentario();
+            return cad.deleteComentario(this);
+        }
+        public bool showComentario()
+        {
+            CADComentario cad = new CADComentario();
+            return cad.showComentario(this);
+        }
 
 
     }

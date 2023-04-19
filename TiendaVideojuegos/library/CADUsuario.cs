@@ -20,5 +20,9 @@ namespace library
         {
             return true;
         }
+        public bool showUsuario(ENUsuario usu)
+        {
+            return true;
+        }
     }
 }
