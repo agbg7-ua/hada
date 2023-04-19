@@ -20,13 +20,13 @@ namespace library
       public bool createCarrito(ENCarrito en) 
         {
            bool creado = false;
-            Dataset bdvirtual = new Dataset();
-            Sqlconnection c = new Sqlconnection(constring);
+            DataSet bdvirtual = new DataSet();
+            SqlConnection c = new SqlConnection(constring);
             try
             {
 
                 SqlDataAdapter ad = new SqlDataAdapter("select * from Carrito", c);
-                da.Fill(bdvirtual, "Carrito");
+                ad.Fill(bdvirtual, "Carrito");
                 DataTable t = new DataTable();
                 t = bdvirtual.Tables["Carrito"];
                 DataRow nuevafila = t.NewRow();
@@ -34,14 +34,14 @@ namespace library
                 nuevafila[2] = en.importe_total;
                 t.Rows.Add(nuevafila);
                 SqlCommandBuilder cbuilder = new SqlCommandBuilder(ad);
-                ad.Update(bdvirtual, "Producto");
+                ad.Update(bdvirtual, "Carrito");
                 creado = true;
                 
             }
             catch (SqlException ex)
             {
                 creado = false;
-                Console.WriteLine("User operation has failed. Error: {0}", excS.Message);
+                Console.WriteLine("User operation has failed. Error: {0}", exc.Message);
             }
             catch (Exception ex)
             {
@@ -50,7 +50,7 @@ namespace library
             }
             finally
             {
-                c.close();
+                c.Close();
             }
 
             return creado;
@@ -65,7 +65,7 @@ namespace library
             {
                 String comando = "Select * From Carrito";
                 SqlDataAdapter ad = new SqlDataAdapter(comando, c);
-                da.Fill(bdvirtual, "Carrito");
+                ad.Fill(bdvirtual, "Carrito");
                 DataTable t = new DataTable();
                 t = bdvirtual.Tables["Carrito"];
                 t.Rows[Id]["id_usuario"] = en.id_usuario;
@@ -104,7 +104,7 @@ namespace library
                 t = bdvirtual.Tables["Carrito"];
                 t.Rows[Id].Delete();
                 SqlCommandBuilder cbuilder = new SqlCommandBuilder(ad);
-                da.Update(bdvirtual, "Carrito");
+                ad.Update(bdvirtual, "Carrito");
                 return bdvirtual;
             }
             catch (SqlException ex)
