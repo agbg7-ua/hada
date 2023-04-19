@@ -66,7 +66,7 @@ namespace library
             this.username = usu.username;
             this.nombre = usu.nombre;
             this.apellidos = usu.apellidos;
-            this.email = usu.email.;
+            this.email = usu.email;
             this.password = usu.password;
             this.edad = usu.edad;
             this.calle = usu.calle;
@@ -89,6 +89,11 @@ namespace library
         {
             CADUsuario cad = new CADUsuario();
             return cad.deleteUsuario(this);
+        }
+        public bool readUsuario()
+        {
+            CADUsuario cad = new CADUsuario();
+            return cad.readUsuario(this);
         }
         public bool showUsuario()
         {

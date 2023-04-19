@@ -70,6 +70,11 @@ namespace library
             CADComentario cad = new CADComentario();
             return cad.showComentario(this);
         }
+        public bool readComentario()
+        {
+            CADComentario cad = new CADComentario();
+            return cad.readComentario(this);
+        }
         public ENComentario filterProducto(int producto)
         {
             CADComentario cad = new CADComentario();

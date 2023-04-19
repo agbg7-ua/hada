@@ -8,19 +8,23 @@ namespace library
 {
     class CADComentario
     {
-        public bool createComentario(ENComentario usu)
+        public bool createComentario(ENComentario coment)
         {
             return true;
         }
-        public bool updateComentario(ENComentario usu)
+        public bool updateComentario(ENComentario coment)
         {
             return true;
         }
-        public bool deleteComentario(ENComentario usu)
+        public bool deleteComentario(ENComentario coment)
         {
             return true;
         }
-        public bool showComentario(ENComentario usu)
+        public bool readComentario(ENComentario coment)
+        {
+            return true;
+        }
+        public bool showComentario(ENComentario coment)
         {
             return true;
         }
