@@ -39,6 +39,10 @@ namespace library
             set { _imagen = value; }
         }
 
+        public ENCategoriaProducto() { 
+        
+        }
+
         public ENCategoriaProducto(string nombre, string descripcion, string imagen) 
         {
             this.nombre = nombre;
@@ -66,17 +70,16 @@ namespace library
         public bool updateCategoriaProducto()
         {
             CADCategoriaProducto c = new CADCategoriaProducto();
-            ENCategoriaProducto en = new ENCategoriaProducto();
 
-            en.nombre = this.nombre;
-            en.descripcion = this.descripcion;
-            en.imagen = this.imagen;
+            string name = this.nombre;
+            string description = this.descripcion;
+            string image = this.imagen;
 
             if (c.readCategoriaProducto(this) == true)
             { 
-                this.nombre = en.nombre;
-                this.descripcion = en.descripcion;
-                this.imagen = en.imagen;
+                this.nombre = name;
+                this.descripcion = description;
+                this.imagen = image;
                 return c.updateCategoriaProducto(this);
             }
 

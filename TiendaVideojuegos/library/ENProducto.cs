@@ -80,6 +80,10 @@ namespace library
             set { _mostrar = value; }
         }
 
+        public ENProducto() { 
+        
+        }
+
         public ENProducto(int id_categoria, int id_desarrollador, string nombre, float pvp, string descripcion, DateTime fecha_salida, int clasificacion, string imagen, bool mostrar) 
         {
             this.id_categoria = id_categoria;
@@ -96,7 +100,10 @@ namespace library
         public bool createProducto() 
         {
             CADProducto c = new CADProducto();
-            if (c.readProducto(this) != true)
+            ENCategoriaProducto en = new ENCategoriaProducto();
+            en.id = this.id_categoria;
+
+            if (c.readByNameProducto(this) != true && en.readCategoriaProducto() == true)
             {
                 return c.createProducto(this);
             }
@@ -110,6 +117,12 @@ namespace library
             return c.readProducto(this);
         }
 
+        public bool readByNameProducto()
+        {
+            CADProducto c = new CADProducto();
+            return c.readByNameProducto(this);
+        }
+
         public DataSet showProducto() 
         {
             CADProducto c = new CADProducto();
@@ -119,20 +132,123 @@ namespace library
 
         public DataSet updateProducto(int i)
         {
+            DataSet a = new DataSet();
             CADProducto c = new CADProducto();
-            DataSet a = c.updateProducto(this, i);
+            ENProducto en = new ENProducto();
+            ENCategoriaProducto cat = new ENCategoriaProducto();
+
+            en.id_categoria = this.id_categoria;
+            en.id_desarrollador = this.id_desarrollador;
+            en.nombre = this.nombre;
+            en.pvp = this.pvp;
+            en.descripcion = this.descripcion;
+            en.fecha_salida = this.fecha_salida;
+            en.clasificacion = this.clasificacion;
+            en.imagen = this.imagen;
+            en.mostrar = this.mostrar;
+
+            cat.id = this.id_categoria;
+
+            if (c.readProducto(this) == true && cat.readCategoriaProducto() == true) {
+                this.id_categoria = en.id_categoria;
+                this.id_desarrollador = en.id_desarrollador;
+                this.nombre = en.nombre;
+                this.pvp = en.pvp;
+                this.descripcion = en.descripcion;
+                this.fecha_salida = en.fecha_salida;
+                this.clasificacion = en.clasificacion;
+                this.imagen = en.imagen;
+                this.mostrar = en.mostrar;
+                a = c.updateProducto(this, i);
+            }
+            
             return a;
         }
 
         public DataSet deleteProducto(int i)
         {
+            DataSet a = new DataSet();
             CADProducto c = new CADProducto();
-            DataSet a = c.deleteProducto(this, i);
+
+            if (c.readProducto(this) == true)
+            {
+                a = c.deleteProducto(this, i);
+            }
+    
             return a;
         }
 
-        /// Buscar por precio de producto (entre dos valores (máx y min))
-        /// Buscar por clasificación
-        /// Buscar por categoría
+        public DataSet showAllProducto() 
+        {
+            CADProducto c = new CADProducto();
+            DataSet a = c.showAllProducto();
+            return a;
+        }
+
+        public DataSet showOrderByNameASCProducto(ENCategoriaProducto en)
+        {
+            bool exist = false;
+            DataSet a = new DataSet();
+            exist = en.readCategoriaProducto();
+
+            if (exist == true) {
+                CADProducto c = new CADProducto();
+                a = c.showOrderByNameASCProducto(en);
+            }
+
+            return a;
+        }
+
+        public DataSet showOrderByNameDESCProducto(ENCategoriaProducto en)
+        {
+            bool exist = false;
+            DataSet a = new DataSet();
+            exist = en.readCategoriaProducto();
+
+            if (exist == true)
+            {
+                CADProducto c = new CADProducto();
+                a = c.showOrderByNameDESCProducto(en);
+            }
+
+            return a;
+        }
+
+        public DataSet showOrderByPriceASCProducto(ENCategoriaProducto en)
+        {
+            bool exist = false;
+            DataSet a = new DataSet();
+            exist = en.readCategoriaProducto();
+
+            if (exist == true)
+            {
+                CADProducto c = new CADProducto();
+                a = c.showOrderByPriceASCProducto(en);
+            }
+
+            return a;
+        }
+
+        public DataSet showOrderByPriceDESCProducto(ENCategoriaProducto en)
+        {
+            bool exist = false;
+            DataSet a = new DataSet();
+            exist = en.readCategoriaProducto();
+
+            if (exist == true)
+            {
+                CADProducto c = new CADProducto();
+                a = c.showOrderByPriceDESCProducto(en);
+            }
+
+            return a;
+        }
+
+        public DataSet searchByNameProducto(String name)
+        {
+            CADProducto c = new CADProducto();
+            DataSet a = c.searchByNameProducto(name);
+            return a;
+        }
     }
 }

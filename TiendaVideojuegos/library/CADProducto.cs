@@ -9,20 +9,16 @@ using System.Data;
 
 
 // CREATE TABLE [dbo].[Producto] (
-// [id]            INT IDENTITY(1, 1) NOT NULL,
-
-// [id_categoria]      INT   	       NOT NULL,
-
+// [id]                INT            IDENTITY(1, 1) NOT NULL,
+// [id_categoria]      INT   	      NOT NULL,
 // [id_desarrollador]  INT            NOT NULL,
-
-// [nombre]           	VARCHAR (45)   NOT NULL,
-
-// [pvp] 		DECIMAL (7,2)  NULL,
-// [descripcion]       TEXT NOT NULL,
+// [nombre]            VARCHAR (45)   NOT NULL,
+// [pvp] 		       DECIMAL (7,2)  NULL,
+// [descripcion]       TEXT           NOT NULL,
 // [fecha_salida]      DATE           NOT NULL,
 // [clasificacion]     INT            NULL,
 // [imagen]            VARCHAR (MAX)  NULL,
-// [mostrar]           BIT DEFAULT((0)) NOT NULL,
+// [mostrar]           BIT            DEFAULT((0)) NOT NULL,
 // PRIMARY KEY CLUSTERED ([id] ASC),
 // UNIQUE NONCLUSTERED([nombre] ASC),
 // CONSTRAINT[fk_Producto_CategoriaProducto] FOREIGN KEY([id_categoria]) REFERENCES[dbo].[CategoriaProducto]([id]),
@@ -107,6 +103,55 @@ namespace library
                         en.id_categoria = int.Parse(fila[1].ToString());
                         en.id_desarrollador = int.Parse(fila[2].ToString());
                         en.nombre = fila[3].ToString();
+                        en.pvp = float.Parse(fila[4].ToString());
+                        en.descripcion = fila[5].ToString();
+                        en.clasificacion = int.Parse(fila[6].ToString());
+                        en.imagen = fila[7].ToString();
+                        en.mostrar = Boolean.Parse(fila[8].ToString());
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                read = false;
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+            }
+            catch (Exception ex)
+            {
+                read = false;
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+            }
+            finally
+            {
+                if (c != null) c.Close();
+            }
+
+            return read;
+        }
+
+        public bool readByNameProducto(ENProducto en)
+        {
+            bool read = false;
+            DataSet bdvirtual = new DataSet();
+            SqlConnection c = new SqlConnection(constring);
+
+            try
+            {
+                SqlDataAdapter da = new SqlDataAdapter("select * from Producto", c);
+                da.Fill(bdvirtual, "Producto");
+                DataTable t = new DataTable();
+                t = bdvirtual.Tables["Producto"];
+
+                for (int i = 0; i < t.Rows.Count; i++)
+                {
+                    DataRow fila = t.Rows[i];
+
+                    if (en.nombre == fila[3].ToString())
+                    {
+                        read = true;
+                        en.id = int.Parse(fila[0].ToString());
+                        en.id_categoria = int.Parse(fila[1].ToString());
+                        en.id_desarrollador = int.Parse(fila[2].ToString());
                         en.pvp = float.Parse(fila[4].ToString());
                         en.descripcion = fila[5].ToString();
                         en.clasificacion = int.Parse(fila[6].ToString());
@@ -220,6 +265,173 @@ namespace library
                 t.Rows[i].Delete();
                 SqlCommandBuilder cbuilder = new SqlCommandBuilder(da);
                 da.Update(bdvirtual, "Producto");
+                return bdvirtual;
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            finally
+            {
+                if (c != null) c.Close();
+            }
+        }
+
+        public DataSet showAllProducto()
+        {
+            DataSet bdvirtual = new DataSet();
+            SqlConnection c = new SqlConnection(constring);
+
+            try 
+            {
+                String comando = "Select * From Producto where mostrar=1";
+                SqlDataAdapter da = new SqlDataAdapter(comando,c);
+                da.Fill(bdvirtual, "Producto");
+                return bdvirtual;
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            finally
+            {
+                if (c != null) c.Close();
+            }
+        }
+        public DataSet showOrderByNameASCProducto(ENCategoriaProducto en)
+        {
+            DataSet bdvirtual = new DataSet();
+            SqlConnection c = new SqlConnection(constring);
+
+            try 
+            {
+                String comando = "Select * From Producto where id_categoria=" + en.id + "and mostrar=1 order by nombre asc";
+                SqlDataAdapter da = new SqlDataAdapter(comando, c);
+                da.Fill(bdvirtual, "Producto");
+                return bdvirtual;
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            finally
+            {
+                if (c != null) c.Close();
+            }
+        }
+
+        public DataSet showOrderByNameDESCProducto(ENCategoriaProducto en)
+        {
+            DataSet bdvirtual = new DataSet();
+            SqlConnection c = new SqlConnection(constring);
+
+            try
+            {
+                String comando = "Select * From Producto where id_categoria=" + en.id + "and mostrar=1 order by nombre desc";
+                SqlDataAdapter da = new SqlDataAdapter(comando, c);
+                da.Fill(bdvirtual, "Producto");
+                return bdvirtual;
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            finally
+            {
+                if (c != null) c.Close();
+            }
+        }
+
+        public DataSet showOrderByPriceASCProducto(ENCategoriaProducto en)
+        {
+            DataSet bdvirtual = new DataSet();
+            SqlConnection c = new SqlConnection(constring);
+
+            try
+            {
+                String comando = "Select * From Producto where id_categoria=" + en.id + "and mostrar=1 order by pvp asc";
+                SqlDataAdapter da = new SqlDataAdapter(comando, c);
+                da.Fill(bdvirtual, "Producto");
+                return bdvirtual;
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            finally
+            {
+                if (c != null) c.Close();
+            }
+        }
+
+        public DataSet showOrderByPriceDESCProducto(ENCategoriaProducto en)
+        {
+            DataSet bdvirtual = new DataSet();
+            SqlConnection c = new SqlConnection(constring);
+
+            try
+            {
+                String comando = "Select * From Producto where id_categoria=" + en.id + "and mostrar=1 order by pvp desc";
+                SqlDataAdapter da = new SqlDataAdapter(comando, c);
+                da.Fill(bdvirtual, "Producto");
+                return bdvirtual;
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            finally
+            {
+                if (c != null) c.Close();
+            }
+        }
+
+        public DataSet searchByNameProducto(String name)
+        {
+            DataSet bdvirtual = new DataSet();
+            SqlConnection c = new SqlConnection(constring);
+
+            try
+            {
+                String comando = "Select * From Producto where nombre like '%" + name + "%' and mostrar=1";
+                SqlDataAdapter da = new SqlDataAdapter(comando, c);
+                da.Fill(bdvirtual, "Producto");
                 return bdvirtual;
             }
             catch (SqlException ex)

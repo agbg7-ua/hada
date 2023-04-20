@@ -7,12 +7,9 @@ using System.Configuration;
 using System.Data.SqlClient;
 
 // CREATE TABLE [dbo].[CategoriaProducto] (
-// [id]            INT IDENTITY(1, 1) NOT NULL,
-
+// [id]             INT           IDENTITY(1, 1) NOT NULL,
 // [nombre] 		VARCHAR (45)  NOT NULL,
-
 // [descripcion] 	TEXT          NOT NULL,
-
 // [imagen]      	VARCHAR (MAX) NULL,
 // PRIMARY KEY CLUSTERED ([id] ASC),
 // UNIQUE NONCLUSTERED([nombre] ASC)
