@@ -72,6 +72,16 @@ namespace library
             return cad.deleteCarrito(this, Id);
         }
 
+        public List<ENCarrito> listCarritos()
+        {
+            CADCarrito cad = new CADCarrito();
+            return cad.listCarritos();
+        }
+        public List<ENCarrito> listCarritosByUser(string idUsuario)
+        {
+            CADCarrito cad = new CADCarrito();
+            return cad.listCarritosByUser(idUsuario);
+        }
 
 
     }
