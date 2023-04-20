@@ -12,6 +12,7 @@ CREATE TABLE [dbo].[Usuario] (
     [provincia]     	VARCHAR (30) NOT NULL,
     [codigo_postal]    	VARCHAR (6)  NOT NULL,
     [telefono]    	VARCHAR (18) NULL,
+    [admin]		BIT	     DEFAULT ((0)) NOT NULL, 
     PRIMARY KEY CLUSTERED ([username] ASC),
     UNIQUE NONCLUSTERED ([email] ASC)
 );
