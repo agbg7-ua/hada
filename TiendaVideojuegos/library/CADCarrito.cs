@@ -41,12 +41,12 @@ namespace library
             catch (SqlException ex)
             {
                 creado = false;
-                Console.WriteLine("User operation has failed. Error: {0}", exc.Message);
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
             }
             catch (Exception ex)
             {
                 creado = false;
-                Console.WriteLine("User operation has failed. Error: {0}", exc.Message);
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
             }
             finally
             {
@@ -122,48 +122,116 @@ namespace library
                 c.Close();
             }
         }
-    
-        //modo conectado para hacer show
+
         public bool showCarrito(ENCarrito en)
         {
-            bool show = false;
-            DataSet bdvirtual = new DataSet();
+            bool found = false;
             SqlConnection c = new SqlConnection(constring);
 
+            try
+            {
+                c.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Carrito WHERE id = @id", c);
+                cmd.Parameters.AddWithValue("@id", en.id);
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    found = true;
+                    en.id_usuario = dr["id_usuario"].ToString();
+                    en.importe_total = float.Parse(dr["importe_total"].ToString());
+
+                    Console.WriteLine("ID: {0}", en.id);
+                    Console.WriteLine("ID Usuario: {0}", en.id_usuario);
+                    Console.WriteLine("Importe Total: {0}", en.importe_total);
+                }
+
+                dr.Close();
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("Error: {0}", ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: {0}", ex.Message);
+            }
+            finally
+            {
+                c.Close();
+            }
+
+            return found;
+        }
+
+
+
+        public List<ENCarrito> listCarritos()
+{
+    List<ENCarrito> listaCarritos = new List<ENCarrito>();
+    DataSet bdvirtual = new DataSet();
+    SqlConnection c = new SqlConnection(constring);
             try
             {
                 SqlDataAdapter ad = new SqlDataAdapter("select * from Carrito", c);
                 ad.Fill(bdvirtual, "Carrito");
                 DataTable t = new DataTable();
                 t = bdvirtual.Tables["Carrito"];
-                for (int  i = 0; i < t.Rows.Count; i++)
+                for (int i = 0; i < t.Rows.Count; i++)
                 {
                     DataRow fila = t.Rows[i];
-                    if (en.id == int.Parse(fila[0].ToString()))
-                    {
-                        show = true;
-                        en.id_usuario = int.Parse(fila[1].ToString());
-                        en.importe_total = float.Parse(fila[2].ToString());
-                    }
+                    ENCarrito carrito = new ENCarrito();
+                    carrito.id = int.Parse(fila[0].ToString());
+                    carrito.id_usuario = fila[1].ToString();
+                    carrito.importe_total = float.Parse(fila[2].ToString());
+                    listaCarritos.Add(carrito);
                 }
             }
             catch (SqlException ex)
             {
-                show = false;
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
             }
             catch (Exception ex)
             {
-                show = false;
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
             }
             finally
             {
-             c.Close();
+                c.Close();
             }
 
-            return show;
+            return listaCarritos;
 
         }
+public List<ENCarrito> listCarritosByUser(string idUsuario)
+{
+    List<ENCarrito> lista = new List<ENCarrito>();
+    string consulta = "SELECT * FROM Carrito WHERE id_usuario = @id_usuario";
+    SqlCommand cmd = new SqlCommand(consulta, Conexion.getInstance().getConnection());
+
+    cmd.Parameters.AddWithValue("@id_usuario", idUsuario);
+
+    SqlDataReader dr = cmd.ExecuteReader();
+
+    while (dr.Read())
+    {
+        ENCarrito c = new ENCarrito();
+
+        c.id = int.Parse(dr["id"].ToString());
+        c.id_usuario = dr["id_usuario"].ToString();
+        c.importe_total = float.Parse(dr["importe_total"].ToString());
+
+        lista.Add(c);
     }
+
+    dr.Close();
+    Conexion.getInstance().CloseConnection();
+
+    return lista;
+}
+
+    }
+   
+
 }
