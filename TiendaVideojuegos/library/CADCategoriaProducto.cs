@@ -26,6 +26,7 @@ namespace library
             this.constring = ConfigurationManager.ConnectionStrings["miconexion"].ToString();
         }
 
+        // Método para crear una Categoría de Producto -> modo conectado
         public bool createCategoriaProducto(ENCategoriaProducto en) 
         {
             bool create = false;
@@ -59,6 +60,7 @@ namespace library
             return create;
         }
 
+        // Método para leer una Categoría de Producto -> modo conectado
         public bool readCategoriaProducto(ENCategoriaProducto en)
         {
             bool read_CP = false;
@@ -104,6 +106,7 @@ namespace library
             return read_CP;
         }
 
+        // Método para actualizar una Categoría de Producto -> modo conectado
         public bool updateCategoriaProducto(ENCategoriaProducto en)
         {
             bool update = false;
@@ -138,6 +141,7 @@ namespace library
             return update;
         }
 
+        // Método para borrar una Categoría de Producto -> modo conectado
         public bool deleteCategoriaProducto(ENCategoriaProducto en)
         {
             bool delete = false;

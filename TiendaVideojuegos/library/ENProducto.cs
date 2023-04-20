@@ -80,10 +80,12 @@ namespace library
             set { _mostrar = value; }
         }
 
+        // Constructor vacío
         public ENProducto() { 
         
         }
 
+        // Constructor sobrecargado
         public ENProducto(int id_categoria, int id_desarrollador, string nombre, float pvp, string descripcion, DateTime fecha_salida, int clasificacion, string imagen, bool mostrar) 
         {
             this.id_categoria = id_categoria;
@@ -97,12 +99,14 @@ namespace library
             this.mostrar = mostrar;
         }
 
+        // Método para crear un producto
         public bool createProducto() 
         {
             CADProducto c = new CADProducto();
             ENCategoriaProducto en = new ENCategoriaProducto();
             en.id = this.id_categoria;
 
+            // Comprobamos que no exista un producto con ese nombre y que la categoría de producto exista
             if (c.readByNameProducto(this) != true && en.readCategoriaProducto() == true)
             {
                 return c.createProducto(this);
@@ -111,18 +115,21 @@ namespace library
             return false;
         }
 
+        // Método que lee un producto -> si existe un producto determinado
         public bool readProducto()
         {
             CADProducto c = new CADProducto();
             return c.readProducto(this);
         }
 
+        // Método que lee un producto por su nombre -> nombre es UNIQUE por lo que comprobamos si ya existe un producto con dicho nombre
         public bool readByNameProducto()
         {
             CADProducto c = new CADProducto();
             return c.readByNameProducto(this);
         }
 
+        // Método para enseñar un producto
         public DataSet showProducto() 
         {
             CADProducto c = new CADProducto();
@@ -130,6 +137,7 @@ namespace library
             return a;
         }
 
+        // Método para actualizar un producto
         public DataSet updateProducto(int i)
         {
             DataSet a = new DataSet();
@@ -149,6 +157,7 @@ namespace library
 
             cat.id = this.id_categoria;
 
+            // Comprobamos que existe el producto y la categoría de producto
             if (c.readProducto(this) == true && cat.readCategoriaProducto() == true) {
                 this.id_categoria = en.id_categoria;
                 this.id_desarrollador = en.id_desarrollador;
@@ -165,11 +174,13 @@ namespace library
             return a;
         }
 
+        // Método para borrar un producto
         public DataSet deleteProducto(int i)
         {
             DataSet a = new DataSet();
             CADProducto c = new CADProducto();
 
+            // Comprobamos que existe el producto
             if (c.readProducto(this) == true)
             {
                 a = c.deleteProducto(this, i);
@@ -178,6 +189,7 @@ namespace library
             return a;
         }
 
+        // Método para enseñar todos los productos
         public DataSet showAllProducto() 
         {
             CADProducto c = new CADProducto();
@@ -185,13 +197,13 @@ namespace library
             return a;
         }
 
+        // Método que enseña por nombre en orden ascendiente los productos
         public DataSet showOrderByNameASCProducto(ENCategoriaProducto en)
         {
-            bool exist = false;
             DataSet a = new DataSet();
-            exist = en.readCategoriaProducto();
 
-            if (exist == true) {
+            // Comprobamos que existe la categoría de producto
+            if (en.readCategoriaProducto() == true) {
                 CADProducto c = new CADProducto();
                 a = c.showOrderByNameASCProducto(en);
             }
@@ -199,13 +211,13 @@ namespace library
             return a;
         }
 
+        // Método que enseña por nombre en orden descendiente los productos
         public DataSet showOrderByNameDESCProducto(ENCategoriaProducto en)
         {
-            bool exist = false;
             DataSet a = new DataSet();
-            exist = en.readCategoriaProducto();
 
-            if (exist == true)
+            // Comprobamos que existe la categoría de producto
+            if (en.readCategoriaProducto() == true)
             {
                 CADProducto c = new CADProducto();
                 a = c.showOrderByNameDESCProducto(en);
@@ -214,13 +226,13 @@ namespace library
             return a;
         }
 
+        // Método que enseña por precio en orden ascendiente los productos
         public DataSet showOrderByPriceASCProducto(ENCategoriaProducto en)
         {
-            bool exist = false;
             DataSet a = new DataSet();
-            exist = en.readCategoriaProducto();
 
-            if (exist == true)
+            // Comprobamos que existe la categoría de producto
+            if (en.readCategoriaProducto() == true)
             {
                 CADProducto c = new CADProducto();
                 a = c.showOrderByPriceASCProducto(en);
@@ -229,13 +241,13 @@ namespace library
             return a;
         }
 
+        // Método que enseña por precio en orden descendiente los productos
         public DataSet showOrderByPriceDESCProducto(ENCategoriaProducto en)
         {
-            bool exist = false;
             DataSet a = new DataSet();
-            exist = en.readCategoriaProducto();
 
-            if (exist == true)
+            // Comprobamos que existe la categoría de producto
+            if (en.readCategoriaProducto() == true)
             {
                 CADProducto c = new CADProducto();
                 a = c.showOrderByPriceDESCProducto(en);
@@ -244,6 +256,7 @@ namespace library
             return a;
         }
 
+        // Método que busca por nombre un producto
         public DataSet searchByNameProducto(String name)
         {
             CADProducto c = new CADProducto();

@@ -37,7 +37,7 @@ namespace library
             this.constring = this.constring = ConfigurationManager.ConnectionStrings["miconexion"].ToString();
         }
 
-        // Crear Producto de forma desconectada
+        // Método para crear un Producto -> modo desconectado
         public bool createProducto(ENProducto en)
         {
             bool create = false;
@@ -82,6 +82,7 @@ namespace library
             return create;
         }
 
+        // Método para leer un Producto (por id) -> modo desconectado
         public bool readProducto(ENProducto en) 
         {
             bool read = false;
@@ -129,6 +130,7 @@ namespace library
             return read;
         }
 
+        // Método para leer un Producto (por nombre) -> modo desconectado
         public bool readByNameProducto(ENProducto en)
         {
             bool read = false;
@@ -178,7 +180,7 @@ namespace library
             return read;
         }
 
-        // Mostrar un solo producto -> modo desconectado
+        // Métodor para enseñar Producto -> modo desconectado
         public DataSet showProducto(ENProducto en)
         {
             DataSet bdvirtual = new DataSet();
@@ -208,7 +210,7 @@ namespace library
             }
         }
 
-        // Modo desconectado
+        // Método para actualizar un Producto -> modo desconectado
         public DataSet updateProducto(ENProducto en, int i)
         {
             DataSet bdvirtual = new DataSet();
@@ -249,7 +251,7 @@ namespace library
             }
         }
 
-        // Borrar un producto -> modo desconectado
+        // Método para borrar un Producto -> modo desconectado
         public DataSet deleteProducto(ENProducto en, int i)
         {
             DataSet bdvirtual = new DataSet();
@@ -283,6 +285,7 @@ namespace library
             }
         }
 
+        // Método para enseñar todos los Productos -> modo desconectado
         public DataSet showAllProducto()
         {
             DataSet bdvirtual = new DataSet();
@@ -310,6 +313,8 @@ namespace library
                 if (c != null) c.Close();
             }
         }
+
+        // Método para enseñar por nombre en orden ascendiente Productos -> modo desconectado
         public DataSet showOrderByNameASCProducto(ENCategoriaProducto en)
         {
             DataSet bdvirtual = new DataSet();
@@ -338,6 +343,7 @@ namespace library
             }
         }
 
+        // Método para enseñar por nombre en orden descendiente Productos -> modo desconectado
         public DataSet showOrderByNameDESCProducto(ENCategoriaProducto en)
         {
             DataSet bdvirtual = new DataSet();
@@ -366,6 +372,7 @@ namespace library
             }
         }
 
+        // Método para enseñar por precio en orden ascendiente Productos -> modo desconectado
         public DataSet showOrderByPriceASCProducto(ENCategoriaProducto en)
         {
             DataSet bdvirtual = new DataSet();
@@ -394,6 +401,7 @@ namespace library
             }
         }
 
+        // Método para enseñar por precio en orden descendiente Productos -> modo desconectado
         public DataSet showOrderByPriceDESCProducto(ENCategoriaProducto en)
         {
             DataSet bdvirtual = new DataSet();
@@ -422,6 +430,7 @@ namespace library
             }
         }
 
+        // Método para buscar Productos por nombre -> modo desconectado
         public DataSet searchByNameProducto(String name)
         {
             DataSet bdvirtual = new DataSet();

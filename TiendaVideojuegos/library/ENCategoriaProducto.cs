@@ -8,6 +8,7 @@ namespace library
 {
     class ENCategoriaProducto
     {
+        // Todos las variables con respaldo
         private int _id;
         public int id
         {
@@ -39,10 +40,12 @@ namespace library
             set { _imagen = value; }
         }
 
+        // Constructor vacío
         public ENCategoriaProducto() { 
         
         }
 
+        // Constructor sobrecargado
         public ENCategoriaProducto(string nombre, string descripcion, string imagen) 
         {
             this.nombre = nombre;
@@ -50,9 +53,12 @@ namespace library
             this.imagen = imagen;
         }
 
+        // Método para crear una categoría de producto
         public bool createCategoriaProducto()
         {
             CADCategoriaProducto c = new CADCategoriaProducto();
+
+            // Comprobamos que existe la categoría
             if (c.readCategoriaProducto(this) != true)
             { 
                 return c.createCategoriaProducto(this);
@@ -61,12 +67,14 @@ namespace library
             return false;
         }
 
+        // Método que lee una categoría de producto -> si existe un producto determinado
         public bool readCategoriaProducto()
         {
             CADCategoriaProducto c = new CADCategoriaProducto();
             return c.readCategoriaProducto(this);
         }
 
+        // Método para actualizar una categoría de producto
         public bool updateCategoriaProducto()
         {
             CADCategoriaProducto c = new CADCategoriaProducto();
@@ -75,6 +83,7 @@ namespace library
             string description = this.descripcion;
             string image = this.imagen;
 
+            // Comprobamos que existe la categoría
             if (c.readCategoriaProducto(this) == true)
             { 
                 this.nombre = name;
@@ -86,9 +95,12 @@ namespace library
             return false;
         }
 
+        // Método para borrar una categría de producto
         public bool deleteCategoriaProducto()
         {
             CADCategoriaProducto c = new CADCategoriaProducto();
+
+            // Comprobamos que existe la categoría
             if (c.readCategoriaProducto(this) == true)
             { 
                 return c.deleteCategoriaProducto(this);
