@@ -79,6 +79,18 @@ namespace library
             return cad.selectLineaCarrito(id);
         }
 
+        public List<ENLineaCarrito> listLineaCarritos()
+        {
+            CADLineaCarrito cad = new CADLineaCarrito();
+            return cad.listLineaCarritos();
+        }
+
+        public List<ENLineaCarrito> listLineaCarritosByCarrito(int id_carrito)
+        {
+            CADLineaCarrito cad = new CADLineaCarrito();
+            return cad.listLineaCarritosByCarrito(id_carrito);
+        }
+
 
 
 
