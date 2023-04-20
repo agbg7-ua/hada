@@ -172,6 +172,111 @@ namespace library
             }
             return res;
         }
+        //Lista todos los Pedidos
+        public List<ENPedido> listarPedidos(ENPedido en)
+        {
+            List<ENPedido> res = new List<ENPedido>();
+            SqlConnection c = null;
+            try
+            {
+                c = new SqlConnection(constring);
+                c.Open();
+                SqlCommand listSql = new SqlCommand("Select * from Pedido", c);
+                SqlDataReader dr = listSql.ExecuteReader();
+                while (dr.Read())
+                {
+                    ENPedido nEn = new ENPedido(int.Parse(dr["id"].ToString()), int.Parse(dr["id_usuario"].ToString()), DateTime.Parse(dr["fecha"].ToString()), double.Parse(dr["importe_total"].ToString()));
+                    res.Add(nEn);
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                Console.WriteLine("Error: {0}", sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: {0}", ex.Message);
+
+            }
+            finally
+            {
+                if (c != null)
+                {
+                    c.Close();
+                }
+            }
+            return res;
+        }
+        // Listar Pedidos importe_total ASCENDENTE
+        public List<ENPedido> listarPedidosImporteAsc(ENPedido en)
+        {
+            List<ENPedido> res = new List<ENPedido>();
+            SqlConnection c = null;
+            try
+            {
+                c = new SqlConnection(constring);
+                c.Open();
+                SqlCommand listSql = new SqlCommand("Select * from Pedido order by importe_total asc", c);
+                SqlDataReader dr = listSql.ExecuteReader();
+                while (dr.Read())
+                {
+                    ENPedido nEn = new ENPedido(int.Parse(dr["id"].ToString()), int.Parse(dr["id_usuario"].ToString()), DateTime.Parse(dr["fecha"].ToString()), double.Parse(dr["importe_total"].ToString()));
+                    res.Add(nEn);
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                Console.WriteLine("Error: {0}", sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: {0}", ex.Message);
+
+            }
+            finally
+            {
+                if (c != null)
+                {
+                    c.Close();
+                }
+            }
+            return res;
+        }
+        // Listar Pedidos importe_total DESCENDENTE
+        public List<ENPedido> listarPedidosImporteDesc(ENPedido en)
+        {
+            List<ENPedido> res = new List<ENPedido>();
+            SqlConnection c = null;
+            try
+            {
+                c = new SqlConnection(constring);
+                c.Open();
+                SqlCommand listSql = new SqlCommand("Select * from Pedido order by importe_total desc", c);
+                SqlDataReader dr = listSql.ExecuteReader();
+                while (dr.Read())
+                {
+                    ENPedido nEn = new ENPedido(int.Parse(dr["id"].ToString()), int.Parse(dr["id_usuario"].ToString()), DateTime.Parse(dr["fecha"].ToString()), double.Parse(dr["importe_total"].ToString()));
+                    res.Add(nEn);
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                Console.WriteLine("Error: {0}", sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: {0}", ex.Message);
+
+            }
+            finally
+            {
+                if (c != null)
+                {
+                    c.Close();
+                }
+            }
+            return res;
+        }
         // Listar Pedidos de un mismo Usuario
         public List<ENPedido> pedidosUsuario(ENPedido en)
         {

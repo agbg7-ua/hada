@@ -52,6 +52,7 @@ namespace library
             this.fecha = fecha;
             this.importe_total = importe_total;
         }
+        // Crear Pedido
         public bool createPedido()
         {
             bool res = false;
@@ -65,6 +66,7 @@ namespace library
             }
             return res;
         }
+        // Leer Pedido
         public bool readPedido()
         {
             bool res = false;
@@ -75,6 +77,7 @@ namespace library
             }
             return res;
         }
+        //Actualizar Pedido
         public bool updatePedido()
         {
             bool res = false;
@@ -88,6 +91,7 @@ namespace library
             }
             return res;
         }
+        //Borrar Pedido
         public bool deletePedido()
         {
             bool res = false;
@@ -101,6 +105,31 @@ namespace library
             }
             return res;
         }
+        //Lista todos los Pedidos
+        public List<ENPedido> listarPedidos()
+        {
+            List<ENPedido> res = new List<ENPedido>();
+            CADPedido c = new CADPedido();
+            res = c.listarPedidos(this);
+            return res;
+        }
+        // Listar Pedidos importe_total ASCENDENTE
+        public List<ENPedido> listarPedidosImporteAsc()
+        {
+            List<ENPedido> res = new List<ENPedido>();
+            CADPedido c = new CADPedido();
+            res = c.listarPedidosImporteAsc(this);
+            return res;
+        }
+        // Listar Pedidos importe_total DESCENDENTE
+        public List<ENPedido> listarPedidosImporteDesc()
+        {
+            List<ENPedido> res = new List<ENPedido>();
+            CADPedido c = new CADPedido();
+            res = c.listarPedidosImporteDesc(this);
+            return res;
+        }
+        // Listar Pedidos de un mismo Usuario
         public List<ENPedido> pedidosUsuario()
         {
             List<ENPedido> res = new List<ENPedido>();
@@ -108,5 +137,7 @@ namespace library
             res = c.pedidosUsuario(this);
             return res;
         }
+        
+
     }
 }

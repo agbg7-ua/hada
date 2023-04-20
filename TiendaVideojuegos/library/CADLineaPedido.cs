@@ -163,6 +163,41 @@ namespace library
             }
             return res;
         }
+        //Lista todas los elementos de LineaPedido
+        public List<ENLineaPedido> listaTodasLineasPedido(ENLineaPedido en)
+        {
+            List<ENLineaPedido> res = new List<ENLineaPedido>();
+            SqlConnection c = null;
+            try
+            {
+                c = new SqlConnection(constring);
+                c.Open();
+                SqlCommand listSql = new SqlCommand("Select * from LineaPedido ", c);
+                SqlDataReader dr = listSql.ExecuteReader();
+                while (dr.Read())
+                {
+                    ENLineaPedido nEn = new ENLineaPedido(int.Parse(dr["id_pedido"].ToString()), int.Parse(dr["id_linea"].ToString()), int.Parse(dr["id_producto"].ToString()), int.Parse(dr["cantidad"].ToString()), double.Parse(dr["importe"].ToString()));
+                    res.Add(nEn);
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                Console.WriteLine("Error: {0}", sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: {0}", ex.Message);
+
+            }
+            finally
+            {
+                if (c != null)
+                {
+                    c.Close();
+                }
+            }
+            return res;
+        }
         // Listar Líneas de un mismo Pedido
         public List<ENLineaPedido> listaLineasPedido(ENLineaPedido en)
         {
@@ -177,6 +212,41 @@ namespace library
                 while (dr.Read())
                 { 
                     ENLineaPedido nEn = new ENLineaPedido(en.id_pedido, int.Parse(dr["id_linea"].ToString()), int.Parse(dr["id_producto"].ToString()), int.Parse(dr["cantidad"].ToString()) ,double.Parse(dr["importe"].ToString()));
+                    res.Add(nEn);
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                Console.WriteLine("Error: {0}", sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: {0}", ex.Message);
+
+            }
+            finally
+            {
+                if (c != null)
+                {
+                    c.Close();
+                }
+            }
+            return res;
+        }
+        //Listar Líneas de un mismo Producto
+        public List<ENLineaPedido> listaLineasProducto(ENLineaPedido en)
+        {
+            List<ENLineaPedido> res = new List<ENLineaPedido>();
+            SqlConnection c = null;
+            try
+            {
+                c = new SqlConnection(constring);
+                c.Open();
+                SqlCommand listSql = new SqlCommand("Select * from LineaPedido where id_producto = '" + en.id_producto + "'", c);
+                SqlDataReader dr = listSql.ExecuteReader();
+                while (dr.Read())
+                {
+                    ENLineaPedido nEn = new ENLineaPedido(int.Parse(dr["id_pedido"].ToString()), int.Parse(dr["id_linea"].ToString()), en.id_producto, int.Parse(dr["cantidad"].ToString()), double.Parse(dr["importe"].ToString()));
                     res.Add(nEn);
                 }
             }

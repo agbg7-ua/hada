@@ -46,6 +46,7 @@ namespace library
             this.cantidad = cantidad;
             this.importe = importe;
         }
+        // Crear Línea de Pedido
         public bool createLineaPedido()
         {
             bool res = false;
@@ -59,6 +60,7 @@ namespace library
             }
             return res;
         }
+        // Leer Línea de Pedida
         public bool readLineaPedido()
         {
             bool res = false;
@@ -69,6 +71,7 @@ namespace library
             }
             return res;
         }
+        // Actualizar Línea de Pedido
         public bool updateLineaPedido()
         {
             bool res = false;
@@ -82,6 +85,7 @@ namespace library
             }
             return res;
         }
+        // Borrar Línea de Pedido
         public bool deleteLineaPedido()
         {
             bool res = false;
@@ -95,11 +99,20 @@ namespace library
             }
             return res;
         }
-        public List<ENLineaPedido> listaLineasPedido()
+        //Lista todas los elementos de LineaPedido
+        public List<ENLineaPedido> listaTodasLineasPedido()
         {
             List<ENLineaPedido> res = new List<ENLineaPedido>();
             CADLineaPedido c = new CADLineaPedido();
-            res = c.listaLineasPedido(this);
+            res = c.listaTodasLineasPedido(this);
+            return res;
+        }
+        // Listar Líneas de un mismo Pedido
+        public List<ENLineaPedido> listaLineasProducto()
+        {
+            List<ENLineaPedido> res = new List<ENLineaPedido>();
+            CADLineaPedido c = new CADLineaPedido();
+            res = c.listaLineasProducto(this);
             return res;
         }
     }
