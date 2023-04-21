@@ -32,5 +32,5 @@ Lo primero que tenemos pensado como añadir sería una oferta mensual en la pág
 Lo segundo que pensamos para añadir sería un sistema de mensajes privados entre usuarios para que puedan relacionarse entre ellos de manera privada.
 Por último, y la posible mejora principal sería hacer que los usuarios también puedan vender sus juegos que ya no usen y que estén en buen estado, para esto deberíamos añadir bastantes cosas como por ejemplo un sistema para autentificar que los juegos están en buen estado y que no es una estafa.
 
-##DONDE SE ENCUENTRA EL PDF DE BBDD
+## PDF BBDD
 El pdf se encuentro en la rama máster, carpeta Base de Datos y el pdf se llama Database.
