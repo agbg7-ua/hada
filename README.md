@@ -33,4 +33,4 @@ Lo segundo que pensamos para añadir sería un sistema de mensajes privados entr
 Por último, y la posible mejora principal sería hacer que los usuarios también puedan vender sus juegos que ya no usen y que estén en buen estado, para esto deberíamos añadir bastantes cosas como por ejemplo un sistema para autentificar que los juegos están en buen estado y que no es una estafa.
 
 ## PDF BBDD
-El pdf se encuentro en la rama máster, carpeta Base de Datos y el pdf se llama Database.
+El pdf se encuentra en la rama máster, carpeta Base de Datos y el pdf se llama Database.
