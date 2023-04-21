@@ -168,6 +168,16 @@ namespace library
             }
             return read;
         }
+        public bool signIn()
+        {
+            CADUsuario usu = new CADUsuario();
+            bool read = false;
+            if (usu.readUsuario(this))
+            {
+                read = usu.signIn(this);
+            }
+            return read;
+        }
         public bool readUsuario()
         {
             CADUsuario cad = new CADUsuario();
