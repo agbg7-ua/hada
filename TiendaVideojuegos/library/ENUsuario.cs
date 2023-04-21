@@ -13,7 +13,7 @@ namespace library
         private string _nombre;
         private string _apellidos;
         private string _email;
-        private string _contraseña;
+        private string _contrasenya;
         private int _edad;
         private string _calle;
         private string _pueblo;
@@ -21,17 +21,50 @@ namespace library
         private string _codigo_postal;
         private string _telefono;
 
-        public string username { get; set; }
-        public string nombre { get; set; }
-        public string apellidos { get; set; }
-        public string email { get; set; }
-        public string password { get; set; }
-        public int edad { get; set; }
-        public string calle { get; set; }
-        public string pueblo { get; set; }
-        public string provincia { get; set; }
-        public string codigo_postal { get; set; }
-        public string telefono { get; set; }
+        public string username { 
+            get {return _username;}
+            set {_username = value;} 
+        }
+        public string nombre { 
+            get {return _nombre;}
+            set {_nombre = value;}
+        }
+        public string apellidos { 
+            get {return _apellidos;}
+            set {_apellidos = value;}
+        }
+        public string email { 
+            get {return _email;}
+            set {_email = value;}
+        }
+        public string password { 
+            get {return _contrasenya;}
+            set {_contrasenya = value;}
+        }
+        public int edad { 
+            get {return _edad;}
+            set {_edad = value;}
+        }
+        public string calle { 
+            get {return _calle;}
+            set {_calle = value;}
+        }
+        public string pueblo { 
+            get {return _pueblo;}
+            set {_pueblo = value;}       
+        }
+        public string provincia {
+            get { return _provincia; }
+            set { _provincia = value; }
+        }
+        public string codigo_postal {
+            get { return _codigo_postal; }
+            set { _codigo_postal = value; }
+        }
+        public string telefono {
+            get { return _telefono; }
+            set { _telefono = value; }
+        }
 
         public ENUsuario()
         {

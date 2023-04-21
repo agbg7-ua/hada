@@ -17,12 +17,35 @@ namespace library
         private int _valoracion;
 
 
-        public int id_producto { get; set; }
-        public int id { get; set; }
-        public string id_usuario { get; set; }
-        public DateTime date { get; set; }
-        public string text { get; set; }
-        public int valoracion { get; set; }
+        public int id_producto
+        {
+            get { return _id_producto; }
+            set { _id_producto = value; }
+        }
+        public int id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+        public string id_usuario
+        {
+            get { return _id_usuario; }
+            set { _id_usuario = value; }
+        }
+        public DateTime date
+        {
+            get { return _date; }
+            set { _date = value; }
+        }
+        public string text
+        {
+            get { return _text; }
+            set { _text = value; }
+        }
+        public int valoracion {
+            get { return _valoracion; }
+            set { _valoracion = value; }
+        }
 
         public ENComentario()
         {
