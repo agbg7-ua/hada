@@ -24,7 +24,39 @@ namespace library
         {
             return true;
         }
-        public bool showUsuario(ENUsuario usu)
+        public bool addOferta(bool admin)
+        {
+            return true;
+        }
+        public bool addDesarrollador(bool admin)
+        {
+            return true;
+        }
+        public bool addProducto(bool admin)
+        {
+            return true;
+        }
+        public bool deleteOferta(bool admin)
+        {
+            return true;
+        }
+        public bool deleteDesarrollador(bool admin)
+        {
+            return true;
+        }
+        public bool deleteProducto(bool admin)
+        {
+            return true;
+        }
+        public bool modifyOferta(bool admin)
+        {
+            return true;
+        }
+        public bool modifyDesarrollador(bool admin)
+        {
+            return true;
+        }
+        public bool modifyProducto(bool admin)
         {
             return true;
         }
