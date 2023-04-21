@@ -20,6 +20,10 @@ namespace library
         {
             return true;
         }
+        public bool signIn(ENUsuario usu)
+        {
+            return true;
+        }
         public bool readUsuario(ENUsuario usu)
         {
             return true;
