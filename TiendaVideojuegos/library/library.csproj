@@ -45,7 +45,9 @@
     <Compile Include="CADCategoriaProducto.cs" />
     <Compile Include="CADComentario.cs" />
     <Compile Include="CADDesarrollador.cs" />
+    <Compile Include="CADLineaPedido.cs" />
     <Compile Include="CADOferta.cs" />
+    <Compile Include="CADPedido.cs" />
     <Compile Include="CADProducto.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="CADUsuario.cs" />
@@ -53,7 +55,9 @@
     <Compile Include="ENUsuario.cs" />
     <Compile Include="ENCategoriaProducto.cs" />
     <Compile Include="ENDesarrollador.cs" />
+    <Compile Include="ENLineaPedido.cs" />
     <Compile Include="ENOferta.cs" />
+    <Compile Include="ENPedido.cs" />
     <Compile Include="ENProducto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
