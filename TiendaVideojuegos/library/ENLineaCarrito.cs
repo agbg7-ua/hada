@@ -10,18 +10,43 @@ namespace library
      class ENLineaCarrito
     {
         private int _id_carrito;
-        private int _id_linea;
-        private int _id_producto;
-        private int _cantidad;
-        private float _importe;
-        private DateTime _fecha;
+        public int id_carrito {
+            get { return _id_carrito; }
+            set { _id_carrito = value; }
+        }
 
-        public int id_carrito { get; set; }
-        public int id_linea{ get; set; }
-        public int id_producto { get; set; }
-        public int cantidad { get; set; }
-        public float importe { get; set; }
-        public DateTime fecha { get; set; }
+        private int _id_linea;
+        public int id_linea
+        {
+            get { return _id_linea; }
+            set { _id_linea = value; }
+        }
+        private int _id_producto;
+        public int id_producto
+        {
+            get { return _id_producto; }
+            set { _id_producto = value; }
+        }
+
+        private int _cantidad;
+        public int cantidad
+        {
+            get { return _cantidad; }
+            set { _cantidad = value; }
+        }
+        private float _importe;
+        public float importe
+        {
+            get { return _importe; }
+            set { _importe = value; }
+        }
+
+        private DateTime _fecha;
+        public DateTime fecha
+        {
+            get { return _fecha; }
+            set { _fecha = value; }
+        }
 
         public ENLineaCarrito()
         {

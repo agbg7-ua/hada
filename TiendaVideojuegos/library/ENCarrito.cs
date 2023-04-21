@@ -11,16 +11,31 @@ namespace library
     class ENCarrito
 
     { 
-         private int _id;
-        private string _id_usuario;
-        private float _importe_total;
-      
+        private int _id;
+        public int id
+        {
+            get{ return _id; }
+            set{ _id = value; }
+            
+            }
 
-        public int id { get; set; }
-        public string id_usuario { get; set; }
-        public float importe_total { get; set; }
-    
-           
+
+        private string _id_usuario;
+        public string id_usuario
+        {
+
+            get { return _id_usuario; }
+            set { _id_usuario = value; }
+        }
+        private float _importe_total;
+        public float importe_total
+        {
+            get { return _importe_total; }
+            set { _importe_total = value; }
+        }
+
+
+
         public ENCarrito()
         {
             this.id = 0;
