@@ -88,7 +88,17 @@ namespace library
         }
         public ENUsuario(string username, string nombre, string apellidos, string email, string password, int edad, string calle,string pueblo, string provincia, string codigo_postal, string telefono)
         {
-
+            this.username = username;
+            this.nombre = nombre;
+            this.apellidos = apellidos;
+            this.email = email;
+            this.password = password;
+            this.edad = edad;
+            this.calle = calle;
+            this.pueblo = pueblo;
+            this.provincia = provincia;
+            this.codigo_postal = codigo_postal;
+            this.telefono = telefono;
         }
         public ENUsuario(ENUsuario usu)
         {
