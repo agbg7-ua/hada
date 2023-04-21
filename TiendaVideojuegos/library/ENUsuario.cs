@@ -183,6 +183,16 @@ namespace library
             CADUsuario cad = new CADUsuario();
             return cad.readUsuario(this);
         }
+        public bool signIn()
+        {
+            CADUsuario usu = new CADUsuario();
+            bool read = false;
+            if (usu.readUsuario(this))
+            {
+                read = usu.signIn(this);
+            }
+            return read;
+        }
         public bool addDesarrollador()
         {
             CADUsuario cad = new CADUsuario();
