@@ -31,9 +31,18 @@ namespace library
         private decimal _oferta;
         private int _producto_id;
 
-        public int id { get; set; }
-        public decimal oferta { get; set; }
-        public int producto_id { get; set; }
+        public int id { 
+            get { return _id; }
+            set { _id = value; }
+        }
+        public decimal oferta { 
+            get { return _oferta; }
+            set { _oferta = value; }
+        }
+        public int producto_id {
+            get { return _producto_id; }
+            set { _producto_id = value; }
+        }
 
 
         public ENOferta()
