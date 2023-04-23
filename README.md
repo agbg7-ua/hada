@@ -1,3 +1,9 @@
+## INTEGRANTES DEL GRUPO
+Carlos Pérez Pascual
+Andrea Gómez Bobes
+Jorge Sánchez Pastor
+Salma Benmoussa
+Carolina Fernández
 
 ## DESCRIPCIÓN
 Nuestra propuesta es una web de venta de videojuegos. En ella se encontrará una buena gama de videojuegos de diferentes géneros y plataformas.
