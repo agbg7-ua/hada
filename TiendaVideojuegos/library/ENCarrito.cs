@@ -83,7 +83,7 @@ namespace library
         public DataSet deleteCarrito(int Id)
         {
             CADCarrito cad = new CADCarrito();
-            DataSet d = cad.deleteCarrito(thisId)
+            DataSet d = cad.deleteCarrito(this, Id);
             return cad.deleteCarrito(this, Id);
         }
 
@@ -92,12 +92,13 @@ namespace library
             CADCarrito cad = new CADCarrito();
             return cad.listCarritos();
         }
+        /*
         public List<ENCarrito> listCarritosByUser(string idUsuario)
         {
             CADCarrito cad = new CADCarrito();
             return cad.listCarritosByUser(idUsuario);
         }
 
-
+        */
     }
 }

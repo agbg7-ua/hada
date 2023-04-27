@@ -5,12 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace library
 {
 	class CADLineaCarrito
 	{
 		private string constring;
+
+        public CADLineaCarrito()
+        {
+            this.constring = ConfigurationManager.ConnectionStrings["miconexion"].ToString();
+        }
         public bool createLineaCarrito(ENLineaCarrito en)
         {
             bool created = false;
@@ -178,7 +184,7 @@ namespace library
                     lineaCarrito.id_linea = int.Parse(fila["id_linea"].ToString());
                     lineaCarrito.id_producto = int.Parse(fila["id_producto"].ToString());
                     lineaCarrito.cantidad = int.Parse(fila["cantidad"].ToString());
-                    lineaCarrito.importe = decimal.Parse(fila["importe"].ToString());
+                    lineaCarrito.importe = float.Parse(fila["importe"].ToString());
                     lineaCarrito.fecha = DateTime.Parse(fila["fecha"].ToString());
                     listaLineasCarrito.Add(lineaCarrito);
                 }
@@ -198,6 +204,8 @@ namespace library
 
             return listaLineasCarrito;
         }
+
+        /*
         public List<ENLineaCarrito> ListaLineaCarritos(string id_usuario)
         {
             List<ENLineaCarrito> listaLineasCarrito = new List<ENLineaCarrito>();
@@ -211,12 +219,12 @@ namespace library
                 while (dr.Read())
                 {
                     ENLineaCarrito lineaCarrito = new ENLineaCarrito();
-                    lineaCarrito.setIdCarrito(int.Parse(dr["id_carrito"].ToString()));
-                    lineaCarrito.setIdLinea(int.Parse(dr["id_linea"].ToString()));
-                    lineaCarrito.setIdProducto(int.Parse(dr["id_producto"].ToString()));
-                    lineaCarrito.setCantidad(int.Parse(dr["cantidad"].ToString()));
-                    lineaCarrito.setImporte(double.Parse(dr["importe"].ToString()));
-                    lineaCarrito.setFecha(DateTime.Parse(dr["fecha"].ToString()));
+                    lineaCarrito.id_carrito = int.Parse(dr["id_carrito"].ToString());
+                    lineaCarrito.id_linea = int.Parse(dr["id_linea"].ToString());
+                    lineaCarrito.id_producto = int.Parse(dr["id_producto"].ToString());
+                    lineaCarrito.cantidad = int.Parse(dr["cantidad"].ToString());
+                    lineaCarrito.importe = float.Parse(dr["importe"].ToString());
+                    lineaCarrito.fecha = DateTime.Parse(dr["fecha"].ToString());
                     listaLineasCarrito.Add(lineaCarrito);
                 }
                 dr.Close();
@@ -236,7 +244,7 @@ namespace library
             return listaLineasCarrito;
         }
 
-
+        */
 
     }
 }

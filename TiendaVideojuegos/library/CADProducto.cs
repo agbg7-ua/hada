@@ -34,7 +34,7 @@ namespace library
 
         public CADProducto() 
         { 
-            this.constring = this.constring = ConfigurationManager.ConnectionStrings["miconexion"].ToString();
+            this.constring = ConfigurationManager.ConnectionStrings["miconexion"].ToString();
         }
 
         // Método para crear un Producto -> modo desconectado

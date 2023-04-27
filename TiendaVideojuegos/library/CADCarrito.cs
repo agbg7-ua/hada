@@ -204,11 +204,14 @@ namespace library
             return listaCarritos;
 
         }
+
+        /*
 public List<ENCarrito> listCarritosByUser(string idUsuario)
 {
     List<ENCarrito> lista = new List<ENCarrito>();
     string consulta = "SELECT * FROM Carrito WHERE id_usuario = @id_usuario";
-    SqlCommand cmd = new SqlCommand(consulta, Conexion.getInstance().getConnection());
+            SqlConnection c = new SqlConnection(constring);
+            SqlCommand cmd = new SqlCommand(consulta, c);
 
     cmd.Parameters.AddWithValue("@id_usuario", idUsuario);
 
@@ -226,12 +229,13 @@ public List<ENCarrito> listCarritosByUser(string idUsuario)
     }
 
     dr.Close();
-    Conexion.getInstance().CloseConnection();
+    c.Close();
 
     return lista;
 }
-
+        */
     }
+        
    
 
 }

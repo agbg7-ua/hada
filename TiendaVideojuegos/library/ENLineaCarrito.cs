@@ -92,11 +92,13 @@ namespace library
             return cad.updateLineaCarrito(this);
         }
 
+        
         public bool deleteLineaCarrito()
         {
             CADLineaCarrito cad = new CADLineaCarrito();
-            return cad.deleteLineaCarrito(this);
+            return true;
         }
+        
 
         public ENLineaCarrito selectLineaCarrito(int id)
         {
@@ -107,16 +109,17 @@ namespace library
         public List<ENLineaCarrito> listLineaCarritos()
         {
             CADLineaCarrito cad = new CADLineaCarrito();
-            return cad.listLineaCarritos();
+            return cad.ListaLineaCarritos();
         }
 
+        /*
         public List<ENLineaCarrito> listLineaCarritosByCarrito(int id_carrito)
         {
             CADLineaCarrito cad = new CADLineaCarrito();
             return cad.listLineaCarritosByCarrito(id_carrito);
         }
-
-
+        
+        */
 
 
     }
