@@ -1,0 +1,107 @@
+﻿.contenedor {
+    padding: 0px 0px 0px 0px;
+    position: center;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    border-block-end: groove;
+}
+
+/Texto centrado en la imagen/
+.centrado {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+/Añade borde a las imagenes/
+.conborde {
+    border: 1px solid #000;
+}
+
+.imagen-todo {
+    align-content: center;
+    width: 100%;
+    display: block;
+}
+
+/ListView/
+
+.productItem {
+    width: 200px;
+    height: 300px;
+    margin: 5px;
+    text-align: center;
+    background-color: #3a4f63;
+    display: flex;
+    padding: 5px 5px 5px 5px;
+}
+
+table {
+    width: 100%;
+    padding: 5px 0px 0px 20px;
+}
+
+    table th {
+        color: #00FFFF;
+        background: #284775;
+        font-weight: normal;
+        padding: 2px;
+    }
+
+.catalog {
+    padding-left: 40px;
+    align-content: center;
+    display: grid;
+    font-size: 0.8em;
+    width: 100%;
+    height: contain;
+}
+
+.listView {
+    align-content: center;
+    width: 100%;
+}
+
+/DropDownList/
+
+.ddl {
+    border: 2px solid #7d6754;
+    border-radius: 5px;
+    padding: 3px;
+    -webkit-appearance: none;
+    background-position: 88px;
+    background-repeat: no-repeat;
+}
+
+.labelVacio {
+    align-self: center;
+    background-position: 88px;
+    background-repeat: no-repeat;
+    text-align: center;
+}
+
+.labelText {
+    color: white;
+    background-color: white;
+    font-size: 1.5em;
+}
+
+.imagen {
+    text-align: left;
+    padding: 10px 20px 10px 10px;
+}
+
+.textboxproduct {
+    background-color: #3a4f63;
+    padding: 45px 0px 0px 10px;
+    width: 100%;
+    height: 75px;
+    padding: 10px 10px 10px 10px;
+    text-align: center;
+    font-size: 0.6em;
+    border: none;
+    width: 100%;
+}

@@ -73,6 +73,7 @@
     </Content>
     <Content Include="CategoriaProducto.aspx" />
     <Content Include="css\carousel.css" />
+    <Content Include="css\categoriaproducto.css" />
     <Content Include="Home.aspx" />
     <Content Include="Producto.aspx" />
     <Content Include="Web.config" />
