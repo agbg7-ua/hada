@@ -75,6 +75,7 @@
     <Content Include="css\carousel.css" />
     <Content Include="css\categoriaproducto.css" />
     <Content Include="Home.aspx" />
+    <Content Include="ListarProductoCategoría.aspx" />
     <Content Include="Producto.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -92,6 +93,13 @@
     </Compile>
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListarProductoCategoría.aspx.cs">
+      <DependentUpon>ListarProductoCategoría.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListarProductoCategoría.aspx.designer.cs">
+      <DependentUpon>ListarProductoCategoría.aspx</DependentUpon>
     </Compile>
     <Compile Include="Producto.aspx.cs">
       <DependentUpon>Producto.aspx</DependentUpon>
