@@ -6,7 +6,7 @@
 
     <div class="col">
      <div class="container" style="width: 50%; float:left; height:1000px;">
-                 <hr>
+       <hr>
         <h3 style="text-align:center">Inicia sesión</h3><br />
          Usuario:<br /> <asp:TextBox ID="TextBox1" runat="server" placeholder="Usuario"></asp:TextBox>
          <asp:RequiredFieldValidator ID="UserNameReq" runat="server"
@@ -18,7 +18,7 @@
          <asp:Button class="regbutton" ID="Button1" runat="server" Text="Iniciar sesión" />
          <hr />
      </div>
-     <div class="container" style="width: 50%; float:right; height:1000px;">
+     <div class="container" style="width: 50%; float:right; height:1000px">
          <hr>
         <h3 style="text-align: center;">Regístrate</h3><br />
          
@@ -58,7 +58,8 @@
     </script>
    <style>
        body {
-    background-image:url('https://marketplace.canva.com/EAE-Nstn9JQ/1/0/1600w/canva-purple-good-game-sunset-scene-gaming-desktop-wallpaper-xut5qXtG90k.jpg');
+           background-size:100%;
+    background-image:url('https://w0.peakpx.com/wallpaper/858/506/HD-wallpaper-texture-gradient-purple-pink.jpg');
     background-repeat:no-repeat;
     background-attachment:fixed;
 }

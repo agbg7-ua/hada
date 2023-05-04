@@ -74,10 +74,13 @@
     <Content Include="CategoriaProducto.aspx" />
     <Content Include="css\carousel.css" />
     <Content Include="css\register.css" />
+    <Content Include="EditUsuario.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Comentario.aspx" />
+    <Content Include="NuevoComentario.aspx" />
     <Content Include="Producto.aspx" />
     <Content Include="Registro.aspx" />
+    <Content Include="Usuario.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -87,6 +90,13 @@
     </Compile>
     <Compile Include="CategoriaProducto.aspx.designer.cs">
       <DependentUpon>CategoriaProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditUsuario.aspx.cs">
+      <DependentUpon>EditUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditUsuario.aspx.designer.cs">
+      <DependentUpon>EditUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
@@ -101,6 +111,13 @@
     </Compile>
     <Compile Include="Comentario.aspx.designer.cs">
       <DependentUpon>Comentario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NuevoComentario.aspx.cs">
+      <DependentUpon>NuevoComentario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NuevoComentario.aspx.designer.cs">
+      <DependentUpon>NuevoComentario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Producto.aspx.cs">
       <DependentUpon>Producto.aspx</DependentUpon>
@@ -123,6 +140,13 @@
     </Compile>
     <Compile Include="Registro.aspx.designer.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario.aspx.cs">
+      <DependentUpon>Usuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Usuario.aspx.designer.cs">
+      <DependentUpon>Usuario.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
