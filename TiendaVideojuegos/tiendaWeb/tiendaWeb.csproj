@@ -81,6 +81,7 @@
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\carousel.css" />
     <Content Include="css\categoriaproducto.css" />
+    <Content Include="Desarrrolador.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="ListarProducto.aspx" />
     <Content Include="ListarProductoCategoría.aspx" />
