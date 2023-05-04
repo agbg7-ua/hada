@@ -64,14 +64,15 @@ namespace library
             return cad.createCarrito(this);
         }
         
-        public bool showCarrito()
+        public DataSet showCarrito()
         {
-            CADCarrito cad = new CADCarrito();
-            return cad.showCarrito(this);
+            CADCarrito c = new CADCarrito();
+            DataSet a = c.showCarrito(this);
+                return a;
         }
 
 
-        //metodo desconectado se devuelve en DataSet
+        //Update
 
         public DataSet updateCarrito(int Id)
         {
@@ -79,20 +80,33 @@ namespace library
             DataSet d = cad.updateCarrito(this,Id);
             return cad.updateCarrito(this,Id);
         }
+        //read 
+        public bool readCarrito()
+        {
+            CADCarrito c = new CADCarrito();
+            return c.readCarrito(this);
+        }
+
 
         public DataSet deleteCarrito(int Id)
-        {
-            CADCarrito cad = new CADCarrito();
-            DataSet d = cad.deleteCarrito(thisId)
-            return cad.deleteCarrito(this, Id);
+        { 
+           DataSet a = new DataSet ();
+            CADCarrito c = new CADCarrito();
+
+            if(c.readCarrito(this) == true)
+            {
+                a = c.deleteCarrito(this,Id);
+            }
+            return a;
         }
 
-        public List<ENCarrito> listCarritos()
+        public DataSet listCarritos()
         {
-            CADCarrito cad = new CADCarrito();
-            return cad.listCarritos();
+            CADCarrito c = new CADCarrito();
+            DataSet a = c.listCarritos();
+            return a;
         }
-        public List<ENCarrito> listCarritosByUser(string idUsuario)
+        public DataSet listCarritosByUser(string idUsuario)
         {
             CADCarrito cad = new CADCarrito();
             return cad.listCarritosByUser(idUsuario);

@@ -14,24 +14,28 @@ namespace library
         public bool createLineaCarrito(ENLineaCarrito en)
         {
             bool created = false;
+            DataSet bdvirtual = new DataSet();
             SqlConnection c = new SqlConnection(constring);
 
             try
             {
-                SqlCommand cmd = new SqlCommand("INSERT INTO LineaCarrito (id_carrito, id_producto, cantidad, importe, fecha) VALUES (@id_carrito, @id_producto, @cantidad, @importe, @fecha)", c);
-                cmd.Parameters.AddWithValue("@id_carrito", en.id_carrito);
-                cmd.Parameters.AddWithValue("@id_producto", en.id_producto);
-                cmd.Parameters.AddWithValue("@cantidad", en.cantidad);
-                cmd.Parameters.AddWithValue("@importe", en.importe);
-                cmd.Parameters.AddWithValue("@fecha", en.fecha);
-
-                c.Open();
-                int rows = cmd.ExecuteNonQuery();
-
-                if (rows > 0)
-                {
-                    created = true;
-                }
+                SqlDataAdapter da = new SqlDataAdapter("Select * From LineaCarrito", c);
+                da.Fill(bdvirtual,"LineaCarrito");
+                DataTable t = new DataTable();
+                t = bdvirtual.Tables["LineaCarrito"];
+                DataRow nuevafila = t.NewRow();
+                nuevafila[1] = en.id_categoria;
+                nuevafila[2] = en.id_desarrollador;
+                nuevafila[3] = en.nombre;
+                nuevafila[4] = en.pvp;
+                nuevafila[5] = en.descripcion;
+                nuevafila[6] = en.clasificacion;
+                nuevafila[7] = en.imagen;
+                nuevafila[8] = en.mostrar;
+                t.Rows.Add(nuevafila);
+                SqlCommandBuilder cbuilder = new SqlCommandBuilder(da);
+                da.Update(bdvirtual, "Producto");
+                create = true;
             }
             catch (SqlException ex)
             {
@@ -160,6 +164,7 @@ namespace library
 
             return en;
         }
+        /*
 
         public List<ENLineaCarrito> ListaLineaCarritos()
         {
@@ -198,7 +203,7 @@ namespace library
 
             return listaLineasCarrito;
         }
-        public List<ENLineaCarrito> ListaLineaCarritos(string id_usuario)
+        public List<ENLineaCarrito> ListaLineaCarritosByUsuario(string id_usuario)
         {
             List<ENLineaCarrito> listaLineasCarrito = new List<ENLineaCarrito>();
             SqlConnection con = new SqlConnection(constring);
@@ -239,4 +244,64 @@ namespace library
 
 
     }
+}*/
+        public DataSet showLineaCarrito()
+        {
+            DataSet bdvirtual = new DataSet();
+            SqlConnection c = new SqlConnection(constring);
+            try
+            {
+                String comando = "Select * From LineaCarrito";
+                SqlDataAdapter da = new SqlDataAdapter(comando,c);
+                da.Fill(bdvirtual,"LineaCarrito");
+                return bdvirtual;
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            finally
+            {
+                if (c != null) c.Close();
+            }
+        }
+
+            public DataSet showLineaCarritoByCarrito(int carrito)
+            {
+                 DataSet bdvirtual = new DataSet();
+                 SqlConnection c = new SqlConnection(constring);
+
+                try
+                {
+                    String comando = "Select * from LineaCarrito where id_carrito like '%"+ carrito +"%' ";
+                    SqlDataAdapter da = new SqlDataAdapter (comando,c);
+                    da.Fill(bvirtual,"LineaCarrito");
+                    return bdvirtual;
+                }
+               catch (SqlException ex)
+               {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+               }
+              catch (Exception ex)
+               {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+               }
+              finally
+               {
+                if (c != null) c.Close();
+               }
+
+
+            }
+
+        
+}
 }

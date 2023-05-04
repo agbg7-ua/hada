@@ -98,13 +98,30 @@ namespace library
             return cad.deleteLineaCarrito(this);
         }
 
+
+
         public ENLineaCarrito selectLineaCarrito(int id)
         {
             CADLineaCarrito cad = new CADLineaCarrito();
             return cad.selectLineaCarrito(id);
         }
 
-        public List<ENLineaCarrito> listLineaCarritos()
+       public Dataset showLineaCarrito()
+        {
+            CADLineaCarrito c = new CADLineaCarrito();
+            DataSet a = c.showLineaCarrito();
+            return a;
+        }
+
+        public DataSet showLineaCarritoByCarrito(int carrito)
+        {
+            CADLineaCarrito c = new CADLineaCarrito();
+            DataSet a = c.showLineaCarritoByCarrito(carrito);
+            return a;
+
+        }
+
+        /*public List<ENLineaCarrito> listLineaCarritos()
         {
             CADLineaCarrito cad = new CADLineaCarrito();
             return cad.listLineaCarritos();
@@ -114,7 +131,8 @@ namespace library
         {
             CADLineaCarrito cad = new CADLineaCarrito();
             return cad.listLineaCarritosByCarrito(id_carrito);
-        }
+        }*/
+     
 
 
 
