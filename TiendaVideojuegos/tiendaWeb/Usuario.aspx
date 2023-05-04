@@ -19,7 +19,7 @@
             <p style="font-size:20px;margin:3px"> Localidad:<br /> Benidorm</p>
             <p style="font-size:20px;margin:3px"> Provincia:<br /> Alicante </p>
             <p style="font-size:20px;margin:3px"> País:<br /> España </p>
-            <asp:Button class="regbutton" ID="Button1" runat="server" Text="Editar usuario" />
+            <asp:Button class="regbutton" ID="Button1" runat="server" Text="Editar usuario" PostBackUrl= "~/EditUsuario.aspx"/>
 
      </div>
     </div>
@@ -52,7 +52,7 @@
   color: dodgerblue;
     }
     .regbutton{
-      background-color: mediumpurple;
+      background-color: black;
       color: white;
       padding: 16px 20px;
       border: none;

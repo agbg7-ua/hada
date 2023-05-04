@@ -83,24 +83,23 @@
       </div>
     </div>
         </div>
-<div style="width:100%; height:700px;border-bottom: 2px solid grey; border-top: 2px solid grey">
-     <div style="width: 70%; float:left; height:500px;">
+<div style="width:100%; height:650px;border-bottom: 2px solid grey; border-top: 2px solid grey">
+     <div style="width: 70%; float:left; height:400px;">
                   <img src="https://www.w3schools.com/w3images/avatar5.png" alt="Avatar" class="avatar">
-                   <h3>Thinking to buy another one!</h3>
+                   <h3>FANTASTIC game!</h3>
 
         <span class="fa fa-star checked"></span>
         <span class="fa fa-star checked"></span>
         <span class="fa fa-star checked"></span>
         <span class="fa fa-star checked"></span>
         <span class="fa fa-star checked"></span>
-         <p>Reviewed in the United Kingdom on March 3, 2017</p>
-         <p>This is my third Invicta Pro Diver. They are just fantastic value for money. This one arrived yesterday and the first thing I did was set the time, popped on an identical strap from another Invicta and went in the shower with it to test the waterproofing.... No problems.
-            It is obviously not the same build quality as those very expensive watches. But that is like comparing a Citroën to a Ferrari. This watch was well under £100! An absolute bargain.</p>
+         <p>Valorado en Reino Unido el 13 de noviembre de 2022</p>
+         <p>It took me a little while to learn how to play but once I did I got the hang of it and I love it and I would highly recommend this game if there is any basketball players out there.👍👍</p>
           <a href="#" class="block mb-5 text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">Read more</a><br />
          <a href="#" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-xs px-2 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Helpful</a>
                 <a href="#" class="pl-4 text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">Report abuse</a>
     </div>
-    <div class="galeria" style="width: 260px; float:right; height:300px;">
+    <div class="galeria" style="width: 280px; float:right; height:300px;">
       <input type="radio" name="navegacion" id="_1" checked>
       <input type="radio" name="navegacion" id="_2">
       <input type="radio" name="navegacion" id="_3">
@@ -131,7 +130,7 @@
 }
 .galeria {
   height: 300px;
-  width: 260px;
+  width: 280px;
   border: 1px solid #555;
   position: relative;  
 }

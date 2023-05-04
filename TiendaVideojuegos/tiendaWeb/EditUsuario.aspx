@@ -19,7 +19,7 @@
             <p style="font-size:20px;margin:3px"> Localidad:<br />  <asp:TextBox ID="TextBox6" runat="server" placeholder ="Localidad"></asp:TextBox></p>
             <p style="font-size:20px;margin:3px"> Provincia:<br />  <asp:TextBox ID="TextBox7" runat="server" placeholder ="Provincia"></asp:TextBox> </p>
             <p style="font-size:20px;margin:3px"> País:<br /> <asp:TextBox ID="TextBox8" runat="server" placeholder ="País"></asp:TextBox> </p><br />
-            <asp:Button class="regbutton" ID="Button1" runat="server" Text="Editar usuario" />
+            <asp:Button class="regbutton" ID="Button1" runat="server" Text="Finalizar" />
 
      </div>
     </div>
