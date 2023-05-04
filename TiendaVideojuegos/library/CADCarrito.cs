@@ -77,7 +77,7 @@ namespace library
                 t = bdvirtual.Tables["Carrito"];
                 t.Rows[Id]["id_usuario"] = en.id_usuario;
                 t.Rows[Id]["importe_total"] = en.importe_total;
-                SqlCommandBuilder cbuilder = new SqlCommandBuilder(ad);
+                SqlCommandBuilder cbuilder = new SqlCommandBuilder(da);
                 da.Update(bdvirtual, "Carrito");
                 return bdvirtual;
             }
@@ -156,7 +156,7 @@ namespace library
                 DataTable t = new DataTable();
                 t = bdvirtual.Tables["Carrito"];
                 t.Rows[Id].Delete();
-                SqlCommandBuilder cbuilder = new SqlCommandBuilder(ad);
+                SqlCommandBuilder cbuilder = new SqlCommandBuilder(da);
                 da.Update(bdvirtual, "Carrito");
                 return bdvirtual;
             }
@@ -265,8 +265,6 @@ namespace library
 
 
         }
-<<<<<<< HEAD
-=======
 
         /*
 public List<ENCarrito> listCarritosByUser(string idUsuario)
@@ -299,7 +297,7 @@ public List<ENCarrito> listCarritosByUser(string idUsuario)
         */
     }
         
->>>>>>> develop
+
    
 
 }
