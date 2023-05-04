@@ -237,67 +237,37 @@ namespace library
         }
 
         //show carrito by name de usuario
-      public DataSet listCarritosByUser(string idUsuario)
+        public DataSet listCarritosByUser(string idUsuario)
         {
             DataSet bdvirtual = new DataSet();
             SqlConnection c = new SqlConnection(constring);
             try
             {
                 String comando = "Select * From Carrito where id_usuario like '%" + idUsuario + "%' ";
-                SqlDataAdapter da = new SqlDataAdapter(comando,c);
-                da.Fill (bdvirtual, "Carrito");
-                return bdvirtual;
+                SqlDataAdapter da = new SqlDataAdapter(comando, c);
+                da.Fill(bdvirtual, "Carrito");
             }
-            catch(SqlException ex)
+            catch (SqlException ex)
             {
-               Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
-                return bdvirtual;
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return null; // Devuelve null si se produce una excepción
             }
             catch (Exception ex)
             {
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
-                return bdvirtual;
+                return null; // Devuelve null si se produce una excepción
             }
             finally
             {
-                if( c != null) c.Close();
+                if (c != null) c.Close();
             }
-
-
+            return bdvirtual; // Devuelve el DataSet si no se produce ninguna excepción
         }
 
-        /*
-public List<ENCarrito> listCarritosByUser(string idUsuario)
-{
-    List<ENCarrito> lista = new List<ENCarrito>();
-    string consulta = "SELECT * FROM Carrito WHERE id_usuario = @id_usuario";
-            SqlConnection c = new SqlConnection(constring);
-            SqlCommand cmd = new SqlCommand(consulta, c);
 
-    cmd.Parameters.AddWithValue("@id_usuario", idUsuario);
-
-    SqlDataReader dr = cmd.ExecuteReader();
-
-    while (dr.Read())
-    {
-        ENCarrito c = new ENCarrito();
-
-        c.id = int.Parse(dr["id"].ToString());
-        c.id_usuario = dr["id_usuario"].ToString();
-        c.importe_total = float.Parse(dr["importe_total"].ToString());
-
-        lista.Add(c);
     }
 
-    dr.Close();
-    c.Close();
 
-    return lista;
-}
-        */
-    }
-        
 
-   
 
 }
