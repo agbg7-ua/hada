@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using library;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace library
 {
@@ -99,6 +101,11 @@ namespace library
             return true;
         }
         
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> Y8317372B
 
         public ENLineaCarrito selectLineaCarrito(int id)
         {
@@ -106,20 +113,55 @@ namespace library
             return cad.selectLineaCarrito(id);
         }
 
-        public List<ENLineaCarrito> listLineaCarritos()
+       public DataSet showLineaCarrito()
+        {
+<<<<<<< HEAD
+            CADLineaCarrito cad = new CADLineaCarrito();
+            return cad.ListaLineaCarritos();
+        }
+
+=======
+            CADLineaCarrito c = new CADLineaCarrito();
+            DataSet a = c.showLineaCarrito();
+            return a;
+        }
+
+        public DataSet showLineaCarritoByCarrito(int carrito)
+        {
+            CADLineaCarrito c = new CADLineaCarrito();
+            DataSet a = c.showLineaCarritoByCarrito(carrito);
+            return a;
+
+        }
+
+        /*public List<ENLineaCarrito> listLineaCarritos()
         {
             CADLineaCarrito cad = new CADLineaCarrito();
             return cad.ListaLineaCarritos();
         }
 
+>>>>>>> Y8317372B
         /*
         public List<ENLineaCarrito> listLineaCarritosByCarrito(int id_carrito)
         {
             CADLineaCarrito cad = new CADLineaCarrito();
+<<<<<<< HEAD
             return cad.listLineaCarritosByCarrito(id_carrito);
         }
         
         */
+=======
+
+        }
+     
+
+
+
+        }
+        
+        */
+
+>>>>>>> Y8317372B
 
 
     }
