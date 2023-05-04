@@ -265,6 +265,41 @@ namespace library
 
 
         }
+<<<<<<< HEAD
+=======
+
+        /*
+public List<ENCarrito> listCarritosByUser(string idUsuario)
+{
+    List<ENCarrito> lista = new List<ENCarrito>();
+    string consulta = "SELECT * FROM Carrito WHERE id_usuario = @id_usuario";
+            SqlConnection c = new SqlConnection(constring);
+            SqlCommand cmd = new SqlCommand(consulta, c);
+
+    cmd.Parameters.AddWithValue("@id_usuario", idUsuario);
+
+    SqlDataReader dr = cmd.ExecuteReader();
+
+    while (dr.Read())
+    {
+        ENCarrito c = new ENCarrito();
+
+        c.id = int.Parse(dr["id"].ToString());
+        c.id_usuario = dr["id_usuario"].ToString();
+        c.importe_total = float.Parse(dr["importe_total"].ToString());
+
+        lista.Add(c);
+    }
+
+    dr.Close();
+    c.Close();
+
+    return lista;
+}
+        */
+    }
+        
+>>>>>>> develop
    
 
 }
