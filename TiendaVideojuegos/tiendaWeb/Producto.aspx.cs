@@ -13,6 +13,7 @@ namespace tiendaWeb
     {
         ENProducto en = new ENProducto();
         DataSet d = new DataSet();
+        string idProd;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,6 +22,19 @@ namespace tiendaWeb
 
             d = en.showProducto();
 
+            if (d.Tables[0].Rows.Count > 0)
+            {
+                ListView1.DataSource = d;
+                ListView1.DataBind();
+            }
+            else
+            {
+                textboxVacio.Visible = true;
+            }
+        }
+
+        protected void button_carrito_OnClientClick(object sender, EventArgs e) 
+        {
             
         }
     }

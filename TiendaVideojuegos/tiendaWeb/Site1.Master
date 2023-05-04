@@ -41,7 +41,7 @@
                     <asp:menuitem NavigateUrl="~/ListarProducto.aspx"
                         text="Videojuegos"
                         tooltip="Videojuegos"/>
-                    <asp:menuitem NavigateUrl="#"
+                    <asp:menuitem NavigateUrl="~/Desarrrolador.aspx"
                         text="Desarrolladores"
                         tooltip="Desarrolladores"/>
                 </asp:menuitem>
