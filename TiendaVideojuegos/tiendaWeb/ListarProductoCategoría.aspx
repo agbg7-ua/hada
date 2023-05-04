@@ -41,7 +41,7 @@
                     <td style="width:300px; height:350px; padding: 5px 5px 5px 25px;">
                         <div class="productItem">
                             <asp:HyperLink ID="HyperLink1" runat="server" 
-                                NavigateUrl="#">
+                                NavigateUrl='<%# "Producto.aspx?idProd=" + Eval("id")%>'>
                                 <div>
                                     <asp:Image ID="ProductImage" runat="server" Width="200px" Height="200px"
                                         ImageUrl='<%# Eval("imagen") %>' />	

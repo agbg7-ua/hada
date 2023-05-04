@@ -38,7 +38,7 @@
                     <asp:menuitem NavigateUrl="~/CategoriaProducto.aspx"
                         text="Géneros"
                         tooltip="Generos"/>
-                    <asp:menuitem NavigateUrl="~/Producto.aspx"
+                    <asp:menuitem NavigateUrl="~/ListarProducto.aspx"
                         text="Videojuegos"
                         tooltip="Videojuegos"/>
                     <asp:menuitem NavigateUrl="#"
