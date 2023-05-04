@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 using library;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace library
 {
@@ -89,36 +91,37 @@ namespace library
 
 
         public DataSet deleteCarrito(int Id)
-<<<<<<< HEAD
-        { 
-           DataSet a = new DataSet ();
+
+        {
+            DataSet a = new DataSet();
             CADCarrito c = new CADCarrito();
 
-            if(c.readCarrito(this) == true)
+            if (c.readCarrito(this) == true)
             {
-                a = c.deleteCarrito(this,Id);
+                a = c.deleteCarrito(this, Id);
             }
             return a;
-=======
-        {
-            CADCarrito cad = new CADCarrito();
-            DataSet d = cad.deleteCarrito(this, Id);
-            return cad.deleteCarrito(this, Id);
->>>>>>> develop
-        }
 
+            {
+                CADCarrito cad = new CADCarrito();
+                DataSet d = cad.deleteCarrito(this, Id);
+                return cad.deleteCarrito(this, Id);
+
+            }
+        }
         public DataSet listCarritos()
         {
             CADCarrito c = new CADCarrito();
             DataSet a = c.listCarritos();
             return a;
         }
-<<<<<<< HEAD
-        public DataSet listCarritosByUser(string idUsuario)
-=======
+
+        public DataSet listCarritosByUser(string idUsuario) { 
+        }
+
         /*
         public List<ENCarrito> listCarritosByUser(string idUsuario)
->>>>>>> develop
+
         {
             CADCarrito cad = new CADCarrito();
             return cad.listCarritosByUser(idUsuario);

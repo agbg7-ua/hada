@@ -30,18 +30,19 @@ namespace library
                 DataTable t = new DataTable();
                 t = bdvirtual.Tables["LineaCarrito"];
                 DataRow nuevafila = t.NewRow();
-                nuevafila[1] = en.id_categoria;
-                nuevafila[2] = en.id_desarrollador;
-                nuevafila[3] = en.nombre;
-                nuevafila[4] = en.pvp;
-                nuevafila[5] = en.descripcion;
-                nuevafila[6] = en.clasificacion;
-                nuevafila[7] = en.imagen;
-                nuevafila[8] = en.mostrar;
+                /*  this.id_carrito = c.id_carrito;
+            this.id_linea = c.id_linea;
+            this.id_producto = c.id_producto;
+            this.cantidad = c.cantidad;
+            this.importe = c.importe;
+            this.fecha = c.fecha;*/
+                nuevafila[1] = en.id_producto;
+                nuevafila[2] = en.cantidad;
+                nuevafila[3] = en.importe;
                 t.Rows.Add(nuevafila);
                 SqlCommandBuilder cbuilder = new SqlCommandBuilder(da);
                 da.Update(bdvirtual, "Producto");
-                create = true;
+                created = true;
             }
             catch (SqlException ex)
             {
@@ -253,11 +254,11 @@ namespace library
             return listaLineasCarrito;
         }
 
-        */
+        
 
     }
 }*/
-        public DataSet showLineaCarrito()
+                public DataSet showLineaCarrito()
         {
             DataSet bdvirtual = new DataSet();
             SqlConnection c = new SqlConnection(constring);
@@ -293,7 +294,7 @@ namespace library
                 {
                     String comando = "Select * from LineaCarrito where id_carrito like '%"+ carrito +"%' ";
                     SqlDataAdapter da = new SqlDataAdapter (comando,c);
-                    da.Fill(bvirtual,"LineaCarrito");
+                    da.Fill(bdvirtual,"LineaCarrito");
                     return bdvirtual;
                 }
                catch (SqlException ex)

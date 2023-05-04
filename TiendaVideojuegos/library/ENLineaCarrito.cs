@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using library;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace library
 {
@@ -108,7 +110,7 @@ namespace library
             return cad.selectLineaCarrito(id);
         }
 
-       public Dataset showLineaCarrito()
+       public DataSet showLineaCarrito()
         {
             CADLineaCarrito c = new CADLineaCarrito();
             DataSet a = c.showLineaCarrito();
@@ -133,17 +135,16 @@ namespace library
         public List<ENLineaCarrito> listLineaCarritosByCarrito(int id_carrito)
         {
             CADLineaCarrito cad = new CADLineaCarrito();
-            return cad.listLineaCarritosByCarrito(id_carrito);
-<<<<<<< HEAD
-        }*/
+
+        }
      
 
 
-=======
+
         }
         
         */
->>>>>>> develop
+
 
 
     }
