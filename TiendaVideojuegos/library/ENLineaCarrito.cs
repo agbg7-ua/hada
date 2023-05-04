@@ -11,6 +11,7 @@ namespace library
 {
      class ENLineaCarrito
     {
+        /*
         private int _id_carrito;
         public int id_carrito {
             get { return _id_carrito; }
@@ -149,7 +150,7 @@ namespace library
             return cad.listLineaCarritosByCarrito(id_carrito);
         }
         
-        */
+        
 =======
 
         }
@@ -159,10 +160,11 @@ namespace library
 
         }
         
-        */
+        
 
 >>>>>>> Y8317372B
 
-
+        */
     }
+    
 }

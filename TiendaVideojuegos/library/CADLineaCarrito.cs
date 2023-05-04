@@ -11,6 +11,7 @@ namespace library
 {
 	class CADLineaCarrito
 	{
+        /*
 		private string constring;
 
         public CADLineaCarrito()
@@ -35,7 +36,7 @@ namespace library
             this.id_producto = c.id_producto;
             this.cantidad = c.cantidad;
             this.importe = c.importe;
-            this.fecha = c.fecha;*/
+            this.fecha = c.fecha;
                 nuevafila[1] = en.id_producto;
                 nuevafila[2] = en.cantidad;
                 nuevafila[3] = en.importe;
@@ -258,13 +259,13 @@ namespace library
         }
 
 <<<<<<< HEAD
-        */
+        
 =======
         
 >>>>>>> Y8317372B
 
     }
-}*/
+}
                 public DataSet showLineaCarrito()
         {
             DataSet bdvirtual = new DataSet();
@@ -322,6 +323,6 @@ namespace library
 
             }
 
-        
+        */
 }
 }

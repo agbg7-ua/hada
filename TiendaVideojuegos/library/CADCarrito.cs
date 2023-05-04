@@ -18,6 +18,7 @@ namespace library
 {
     class CADCarrito
     {
+        /*
         private string constring;
 
         public CADCarrito()
@@ -293,17 +294,17 @@ public List<ENCarrito> listCarritosByUser(string idUsuario)
 
     return lista;
 }
-        */
+        
     }
         
    
 =======
-
+    */
 
     }
 
 
 
->>>>>>> Y8317372B
+
 
 }

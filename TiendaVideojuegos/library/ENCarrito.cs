@@ -13,6 +13,7 @@ namespace library
     class ENCarrito
 
     {
+        /*
         private int _id;
         public int id
         {
@@ -111,7 +112,7 @@ namespace library
             return cad.listCarritosByUser(idUsuario);
         }
 
-        */
+        
 =======
             DataSet a = new DataSet();
             CADCarrito c = new CADCarrito();
@@ -136,6 +137,6 @@ namespace library
             DataSet a = c.listCarritosByUser(idUsuario);
             return a;
         }
->>>>>>> Y8317372B
+*/
     }
 }
