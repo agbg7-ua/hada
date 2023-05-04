@@ -61,8 +61,8 @@
                 </asp:Menu>
 
                 <div class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                    <asp:TextBox runat="server" CssClass="form-control mr-sm-2" ID="tbox" type="Search" placeholder="Buscar" aria-label="Search" />
+                    <asp:Button CssClass="btn btn-outline-success my-2 my-sm-0" runat="server" ID="buscar" Text="Buscar" Visible="true" OnClick="button_buscar_OnClientClick" OnClientClick="button_buscar_OnClientClick" />
                 </div>
             </div>
             </nav>

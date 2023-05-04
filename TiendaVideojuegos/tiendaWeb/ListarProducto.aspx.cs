@@ -16,9 +16,33 @@ namespace tiendaWeb
         DataSet d = new DataSet();
         protected void Page_Load(object sender, EventArgs e)
         {
-            d = producto.showAllProducto();
+            if (!Page.IsPostBack)
+            {
+                ddlTest_SelectedIndexChanged(this, e);
+            }
+        }
 
-            if (d.Tables[0].Rows.Count > 0)
+        // Dropdownlist --> opción seleccionada
+        protected void ddlTest_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlTest.SelectedValue == "2")
+            {
+                d = producto.showOrderByNameDESCProductos();
+            }
+            else if (ddlTest.SelectedValue == "3")
+            {
+                d = producto.showOrderByPriceASCProductos();
+            }
+            else if (ddlTest.SelectedValue == "4")
+            {
+                d = producto.showOrderByPriceDESCProductos();
+            }
+            else
+            {
+                d = producto.showOrderByNameASCProductos();
+            }
+
+            if ((d.Tables.Count != 0) && (d.Tables[0].Rows.Count > 0))
             {
                 listView.DataSource = d;
                 listView.DataBind();

@@ -197,6 +197,12 @@ namespace library
             return a;
         }
 
+        // ---------------------------------------------------------------------- 
+        /*
+         * Ordenar Productos de una Categoría
+        */
+        // ----------------------------------------------------------------------
+
         // Método que enseña por nombre en orden ascendiente los productos
         public DataSet showOrderByNameASCProducto(ENCategoriaProducto en)
         {
@@ -252,6 +258,56 @@ namespace library
                 CADProducto c = new CADProducto();
                 a = c.showOrderByPriceDESCProducto(en);
             }
+
+            return a;
+        }
+
+        // ---------------------------------------------------------------------- 
+        /*
+         * Ordenar Productos
+        */
+        // ----------------------------------------------------------------------
+
+        // Método que enseña por nombre en orden ascendiente los productos
+        public DataSet showOrderByNameASCProductos()
+        {
+            DataSet a = new DataSet();
+           
+            CADProducto c = new CADProducto();
+            a = c.showOrderByNameASCProductos();
+
+            return a;
+        }
+
+        // Método que enseña por nombre en orden descendiente los productos
+        public DataSet showOrderByNameDESCProductos()
+        {
+            DataSet a = new DataSet();
+
+            CADProducto c = new CADProducto();
+            a = c.showOrderByNameDESCProductos();
+
+            return a;
+        }
+
+        // Método que enseña por precio en orden ascendiente los productos
+        public DataSet showOrderByPriceASCProductos()
+        {
+            DataSet a = new DataSet();
+
+            CADProducto c = new CADProducto();
+            a = c.showOrderByPriceASCProductos();
+
+            return a;
+        }
+
+        // Método que enseña por precio en orden descendiente los productos
+        public DataSet showOrderByPriceDESCProductos()
+        {
+            DataSet a = new DataSet();
+
+            CADProducto c = new CADProducto();
+            a = c.showOrderByPriceDESCProductos();
 
             return a;
         }

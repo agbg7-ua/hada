@@ -71,6 +71,7 @@
     <Content Include="App_Data\Database_log.ldf">
       <DependentUpon>Database.mdf</DependentUpon>
     </Content>
+    <Content Include="BuscarProducto.aspx" />
     <Content Include="CategoriaProducto.aspx" />
     <Content Include="css\bootstrap-grid.css" />
     <Content Include="css\bootstrap-grid.min.css" />
@@ -87,6 +88,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuscarProducto.aspx.cs">
+      <DependentUpon>BuscarProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BuscarProducto.aspx.designer.cs">
+      <DependentUpon>BuscarProducto.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CategoriaProducto.aspx.cs">
       <DependentUpon>CategoriaProducto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -314,6 +314,12 @@ namespace library
             }
         }
 
+        // ---------------------------------------------------------------------- 
+        /*
+         * Ordenar Productos de una Categoría
+        */
+        // ----------------------------------------------------------------------
+
         // Método para enseñar por nombre en orden ascendiente Productos -> modo desconectado
         public DataSet showOrderByNameASCProducto(ENCategoriaProducto en)
         {
@@ -410,6 +416,128 @@ namespace library
             try
             {
                 String comando = "Select * From Producto where id_categoria=" + en.id + " and mostrar=1 order by pvp desc";
+                SqlDataAdapter da = new SqlDataAdapter(comando, c);
+                da.Fill(bdvirtual, "Producto");
+                return bdvirtual;
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            finally
+            {
+                if (c != null) c.Close();
+            }
+        }
+
+        // ---------------------------------------------------------------------- 
+        /*
+         * Ordenar Productos
+        */
+        // ----------------------------------------------------------------------
+
+        // Método para enseñar por nombre en orden ascendiente Productos -> modo desconectado
+        public DataSet showOrderByNameASCProductos()
+        {
+            DataSet bdvirtual = new DataSet();
+            SqlConnection c = new SqlConnection(constring);
+
+            try
+            {
+                String comando = "Select * From Producto where mostrar=1 order by nombre asc";
+                SqlDataAdapter da = new SqlDataAdapter(comando, c);
+                da.Fill(bdvirtual, "Producto");
+                return bdvirtual;
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            finally
+            {
+                if (c != null) c.Close();
+            }
+        }
+
+        // Método para enseñar por nombre en orden descendiente Productos -> modo desconectado
+        public DataSet showOrderByNameDESCProductos()
+        {
+            DataSet bdvirtual = new DataSet();
+            SqlConnection c = new SqlConnection(constring);
+
+            try
+            {
+                String comando = "Select * From Producto where mostrar=1 order by nombre desc";
+                SqlDataAdapter da = new SqlDataAdapter(comando, c);
+                da.Fill(bdvirtual, "Producto");
+                return bdvirtual;
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            finally
+            {
+                if (c != null) c.Close();
+            }
+        }
+
+        // Método para enseñar por precio en orden ascendiente Productos -> modo desconectado
+        public DataSet showOrderByPriceASCProductos()
+        {
+            DataSet bdvirtual = new DataSet();
+            SqlConnection c = new SqlConnection(constring);
+
+            try
+            {
+                String comando = "Select * From Producto where mostrar=1 order by pvp asc";
+                SqlDataAdapter da = new SqlDataAdapter(comando, c);
+                da.Fill(bdvirtual, "Producto");
+                return bdvirtual;
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            finally
+            {
+                if (c != null) c.Close();
+            }
+        }
+
+        // Método para enseñar por precio en orden descendiente Productos -> modo desconectado
+        public DataSet showOrderByPriceDESCProductos()
+        {
+            DataSet bdvirtual = new DataSet();
+            SqlConnection c = new SqlConnection(constring);
+
+            try
+            {
+                String comando = "Select * From Producto where mostrar=1 order by pvp desc";
                 SqlDataAdapter da = new SqlDataAdapter(comando, c);
                 da.Fill(bdvirtual, "Producto");
                 return bdvirtual;
