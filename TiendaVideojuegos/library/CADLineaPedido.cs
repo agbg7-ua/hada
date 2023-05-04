@@ -20,14 +20,9 @@ using System.Configuration;
 
 namespace library
 {
-    class CADLineaPedido
+    public class CADLineaPedido
     {
-        private string _constring;
-        public string constring
-        {
-            get { return _constring; }
-            set { _constring = value; }
-        }
+        private string constring;
         public CADLineaPedido()
         {
             constring = ConfigurationManager.ConnectionStrings["miconexion"].ToString();
@@ -163,66 +158,28 @@ namespace library
             }
             return res;
         }
-        //Lista todas los elementos de LineaPedido
-        public List<ENLineaPedido> listaTodasLineasPedido(ENLineaPedido en)
-        {
-            List<ENLineaPedido> res = new List<ENLineaPedido>();
-            SqlConnection c = null;
-            try
-            {
-                c = new SqlConnection(constring);
-                c.Open();
-                SqlCommand listSql = new SqlCommand("Select * from LineaPedido ", c);
-                SqlDataReader dr = listSql.ExecuteReader();
-                while (dr.Read())
-                {
-                    ENLineaPedido nEn = new ENLineaPedido(int.Parse(dr["id_pedido"].ToString()), int.Parse(dr["id_linea"].ToString()), int.Parse(dr["id_producto"].ToString()), int.Parse(dr["cantidad"].ToString()), double.Parse(dr["importe"].ToString()));
-                    res.Add(nEn);
-                }
-            }
-            catch (SqlException sqlEx)
-            {
-                Console.WriteLine("Error: {0}", sqlEx.Message);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error: {0}", ex.Message);
-
-            }
-            finally
-            {
-                if (c != null)
-                {
-                    c.Close();
-                }
-            }
-            return res;
-        }
         // Listar Líneas de un mismo Pedido
-        public List<ENLineaPedido> listaLineasPedido(ENLineaPedido en)
+        public DataSet listaLineasPedido(ENPedido en)
         {
-            List<ENLineaPedido> res = new List<ENLineaPedido>();
-            SqlConnection c = null;
+            DataSet bdvirtual = new DataSet();
+            SqlConnection c = new SqlConnection(constring);
+
             try
             {
-                c = new SqlConnection(constring);
-                c.Open();
-                SqlCommand listSql = new SqlCommand("Select * from LineaPedido where id_pedido = '" + en.id_pedido + "'", c);
-                SqlDataReader dr = listSql.ExecuteReader();
-                while (dr.Read())
-                { 
-                    ENLineaPedido nEn = new ENLineaPedido(en.id_pedido, int.Parse(dr["id_linea"].ToString()), int.Parse(dr["id_producto"].ToString()), int.Parse(dr["cantidad"].ToString()) ,double.Parse(dr["importe"].ToString()));
-                    res.Add(nEn);
-                }
+                String comando = "Select * from LineaPedido where id_pedido=" + en.id;
+                SqlDataAdapter da = new SqlDataAdapter(comando, c);
+                da.Fill(bdvirtual, "LineaPedido");
+                return bdvirtual;
             }
             catch (SqlException sqlEx)
             {
                 Console.WriteLine("Error: {0}", sqlEx.Message);
+                return bdvirtual;
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error: {0}", ex.Message);
-
+                return bdvirtual;
             }
             finally
             {
@@ -231,42 +188,6 @@ namespace library
                     c.Close();
                 }
             }
-            return res;
-        }
-        //Listar Líneas de un mismo Producto
-        public List<ENLineaPedido> listaLineasProducto(ENLineaPedido en)
-        {
-            List<ENLineaPedido> res = new List<ENLineaPedido>();
-            SqlConnection c = null;
-            try
-            {
-                c = new SqlConnection(constring);
-                c.Open();
-                SqlCommand listSql = new SqlCommand("Select * from LineaPedido where id_producto = '" + en.id_producto + "'", c);
-                SqlDataReader dr = listSql.ExecuteReader();
-                while (dr.Read())
-                {
-                    ENLineaPedido nEn = new ENLineaPedido(int.Parse(dr["id_pedido"].ToString()), int.Parse(dr["id_linea"].ToString()), en.id_producto, int.Parse(dr["cantidad"].ToString()), double.Parse(dr["importe"].ToString()));
-                    res.Add(nEn);
-                }
-            }
-            catch (SqlException sqlEx)
-            {
-                Console.WriteLine("Error: {0}", sqlEx.Message);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error: {0}", ex.Message);
-
-            }
-            finally
-            {
-                if (c != null)
-                {
-                    c.Close();
-                }
-            }
-            return res;
         }
     }
 }

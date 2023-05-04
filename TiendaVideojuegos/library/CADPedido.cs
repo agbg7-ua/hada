@@ -18,14 +18,9 @@ using System.Configuration;
 
 namespace library
 {
-    class CADPedido
+    public class CADPedido
     {
-        private string _constring;
-        public string constring
-        {
-            get { return _constring; }
-            set { _constring = value; }
-        }
+        private string constring;
         public CADPedido()
         {
             constring = ConfigurationManager.ConnectionStrings["miconexion"].ToString();
@@ -173,29 +168,28 @@ namespace library
             return res;
         }
         //Lista todos los Pedidos
-        public List<ENPedido> listarPedidos(ENPedido en)
+        public DataSet listarPedidos()
         {
-            List<ENPedido> res = new List<ENPedido>();
-            SqlConnection c = null;
+            DataSet bdvirtual = new DataSet();
+            SqlConnection c = new SqlConnection(constring);
+
             try
             {
-                c = new SqlConnection(constring);
-                c.Open();
-                SqlCommand listSql = new SqlCommand("Select * from Pedido", c);
-                SqlDataReader dr = listSql.ExecuteReader();
-                while (dr.Read())
-                {
-                    ENPedido nEn = new ENPedido(int.Parse(dr["id"].ToString()), int.Parse(dr["id_usuario"].ToString()), DateTime.Parse(dr["fecha"].ToString()), double.Parse(dr["importe_total"].ToString()));
-                    res.Add(nEn);
-                }
+                String comando = "Select * From Pedido";
+                SqlDataAdapter da = new SqlDataAdapter(comando, c);
+                da.Fill(bdvirtual, "Pedido");
+
+                return bdvirtual;
             }
             catch (SqlException sqlEx)
             {
                 Console.WriteLine("Error: {0}", sqlEx.Message);
+                return bdvirtual;
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error: {0}", ex.Message);
+                return bdvirtual;
 
             }
             finally
@@ -205,32 +199,29 @@ namespace library
                     c.Close();
                 }
             }
-            return res;
         }
-        // Listar Pedidos importe_total ASCENDENTE
-        public List<ENPedido> listarPedidosImporteAsc(ENPedido en)
+        // Listar Pedidos importe_total ASCENDENTE -> de un mismo usuario
+        public DataSet listarPedidosImporteAsc(ENUsuario en)
         {
-            List<ENPedido> res = new List<ENPedido>();
-            SqlConnection c = null;
+            DataSet bdvirtual = new DataSet();
+            SqlConnection c = new SqlConnection(constring);
+
             try
             {
-                c = new SqlConnection(constring);
-                c.Open();
-                SqlCommand listSql = new SqlCommand("Select * from Pedido order by importe_total asc", c);
-                SqlDataReader dr = listSql.ExecuteReader();
-                while (dr.Read())
-                {
-                    ENPedido nEn = new ENPedido(int.Parse(dr["id"].ToString()), int.Parse(dr["id_usuario"].ToString()), DateTime.Parse(dr["fecha"].ToString()), double.Parse(dr["importe_total"].ToString()));
-                    res.Add(nEn);
-                }
+                String comando = "Select * From Pedido where id_usuario=" + en.nombre + " order by importe_total asc";
+                SqlDataAdapter da = new SqlDataAdapter(comando, c);
+                da.Fill(bdvirtual, "Pedido");
+                return bdvirtual;
             }
             catch (SqlException sqlEx)
             {
                 Console.WriteLine("Error: {0}", sqlEx.Message);
+                return bdvirtual;
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error: {0}", ex.Message);
+                return bdvirtual;
 
             }
             finally
@@ -240,32 +231,29 @@ namespace library
                     c.Close();
                 }
             }
-            return res;
         }
-        // Listar Pedidos importe_total DESCENDENTE
-        public List<ENPedido> listarPedidosImporteDesc(ENPedido en)
+        // Listar Pedidos importe_total DESCENDENTE -> de un mismo usuario
+        public DataSet listarPedidosImporteDesc(ENUsuario en)
         {
-            List<ENPedido> res = new List<ENPedido>();
-            SqlConnection c = null;
+            DataSet bdvirtual = new DataSet();
+            SqlConnection c = new SqlConnection(constring);
+
             try
             {
-                c = new SqlConnection(constring);
-                c.Open();
-                SqlCommand listSql = new SqlCommand("Select * from Pedido order by importe_total desc", c);
-                SqlDataReader dr = listSql.ExecuteReader();
-                while (dr.Read())
-                {
-                    ENPedido nEn = new ENPedido(int.Parse(dr["id"].ToString()), int.Parse(dr["id_usuario"].ToString()), DateTime.Parse(dr["fecha"].ToString()), double.Parse(dr["importe_total"].ToString()));
-                    res.Add(nEn);
-                }
+                String comando = "Select * From Pedido where id_usuario=" + en.nombre + " order by importe_total desc";
+                SqlDataAdapter da = new SqlDataAdapter(comando, c);
+                da.Fill(bdvirtual, "Pedido");
+                return bdvirtual;
             }
             catch (SqlException sqlEx)
             {
                 Console.WriteLine("Error: {0}", sqlEx.Message);
+                return bdvirtual;
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error: {0}", ex.Message);
+                return bdvirtual;
 
             }
             finally
@@ -275,41 +263,6 @@ namespace library
                     c.Close();
                 }
             }
-            return res;
-        }
-        // Listar Pedidos de un mismo Usuario
-        public List<ENPedido> pedidosUsuario(ENPedido en)
-        {
-            List<ENPedido> res = new List<ENPedido>();
-            SqlConnection c = null;
-            try
-            {
-                c = new SqlConnection(constring);
-                c.Open();
-                SqlCommand listSql = new SqlCommand("Select * from Pedido where id_usuario = '" + en.id_usuario + "'", c);
-                SqlDataReader dr = listSql.ExecuteReader();
-                while (dr.Read())
-                {
-                    ENPedido nEn = new ENPedido(int.Parse(dr["id"].ToString()),en.id_usuario, DateTime.Parse(dr["fecha"].ToString()), double.Parse(dr["importe_total"].ToString()));
-                    res.Add(nEn);
-                }
-            } catch(SqlException sqlEx)
-            {
-                Console.WriteLine("Error: {0}", sqlEx.Message);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error: {0}", ex.Message);
-
-            }
-            finally
-            {
-                if (c != null)
-                {
-                    c.Close();
-                }
-            }
-            return res;
         }
     }
 }
