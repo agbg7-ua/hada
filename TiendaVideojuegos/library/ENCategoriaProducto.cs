@@ -110,7 +110,7 @@ namespace library
             return false;
         }
 
-        // Método para enseñar todos los productos
+        // Método para enseñar todos las catgorías de productos
         public DataSet showAllCategoriaProducto()
         {
             CADCategoriaProducto c = new CADCategoriaProducto();

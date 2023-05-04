@@ -351,7 +351,7 @@ namespace library
 
             try
             {
-                String comando = "Select * From Producto where id_categoria=" + en.id + "and mostrar=1 order by nombre desc";
+                String comando = "Select * From Producto where id_categoria=" + en.id + " and mostrar=1 order by nombre desc";
                 SqlDataAdapter da = new SqlDataAdapter(comando, c);
                 da.Fill(bdvirtual, "Producto");
                 return bdvirtual;
@@ -380,7 +380,7 @@ namespace library
 
             try
             {
-                String comando = "Select * From Producto where id_categoria=" + en.id + "and mostrar=1 order by pvp asc";
+                String comando = "Select * From Producto where id_categoria=" + en.id + " and mostrar=1 order by pvp asc";
                 SqlDataAdapter da = new SqlDataAdapter(comando, c);
                 da.Fill(bdvirtual, "Producto");
                 return bdvirtual;
@@ -409,7 +409,7 @@ namespace library
 
             try
             {
-                String comando = "Select * From Producto where id_categoria=" + en.id + "and mostrar=1 order by pvp desc";
+                String comando = "Select * From Producto where id_categoria=" + en.id + " and mostrar=1 order by pvp desc";
                 SqlDataAdapter da = new SqlDataAdapter(comando, c);
                 da.Fill(bdvirtual, "Producto");
                 return bdvirtual;

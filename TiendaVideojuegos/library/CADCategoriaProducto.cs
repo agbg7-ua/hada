@@ -177,7 +177,7 @@ namespace library
             return delete;
         }
 
-        // Método para enseñar todos los Productos -> modo desconectado
+        // Método para enseñar todos las categorías de productos -> modo desconectado
         public DataSet showAllCategoriaProducto()
         {
             DataSet bdvirtual = new DataSet();
