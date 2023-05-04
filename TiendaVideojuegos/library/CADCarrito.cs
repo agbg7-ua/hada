@@ -16,18 +16,18 @@ using System.Data;
 );*/
 namespace library
 {
-    class CADCarrito
+    public class CADCarrito
     {
-        /*
         private string constring;
 
         public CADCarrito()
         {
             this.constring = ConfigurationManager.ConnectionStrings["miconexion"].ToString();
         }
-      public bool createCarrito(ENCarrito en) 
+
+        public bool createCarrito(ENCarrito en) 
         {
-           bool creado = false;
+            bool creado = false;
             DataSet bdvirtual = new DataSet();
             SqlConnection c = new SqlConnection(constring);
             try
@@ -121,7 +121,6 @@ namespace library
                         read = true;
                         en.id_usuario = fila[1].ToString();
                         en.importe_total = float.Parse(fila[2].ToString());
-                       
                     }
                 }
             }
@@ -206,105 +205,34 @@ namespace library
             }
         }
 
-
-        //list all carritos
-        public DataSet listCarritos()
-        {
-            DataSet bdvirtual = new DataSet();
-            SqlConnection c = new SqlConnection(constring);
-
-            try
-            {
-                string comando = "Select * From Carrito ";
-                SqlDataAdapter da = new SqlDataAdapter(comando , c);
-                da.Fill(bdvirtual, "Carrito");
-                return bdvirtual;
-            
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
-                return bdvirtual;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
-                return bdvirtual;
-            }
-            finally
-            {
-                if( c != null) c.Close();
-            }
-        }
-
         //show carrito by name de usuario
-        public DataSet listCarritosByUser(string idUsuario)
+        public DataSet showCarritoByUser(ENUsuario en)
         {
             DataSet bdvirtual = new DataSet();
             SqlConnection c = new SqlConnection(constring);
+
             try
             {
-                String comando = "Select * From Carrito where id_usuario like '%" + idUsuario + "%' ";
+                String comando = "Select * From Carrito where id_usuario=" + en.nombre;
                 SqlDataAdapter da = new SqlDataAdapter(comando, c);
                 da.Fill(bdvirtual, "Carrito");
+                return bdvirtual;
             }
             catch (SqlException ex)
             {
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
-                return null; // Devuelve null si se produce una excepción
+                return bdvirtual; 
             }
             catch (Exception ex)
             {
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
-                return null; // Devuelve null si se produce una excepción
+                return bdvirtual; 
             }
             finally
             {
                 if (c != null) c.Close();
             }
-            return bdvirtual; // Devuelve el DataSet si no se produce ninguna excepción
         }
-<<<<<<< HEAD
-
-        /*
-public List<ENCarrito> listCarritosByUser(string idUsuario)
-{
-    List<ENCarrito> lista = new List<ENCarrito>();
-    string consulta = "SELECT * FROM Carrito WHERE id_usuario = @id_usuario";
-            SqlConnection c = new SqlConnection(constring);
-            SqlCommand cmd = new SqlCommand(consulta, c);
-
-    cmd.Parameters.AddWithValue("@id_usuario", idUsuario);
-
-    SqlDataReader dr = cmd.ExecuteReader();
-
-    while (dr.Read())
-    {
-        ENCarrito c = new ENCarrito();
-
-        c.id = int.Parse(dr["id"].ToString());
-        c.id_usuario = dr["id_usuario"].ToString();
-        c.importe_total = float.Parse(dr["importe_total"].ToString());
-
-        lista.Add(c);
-    }
-
-    dr.Close();
-    c.Close();
-
-    return lista;
-}
-        
-    }
-        
-   
-=======
-    */
 
     }
-
-
-
-
-
 }
