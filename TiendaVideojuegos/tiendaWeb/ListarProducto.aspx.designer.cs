@@ -11,7 +11,7 @@ namespace tiendaWeb
 {
 
 
-    public partial class CategoriaProducto
+    public partial class ListarProducto
     {
 
         /// <summary>

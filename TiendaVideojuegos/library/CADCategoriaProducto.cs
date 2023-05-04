@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Data;
 
 // CREATE TABLE [dbo].[CategoriaProducto] (
 // [id]             INT           IDENTITY(1, 1) NOT NULL,
@@ -174,6 +175,35 @@ namespace library
             }
 
             return delete;
+        }
+
+        // Método para enseñar todos las categorías de productos -> modo desconectado
+        public DataSet showAllCategoriaProducto()
+        {
+            DataSet bdvirtual = new DataSet();
+            SqlConnection c = new SqlConnection(constring);
+
+            try
+            {
+                String comando = "Select * From CategoriaProducto";
+                SqlDataAdapter da = new SqlDataAdapter(comando, c);
+                da.Fill(bdvirtual, "CategoriaProducto");
+                return bdvirtual;
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            finally
+            {
+                if (c != null) c.Close();
+            }
         }
     }
 }

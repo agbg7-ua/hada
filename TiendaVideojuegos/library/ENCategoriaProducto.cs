@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace library
 {
-    class ENCategoriaProducto
+    public class ENCategoriaProducto
     {
         // Todos las variables con respaldo
         private int _id;
@@ -107,6 +108,14 @@ namespace library
             }
 
             return false;
+        }
+
+        // Método para enseñar todos las catgorías de productos
+        public DataSet showAllCategoriaProducto()
+        {
+            CADCategoriaProducto c = new CADCategoriaProducto();
+            DataSet a = c.showAllCategoriaProducto();
+            return a;
         }
     }
 }
