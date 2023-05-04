@@ -7,7 +7,7 @@ using System.Data;
 
 namespace library
 {
-    class ENProducto
+    public class ENProducto
     {
         // Todos las variables con respaldo
         private int _id;

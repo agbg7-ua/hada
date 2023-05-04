@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace library
 {
-    class ENPedido
+    public class ENPedido
     {
         private int _id;
         private int _id_usuario;
@@ -106,38 +107,37 @@ namespace library
             return res;
         }
         //Lista todos los Pedidos
-        public List<ENPedido> listarPedidos()
+        public DataSet listarPedidos()
         {
-            List<ENPedido> res = new List<ENPedido>();
             CADPedido c = new CADPedido();
-            res = c.listarPedidos(this);
-            return res;
+            DataSet a = c.listarPedidos();
+            return a;
         }
-        // Listar Pedidos importe_total ASCENDENTE
-        public List<ENPedido> listarPedidosImporteAsc()
+        // Listar Pedidos importe_total ASCENDENTE -> de un mismo usuario
+        public DataSet listarPedidosImporteAsc(ENUsuario en)
         {
-            List<ENPedido> res = new List<ENPedido>();
-            CADPedido c = new CADPedido();
-            res = c.listarPedidosImporteAsc(this);
-            return res;
-        }
-        // Listar Pedidos importe_total DESCENDENTE
-        public List<ENPedido> listarPedidosImporteDesc()
-        {
-            List<ENPedido> res = new List<ENPedido>();
-            CADPedido c = new CADPedido();
-            res = c.listarPedidosImporteDesc(this);
-            return res;
-        }
-        // Listar Pedidos de un mismo Usuario
-        public List<ENPedido> pedidosUsuario()
-        {
-            List<ENPedido> res = new List<ENPedido>();
-            CADPedido c = new CADPedido();
-            res = c.pedidosUsuario(this);
-            return res;
-        }
-        
+            DataSet a = new DataSet();
 
+            if (en.readUsuario() == true)
+            {
+                CADPedido c = new CADPedido();
+                a = c.listarPedidosImporteAsc(en);
+            }
+
+            return a;
+        }
+        // Listar Pedidos importe_total DESCENDENTE -> de un mismo usuario
+        public DataSet listarPedidosImporteDesc(ENUsuario en)
+        {
+            DataSet a = new DataSet();
+
+            if (en.readUsuario() == true)
+            {
+                CADPedido c = new CADPedido();
+                a = c.listarPedidosImporteDesc(en);
+            }
+
+            return a;
+        }
     }
 }

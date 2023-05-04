@@ -9,25 +9,24 @@ using System.Data;
 
 namespace tiendaWeb
 {
-    public partial class CategoriaProducto : System.Web.UI.Page
+    public partial class ListarProducto : System.Web.UI.Page
     {
-        ENCategoriaProducto catproducto = new ENCategoriaProducto();
+        ENProducto producto = new ENProducto();
 
         DataSet d = new DataSet();
         protected void Page_Load(object sender, EventArgs e)
         {
-            d = catproducto.showAllCategoriaProducto();
+            d = producto.showAllProducto();
 
             if (d.Tables[0].Rows.Count > 0)
             {
                 listView.DataSource = d;
                 listView.DataBind();
             }
-            else 
+            else
             {
                 textboxVacio.Visible = true;
             }
         }
-
     }
 }

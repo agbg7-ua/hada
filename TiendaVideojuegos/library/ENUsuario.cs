@@ -7,7 +7,7 @@ using library;
 
 namespace library
 {
-    class ENUsuario
+    public class ENUsuario
     {
         private string _username;
         private string _nombre;

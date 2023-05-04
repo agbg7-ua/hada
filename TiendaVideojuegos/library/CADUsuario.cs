@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace library
 {
-    class CADUsuario
+    public class CADUsuario
     {
         public bool createUsuario(ENUsuario usu)
         {

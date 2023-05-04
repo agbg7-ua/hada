@@ -35,12 +35,27 @@
                 <asp:menuitem NavigateUrl="#"
                     text="Catálogo"
                     tooltip="Catalogo">
-                    <asp:menuitem NavigateUrl="#"
+                    <asp:menuitem NavigateUrl="~/CategoriaProducto.aspx"
                         text="Géneros"
                         tooltip="Generos"/>
-                    <asp:menuitem NavigateUrl="#"
+                    <asp:menuitem NavigateUrl="~/ListarProducto.aspx"
                         text="Videojuegos"
                         tooltip="Videojuegos"/>
+                    <asp:menuitem NavigateUrl="~/Desarrrolador.aspx"
+                        text="Desarrolladores"
+                        tooltip="Desarrolladores"/>
+                </asp:menuitem>
+                <asp:menuitem NavigateUrl="#"
+                    text="Iniciar sesión"
+                    tooltip="Iniciar sesion">
+                </asp:menuitem>
+                <asp:menuitem NavigateUrl="#"
+                    text="Regístrate"
+                    tooltip="Registrate">
+                </asp:menuitem>
+                <asp:menuitem NavigateUrl="#"
+                    text="Sobre nosotros"
+                    tooltip="Sobre nosotros">
                 </asp:menuitem>
                 </items>
                 </asp:Menu>

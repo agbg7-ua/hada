@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace library
 {
-    class ENLineaPedido
+    public class ENLineaPedido
     {
         private int _id_pedido;
         private int _id_linea;
@@ -99,21 +100,18 @@ namespace library
             }
             return res;
         }
-        //Lista todas los elementos de LineaPedido
-        public List<ENLineaPedido> listaTodasLineasPedido()
-        {
-            List<ENLineaPedido> res = new List<ENLineaPedido>();
-            CADLineaPedido c = new CADLineaPedido();
-            res = c.listaTodasLineasPedido(this);
-            return res;
-        }
         // Listar Líneas de un mismo Pedido
-        public List<ENLineaPedido> listaLineasProducto()
+        public DataSet listaLineasPedido(ENPedido en)
         {
-            List<ENLineaPedido> res = new List<ENLineaPedido>();
             CADLineaPedido c = new CADLineaPedido();
-            res = c.listaLineasProducto(this);
-            return res;
+            DataSet a = new DataSet();
+
+            if (en.readPedido() == true)
+            {
+                a = c.listaLineasPedido(en);
+            }
+
+            return a;
         }
     }
 }

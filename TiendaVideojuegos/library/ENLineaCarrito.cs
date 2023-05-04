@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using library;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace library
 {
-     class ENLineaCarrito
-    {
+     public class ENLineaCarrito
+     {
+        
         private int _id_carrito;
         public int id_carrito {
             get { return _id_carrito; }
@@ -20,7 +23,8 @@ namespace library
         {
             get { return _id_linea; }
             set { _id_linea = value; }
-        }
+        } 
+
         private int _id_producto;
         public int id_producto
         {
@@ -34,6 +38,7 @@ namespace library
             get { return _cantidad; }
             set { _cantidad = value; }
         }
+
         private float _importe;
         public float importe
         {
@@ -69,58 +74,86 @@ namespace library
             this.fecha = fecha;
         }
 
-        public ENLineaCarrito(ENLineaCarrito c)
-        {
-            this.id_carrito = c.id_carrito;
-            this.id_linea = c.id_linea;
-            this.id_producto = c.id_producto;
-            this.cantidad = c.cantidad;
-            this.importe = c.importe;
-            this.fecha = c.fecha;
-        }
-
-
         public bool createLineaCarrito()
         {
             CADLineaCarrito cad = new CADLineaCarrito();
-            return cad.createLineaCarrito(this);
+            ENCarrito en = new ENCarrito();
+            en.id = this.id_carrito;
+
+            if (cad.readLineaCarrito(this) != true && en.readCarrito() == true) {
+                return cad.createLineaCarrito(this);
+            }
+
+            return false;
         }
 
-        public bool updateLineaCarrito()
+        public bool readLineaCarrito()
+        {
+            CADLineaCarrito c = new CADLineaCarrito();
+            return c.readLineaCarrito(this);
+        }
+
+        public DataSet updateLineaCarrito(int i)
         {
             CADLineaCarrito cad = new CADLineaCarrito();
-            return cad.updateLineaCarrito(this);
+            DataSet a = new DataSet();
+            ENLineaCarrito en = new ENLineaCarrito();
+
+            en.id_producto = this.id_producto;
+            en.cantidad = this.cantidad;
+            en.importe = this.importe;
+            en.fecha = this.fecha;
+
+            if (cad.readLineaCarrito(this) == true) 
+            {
+                this.id_producto = en.id_producto;
+                this.cantidad = en.cantidad;
+                this.importe = en.importe;
+                this.fecha = en.fecha;
+                a = cad.updateLineaCarrito(this, i);
+            }
+
+            return a;
         }
 
         
-        public bool deleteLineaCarrito()
+        public DataSet deleteLineaCarrito(int i)
         {
             CADLineaCarrito cad = new CADLineaCarrito();
-            return true;
-        }
-        
+            DataSet a = new DataSet();
 
-        public ENLineaCarrito selectLineaCarrito(int id)
+            if (cad.readLineaCarrito(this))
+            {
+                a = cad.deleteLineaCarrito(this, i);
+            }
+
+            return a;
+        }
+
+        public DataSet vaciarCarrito(ENCarrito en)
         {
-            CADLineaCarrito cad = new CADLineaCarrito();
-            return cad.selectLineaCarrito(id);
+            CADLineaCarrito c = new CADLineaCarrito();
+            DataSet a = new DataSet();
+
+            if (en.readCarrito() == true)
+            {
+                a = c.vaciarCarrito(en);
+            }
+
+            return a;
         }
 
-        public List<ENLineaCarrito> listLineaCarritos()
+        public DataSet showLineasCarritoByCarrito(ENCarrito en)
         {
-            CADLineaCarrito cad = new CADLineaCarrito();
-            return cad.ListaLineaCarritos();
+            CADLineaCarrito c = new CADLineaCarrito();
+            DataSet a = new DataSet();
+
+            if (en.readCarrito() == true)
+            { 
+                a = c.showLineasCarritoByCarrito(en);
+            }
+                
+            return a;
         }
-
-        /*
-        public List<ENLineaCarrito> listLineaCarritosByCarrito(int id_carrito)
-        {
-            CADLineaCarrito cad = new CADLineaCarrito();
-            return cad.listLineaCarritosByCarrito(id_carrito);
-        }
-        
-        */
-
-
     }
 }
