@@ -25,7 +25,7 @@ namespace library
             this.constring = ConfigurationManager.ConnectionStrings["miconexion"].ToString();
         }
 
-        public bool createCarrito(ENCarrito en) 
+        public bool createCarrito(ENCarrito en)
         {
             bool creado = false;
             DataSet bdvirtual = new DataSet();
@@ -44,7 +44,7 @@ namespace library
                 SqlCommandBuilder cbuilder = new SqlCommandBuilder(ad);
                 ad.Update(bdvirtual, "Carrito");
                 creado = true;
-                
+
             }
             catch (SqlException ex)
             {
@@ -58,7 +58,7 @@ namespace library
             }
             finally
             {
-              if(c != null)  c.Close();
+                if (c != null) c.Close();
             }
 
             return creado;
@@ -94,7 +94,7 @@ namespace library
             }
             finally
             {
-               if(c != null) c.Close();
+                if (c != null) c.Close();
             }
         }
 
@@ -106,7 +106,7 @@ namespace library
             DataSet bdvirtual = new DataSet();
             SqlConnection c = new SqlConnection(constring);
 
-           
+
             try
             {
                 SqlDataAdapter da = new SqlDataAdapter("select * from Carrito", c);
@@ -114,10 +114,12 @@ namespace library
                 DataTable t = new DataTable();
                 t = bdvirtual.Tables["Carrito"];
 
-                for (int i = 0; i < t.Rows.Count; i++) {
+                for (int i = 0; i < t.Rows.Count; i++)
+                {
                     DataRow fila = t.Rows[i];
 
-                    if (en.id == int.Parse(fila[0].ToString())) {
+                    if (en.id == int.Parse(fila[0].ToString()))
+                    {
                         read = true;
                         en.id_usuario = fila[1].ToString();
                         en.importe_total = float.Parse(fila[2].ToString());
@@ -188,7 +190,7 @@ namespace library
 
         }
 
-        public DataSet deleteCarrito(ENCarrito en,int Id)
+        public DataSet deleteCarrito(ENCarrito en, int Id)
         {
             DataSet bdvirtual = new DataSet();
             SqlConnection c = new SqlConnection(constring);
@@ -196,7 +198,7 @@ namespace library
             try
             {
                 String comando = "Select * From Carrito";
-                SqlDataAdapter  da = new SqlDataAdapter(comando, c);
+                SqlDataAdapter da = new SqlDataAdapter(comando, c);
                 da.Fill(bdvirtual, "Carrito");
                 DataTable t = new DataTable();
                 t = bdvirtual.Tables["Carrito"];
@@ -217,7 +219,7 @@ namespace library
             }
             finally
             {
-              if(c != null)  c.Close();
+                if (c != null) c.Close();
             }
         }
 
@@ -227,11 +229,11 @@ namespace library
             SqlConnection c = new SqlConnection(constring);
 
             try
-            { 
+            {
                 String comando = "Select * FROM Carrito WHERE id =" + en.id;
-                SqlDataAdapter da = new SqlDataAdapter(comando,c);
-                da.Fill(bdvirtual,"Carrito");
-                
+                SqlDataAdapter da = new SqlDataAdapter(comando, c);
+                da.Fill(bdvirtual, "Carrito");
+
                 return bdvirtual;
             }
             catch (SqlException ex)
@@ -246,7 +248,7 @@ namespace library
             }
             finally
             {
-              if(c != null)  c.Close();
+                if (c != null) c.Close();
             }
         }
 
@@ -266,12 +268,12 @@ namespace library
             catch (SqlException ex)
             {
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
-                return bdvirtual; 
+                return bdvirtual;
             }
             catch (Exception ex)
             {
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
-                return bdvirtual; 
+                return bdvirtual;
             }
             finally
             {

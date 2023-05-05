@@ -77,7 +77,7 @@ namespace library
             en.id_usuario = this.id_usuario;
             en.importe_total = this.importe_total;
 
-            if (cad.readCarrito(this)) 
+            if (cad.readCarrito(this))
             {
                 this.id_usuario = en.id_usuario;
                 this.importe_total = en.importe_total;
