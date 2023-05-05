@@ -37,7 +37,7 @@ namespace tiendaWeb
 
         protected void button_pedidosOnClientClick(object sender, EventArgs e)
         {
-            Response.Redirect("Home.aspx");
+            Response.Redirect("Pedido.aspx");
         }
     }
 }
