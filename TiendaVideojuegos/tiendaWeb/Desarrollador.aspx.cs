@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -8,6 +9,13 @@ using System.Web.UI.WebControls;
 
 namespace tiendaWeb
 {
+
+    public class Item
+    {
+        public string ImageURL { get; set; }
+        public string Title { get; set; }
+    }
+
     public partial class Desarrrolador : System.Web.UI.Page
     {
 
@@ -41,7 +49,33 @@ Bungie Studios és una empresa dissenyadora de videojocs fundada en 1991 sota el
             Label_web.Text = web;
             Label_origen.Text = origen;
 
-            
+
+
+            DataTable dt = new DataTable();
+            DataColumn col = new DataColumn("login");
+            dt.Columns.Add(col);
+            col = new DataColumn("name");
+            dt.Columns.Add(col);
+            col = new DataColumn("firstname");
+            dt.Columns.Add(col);
+            DataRow row = dt.NewRow();
+
+            //row["login"] = "we";
+            //row["name"] = "123123";
+            //row["firstname"] = "123123";
+            //dt.Rows.Add(row);
+
+            //GridView1.DataSource = dt;
+            //GridView1.DataBind();
+
+
+            List<Item> list = new List<Item>();
+            list.Add(new Item() { ImageURL = "~/Imagenes/sample.jpeg", Title = "             Titulo 1" });
+            list.Add(new Item() { ImageURL = "~/Imagenes/gustav.png", Title =  "             Titulo 2" });
+            list.Add(new Item() { ImageURL = "~/Imagenes/sample.jpeg", Title = "             Titulo 3" });
+            ListView1.DataSource = list;
+            ListView1.DataBind();
+
         }
 
         protected void TextBox1_TextChanged(object sender, EventArgs e)

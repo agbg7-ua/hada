@@ -52,9 +52,21 @@
 
         <br />
     <br />
-    <asp:Label ID="Label5" runat="server" Text="Titulos: "></asp:Label>
-
-    <asp:Image ID="Image1" runat="server" ImageUrl="Imagenes/gustav.png" />
-
+    <%--<asp:Label ID="Label5" runat="server" Text="Titulos: "></asp:Label>--%>
+        <h3>Titulos</h3>
+        <br />
+<%--    <asp:Image ID="Image1" runat="server" ImageUrl="Imagenes/gustav.png" />--%>
+<%--        <asp:GridView ID="GridView1" runat="server"></asp:GridView>--%>
+        <asp:ListView ID="ListView1" runat="server">
+            <ItemTemplate>
+                <div class="col-sm-3 col-xs-12">
+                <asp:Image ID="Image1" runat="server" ImageUrl='<%#Eval("ImageUrl") %>' Height="200" Width="150" />
+                <asp:Label ID="Label4" runat="server" Text='<%#Eval("Title") %>'></asp:Label>
+                <br />
+                </div>
+            </ItemTemplate>
+        </asp:ListView>
         </div>
     </asp:Content>
+
+<%--https://stackoverflow.com/questions/6801817/asp-net-listview-control-template--%>
