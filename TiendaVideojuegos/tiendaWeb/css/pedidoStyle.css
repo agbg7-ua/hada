@@ -1,0 +1,11 @@
+﻿.tab{
+    font-weight: bold;
+}
+.LV{
+    border: 5px outset #808080 ;
+    background-color: #fffffe;
+}
+.buttton{
+    margin: 5px;
+    border-radius: 3px;
+}

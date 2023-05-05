@@ -89,6 +89,7 @@
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\carousel.css" />
     <Content Include="css\categoriaproducto.css" />
+    <Content Include="css\pedidoStyle.css" />
     <Content Include="Home.aspx" />
     <Content Include="LineaPedido.aspx" />
     <Content Include="ListarProducto.aspx" />

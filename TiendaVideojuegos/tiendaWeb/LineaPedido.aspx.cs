@@ -13,5 +13,35 @@ namespace tiendaWeb
         {
 
         }
+
+        protected void ButtonCreate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ButtonUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ButtonDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ButtonAll_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ButtonAllPed_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ButtonAllProd_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
