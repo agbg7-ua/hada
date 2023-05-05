@@ -37,5 +37,15 @@ namespace tiendaWeb
         {
             
         }
+
+        protected void button_editar_OnClientClick(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void button_eliminar_OnClientClick(object sender, EventArgs e)
+        {
+
+        }
     }
 }
