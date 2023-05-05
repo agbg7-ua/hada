@@ -1,0 +1,154 @@
+﻿-- USUARIO
+
+CREATE TABLE [dbo].[Usuario] (
+    [username]     	VARCHAR (30) NOT NULL,
+    [nombre]  		VARCHAR (30) NOT NULL,
+    [apellidos]    	VARCHAR (60) NULL,
+    [email] 		VARCHAR (45) NOT NULL,
+    [contraseña]       	VARCHAR (30) NOT NULL,
+    [edad]  		INT          NULL,
+    [calle]      	VARCHAR (45) NOT NULL,
+    [pueblo]      	VARCHAR (45) NOT NULL,
+    [provincia]     	VARCHAR (30) NOT NULL,
+    [codigo_postal]    	VARCHAR (6)  NOT NULL,
+    [telefono]    	VARCHAR (18) NULL,
+    [admin]		BIT	     DEFAULT ((0)) NOT NULL, 
+    PRIMARY KEY CLUSTERED ([username] ASC),
+    UNIQUE NONCLUSTERED ([email] ASC)
+);
+
+-- --------------------------------------------------------------------------------------------
+-- CATEGORIA PRODUCTO
+
+CREATE TABLE [dbo].[CategoriaProducto] (
+    [id]        	INT           IDENTITY (1, 1) NOT NULL,
+    [nombre] 		VARCHAR (45)  NOT NULL,
+    [descripcion] 	TEXT          NOT NULL,
+    [imagen]      	VARCHAR (MAX) NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC),
+    UNIQUE NONCLUSTERED ([nombre] ASC)
+);
+
+-- --------------------------------------------------------------------------------------------
+-- DESARROLLADOR
+
+CREATE TABLE [dbo].[Desarrollador] (
+    [id]        	INT           IDENTITY (1, 1) NOT NULL,
+    [nombre] 		VARCHAR (30)  NOT NULL,
+    [descripcion] 	TEXT          NOT NULL,
+    [origen]      	VARCHAR (25)  NOT NULL,
+    [fecha_creacion]    DATE          NOT NULL,
+    [web]      		VARCHAR (50)  NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC)
+);
+
+-- --------------------------------------------------------------------------------------------
+-- PRODUCTO
+
+CREATE TABLE [dbo].[Producto] (
+    [id]      		INT            IDENTITY (1, 1) NOT NULL,
+    [id_categoria]      INT   	       NOT NULL,
+    [id_desarrollador]  INT            NOT NULL,
+    [nombre]           	VARCHAR (45)   NOT NULL,
+    [pvp] 		DECIMAL (7,2)  NULL,
+    [descripcion]       TEXT           NOT NULL,
+    [fecha_salida]      DATE           NOT NULL,
+    [clasificacion]     INT            NULL,
+    [imagen]            VARCHAR (MAX)  NULL,
+    [mostrar]          	BIT            DEFAULT ((0)) NOT NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC),
+    UNIQUE NONCLUSTERED ([nombre] ASC),
+    CONSTRAINT [fk_Producto_CategoriaProducto] FOREIGN KEY ([id_categoria]) REFERENCES [dbo].[CategoriaProducto] ([id]),
+    CONSTRAINT [fk_Producto_Desarrollador] FOREIGN KEY ([id_desarrollador]) REFERENCES [dbo].[Desarrollador] ([id])
+);
+
+-- --------------------------------------------------------------------------------------------
+-- COMENTARIO
+
+CREATE TABLE [dbo].[Comentario] (
+    [id_producto]       INT           	NOT NULL,
+    [id] 		INT  		IDENTITY (1, 1) NOT NULL,
+    [id_usuario] 	VARCHAR (30)    NOT NULL,
+    [fecha]      	DATE  		NOT NULL,
+    [comentario]    	TEXT          	NOT NULL,
+    [valoracion]      	INT  		NULL,
+    PRIMARY KEY CLUSTERED ([id_producto] ASC, [id] ASC),
+    CONSTRAINT [fk_Comentario_Producto] FOREIGN KEY ([id_producto]) REFERENCES [dbo].[Producto] ([id]),
+    CONSTRAINT [fk_Comentario_Usuario] FOREIGN KEY ([id_usuario]) REFERENCES [dbo].[Usuario] ([username])
+);
+
+-- --------------------------------------------------------------------------------------------
+-- OFERTA
+
+CREATE TABLE [dbo].[Oferta] (
+    [id] 		INT  		IDENTITY (1, 1) NOT NULL,
+    [oferta]      	DECIMAL (7,2)  	NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC),
+    CONSTRAINT [fk_Oferta_Producto] FOREIGN KEY ([id]) REFERENCES [dbo].[Producto] ([id])
+);
+
+-- --------------------------------------------------------------------------------------------
+-- OFERTA_HAS_PRODUCTO
+
+CREATE TABLE [dbo].[Oferta_has_Producto] (
+    [oferta_id] 	INT  	NOT NULL,
+    [producto_id]      	INT  	NOT NULL,
+    PRIMARY KEY CLUSTERED ([oferta_id] ASC, [producto_id] ASC),
+    CONSTRAINT [fk_OfertaHProducto_Oferta] FOREIGN KEY ([oferta_id]) REFERENCES [dbo].[Oferta] ([id]),
+    CONSTRAINT [fk_OfertaHProducto_Producto] FOREIGN KEY ([producto_id]) REFERENCES [dbo].[Producto] ([id])
+);
+
+-- --------------------------------------------------------------------------------------------
+-- PEDIDO 
+
+CREATE TABLE [dbo].[Pedido] (
+    [id]  		INT          	IDENTITY (1, 1) NOT NULL,
+    [id_usuario]    	VARCHAR (30) 	NOT NULL,
+    [fecha]      	DATE         	NOT NULL,
+    [importe_total] 	DECIMAL (7,2)   NOT NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC),
+    CONSTRAINT [fk_Pedido_Usuario] FOREIGN KEY ([id_usuario]) REFERENCES [dbo].[Usuario] ([username])
+);
+
+----------------------------------------------------------------------------------------------
+-- LINEA PEDIDO
+
+CREATE TABLE [dbo].[LineaPedido] (
+    [id_pedido] 	INT            	NOT NULL,
+    [id_linea]     	INT         	IDENTITY (1, 1) NOT NULL,
+    [id_producto]  	INT         	NOT NULL,
+    [cantidad]  	INT            	NOT NULL,
+    [importe]   	DECIMAL (7,2) 	NOT NULL,
+    PRIMARY KEY CLUSTERED ([id_pedido] ASC, [id_linea] ASC),
+    CONSTRAINT [fk_LineaPedido_Pedido] FOREIGN KEY ([id_pedido]) REFERENCES [dbo].[Pedido] ([id]),
+    CONSTRAINT [fk_LineaPedido_Producto] FOREIGN KEY ([id_producto]) REFERENCES [dbo].[Producto] ([id])
+);
+
+-- --------------------------------------------------------------------------------------------
+-- CARRITO
+
+CREATE TABLE [dbo].[Carrito] (
+    [id] INT          	IDENTITY (1, 1) NOT NULL,
+    [id_usuario]    	VARCHAR (30) 	NOT NULL,
+    [importe_total]   	DECIMAL (7,2) 	DEFAULT ((0)) NOT NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC),
+    CONSTRAINT [fk_Carrito_Usuario] FOREIGN KEY ([id_usuario]) REFERENCES [dbo].[Usuario] ([username])
+);
+
+
+-- --------------------------------------------------------------------------------------------
+-- LINEA CARRITO
+
+CREATE TABLE [dbo].[LineaCarrito] (
+    [id_carrito] 	INT            	NOT NULL,
+    [id_linea]      	INT            	IDENTITY (1, 1) NOT NULL,
+    [id_producto]   	INT            	NOT NULL,
+    [cantidad]   	INT           	DEFAULT ((1)) NOT NULL,
+    [importe]    	DECIMAL (7,2) 	NOT NULL,
+    [fecha]      	DATE           	NOT NULL,
+    PRIMARY KEY CLUSTERED ([id_carrito] ASC, [id_linea] ASC),
+    CONSTRAINT [fk_LineaCarrito_Carrito] FOREIGN KEY ([id_carrito]) REFERENCES [dbo].[Carrito] ([id]),
+    CONSTRAINT [fk_LineaCarrito_Producto] FOREIGN KEY ([id_producto]) REFERENCES [dbo].[Producto] ([id])
+);
+
+-- --------------------------------------------------------------------------------------------

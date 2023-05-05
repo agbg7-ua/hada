@@ -71,6 +71,7 @@
     <Content Include="App_Data\Database_log.ldf">
       <DependentUpon>Database.mdf</DependentUpon>
     </Content>
+    <Content Include="Carrito.aspx" />
     <Content Include="CategoriaProducto.aspx" />
     <Content Include="css\bootstrap-grid.css" />
     <Content Include="css\bootstrap-grid.min.css" />
@@ -81,12 +82,20 @@
     <Content Include="css\carousel.css" />
     <Content Include="css\categoriaproducto.css" />
     <Content Include="Home.aspx" />
+    <Content Include="LineaCarrito.aspx" />
     <Content Include="ListarProducto.aspx" />
     <Content Include="ListarProductoCategoría.aspx" />
     <Content Include="Producto.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Carrito.aspx.cs">
+      <DependentUpon>Carrito.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Carrito.aspx.designer.cs">
+      <DependentUpon>Carrito.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CategoriaProducto.aspx.cs">
       <DependentUpon>CategoriaProducto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -107,6 +116,13 @@
     </Compile>
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LineaCarrito.aspx.cs">
+      <DependentUpon>LineaCarrito.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LineaCarrito.aspx.designer.cs">
+      <DependentUpon>LineaCarrito.aspx</DependentUpon>
     </Compile>
     <Compile Include="ListarProducto.aspx.cs">
       <DependentUpon>ListarProducto.aspx</DependentUpon>
