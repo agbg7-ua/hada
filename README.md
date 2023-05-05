@@ -40,3 +40,8 @@ Por último, y la posible mejora principal sería hacer que los usuarios tambié
 
 ## BASE DE DATOS
 El script y el pdf de la base de datos se encuentra en la carpeta llamada "Base de Datos".
+
+## ACLARACIONES ENTREGA 3
+En esta tercera entrega, se podrán oberservar muchas de las funciones que un usuario cualquiera no podría reaalizar: como modificar un pedido, producto o desarroladora. Esto se debe a que como un extra, tendremos que crear un menú de administrador que será por la existencia de usuarios admin. Pero de esta forma, podemos enseñar todas las funcionalidades básicas que tendrá nuestra página web.
+Además, para poder ver en su totalidad la página web, hay un script en la carpeta Base de Datos, la cual se podrá utilizar para añadir la base de datos directamente al programa. 
+Por último, en la carpeta EntregaProyecto se encuentra esta entrega en el archivo entregaInterfaz.zip.
