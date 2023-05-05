@@ -45,24 +45,19 @@
                         text="Desarrolladores"
                         tooltip="Desarrolladores"/>
                 </asp:menuitem>
-                <asp:menuitem NavigateUrl="~/Usuario.aspx"
-                    text="Tu perfil"
-                    tooltip="Tu perfil">
-                </asp:menuitem>
-                <asp:menuitem NavigateUrl="~/Registro.aspx"
-                    text="Regístrate"
-                    tooltip="Registrate">
-                </asp:menuitem>
                 <asp:menuitem NavigateUrl="#"
                     text="Sobre nosotros"
                     tooltip="Sobre nosotros">
                 </asp:menuitem>
-                <asp:menuitem NavigateUrl="~/Carrito.aspx"
-                    text="Carrito"
-                    tooltip="Carrito">
-                </asp:menuitem>
                 </items>
                 </asp:Menu>
+
+                <div class="btn-group" style="padding-right: 5px;">
+                    <asp:Button runat="server" Height="50px" ID="usuario" CssClass="btn btn-dark" Text="Registro/Inicio sesión" OnClientClick="button_usuarioOnClientClick" OnClick="button_usuarioOnClientClick"/>
+                    <asp:Button runat="server" ID="perfil" CssClass="btn btn-dark" Text="Tu perfil" OnClientClick="button_perfilOnClientClick" OnClick="button_perfilOnClientClick"/>
+                    <asp:Button runat="server" ID="carrito" CssClass="btn btn-dark" Text="Carrito" OnClientClick="button_carritoOnClientClick" OnClick="button_carritoOnClientClick"/>
+                    <asp:Button runat="server" ID="pedidos" CssClass="btn btn-dark" Text="Pedidos" OnClientClick="button_pedidosOnClientClick" OnClick="button_pedidosOnClientClick"/>
+                </div>
 
                 <div class="form-inline my-2 my-lg-0">
                     <asp:TextBox runat="server" CssClass="form-control mr-sm-2" ID="tbox" type="Search" placeholder="Buscar" aria-label="Search" />

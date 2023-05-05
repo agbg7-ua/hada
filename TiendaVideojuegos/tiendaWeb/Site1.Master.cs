@@ -19,5 +19,25 @@ namespace tiendaWeb
             string cad = "BuscarProducto.aspx?b=" + tbox.Text;
             Response.Redirect(cad);
         }
+
+        protected void button_usuarioOnClientClick(object sender, EventArgs e)
+        {
+            Response.Redirect("Registro.aspx");
+        }
+
+        protected void button_perfilOnClientClick(object sender, EventArgs e)
+        {
+            Response.Redirect("Usuario.aspx");
+        }
+
+        protected void button_carritoOnClientClick(object sender, EventArgs e)
+        {
+            Response.Redirect("Carrito.aspx");
+        }
+
+        protected void button_pedidosOnClientClick(object sender, EventArgs e)
+        {
+            Response.Redirect("Home.aspx");
+        }
     }
 }
