@@ -85,6 +85,7 @@
     <Content Include="Desarrollador.aspx" />
     <Content Include="EditUsuario.aspx" />
     <Content Include="Home.aspx" />
+    <Content Include="ListaDesarrolladores.aspx" />
     <Content Include="ListarProducto.aspx" />
     <Content Include="ListarProductoCategoría.aspx" />
     <Content Include="NuevoComentario.aspx" />
@@ -135,6 +136,12 @@
     </Compile>
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListaDesarrolladores.aspx.cs">
+      <DependentUpon>ListaDesarrolladores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListaDesarrolladores.aspx.designer.cs">
+      <DependentUpon>ListaDesarrolladores.aspx</DependentUpon>
     </Compile>
     <Compile Include="ListarProducto.aspx.cs">
       <DependentUpon>ListarProducto.aspx</DependentUpon>

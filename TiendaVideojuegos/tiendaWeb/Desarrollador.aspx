@@ -16,7 +16,8 @@
         <asp:Table ID="Table1" runat="server">
             <asp:TableRow>
                 <asp:TableCell>
-                    <asp:Image ID="Image3" runat="server" ImageUrl="Imagenes/gustav.png" Height="300" Width="200"  style="margin-right: 30px"/></asp:TableCell>
+                    <asp:Image ID="Image3" runat="server" ImageUrl="Imagenes/kojima.png" Height="300" Width="200" Style="margin-right: 30px" />
+                </asp:TableCell>
                 <asp:TableCell>
                     <div>
                         <asp:Label ID="Label1" runat="server" Text="Nombre: " Font-Bold="true"></asp:Label>
@@ -65,8 +66,9 @@
         <br />
 
         <asp:Button ID="Button_editar" runat="server" Text="Editar" OnClick="Button_editar_Click" CssClass="btn" />
-        <asp:Button ID="Button_eliminar" runat="server" Text="Eliminar" class=".btn" />
-        <asp:Button ID="Button_nuevo" runat="server" Text="Nuevo" class=".btn" />
+        <asp:Button ID="Button_eliminar" runat="server" Text="Eliminar" CssClass="btn" Enabled="false" />
+        <asp:Button ID="Button_nuevo" runat="server" Text="Nuevo"  CssClass="btn"  Enabled="false" />
+        <asp:Button ID="Button_agregar_imagen" runat="server" Text="Agregar Imagen" CssClass="btn" Visible="false"  Enabled="false"/>
 
 
         <br />
