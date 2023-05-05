@@ -5,6 +5,14 @@
 
     <div class="border border-white navbar navbar-expand-lg bg-dark">
         <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark"> Videojuegos </p>
+        <div class="dropdown">
+            <asp:dropdownlist runat="server" id="ddlTest" CssClass="float-right btn btn-secondary dropdown-toggle" OnSelectedIndexChanged="ddlTest_SelectedIndexChanged" AutoPostBack="true"> 
+                 <asp:listitem text="Ordenar por nombre ascendente" value="1" Selected="True"></asp:listitem>
+                 <asp:listitem text="Ordenar por nombre descendente" value="2"></asp:listitem>
+                 <asp:listitem text="Ordenar por precio ascendente" value="3"></asp:listitem>
+                 <asp:listitem text="Ordenar por precio descendente" value="4"></asp:listitem>
+            </asp:dropdownlist>
+        </div>
     </div>
 
     <div class= "col-auto text-center mx-auto">

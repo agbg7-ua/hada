@@ -11,33 +11,34 @@ namespace tiendaWeb
 {
 
 
-    public partial class Carrito
+    public partial class NuevoComentario
     {
 
         /// <summary>
-<<<<<<< HEAD
-        /// Control listView.
-=======
-        /// Control GridView1.
->>>>>>> develop
+        /// Control TextBox4.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::System.Web.UI.WebControls.ListView listView;
+        protected global::System.Web.UI.WebControls.TextBox TextBox4;
 
         /// <summary>
-        /// Control textboxVacio.
+        /// Control TextBox1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label textboxVacio;
-=======
-        protected global::System.Web.UI.WebControls.GridView GridView1;
->>>>>>> develop
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+
+        /// <summary>
+        /// Control Button1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
     }
 }

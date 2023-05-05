@@ -41,17 +41,9 @@
                     <asp:menuitem NavigateUrl="~/ListarProducto.aspx"
                         text="Videojuegos"
                         tooltip="Videojuegos"/>
-                    <asp:menuitem NavigateUrl="~/Desarrrolador.aspx"
+                    <asp:menuitem NavigateUrl="~/ListaDesarrolladores.aspx"
                         text="Desarrolladores"
                         tooltip="Desarrolladores"/>
-                </asp:menuitem>
-                <asp:menuitem NavigateUrl="#"
-                    text="Iniciar sesión"
-                    tooltip="Iniciar sesion">
-                </asp:menuitem>
-                <asp:menuitem NavigateUrl="#"
-                    text="Regístrate"
-                    tooltip="Registrate">
                 </asp:menuitem>
                 <asp:menuitem NavigateUrl="#"
                     text="Sobre nosotros"
@@ -60,9 +52,16 @@
                 </items>
                 </asp:Menu>
 
+                <div class="btn-group" style="padding-right: 5px;">
+                    <asp:Button runat="server" Height="50px" ID="usuario" CssClass="btn btn-dark" Text="Registro/Inicio sesión" OnClientClick="button_usuarioOnClientClick" OnClick="button_usuarioOnClientClick"/>
+                    <asp:Button runat="server" ID="perfil" CssClass="btn btn-dark" Text="Tu perfil" OnClientClick="button_perfilOnClientClick" OnClick="button_perfilOnClientClick"/>
+                    <asp:Button runat="server" ID="carrito" CssClass="btn btn-dark" Text="Carrito" OnClientClick="button_carritoOnClientClick" OnClick="button_carritoOnClientClick"/>
+                    <asp:Button runat="server" ID="pedidos" CssClass="btn btn-dark" Text="Pedidos" OnClientClick="button_pedidosOnClientClick" OnClick="button_pedidosOnClientClick"/>
+                </div>
+
                 <div class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                    <asp:TextBox runat="server" CssClass="form-control mr-sm-2" ID="tbox" type="Search" placeholder="Buscar" aria-label="Search" />
+                    <asp:Button CssClass="btn btn-outline-success my-2 my-sm-0" runat="server" ID="buscar" Text="Buscar" Visible="true" OnClick="button_buscar_OnClientClick" OnClientClick="button_buscar_OnClientClick" />
                 </div>
             </div>
             </nav>

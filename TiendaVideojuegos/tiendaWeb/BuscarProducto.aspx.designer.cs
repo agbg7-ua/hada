@@ -11,21 +11,25 @@ namespace tiendaWeb
 {
 
 
-    public partial class Carrito
+    public partial class BuscarProducto
     {
 
         /// <summary>
-<<<<<<< HEAD
-        /// Control listView.
-=======
-        /// Control GridView1.
->>>>>>> develop
+        /// Control titulo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-<<<<<<< HEAD
+        protected global::System.Web.UI.WebControls.Label titulo;
+
+        /// <summary>
+        /// Control listView.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
         protected global::System.Web.UI.WebControls.ListView listView;
 
         /// <summary>
@@ -36,8 +40,5 @@ namespace tiendaWeb
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label textboxVacio;
-=======
-        protected global::System.Web.UI.WebControls.GridView GridView1;
->>>>>>> develop
     }
 }
