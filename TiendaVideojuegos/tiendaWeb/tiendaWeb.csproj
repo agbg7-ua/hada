@@ -71,10 +71,7 @@
     <Content Include="App_Data\Database_log.ldf">
       <DependentUpon>Database.mdf</DependentUpon>
     </Content>
-<<<<<<< HEAD
-=======
     <Content Include="BuscarProducto.aspx" />
->>>>>>> develop
     <Content Include="Carrito.aspx" />
     <Content Include="CategoriaProducto.aspx" />
     <Content Include="Comentario.aspx" />
@@ -89,11 +86,7 @@
     <Content Include="Desarrollador.aspx" />
     <Content Include="EditUsuario.aspx" />
     <Content Include="Home.aspx" />
-<<<<<<< HEAD
-    <Content Include="LineaCarrito.aspx" />
-=======
     <Content Include="ListaDesarrolladores.aspx" />
->>>>>>> develop
     <Content Include="ListarProducto.aspx" />
     <Content Include="ListarProductoCategoría.aspx" />
     <Content Include="NuevoComentario.aspx" />
@@ -103,8 +96,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-=======
     <Compile Include="BuscarProducto.aspx.cs">
       <DependentUpon>BuscarProducto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -112,7 +103,6 @@
     <Compile Include="BuscarProducto.aspx.designer.cs">
       <DependentUpon>BuscarProducto.aspx</DependentUpon>
     </Compile>
->>>>>>> develop
     <Compile Include="Carrito.aspx.cs">
       <DependentUpon>Carrito.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -155,20 +145,11 @@
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
-<<<<<<< HEAD
-    <Compile Include="LineaCarrito.aspx.cs">
-      <DependentUpon>LineaCarrito.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="LineaCarrito.aspx.designer.cs">
-      <DependentUpon>LineaCarrito.aspx</DependentUpon>
-=======
     <Compile Include="ListaDesarrolladores.aspx.cs">
       <DependentUpon>ListaDesarrolladores.aspx</DependentUpon>
     </Compile>
     <Compile Include="ListaDesarrolladores.aspx.designer.cs">
       <DependentUpon>ListaDesarrolladores.aspx</DependentUpon>
->>>>>>> develop
     </Compile>
     <Compile Include="ListarProducto.aspx.cs">
       <DependentUpon>ListarProducto.aspx</DependentUpon>
