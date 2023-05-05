@@ -9,10 +9,10 @@ using System.Data;
 
 namespace library
 {
-	class CADLineaCarrito
-	{
-        
-		private string constring;
+    class CADLineaCarrito
+    {
+
+        private string constring;
 
         public CADLineaCarrito()
         {
@@ -28,7 +28,7 @@ namespace library
             try
             {
                 SqlDataAdapter da = new SqlDataAdapter("Select * From LineaCarrito", c);
-                da.Fill(bdvirtual,"LineaCarrito");
+                da.Fill(bdvirtual, "LineaCarrito");
                 DataTable t = new DataTable();
                 t = bdvirtual.Tables["LineaCarrito"];
                 DataRow nuevafila = t.NewRow();
@@ -136,7 +136,7 @@ namespace library
                 if (c != null) c.Close();
             }
         }
-        public DataSet deleteLineaCarrito(ENLineaCarrito en , int i)
+        public DataSet deleteLineaCarrito(ENLineaCarrito en, int i)
         {
             DataSet bdvirtual = new DataSet();
             SqlConnection c = new SqlConnection(constring);
@@ -214,24 +214,24 @@ namespace library
 
             try
             {
-                String comando = "Select * from LineaCarrito where id_carrito="+ en.id;
-                SqlDataAdapter da = new SqlDataAdapter (comando,c);
-                da.Fill(bdvirtual,"LineaCarrito");
+                String comando = "Select * from LineaCarrito where id_carrito=" + en.id;
+                SqlDataAdapter da = new SqlDataAdapter(comando, c);
+                da.Fill(bdvirtual, "LineaCarrito");
                 return bdvirtual;
             }
             catch (SqlException ex)
             {
-            Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
-            return bdvirtual;
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
             }
             catch (Exception ex)
             {
-            Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
-            return bdvirtual;
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
             }
             finally
             {
-            if (c != null) c.Close();
+                if (c != null) c.Close();
             }
         }
     }

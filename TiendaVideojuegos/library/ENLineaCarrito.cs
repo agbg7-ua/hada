@@ -9,11 +9,12 @@ using System.Data;
 
 namespace library
 {
-     public class ENLineaCarrito
-     {
-        
+    public class ENLineaCarrito
+    {
+
         private int _id_carrito;
-        public int id_carrito {
+        public int id_carrito
+        {
             get { return _id_carrito; }
             set { _id_carrito = value; }
         }
@@ -23,7 +24,7 @@ namespace library
         {
             get { return _id_linea; }
             set { _id_linea = value; }
-        } 
+        }
 
         private int _id_producto;
         public int id_producto
@@ -61,10 +62,10 @@ namespace library
             this.cantidad = 0;
             this.importe = 0;
             this.fecha = DateTime.Now;
-           
+
         }
 
-        public ENLineaCarrito(int id_carrito,int id_linea, int id_producto, int cantidad, float importe,DateTime fecha)
+        public ENLineaCarrito(int id_carrito, int id_linea, int id_producto, int cantidad, float importe, DateTime fecha)
         {
             this.id_carrito = id_carrito;
             this.id_linea = id_linea;
@@ -80,7 +81,8 @@ namespace library
             ENCarrito en = new ENCarrito();
             en.id = this.id_carrito;
 
-            if (cad.readLineaCarrito(this) != true && en.readCarrito() == true) {
+            if (cad.readLineaCarrito(this) != true && en.readCarrito() == true)
+            {
                 return cad.createLineaCarrito(this);
             }
 
@@ -104,7 +106,7 @@ namespace library
             en.importe = this.importe;
             en.fecha = this.fecha;
 
-            if (cad.readLineaCarrito(this) == true) 
+            if (cad.readLineaCarrito(this) == true)
             {
                 this.id_producto = en.id_producto;
                 this.cantidad = en.cantidad;
@@ -116,7 +118,7 @@ namespace library
             return a;
         }
 
-        
+
         public DataSet deleteLineaCarrito(int i)
         {
             CADLineaCarrito cad = new CADLineaCarrito();
@@ -149,10 +151,10 @@ namespace library
             DataSet a = new DataSet();
 
             if (en.readCarrito() == true)
-            { 
+            {
                 a = c.showLineasCarritoByCarrito(en);
             }
-                
+
             return a;
         }
     }

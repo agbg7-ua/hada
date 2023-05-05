@@ -77,7 +77,7 @@ namespace library
             en.id_usuario = this.id_usuario;
             en.importe_total = this.importe_total;
 
-            if (cad.readCarrito(this)) 
+            if (cad.readCarrito(this))
             {
                 this.id_usuario = en.id_usuario;
                 this.importe_total = en.importe_total;
@@ -92,6 +92,12 @@ namespace library
         {
             CADCarrito c = new CADCarrito();
             return c.readCarrito(this);
+        }
+
+        public bool readCarritoByUser(ENUsuario en)
+        {
+            CADCarrito c = new CADCarrito();
+            return c.readCarritoByUser(this, en);
         }
 
 
