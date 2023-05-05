@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="col">
-     <div class="container" style="width: 50%; float:left; height:1000px;">
+     <div class="container" style="width: 50%; float:left; height:800px;">
        <hr>
         <h3 style="text-align:center">Inicia sesión</h3><br />
          Usuario:<br /> <asp:TextBox ID="TextBox1" runat="server" placeholder="Usuario" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
@@ -18,9 +18,50 @@
          <asp:Button class="regbutton" ID="Button1" runat="server" Text="Iniciar sesión" OnClick="Button1_Click" />
          <hr />
      </div>
-     <div class="container" style="width: 50%; float:right; height:1000px">
+     <div class="container" style="width: 50%; float:right; height:800px">
          <hr>
         <h3 style="text-align: center;">Regístrate</h3><br />
+         <div>
+             <div style="float:left">
+             Nombre:<br /> <asp:TextBox ID="TextBox6" runat="server" placeholder="Nombre"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+            ControlToValidate="TextBox6" ErrorMessage="Introduce un nombre!!"></asp:RequiredFieldValidator><br />
+             </div>
+             <div style="float:right">
+                 
+                     Apellidos:<br /> <asp:TextBox ID="TextBox7" runat="server" placeholder="Apellidos"></asp:TextBox>
+         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+            ControlToValidate="TextBox7" ErrorMessage="Introduce apellidos!"></asp:RequiredFieldValidator><br />
+             </div>
+         </div>
+
+                  Número de teléfono:<br /> <asp:TextBox ID="TextBox8" runat="server" placeholder="Número de teléfono"></asp:TextBox>
+         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
+            ControlToValidate="TextBox3" ErrorMessage="Introduce un número de teléfono!!"></asp:RequiredFieldValidator><br />
+                  Dirección:<br /> <asp:TextBox ID="TextBox9" runat="server" placeholder="Dirección"></asp:TextBox>
+         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
+            ControlToValidate="TextBox9" ErrorMessage="Introduce una dirección!!"></asp:RequiredFieldValidator><br />
+                  Código Postal:<br /> <asp:TextBox ID="TextBox10" runat="server" placeholder="Código Postal"></asp:TextBox>
+         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
+            ControlToValidate="TextBox10" ErrorMessage="Introduce un código postal!!"></asp:RequiredFieldValidator><br />
+                  Localidad:<br /> <asp:DropDownList ID="DropDownList1" runat="server"
+                            Width="90px" AutoPostBack="False">
+                             <asp:ListItem Value="Be">Benidorm</asp:ListItem>
+                             <asp:ListItem>Torrevieja</asp:ListItem>
+                             <asp:ListItem>Sagunto</asp:ListItem>
+                            </asp:DropDownList><br />
+                  Provincia:<br /> <asp:DropDownList ID="DropDownList3" runat="server"
+                            Width="90px" AutoPostBack="False">
+                             <asp:ListItem Value="Al">Alicante</asp:ListItem>
+                             <asp:ListItem>Castellón</asp:ListItem>
+                             <asp:ListItem>Valencia</asp:ListItem>
+                            </asp:DropDownList><br />
+                  País:<br /> <asp:DropDownList ID="DropDownList2" runat="server"
+                            Width="90px" AutoPostBack="False">
+                             <asp:ListItem Value="Esp">España</asp:ListItem>
+                             <asp:ListItem>Portugal</asp:ListItem>
+                             <asp:ListItem>Italia</asp:ListItem>
+                            </asp:DropDownList><br />
          
          Email:<br /> <asp:TextBox ID="TextBox3" runat="server" placeholder="Email"></asp:TextBox>
          <asp:RequiredFieldValidator ID="Requiredemail" runat="server"
@@ -59,9 +100,7 @@
    <style>
        body {
            background-size:100%;
-    background-image:url('https://w0.peakpx.com/wallpaper/858/506/HD-wallpaper-texture-gradient-purple-pink.jpg');
-    background-repeat:no-repeat;
-    background-attachment:fixed;
+           background-color:white;
 }
     .col{
     display: flex; 

@@ -2,39 +2,37 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1>TU PERFIL</h1>
+    <h1 style="background-color:grey">TU PERFIL</h1>
      <div class="col">
      <div class="container" style="width: 50%; float:left; height:650px;text-align:center;border-right:3px solid black;border-bottom:3px solid black;border-top:3px solid black">
-            <img src="https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2018/08/fotos-perfil-whatsapp_16.jpg?tf=3840x" alt="Avatar" class="avatar" style="margin:3px">
-            <p style="font-size:20px;margin:3px"> Adriana2304</p>
-            <p style="font-size:20px;margin:3px"> Adriana2304@gmail.com</p>
+            <asp:Image ID="Image1" runat="server" ImageUrl="Imagenes/profile.jpg"  alt="Avatar" class="avatar" style="margin:3px"/><br>
+            <b style="font-size:20px;margin:3px">Nombre de Usuario:<br /></b><asp:Label ID="Usu" runat="server" style="font-size:20px;margin:3px"> Adriana2304</asp:Label><br />
+            <b style="font-size:20px;margin:3px">Email:<br /></b><asp:Label ID="EmailUsu" runat="server" style="font-size:20px;margin:3px"> Adriana2304@gmail.com</asp:Label>
      </div>
      <div class="container" style="width: 50%; float:right; height:650px;border-bottom:3px solid black;text-align:center;border-top:3px solid black">
         <h3 style="text-align: center;">Información</h3><br />
-            <p style="font-size:20px;margin:3px"> Nombre:<br /> Adriana</p>
-            <p style="font-size:20px;margin:3px"> Apellidos:<br /> González Romero</p>
-            <p style="font-size:20px;margin:3px"> Número de teléfono:<br /> 649673124</p>
-            <p style="font-size:20px;margin:3px"> Dirección:<br /> Calle Poniente, 3, piso 4, puerta A</p>
-            <p style="font-size:20px;margin:3px"> Código postal:<br /> 03560</p>
-            <p style="font-size:20px;margin:3px"> Localidad:<br /> Benidorm</p>
-            <p style="font-size:20px;margin:3px"> Provincia:<br /> Alicante </p>
-            <p style="font-size:20px;margin:3px"> País:<br /> España </p>
-            <asp:Button class="regbutton" ID="Button1" runat="server" Text="Editar usuario" PostBackUrl= "~/EditUsuario.aspx"/>
+            <b style="font-size:20px;margin:3px">Nombre:<br /></b><asp:Label ID="NameUsu" runat="server" style="font-size:20px;margin:3px"> Adriana</asp:Label><br />
+            <b style="font-size:20px;margin:3px"> Apellidos:<br /></b><asp:Label ID="SurnameUsu" runat="server" style="font-size:20px;margin:3px"> González Romero</asp:Label><br />
+            <b style="font-size:20px;margin:3px"> Número de teléfono:<br /></b><asp:Label ID="NumberUsu" runat="server" style="font-size:20px;margin:3px"> 649673124</asp:Label><br />
+            <b style="font-size:20px;margin:3px"> Dirección:<br /></b><asp:Label ID="AddresUsu" runat="server" style="font-size:20px;margin:3px"> Calle Poniente, 3, piso 4, puerta A</asp:Label><br />
+            <b style="font-size:20px;margin:3px"> Código postal:<br /></b> <asp:Label ID="PostUsu" runat="server" style="font-size:20px;margin:3px">03560</asp:Label><br />
+            <b style="font-size:20px;margin:3px"> Localidad:<br /></b><asp:Label ID="LocationUsu" runat="server" style="font-size:20px;margin:3px"> Benidorm</asp:Label><br />
+            <b style="font-size:20px;margin:3px"> Provincia:<br /></b><asp:Label ID="ProvUsu" runat="server" style="font-size:20px;margin:3px"> Alicante </asp:Label><br />
+            <b style="font-size:20px;margin:3px">País:<br /></b> <asp:Label ID="CountryUsu" runat="server" style="font-size:20px;margin:3px">España </asp:Label><br />
+            <asp:Button class="regbutton" ID="Button1" runat="server" style="margin:3px" Text="Editar usuario" PostBackUrl= "~/EditUsuario.aspx"/>
 
      </div>
     </div>
      <style>
        body {
-           background-size:100%;
-                         background-repeat:no-repeat;
-    background-attachment:fixed;
-           background-image:url(https://img.pikbest.com/backgrounds/20220119/gradient-background-purple_6244676.jpg!bw700);
-    text-align:center;
-}
-           .avatar {
-  width: 60%;
-  height: 300px;
-  border-radius: 50%;
+        background-size:100%;
+        text-align:center;
+        background-color:white;
+        }
+    .avatar {
+        width: 60%;
+        height: 400px;
+        border-radius: 50%;
 }
     .col{
     display: flex; 
@@ -52,7 +50,7 @@
   color: dodgerblue;
     }
     .regbutton{
-      background-color: black;
+      background-color: grey;
       color: white;
       padding: 16px 20px;
       border: none;

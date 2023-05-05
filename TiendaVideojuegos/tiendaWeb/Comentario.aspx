@@ -3,15 +3,15 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <h1 style="background-color:mediumpurple;color: white "> Comentarios</h1>
+    <h1 style="background-color:grey;color: black;text-align:center "> Comentarios</h1>
 <div class="game" style="width: 55%; float:left; height:295px; border: 3px solid grey;">
-    <div class="image" style="width: 44%; float:left; height:288px;">
-    <asp:Image ID="myImage" runat="server" ImageUrl="https://m.media-amazon.com/images/I/81xB6YDs8rL._AC_SX385_.jpg" Width=100% Height=100%/>
+    <div class="image" style="width: 30%; float:left; height:288px;">
+    <asp:Image ID="myImage" runat="server" ImageUrl="Imagenes/nba1.jpg" Width=100% Height=100%/>
         </div>
-    <div class="desc" style="width: 55%; float:right; height:288px">
+    <div class="desc" style="width: 68%; float:right; height:288px">
         <br/>
     <h3> NBA 2K23</h3><br/>
-    <p style="margin:5px">NBA 2K23 es un videojuego de baloncesto de 2022 desarrollado por Visual Concepts y publicado por 2K, basado en la Asociación Nacional de Baloncesto. Es la entrega número 24 de la franquicia NBA 2K y es el sucesor de NBA 2K22.</p>
+    <asp:Label ID="Sin" runat="server" style="margin:5px">NBA 2K23 es un videojuego de baloncesto de 2022 desarrollado por Visual Concepts y publicado por 2K, basado en la Asociación Nacional de Baloncesto. Es la entrega número 24 de la franquicia NBA 2K y es el sucesor de NBA 2K22.</asp:Label>
     </div>
 </div>
 <div class ="father" style="width: 45%; float:right; height:295px;border-bottom: 3px solid grey; border-top: 3px solid grey">
@@ -85,29 +85,27 @@
         </div>
 <div style="width:100%; height:650px;border-bottom: 2px solid grey; border-top: 2px solid grey">
      <div style="width: 70%; float:left; height:400px;">
-                  <img src="https://www.w3schools.com/w3images/avatar5.png" alt="Avatar" class="avatar">
+                  <asp:Image ID="Image" runat="server" ImageUrl="Imagenes/profile.jpg" alt="Avatar" class="avatar"/>
                    <h3>FANTASTIC game!</h3>
 
         <span class="fa fa-star checked"></span>
         <span class="fa fa-star checked"></span>
         <span class="fa fa-star checked"></span>
         <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-         <p>Valorado en Reino Unido el 13 de noviembre de 2022</p>
-         <p>It took me a little while to learn how to play but once I did I got the hang of it and I love it and I would highly recommend this game if there is any basketball players out there.👍👍</p>
-          <a href="#" class="block mb-5 text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">Read more</a><br />
-         <a href="#" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-xs px-2 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Helpful</a>
-                <a href="#" class="pl-4 text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">Report abuse</a>
+        <span class="fa fa-star checked"></span><br />
+         <asp:Label ID="Fecha" runat="server">Valorado en Reino Unido el 13 de noviembre de 2022</asp:Label><br />
+         <asp:Label ID="Desc" runat="server">It took me a little while to learn how to play but once I did I got the hang of it and I love it and I would highly recommend this game if there is any basketball players out there.👍👍</asp:Label><br />
+          <a href="#"style="margin:2px" class="block mb-5 text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">Read more</a><br />
+         <a href="#" style="margin:2px" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-xs px-2 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Helpful</a>
+                <a href="#" style="margin:2px" class="pl-4 text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">Report abuse</a>
     </div>
     <div class="galeria" style="width: 280px; float:right; height:300px;">
       <input type="radio" name="navegacion" id="_1" checked>
       <input type="radio" name="navegacion" id="_2">
       <input type="radio" name="navegacion" id="_3">
-      <input type="radio" name="navegacion" id="_4"> 
-      <img src="https://images.milanuncios.com/api/v1/ma-ad-media-pro/images/555a8352-8d8e-43dc-b7a6-a69906f91ff5?rule=hw396_70" width="260" height="300" alt="Galeria CSS 1" />
-      <img src="https://cdn.wallapop.com/images/10420/et/h7/__/c10420p896038706/i3255661981.jpg?pictureSize=W640" width="260" height="300" alt="Galeria CSS 2"  />
-      <img src="https://images.cashconverters.es/productslive/juego-ps5/nba-2k23_CC005_E927156-0_1.jpg" width="260" height="300" alt="Galeria CSS 3" />
-      <img src="https://image.api.playstation.com/vulcan/ap/rnd/202207/0817/VbYdwoLSaCU6J8raRVdLrS2m.jpg" width="260" height="300" alt="Galeria CSS 4" />
+      <asp:Image ID="Image1" runat="server" ImageUrl="Imagenes/nba.jpg" width="260" height="300" alt="Galeria CSS 1" />
+      <asp:Image ID="Image2" runat="server" ImageUrl="Imagenes/nba2.jpg" width="260" height="300" alt="Galeria CSS 2"  />
+      <asp:Image ID="Image3" runat="server" ImageUrl="Imagenes/nba4.jfif" width="260" height="300" alt="Galeria CSS 3" />
     </div>
  </div>
 <style>
