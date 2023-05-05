@@ -51,13 +51,13 @@ namespace tiendaWeb
         protected global::System.Web.UI.WebControls.TextBox ITotalBox;
 
         /// <summary>
-        /// Control ButtonID.
+        /// Control resLabel.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonID;
+        protected global::System.Web.UI.WebControls.Label resLabel;
 
         /// <summary>
         /// Control ButtonCreate.
@@ -87,15 +87,6 @@ namespace tiendaWeb
         protected global::System.Web.UI.WebControls.Button ButtonDelete;
 
         /// <summary>
-        /// Control ButtonUser.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonUser;
-
-        /// <summary>
         /// Control ButtonAll.
         /// </summary>
         /// <remarks>
@@ -123,12 +114,12 @@ namespace tiendaWeb
         protected global::System.Web.UI.WebControls.Button ButtonDesc;
 
         /// <summary>
-        /// Control DataTable.
+        /// Control ListaPedidos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView DataTable;
+        protected global::System.Web.UI.WebControls.ListView ListaPedidos;
     }
 }

@@ -9,7 +9,6 @@
     <p>Cantidad: <asp:TextBox ID="CantBox" runat="server"></asp:TextBox></p>
     <p>Importe: <asp:TextBox ID="ImportBox" runat="server"></asp:TextBox></p>
     <p>
-        <asp:Button ID="ButtonRead" runat="server" Text="Buscar por ID de pedido y línea" />
         <asp:Button ID="ButtonCreate" runat="server" Text="Crear" />
         <asp:Button ID="ButtonUpdate" runat="server" Text="Actualizar" />
         <asp:Button ID="ButtonDelete" runat="server" Text="Borrar" />
