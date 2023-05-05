@@ -94,6 +94,12 @@ namespace library
             return c.readCarrito(this);
         }
 
+        public bool readCarritoByUser(ENUsuario en)
+        {
+            CADCarrito c = new CADCarrito();
+            return c.readCarritoByUser(this, en);
+        }
+
 
         public DataSet deleteCarrito(int Id)
 

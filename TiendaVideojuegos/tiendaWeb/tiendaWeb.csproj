@@ -72,6 +72,7 @@
       <DependentUpon>Database.mdf</DependentUpon>
     </Content>
     <Content Include="BuscarProducto.aspx" />
+    <Content Include="Carrito.aspx" />
     <Content Include="CategoriaProducto.aspx" />
     <Content Include="Comentario.aspx" />
     <Content Include="css\bootstrap-grid.css" />
@@ -101,6 +102,13 @@
     </Compile>
     <Compile Include="BuscarProducto.aspx.designer.cs">
       <DependentUpon>BuscarProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Carrito.aspx.cs">
+      <DependentUpon>Carrito.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Carrito.aspx.designer.cs">
+      <DependentUpon>Carrito.aspx</DependentUpon>
     </Compile>
     <Compile Include="CategoriaProducto.aspx.cs">
       <DependentUpon>CategoriaProducto.aspx</DependentUpon>
