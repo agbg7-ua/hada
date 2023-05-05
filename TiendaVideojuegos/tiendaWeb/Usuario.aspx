@@ -2,7 +2,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1 style="background-color:grey">TU PERFIL</h1>
+
+    <div class="border border-white navbar navbar-expand-lg bg-dark">
+        <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark"> Tu Perfil </p>
+    </div>
+
      <div class="col">
      <div class="container" style="width: 50%; float:left; height:650px;text-align:center;border-right:3px solid black;border-bottom:3px solid black;border-top:3px solid black">
             <asp:Image ID="Image1" runat="server" ImageUrl="Imagenes/profile.jpg"  alt="Avatar" class="avatar" style="margin:3px"/><br>

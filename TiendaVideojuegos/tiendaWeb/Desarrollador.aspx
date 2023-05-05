@@ -5,13 +5,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <div class="border border-white navbar navbar-expand-lg bg-dark">
+        <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark"> Desarrollador </p>
+    </div>
 
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Desarrolladora</h2>
-            </div>
-        </div>
 
         <asp:Table ID="Table1" runat="server">
             <asp:TableRow>

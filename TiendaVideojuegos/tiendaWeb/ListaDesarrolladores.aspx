@@ -5,10 +5,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div class="border border-dark  bg-dark">
-        <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark">Desarrolladoras de videojuegos </p>
-
+    <div class="border border-white navbar navbar-expand-lg bg-dark">
+        <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark"> Desarrolladoras de videojuegos </p>
     </div>
+
     <h2 CssClass="h2" style="margin-left:50px">Filtrar</h2>
     <div>
 
