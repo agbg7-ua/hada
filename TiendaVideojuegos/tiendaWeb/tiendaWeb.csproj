@@ -82,7 +82,7 @@
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\carousel.css" />
     <Content Include="css\categoriaproducto.css" />
-    <Content Include="Desarrrolador.aspx" />
+    <Content Include="Desarrollador.aspx" />
     <Content Include="EditUsuario.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="ListarProducto.aspx" />
@@ -115,12 +115,12 @@
     <Compile Include="Comentario.aspx.designer.cs">
       <DependentUpon>Comentario.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Desarrrolador.aspx.cs">
-      <DependentUpon>Desarrrolador.aspx</DependentUpon>
+    <Compile Include="Desarrollador.aspx.cs">
+      <DependentUpon>Desarrollador.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Desarrrolador.aspx.designer.cs">
-      <DependentUpon>Desarrrolador.aspx</DependentUpon>
+    <Compile Include="Desarrollador.aspx.designer.cs">
+      <DependentUpon>Desarrollador.aspx</DependentUpon>
     </Compile>
     <Compile Include="EditUsuario.aspx.cs">
       <DependentUpon>EditUsuario.aspx</DependentUpon>

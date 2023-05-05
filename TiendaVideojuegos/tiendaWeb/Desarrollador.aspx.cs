@@ -13,12 +13,9 @@ namespace tiendaWeb
 
         // datos de ejemplo
 
-        string nombre = "nombre";
+        string nombre = "Bungie";
         string descripcion = @"
-            Counter-Strike es una serie de videojuegos tácticos multijugador de disparos en primera persona en 
-            los que equipos de terroristas luchan para perpetrar un acto terrorista mientras
-            los contraterroristas intentan prevenirlo. La serie comenzó en Windows en 1999 
-            con el lanzamiento del primer juego, Counter-Strike.
+Bungie Studios és una empresa dissenyadora de videojocs fundada en 1991 sota el nom de Bungie Programari Productes Corporation per dos estudiants de la Universitat de Chicago, Alex Seropian i Jason Jones. Forma part dels estudis de videojocs de Microsoft des que aquesta empresa la va comprar en l'any 2000
             ";
 
         DateTime fecha = System.DateTime.Now;
