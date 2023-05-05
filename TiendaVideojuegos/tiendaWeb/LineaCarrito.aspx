@@ -32,6 +32,6 @@
              </asp:ListView>
             <br />
             <div style="width:100%; height: 100px; align-content:center; text-align:center">
-                <asp:Label CssClass="labelVacio" runat="server" ID="textboxVacio" Text="No se encontraron carritos, inicia tus compras primero." Visible="false" ></asp:Label>
+                <asp:Label CssClass="labelVacio" runat="server" ID="textboxVacio" Text="No se encontraron carritos." Visible="false" ></asp:Label>
             </div>
 </asp:Content>
