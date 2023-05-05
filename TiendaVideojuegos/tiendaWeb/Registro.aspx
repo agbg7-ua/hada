@@ -8,14 +8,14 @@
      <div class="container" style="width: 50%; float:left; height:1000px;">
        <hr>
         <h3 style="text-align:center">Inicia sesión</h3><br />
-         Usuario:<br /> <asp:TextBox ID="TextBox1" runat="server" placeholder="Usuario"></asp:TextBox>
+         Usuario:<br /> <asp:TextBox ID="TextBox1" runat="server" placeholder="Usuario" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
          <asp:RequiredFieldValidator ID="UserNameReq" runat="server"
             ControlToValidate="TextBox1" ErrorMessage="Introduce el usuario!!">
          </asp:RequiredFieldValidator><br />
-         Contraseña:<br /> <asp:TextBox ID="TextBox2" runat="server" placeholder =" Contraseña" TextMode="Password" ClientIDMode="Static"> </asp:TextBox>
+         Contraseña:<br /> <asp:TextBox ID="TextBox2" runat="server" placeholder =" Contraseña" TextMode="Password" ClientIDMode="Static" OnTextChanged="TextBox2_TextChanged"> </asp:TextBox>
          <asp:RequiredFieldValidator ID="PasswordReq" runat="server" ControlToValidate="TextBox2" ErrorMessage="Introduce la contraseña!!"></asp:RequiredFieldValidator><br />
-         <asp:CheckBox ID="ckShowPass" runat="server" Text="Show password" onclick="myshowp()" />
-         <asp:Button class="regbutton" ID="Button1" runat="server" Text="Iniciar sesión" />
+         <asp:CheckBox ID="ckShowPass" runat="server" Text="Show password" onclick="myshowp()" OnCheckedChanged="ckShowPass_CheckedChanged" />
+         <asp:Button class="regbutton" ID="Button1" runat="server" Text="Iniciar sesión" OnClick="Button1_Click" />
          <hr />
      </div>
      <div class="container" style="width: 50%; float:right; height:1000px">
