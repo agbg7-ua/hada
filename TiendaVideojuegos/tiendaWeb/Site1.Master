@@ -45,11 +45,11 @@
                         text="Desarrolladores"
                         tooltip="Desarrolladores"/>
                 </asp:menuitem>
-                <asp:menuitem NavigateUrl="#"
-                    text="Iniciar sesión"
-                    tooltip="Iniciar sesion">
+                <asp:menuitem NavigateUrl="~/Usuario.aspx"
+                    text="Tu perfil"
+                    tooltip="Tu perfil">
                 </asp:menuitem>
-                <asp:menuitem NavigateUrl="#"
+                <asp:menuitem NavigateUrl="~/Registro.aspx"
                     text="Regístrate"
                     tooltip="Registrate">
                 </asp:menuitem>
