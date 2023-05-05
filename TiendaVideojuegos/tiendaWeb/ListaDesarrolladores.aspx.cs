@@ -23,12 +23,12 @@ namespace tiendaWeb
 
 
             List<Item2> list = new List<Item2>();
-            list.Add(new Item2() { Nombre = "Bungie", Fecha = DateTime.Now.ToString(), Pais="Alemania" , ImagenURL="Imagenes/uno.png"});
-            list.Add(new Item2() { Nombre = "Anapurna ", Fecha = DateTime.Now.AddDays(700).ToString(), Pais = "EEUU", ImagenURL = "Imagenes/ana.png"});
-            list.Add(new Item2() { Nombre = "Desarrolladora 2 ", Fecha = DateTime.Now.AddDays(700).ToString(), Pais = "EEUU", ImagenURL = "Imagenes/sinimagen.jpeg" });
-            list.Add(new Item2() { Nombre = "Bungie", Fecha = DateTime.Now.ToString(), Pais = "Alemania", ImagenURL = "Imagenes/uno.png" });
-            list.Add(new Item2() { Nombre = "Anapurna ", Fecha = DateTime.Now.AddDays(700).ToString(), Pais = "EEUU", ImagenURL = "Imagenes/ana.png" });
-            list.Add(new Item2() { Nombre = "Desarrolladora 2 ", Fecha = DateTime.Now.AddDays(700).ToString(), Pais = "EEUU", ImagenURL = "Imagenes/sinimagen.jpeg" });
+            list.Add(new Item2() { Nombre = "Bungie", Fecha = DateTime.Now.ToString().Split(' ')[0], Pais="Alemania" , ImagenURL="Imagenes/uno.png"});
+            list.Add(new Item2() { Nombre = "Anapurna ", Fecha = DateTime.Now.AddDays(700).ToString().Split(' ')[0], Pais = "EEUU", ImagenURL = "Imagenes/ana.png"});
+            list.Add(new Item2() { Nombre = "Desarrolladora 2 ", Fecha = DateTime.Now.AddDays(700).ToString().Split(' ')[0], Pais = "EEUU", ImagenURL = "Imagenes/sinimagen.jpeg" });
+            list.Add(new Item2() { Nombre = "Bungie", Fecha = DateTime.Now.ToString().Split(' ')[0], Pais = "Alemania", ImagenURL = "Imagenes/uno.png" });
+            list.Add(new Item2() { Nombre = "Anapurna ", Fecha = DateTime.Now.AddDays(700).ToString().Split(' ')[0], Pais = "EEUU", ImagenURL = "Imagenes/ana.png" });
+            list.Add(new Item2() { Nombre = "Desarrolladora 2 ", Fecha = DateTime.Now.AddDays(700).ToString().Split(' ')[0], Pais = "EEUU", ImagenURL = "Imagenes/sinimagen.jpeg" });
 
 
             ListView1.DataSource = list;
