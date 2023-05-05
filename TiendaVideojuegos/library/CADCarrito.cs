@@ -143,6 +143,51 @@ namespace library
 
         }
 
+        public bool readCarritoByUser(ENCarrito car, ENUsuario en)
+        {
+            bool read = false;
+            DataSet bdvirtual = new DataSet();
+            SqlConnection c = new SqlConnection(constring);
+
+
+            try
+            {
+                SqlDataAdapter da = new SqlDataAdapter("select * from Carrito", c);
+                da.Fill(bdvirtual, "Carrito");
+                DataTable t = new DataTable();
+                t = bdvirtual.Tables["Carrito"];
+
+                for (int i = 0; i < t.Rows.Count; i++)
+                {
+                    DataRow fila = t.Rows[i];
+
+                    if (en.username == fila[1].ToString())
+                    {
+                        read = true;
+                        car.id = int.Parse(fila[0].ToString());
+                        car.importe_total = float.Parse(fila[2].ToString());
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                read = false;
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+            }
+            catch (Exception ex)
+            {
+                read = false;
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+            }
+            finally
+            {
+                if (c != null) c.Close();
+            }
+
+            return read;
+
+        }
+
         public DataSet deleteCarrito(ENCarrito en,int Id)
         {
             DataSet bdvirtual = new DataSet();

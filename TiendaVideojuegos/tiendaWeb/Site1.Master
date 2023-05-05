@@ -57,6 +57,10 @@
                     text="Sobre nosotros"
                     tooltip="Sobre nosotros">
                 </asp:menuitem>
+                <asp:menuitem NavigateUrl="~/Carrito.aspx"
+                    text="Carrito"
+                    tooltip="Carrito">
+                </asp:menuitem>
                 </items>
                 </asp:Menu>
 
