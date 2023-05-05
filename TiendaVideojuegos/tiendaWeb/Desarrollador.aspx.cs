@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -8,17 +9,21 @@ using System.Web.UI.WebControls;
 
 namespace tiendaWeb
 {
+
+    public class Item
+    {
+        public string ImageURL { get; set; }
+        public string Title { get; set; }
+    }
+
     public partial class Desarrrolador : System.Web.UI.Page
     {
 
         // datos de ejemplo
 
-        string nombre = "nombre";
+        string nombre = "Bungie";
         string descripcion = @"
-            Counter-Strike es una serie de videojuegos tácticos multijugador de disparos en primera persona en 
-            los que equipos de terroristas luchan para perpetrar un acto terrorista mientras
-            los contraterroristas intentan prevenirlo. La serie comenzó en Windows en 1999 
-            con el lanzamiento del primer juego, Counter-Strike.
+Bungie Studios és una empresa dissenyadora de videojocs fundada en 1991 sota el nom de Bungie Programari Productes Corporation per dos estudiants de la Universitat de Chicago, Alex Seropian i Jason Jones. Forma part dels estudis de videojocs de Microsoft des que aquesta empresa la va comprar en l'any 2000
             ";
 
         DateTime fecha = System.DateTime.Now;
@@ -44,7 +49,48 @@ namespace tiendaWeb
             Label_web.Text = web;
             Label_origen.Text = origen;
 
-            
+
+
+            DataTable dt = new DataTable();
+            DataColumn col = new DataColumn("login");
+            dt.Columns.Add(col);
+            col = new DataColumn("name");
+            dt.Columns.Add(col);
+            col = new DataColumn("firstname");
+            dt.Columns.Add(col);
+            DataRow row = dt.NewRow();
+
+            //row["login"] = "we";
+            //row["name"] = "123123";
+            //row["firstname"] = "123123";
+            //dt.Rows.Add(row);
+
+            //GridView1.DataSource = dt;
+            //GridView1.DataBind();
+
+
+            List<Item> list = new List<Item>();
+            list.Add(new Item() { ImageURL = "~/Imagenes/sample.jpeg", Title = "             Titulo 1" });
+            list.Add(new Item() { ImageURL = "~/Imagenes/gustav.png", Title =  "             Titulo 2" });
+            list.Add(new Item() { ImageURL = "~/Imagenes/sample.jpeg", Title = "             Titulo 3" });
+            list.Add(new Item() { ImageURL = "~/Imagenes/sample.jpeg", Title = "             Titulo 1" });
+            list.Add(new Item() { ImageURL = "~/Imagenes/gustav.png", Title = "             Titulo 2" });
+            list.Add(new Item() { ImageURL = "~/Imagenes/sample.jpeg", Title = "             Titulo 3" });
+            list.Add(new Item() { ImageURL = "~/Imagenes/sample.jpeg", Title = "             Titulo 1" });
+            list.Add(new Item() { ImageURL = "~/Imagenes/gustav.png", Title = "             Titulo 2" });
+            list.Add(new Item() { ImageURL = "~/Imagenes/sample.jpeg", Title = "             Titulo 3" });
+            list.Add(new Item() { ImageURL = "~/Imagenes/sample.jpeg", Title = "             Titulo 1" });
+            list.Add(new Item() { ImageURL = "~/Imagenes/gustav.png", Title = "             Titulo 2" });
+            list.Add(new Item() { ImageURL = "~/Imagenes/sample.jpeg", Title = "             Titulo 3" });
+            list.Add(new Item() { ImageURL = "~/Imagenes/sample.jpeg", Title = "             Titulo 1" });
+            list.Add(new Item() { ImageURL = "~/Imagenes/gustav.png", Title = "             Titulo 2" });
+            list.Add(new Item() { ImageURL = "~/Imagenes/sample.jpeg", Title = "             Titulo 3" });
+            list.Add(new Item() { ImageURL = "~/Imagenes/sample.jpeg", Title = "             Titulo 1" });
+            list.Add(new Item() { ImageURL = "~/Imagenes/gustav.png", Title = "             Titulo 2" });
+            list.Add(new Item() { ImageURL = "~/Imagenes/sample.jpeg", Title = "             Titulo 3" });
+            ListView1.DataSource = list;
+            ListView1.DataBind();
+
         }
 
         protected void TextBox1_TextChanged(object sender, EventArgs e)
@@ -73,6 +119,12 @@ namespace tiendaWeb
                 Label_fecha.Visible = false;
                 Label_web.Visible = false;
                 Label_origen.Visible = false;
+
+                TextBox_descripcion.Height = Label_descripcion.Height;
+                TextBox_nombre.Height = Label_nombre.Height;
+                TextBox_descripcion.Height = Label_descripcion.Height;
+                TextBox_descripcion.Height = Label_descripcion.Height;
+                TextBox_descripcion.Height = Label_descripcion.Height;
             } else
             {
                 TextBox_descripcion.Visible = false;
