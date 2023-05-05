@@ -45,7 +45,7 @@ Bungie Studios és una empresa dissenyadora de videojocs fundada en 1991 sota el
 
             Label_nombre.Text = nombre;
             Label_descripcion.Text = descripcion;
-            Label_fecha.Text = fecha.ToString();
+            Label_fecha.Text = fecha.ToString().Split(' ')[0];
             Label_web.Text = web;
             Label_origen.Text = origen;
 
