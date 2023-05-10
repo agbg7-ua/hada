@@ -95,6 +95,7 @@
     <Content Include="NuevoComentario.aspx" />
     <Content Include="Pedido.aspx" />
     <Content Include="Producto.aspx" />
+    <Content Include="ProductoAdmin.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="Usuario.aspx" />
     <Content Include="Web.config" />
@@ -203,6 +204,13 @@
     </Compile>
     <Compile Include="Producto.aspx.designer.cs">
       <DependentUpon>Producto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductoAdmin.aspx.cs">
+      <DependentUpon>ProductoAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductoAdmin.aspx.designer.cs">
+      <DependentUpon>ProductoAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site1.Master.cs">

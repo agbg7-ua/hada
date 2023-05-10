@@ -7,11 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace tiendaWeb
 {
-    public partial class Home : System.Web.UI.Page
+    public partial class ProductoAdmin : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session.Add("username", "usuario 1");
+
         }
     }
 }
