@@ -39,6 +39,17 @@ namespace library
             get { return importe; }
             set { _importe = value; }
         }
+        //Constructor por defecto
+        public ENLineaPedido()
+        {
+            this.id_pedido = 0;
+            this.id_linea = 0;
+            this.id_producto = 0;
+            this.cantidad = 0;
+            this.importe = 0;
+        }
+        //Constructor sobrecargado
+
         public ENLineaPedido(int id_pedido, int id_linea, int id_producto, int cantidad, double importe)
         {
             this.id_pedido = id_pedido;

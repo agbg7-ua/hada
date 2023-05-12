@@ -107,12 +107,32 @@ namespace tiendaWeb
 
         protected void ButtonAsc_Click(object sender, EventArgs e)
         {
+            ENPedido en = new ENPedido();
+            ENUsuario enUs = new ENUsuario();
+            enUs.username = UserBox.Text;
+            DataSet ds = new DataSet();
+            ds = en.listarPedidosImporteAsc(enUs);
 
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                ListaPedidos.DataSource = ds;
+                ListaPedidos.DataBind();
+            }
         }
 
         protected void ButtonDesc_Click(object sender, EventArgs e)
         {
+            ENPedido en = new ENPedido();
+            ENUsuario enUs = new ENUsuario();
+            enUs.username = UserBox.Text;
+            DataSet ds = new DataSet();
+            ds = en.listarPedidosImporteDesc(enUs);
 
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                ListaPedidos.DataSource = ds;
+                ListaPedidos.DataBind();
+            }
         }
 
         protected void ListView1_SelectedIndexChanged(object sender, EventArgs e)

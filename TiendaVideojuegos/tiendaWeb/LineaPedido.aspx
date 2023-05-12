@@ -20,18 +20,22 @@
         <asp:Label ID="Label6" runat="server" class="tab" Text="Importe: "></asp:Label>
         <asp:TextBox ID="ImportBox" runat="server"></asp:TextBox></p>
     <p>
+        <asp:Label ID="resLabel" runat="server"></asp:Label>
+    <p>
+        <asp:Label ID="Label7" runat="server"></asp:Label>
+        <p>
         <asp:Button ID="ButtonCreate" runat="server" Text="Crear" OnClick="ButtonCreate_Click" />
         <asp:Button ID="ButtonUpdate" runat="server" Text="Actualizar" OnClick="ButtonUpdate_Click" />
         <asp:Button ID="ButtonDelete" runat="server" Text="Borrar" OnClick="ButtonDelete_Click" />
+        </p>
     </p>
     <p>
-        <asp:Button ID="ButtonAll" runat="server" Text="Mostrar todas las líneas de pedido" OnClick="ButtonAll_Click" />
         <asp:Button ID="ButtonAllPed" runat="server" Text="Mostrar todas las líneas de un mismo pedido" OnClick="ButtonAllPed_Click" />
         <asp:Button ID="ButtonAllProd" runat="server" Text="Mostrar todas las líneas de un mismo producto" OnClick="ButtonAllProd_Click" />
         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Pedido.aspx">Pedido</asp:HyperLink>
     </p>
     <p>
-         <asp:ListView runat="server" ID="ListaPedidos">
+         <asp:ListView runat="server" ID="listaLineasPedido">
   <LayoutTemplate>
     <table cellpadding="1" runat="server" id="tblPedidos" 
         style="width:460px" class ="LV">

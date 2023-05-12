@@ -105,6 +105,24 @@ namespace tiendaWeb
         protected global::System.Web.UI.WebControls.TextBox ImportBox;
 
         /// <summary>
+        /// Control resLabel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label resLabel;
+
+        /// <summary>
+        /// Control Label7.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label7;
+
+        /// <summary>
         /// Control ButtonCreate.
         /// </summary>
         /// <remarks>
@@ -130,15 +148,6 @@ namespace tiendaWeb
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonDelete;
-
-        /// <summary>
-        /// Control ButtonAll.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonAll;
 
         /// <summary>
         /// Control ButtonAllPed.
@@ -168,12 +177,12 @@ namespace tiendaWeb
         protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
 
         /// <summary>
-        /// Control ListaPedidos.
+        /// Control listaLineasPedido.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView ListaPedidos;
+        protected global::System.Web.UI.WebControls.ListView listaLineasPedido;
     }
 }
