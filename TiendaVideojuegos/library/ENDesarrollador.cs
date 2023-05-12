@@ -16,7 +16,7 @@ using library;
 
 namespace library
 {
-    internal class ENDesarrollador
+    public class ENDesarrollador
     {
         private int _id;
         private string _nombre;

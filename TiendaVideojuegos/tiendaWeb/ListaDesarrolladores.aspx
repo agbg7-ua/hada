@@ -75,21 +75,21 @@
                                 <asp:tablecell columnspan="2">
                                     <asp:hyperlink id="HyperLink1" runat="server"
                                         navigateurl='<%# "Desarrollador.aspx"%>'>
-                                        <asp:image runat="server" imageurl='<%#Eval("ImagenURL") %>' height="120px" width="120px"></asp:image>
+                                        <asp:image runat="server" imageurl='<%#Eval("imagen") %>' height="120px" width="120px"></asp:image>
                                     </asp:hyperlink>
                                 </asp:tablecell>
                                 <asp:tablecell columnspan="2">
                                     <asp:label runat="server" text="Nombre: " font-bold="true"></asp:label>
                                     <asp:hyperlink id="HyperLink2" runat="server"
                                         navigateurl='<%# "Desarrollador.aspx"%>'>
-                                        <asp:label id="label_nombre" runat="server" text='<%#Eval("Nombre") %>'></asp:label>
+                                        <asp:label id="label_nombre" runat="server" text='<%#Eval("nombre") %>'></asp:label>
                                     </asp:hyperlink>
                                     <br />
                                     <asp:label runat="server" text="Fecha de creacion: " font-bold="true"></asp:label>
-                                    <asp:label id="label_fecha" runat="server" text='<%#Eval("Fecha") %>'></asp:label>
+                                    <asp:label id="label_fecha" runat="server" text='<%#Eval("web") %>'></asp:label>
                                     <br />
                                     <asp:label runat="server" text="Pais de origen: " font-bold="true"></asp:label>
-                                    <asp:label id="label_pais" runat="server" text='<%#Eval("Pais") %>'></asp:label>
+                                    <asp:label id="label_pais" runat="server" text='<%#Eval("origen") %>'></asp:label>
                                 </asp:tablecell>
                             </asp:tablerow>
 
@@ -99,7 +99,7 @@
                 </td>
             </ItemTemplate>
         </asp:ListView>
-
+        <asp:Label ID="Label_error" runat="server" Text=""></asp:Label>
         <br />
         <div style="width: 100%; height: 100px; align-content: center; text-align: center">
             <asp:Label CssClass="labelVacio" runat="server" ID="textboxVacio" Text="No se encontraron desarrolladores, intentelo más tarde." Visible="false"></asp:Label>
