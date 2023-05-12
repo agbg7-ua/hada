@@ -21,6 +21,8 @@ using static System.Net.Mime.MediaTypeNames;
 //);
 
 
+/// TODO la mierda de modo conectado y descnoectado
+
 
 namespace library
 {
@@ -47,22 +49,23 @@ namespace library
             try
             {
                 string sql_q = String.Format(
-                                       "insert into Desarrollador (nombre, descripcion, origen, fecha_creacion, web, imagen) values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')",
+                                       "insert into Desarrollador (nombre, descripcion, origen, fecha_creacion, web, imagen) values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}');",
                                         en.nombre,
                                         en.descripcion,
                                         en.origen,
-                                        en.fecha_creacion,
+                                        en.fecha_creacion.ToString(),
                                         en.web,
                                         en.imagen);
 
 
                 c.Open();
-                SqlCommand com = new SqlCommand(sql_q);
+                SqlCommand com = new SqlCommand(sql_q,c);
                 com.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: " + ex.Message);
+                // TODO Controlar expceciones comunes y excribirlas bien
+                throw new Exception("Error al insertar el desarrollador: " + ex.Message);
             }
             finally
             {
@@ -295,8 +298,8 @@ namespace library
             {
                 c.Open();
                 String sql_q = String.Format(
-                                           "select * from Desarrollador");
-                SqlCommand com = new SqlCommand(sql_q);
+                                           "select * from Desarrollador;");
+                SqlCommand com = new SqlCommand(sql_q,c);
                 SqlDataReader dr = com.ExecuteReader();
                 while (dr.Read())
                 {

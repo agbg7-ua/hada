@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using library;
 
 
 namespace tiendaWeb
@@ -34,14 +35,16 @@ Bungie Studios és una empresa dissenyadora de videojocs fundada en 1991 sota el
         protected void Page_Load(object sender, EventArgs e)
         {
             
-            TextBox_descripcion.Visible = false;
-            TextBox_fecha.Visible = false;
-            TextBox_nombre.Visible = false;
-            TextBox_web.Visible = false;
-            TextBox_origen.Visible = false;
-            Button_nuevo.Visible = false;
-            Button_eliminar.Visible = false;
+            //TextBox_descripcion.Visible = false;
+            //TextBox_fecha.Visible = false;
+            //TextBox_nombre.Visible = false;
+            //TextBox_web.Visible = false;
+            //TextBox_origen.Visible = false;
+            //Button_nuevo.Visible = false;
+            //Button_eliminar.Visible = false;
 
+            //FileUpload1.Visible = false;
+            //Button_upload_image.Visible = false;
 
             Label_nombre.Text = nombre;
             Label_descripcion.Text = descripcion;
@@ -119,6 +122,9 @@ Bungie Studios és una empresa dissenyadora de videojocs fundada en 1991 sota el
                 Button_eliminar.Visible = true;
                 Button_editar.Text = "Guardar Cambios";
 
+                FileUpload1.Visible = true;
+                Button_upload_image.Visible = true;
+
             } else
             {
                 TextBox_descripcion.Visible = false;
@@ -143,6 +149,9 @@ Bungie Studios és una empresa dissenyadora de videojocs fundada en 1991 sota el
                 Button_nuevo.Visible = false;
                 Button_eliminar.Visible = false;
 
+                FileUpload1.Visible = false;
+                Button_upload_image.Visible = false;
+
                 Button_editar.Text = "Editar";
             }
             edit_mode = !edit_mode;
@@ -152,6 +161,96 @@ Bungie Studios és una empresa dissenyadora de videojocs fundada en 1991 sota el
         protected void TextBox_descripcion_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+
+        private void consulta_mode()
+        {
+            TextBox_descripcion.Visible = false;
+            TextBox_fecha.Visible = false;
+            TextBox_nombre.Visible = false;
+            TextBox_web.Visible = false;
+            TextBox_origen.Visible = false;
+
+            Label_nombre.Visible = true;
+            Label_descripcion.Visible = true;
+            Label_fecha.Visible = true;
+            Label_web.Visible = true;
+            Label_origen.Visible = true;
+
+            Label_nombre.Text = TextBox_nombre.Text;
+            Label_descripcion.Text = TextBox_descripcion.Text;
+            Label_fecha.Text = TextBox_fecha.Text;
+            Label_web.Text = TextBox_web.Text;
+            Label_origen.Text = TextBox_origen.Text;
+
+            Button_agregar_imagen.Visible = false;
+            Button_nuevo.Visible = false;
+            Button_eliminar.Visible = false;
+
+            FileUpload1.Visible = false;
+            Button_upload_image.Visible = false;
+
+            Button_editar.Text = "Editar";
+        }
+
+        private string adapt_texto_for_sql(string texto)
+        {
+            return texto.Replace("'", "''");
+        }
+
+        protected void Button_nuevo_click(object sender, EventArgs e)
+        {
+            // TODO validacion ? 
+            Label_error_info.Text = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+            ENDesarrollador en = new ENDesarrollador();
+            try
+            {
+                en.nombre = TextBox_nombre.Text;
+                en.descripcion = adapt_texto_for_sql(TextBox_descripcion.Text);
+                en.fecha_creacion = Convert.ToDateTime(TextBox_fecha.Text);
+                en.web = TextBox_web.Text;
+                en.origen = TextBox_origen.Text;
+                en.imagen = Image3.ImageUrl;
+                en.insertar();  
+
+                Label_error_info.Text = "Desarrollador guardado correctamente";
+                consulta_mode();
+
+
+
+
+            }
+            catch  (Exception ex)
+            {
+                Label_error_info.Text = ex.Message;
+                // TODO Mensaje de error(info en la pagina
+            }
+
+
+
+        }
+
+
+
+        protected void Button_upload_image_click(object sender, EventArgs e)
+        {
+            string base_save = "/Imagenes/";
+            string base_dos = "Imagenes/";
+            string file_relative_path;
+            try
+            {
+                FileUpload1.SaveAs(Server.MapPath(base_save) + FileUpload1.FileName);
+                file_relative_path = base_dos + FileUpload1.FileName;
+                //Image3.ImageUrl = base_save;
+                Image3.ImageUrl = file_relative_path;
+                Button_upload_image.Text = "Imagen Guardada";
+            }
+            catch (Exception ex)
+            {
+                Label_error_info.Text = ex.Message;
+                // TODO Mensaje de error(info en la pagina
+            }
         }
     }
 }
