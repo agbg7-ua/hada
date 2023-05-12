@@ -4,11 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using library;
 
-namespace tiendaWeb
+namespace tiendaWeb.AdminPáginas
 {
-    public partial class Admin : System.Web.UI.Page
+    public partial class ProductoAdmin : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,7 +21,7 @@ namespace tiendaWeb
 
         protected void button_productoOnClientClick(object sender, EventArgs e)
         {
-            Response.Redirect("AdminPáginas/ProductoAdmin.aspx");
+            Response.Redirect("ProductoAdmin.aspx");
         }
 
         protected void button_categoriaOnClientClick(object sender, EventArgs e)
@@ -44,6 +43,5 @@ namespace tiendaWeb
         {
             Response.Redirect("#");
         }
-
     }
 }
