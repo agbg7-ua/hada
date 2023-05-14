@@ -7,15 +7,72 @@
         <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark"> Administración de Videojuegos </p>
     </div>
 
+    <asp:ListView runat="server" ID="listView">
+        <GroupTemplate>
+            <tr>
+                <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
+            </tr>
+        </GroupTemplate>
+
+        <LayoutTemplate>
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>
+                            Id
+                        </th>
+                        <th>
+                            Imagen
+                        </th>
+                        <th>
+                            Nombre
+                        </th>
+                        <th>
+                            Precio
+                        </th>
+                        <th>
+                            Fecha de salida
+                        </th>
+                        <th>
+                            Mostrar
+                        </th>
+                        <th>
+                            Opciones
+                        </th>
+                    </tr>
+                </thead>
+                <asp:PlaceHolder ID="groupPlaceHolder" runat="server" />
+            </table>
+        </LayoutTemplate>
+
+        <ItemTemplate>
+            <td>
+                 <%# Eval("id") %>
+            </td>
+            <td>
+                 <asp:Image ID="Image1" runat="server" Width="50px" Height="50px" ImageUrl='<%# Eval("imagen") %>' />	
+            </td>
+            <td>
+                <%# Eval("nombre") %>
+            </td>
+            <td>
+                <%# Eval("pvp") %>
+            </td>
+            <td>
+                <%# Eval("fecha_salida") %>
+            </td>
+            <td>
+                <%# Eval("mostrar") %>
+            </td>
+            <td>
+                <asp:LinkButton runat="server" id="editar" CssClass="btn btn-warning" OnClientClick="ButtonEditar" OnClick="ButtonEditar" Text="Editar" CommandArgument='<%#Eval("id") %>' />
+            </td>
+        </ItemTemplate>
+    </asp:ListView>
+    <br />
+
     <div style="width:100%; height: 100px; align-content:center; text-align:center">
-        <div class="text-center" style="padding-right: 5px;">
-            <asp:Button runat="server" Height="50px" ID="usuario" CssClass="btn btn-secondary" Text="Usuarios" OnClientClick="button_usuarioOnClientClick" OnClick="button_usuarioOnClientClick"/>
-            <asp:Button runat="server" Height="50px" ID="producto" CssClass="btn btn-secondary" Text="Videojuegos" OnClientClick="button_productoOnClientClick" OnClick="button_productoOnClientClick"/>
-            <asp:Button runat="server" Height="50px" ID="categoria" CssClass="btn btn-secondary" Text="Géneros" OnClientClick="button_categoriaOnClientClick" OnClick="button_categoriaOnClientClick"/>
-            <asp:Button runat="server" Height="50px" ID="carrito" CssClass="btn btn-secondary" Text="Carritos" OnClientClick="button_carritoOnClientClick" OnClick="button_carritoOnClientClick"/>
-            <asp:Button runat="server" Height="50px" ID="pedido" CssClass="btn btn-secondary" Text="Pedidos" OnClientClick="button_pedidoOnClientClick" OnClick="button_pedidoOnClientClick"/>
-            <asp:Button runat="server" Height="50px" ID="desarrollador" CssClass="btn btn-secondary" Text="Desarrolladores" OnClientClick="button_desarrolladorOnClientClick" OnClick="button_desarrolladorOnClientClick"/>
-        </div>
+        <asp:Label CssClass="labelVacio" runat="server" ID="textboxVacio" Text="No se encontraron productos, intentelo más tarde." Visible="false" ></asp:Label>
     </div>
 
 </asp:Content>

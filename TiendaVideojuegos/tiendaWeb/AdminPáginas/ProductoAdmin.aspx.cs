@@ -4,44 +4,38 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using library;
+using System.Data;
 
 namespace tiendaWeb.AdminPáginas
 {
     public partial class ProductoAdmin : System.Web.UI.Page
     {
+        ENProducto producto = new ENProducto();
+
+        DataSet d = new DataSet();
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            d = producto.showAllProducto();
 
+            if (d.Tables[0].Rows.Count > 0)
+            {
+                listView.DataSource = d;
+                listView.DataBind();
+            }
+            else
+            {
+                textboxVacio.Visible = true;
+            }
         }
 
-        protected void button_usuarioOnClientClick(object sender, EventArgs e)
+        protected void ButtonEditar(object sender, EventArgs e)
         {
-            Response.Redirect("#");
-        }
+            LinkButton myButton = (LinkButton)sender;
+            string i = myButton.CommandArgument.ToString();
 
-        protected void button_productoOnClientClick(object sender, EventArgs e)
-        {
-            Response.Redirect("ProductoAdmin.aspx");
-        }
-
-        protected void button_categoriaOnClientClick(object sender, EventArgs e)
-        {
-            Response.Redirect("#");
-        }
-
-        protected void button_carritoOnClientClick(object sender, EventArgs e)
-        {
-            Response.Redirect("#");
-        }
-
-        protected void button_pedidoOnClientClick(object sender, EventArgs e)
-        {
-            Response.Redirect("#");
-        }
-
-        protected void button_desarrolladorOnClientClick(object sender, EventArgs e)
-        {
-            Response.Redirect("#");
+            Response.Redirect("~/Producto.aspx?idProd=" + i);
         }
     }
 }

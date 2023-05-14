@@ -53,33 +53,33 @@ namespace tiendaWeb
 
         protected void button_usuarioOnClientClick(object sender, EventArgs e)
         {
-            Response.Redirect("Registro.aspx");
+            Response.Redirect("~/Registro.aspx");
         }
 
         protected void button_perfilOnClientClick(object sender, EventArgs e)
         {
-            Response.Redirect("Usuario.aspx");
+            Response.Redirect("~/Usuario.aspx");
         }
 
         protected void button_carritoOnClientClick(object sender, EventArgs e)
         {
-            Response.Redirect("Carrito.aspx");
+            Response.Redirect("~/Carrito.aspx");
         }
 
         protected void button_pedidosOnClientClick(object sender, EventArgs e)
         {
-            Response.Redirect("Pedido.aspx");
+            Response.Redirect("~/Pedido.aspx");
         }
 
         protected void button_sesionOnClientClick(object sender, EventArgs e)
         {
             Session.Clear();
-            Response.Redirect("Home.aspx");
+            Response.Redirect("~/Home.aspx");
         }
 
         protected void button_adminOnClientClick(object sender, EventArgs e)
         {
-            Response.Redirect("Admin.aspx");
+            Response.Redirect("~/Admin.aspx");
         }
     }
 }
