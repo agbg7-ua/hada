@@ -5,9 +5,10 @@
 
     <div class="border border-white navbar navbar-expand-lg bg-dark">
         <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark"> Administración de Videojuegos </p>
+        <asp:LinkButton runat="server" id="añadir" CssClass="btn btn-outline-success" OnClientClick="ButtonAñadir" OnClick="ButtonAñadir" Text="Añadir" />
     </div>
 
-    <asp:ListView runat="server" ID="listView">
+    <asp:ListView runat="server" ID="listView" OnItemDataBound="ImagenClasificacion">
         <GroupTemplate>
             <tr>
                 <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
@@ -15,7 +16,7 @@
         </GroupTemplate>
 
         <LayoutTemplate>
-            <table class="table table-hover">
+            <table class="table table-hover" style="padding-left: 20px;">
                 <thead class="thead-dark">
                     <tr>
                         <th>
@@ -34,6 +35,9 @@
                             Fecha de salida
                         </th>
                         <th>
+                            Clasificación
+                        </th>
+                        <th>
                             Mostrar
                         </th>
                         <th>
@@ -50,7 +54,7 @@
                  <%# Eval("id") %>
             </td>
             <td>
-                 <asp:Image ID="Image1" runat="server" Width="50px" Height="50px" ImageUrl='<%# Eval("imagen") %>' />	
+                 <asp:Image ID="Image1" runat="server" Width="60px" Height="60px" ImageUrl='<%# Eval("imagen") %>' />	
             </td>
             <td>
                 <%# Eval("nombre") %>
@@ -62,10 +66,14 @@
                 <%# Eval("fecha_salida") %>
             </td>
             <td>
+                <asp:Image ID="Imagen1" runat="server" Width="40px" Height="40px" ImageUrl='<%# Eval("imagen") %>' />
+            </td>
+            <td>
                 <%# Eval("mostrar") %>
             </td>
             <td>
                 <asp:LinkButton runat="server" id="editar" CssClass="btn btn-warning" OnClientClick="ButtonEditar" OnClick="ButtonEditar" Text="Editar" CommandArgument='<%#Eval("id") %>' />
+                <asp:LinkButton runat="server" id="borrar" CssClass="btn btn-danger" OnClientClick="ButtonBorrar" OnClick="ButtonBorrar" Text="Borrar" CommandArgument='<%#Eval("id") %>' />
             </td>
         </ItemTemplate>
     </asp:ListView>

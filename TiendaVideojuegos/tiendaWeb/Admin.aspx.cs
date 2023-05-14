@@ -32,7 +32,7 @@ namespace tiendaWeb
 
         protected void button_carritoOnClientClick(object sender, EventArgs e)
         {
-            Response.Redirect("#");
+            Response.Redirect("AdminPáginas/CarritoAdmin.aspx");
         }
 
         protected void button_pedidoOnClientClick(object sender, EventArgs e)

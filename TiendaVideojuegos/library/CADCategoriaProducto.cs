@@ -147,7 +147,7 @@ namespace library
         {
             bool delete = false;
             SqlConnection c = null;
-            String comando = "Delete From CategoriaProducto where id = '" + en.id + "'";
+            String comando = "Delete From CategoriaProducto where id = " + en.id;
 
             try
             {

@@ -30,6 +30,11 @@ namespace tiendaWeb.AdminPáginas
             }
         }
 
+        protected void ButtonAñadir(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Admin.aspx");
+        }
+
         protected void ButtonEditar(object sender, EventArgs e)
         {
             LinkButton myButton = (LinkButton)sender;
@@ -39,6 +44,19 @@ namespace tiendaWeb.AdminPáginas
             textboxVacio.Text = i;
 
             //Response.Redirect("~/Producto.aspx?idProd=" + i);
+        }
+
+        protected void ButtonBorrar(object sender, EventArgs e)
+        {
+            ENCategoriaProducto en = new ENCategoriaProducto();
+
+            LinkButton myButton = (LinkButton)sender;
+            int i = int.Parse(myButton.CommandArgument.ToString());
+
+            en.id = i;
+
+            en.deleteCategoriaProducto();
+            Response.Redirect("CategoriaProductoAdmin.aspx");
         }
     }
 }

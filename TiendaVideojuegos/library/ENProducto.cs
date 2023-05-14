@@ -175,18 +175,18 @@ namespace library
         }
 
         // Método para borrar un producto
-        public DataSet deleteProducto(int i)
+        public bool deleteProducto()
         {
-            DataSet a = new DataSet();
+            bool delete = false;
             CADProducto c = new CADProducto();
 
             // Comprobamos que existe el producto
             if (c.readProducto(this) == true)
             {
-                a = c.deleteProducto(this, i);
+                delete = c.deleteProducto(this);
             }
     
-            return a;
+            return delete;
         }
 
         // Método para enseñar todos los productos

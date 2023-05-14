@@ -1,11 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="CategoriaProductoAdmin.aspx.cs" Inherits="tiendaWeb.AdminPáginas.CategoriaProductoAdmin" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="CarritoAdmin.aspx.cs" Inherits="tiendaWeb.AdminPáginas.CarritoAdmin" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
     <div class="border border-white navbar navbar-expand-lg bg-dark">
-        <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark"> Administración de Géneros de Videojuegos </p>
-        <asp:LinkButton runat="server" id="añadir" CssClass="btn btn-outline-success" OnClientClick="ButtonAñadir" OnClick="ButtonAñadir" Text="Añadir" />
+        <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark"> Administración de Carrito </p>
     </div>
 
     <asp:ListView runat="server" ID="listView">
@@ -16,20 +14,26 @@
         </GroupTemplate>
 
         <LayoutTemplate>
-            <table class="table table-hover">
+            <table class="table table-hover" style="padding-left: 20px;">
                 <thead class="thead-dark">
                     <tr>
                         <th>
-                            Id
+                            Id línea
                         </th>
                         <th>
-                            Imagen
+                            Id carrito
                         </th>
                         <th>
-                            Nombre
+                            Id producto
                         </th>
                         <th>
-                            Opciones
+                            Cantidad
+                        </th>
+                        <th>
+                            Importe
+                        </th>
+                        <th>
+                            Fecha
                         </th>
                     </tr>
                 </thead>
@@ -39,17 +43,22 @@
 
         <ItemTemplate>
             <td>
-                 <%# Eval("id") %>
+                 <%# Eval("id_línea") %>
             </td>
             <td>
-                 <asp:Image ID="Image1" runat="server" Width="50px" Height="50px" ImageUrl='<%# Eval("imagen") %>' />	
+                 <%# Eval("id_carrito") %>
             </td>
             <td>
-                <%# Eval("nombre") %>
+                <%# Eval("id_producto") %>
             </td>
             <td>
-                <asp:LinkButton runat="server" id="editar" CssClass="btn btn-warning" OnClientClick="ButtonEditar" OnClick="ButtonEditar" Text="Editar" CommandArgument='<%#Eval("id") %>' />
-                <asp:LinkButton runat="server" id="borrar" CssClass="btn btn-danger" OnClientClick="ButtonBorrar" OnClick="ButtonBorrar" Text="Borrar" CommandArgument='<%#Eval("id") %>' />
+                <%# Eval("cantidad") %>
+            </td>
+            <td>
+                <%# Eval("importe") %>
+            </td>
+            <td>
+                <%# Eval("fecha") %>
             </td>
         </ItemTemplate>
     </asp:ListView>

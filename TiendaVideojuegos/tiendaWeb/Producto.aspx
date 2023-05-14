@@ -19,14 +19,12 @@
                                     <p class="font-weight-bold text-dark h1"> 
                                             <%# Eval("nombre") %>
                                     </p>
-                                    <br>
                                     </br>
                                     <p class="card-text font-weight-bold h4"> Precio: 
                                     </p>
                                     <p class=" card-text h5">
                                         <%# Eval("pvp","{0:c}") %>
                                     </p>
-                                    <br>
                                     </br>
                                     <p class="card-text font-weight-bold h4"> Fecha de salida: 
                                     </p>

@@ -11,6 +11,7 @@ namespace tiendaWeb.AdminPáginas
 {
     public partial class ProductoAdmin : System.Web.UI.Page
     {
+
         ENProducto producto = new ENProducto();
 
         DataSet d = new DataSet();
@@ -30,12 +31,70 @@ namespace tiendaWeb.AdminPáginas
             }
         }
 
+        protected void ImagenClasificacion(object sender, ListViewItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListViewItemType.DataItem)
+            {
+                ListViewDataItem dataItem = (ListViewDataItem)e.Item;
+
+                Image imagen1 = (Image)dataItem.FindControl("Imagen1");
+
+                int clas = Convert.ToInt32(DataBinder.Eval(dataItem.DataItem, "id").ToString());
+
+                producto.id = clas;
+                producto.readProducto();
+
+                if (producto.clasificacion == 1)
+                {
+                    imagen1.ImageUrl = "~/Imagenes/Clasificacion/pegi3.png";
+                }
+                else if (producto.clasificacion == 2)
+                {
+                    imagen1.ImageUrl = "~/Imagenes/Clasificacion/pegi7.png";
+                }
+                else if (producto.clasificacion == 3)
+                {
+                    imagen1.ImageUrl = "~/Imagenes/Clasificacion/pegi12.png";
+                }
+                else if (producto.clasificacion == 4)
+                {
+                    imagen1.ImageUrl = "~/Imagenes/Clasificacion/pegi16.png";
+                }
+                else if (producto.clasificacion == 5)
+                {
+                    imagen1.ImageUrl = "~/Imagenes/Clasificacion/pegi18.png";
+                }
+                else 
+                {
+                    imagen1.Visible = false;
+                }
+            }
+        }
+
+        protected void ButtonAñadir(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Admin.aspx");
+        }
+
         protected void ButtonEditar(object sender, EventArgs e)
         {
             LinkButton myButton = (LinkButton)sender;
             string i = myButton.CommandArgument.ToString();
 
-            Response.Redirect("~/Producto.aspx?idProd=" + i);
+            Response.Redirect("EditarProductoAdmin.aspx?idProd=" + i);
+        }
+
+        protected void ButtonBorrar(object sender, EventArgs e)
+        {
+            ENProducto en = new ENProducto();
+
+            LinkButton myButton = (LinkButton)sender;
+            int i = int.Parse(myButton.CommandArgument.ToString());
+
+            en.id = i;
+            
+            en.deleteProducto();
+            Response.Redirect("ProductoAdmin.aspx");
         }
     }
 }

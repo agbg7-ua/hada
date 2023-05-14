@@ -86,31 +86,24 @@ namespace library
         public bool readProducto(ENProducto en) 
         {
             bool read = false;
-            DataSet bdvirtual = new DataSet();
-            SqlConnection c = new SqlConnection(constring);
+            SqlConnection c = null;
+            String comando = "Select * From Producto where id=" + en.id;
 
             try
             {
-                SqlDataAdapter da = new SqlDataAdapter("select * from Producto", c);
-                da.Fill(bdvirtual, "Producto");
-                DataTable t = new DataTable();
-                t = bdvirtual.Tables["Producto"];
+                c = new SqlConnection(constring);
+                c.Open();
 
-                for (int i = 0; i < t.Rows.Count; i++) {
-                    DataRow fila = t.Rows[i];
+                SqlCommand com = new SqlCommand(comando, c);
+                SqlDataReader dr = com.ExecuteReader();
 
-                    if (en.id == int.Parse(fila[0].ToString())) {
-                        read = true;
-                        en.id_categoria = int.Parse(fila[1].ToString());
-                        en.id_desarrollador = int.Parse(fila[2].ToString());
-                        en.nombre = fila[3].ToString();
-                        en.pvp = float.Parse(fila[4].ToString());
-                        en.descripcion = fila[5].ToString();
-                        en.clasificacion = int.Parse(fila[6].ToString());
-                        en.imagen = fila[7].ToString();
-                        en.mostrar = Boolean.Parse(fila[8].ToString());
-                    }
+                if (dr.Read())
+                {
+                    read = true;
+                    en.clasificacion = Convert.ToInt32(dr["clasificacion"].ToString());
                 }
+
+                dr.Close();
             }
             catch (SqlException ex)
             {
@@ -134,33 +127,24 @@ namespace library
         public bool readByNameProducto(ENProducto en)
         {
             bool read = false;
-            DataSet bdvirtual = new DataSet();
-            SqlConnection c = new SqlConnection(constring);
+            SqlConnection c = null;
+            String comando = "Select * From Producto where nombre='" + en.nombre + "'";
 
             try
             {
-                SqlDataAdapter da = new SqlDataAdapter("select * from Producto", c);
-                da.Fill(bdvirtual, "Producto");
-                DataTable t = new DataTable();
-                t = bdvirtual.Tables["Producto"];
+                c = new SqlConnection(constring);
+                c.Open();
 
-                for (int i = 0; i < t.Rows.Count; i++)
+                SqlCommand com = new SqlCommand(comando, c);
+                SqlDataReader dr = com.ExecuteReader();
+
+                if (dr.Read())
                 {
-                    DataRow fila = t.Rows[i];
-
-                    if (en.nombre == fila[3].ToString())
-                    {
-                        read = true;
-                        en.id = int.Parse(fila[0].ToString());
-                        en.id_categoria = int.Parse(fila[1].ToString());
-                        en.id_desarrollador = int.Parse(fila[2].ToString());
-                        en.pvp = float.Parse(fila[4].ToString());
-                        en.descripcion = fila[5].ToString();
-                        en.clasificacion = int.Parse(fila[6].ToString());
-                        en.imagen = fila[7].ToString();
-                        en.mostrar = Boolean.Parse(fila[8].ToString());
-                    }
+                    read = true;
+                    en.clasificacion = Convert.ToInt32(dr["clasificacion"].ToString());
                 }
+
+                dr.Close();
             }
             catch (SqlException ex)
             {
@@ -252,37 +236,38 @@ namespace library
         }
 
         // Método para borrar un Producto -> modo desconectado
-        public DataSet deleteProducto(ENProducto en, int i)
+        public bool deleteProducto(ENProducto en)
         {
-            DataSet bdvirtual = new DataSet();
-            SqlConnection c = new SqlConnection(constring);
+            bool delete = false;
+            SqlConnection c = null;
+            String comando = "Delete From Producto where id= " + en.id;
 
             try
             {
-                String comando = "Select * From Producto";
-                SqlDataAdapter da = new SqlDataAdapter(comando, c);
-                da.Fill(bdvirtual, "Producto");
-                DataTable t = new DataTable();
-                t = bdvirtual.Tables["Producto"];
-                t.Rows[i].Delete();
-                SqlCommandBuilder cbuilder = new SqlCommandBuilder(da);
-                da.Update(bdvirtual, "Producto");
-                return bdvirtual;
+                c = new SqlConnection(constring);
+                c.Open();
+
+                SqlCommand com = new SqlCommand(comando, c);
+
+                com.ExecuteNonQuery();
+                delete = true;
             }
             catch (SqlException ex)
             {
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
-                return bdvirtual;
+                return delete;
             }
             catch (Exception ex)
             {
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
-                return bdvirtual;
+                return delete;
             }
             finally
             {
                 if (c != null) c.Close();
             }
+
+            return delete;
         }
 
         // Método para enseñar todos los Productos -> modo desconectado
