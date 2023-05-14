@@ -27,7 +27,7 @@ namespace tiendaWeb
 
         protected void button_categoriaOnClientClick(object sender, EventArgs e)
         {
-            Response.Redirect("#");
+            Response.Redirect("AdminPáginas/CategoriaProductoAdmin.aspx");
         }
 
         protected void button_carritoOnClientClick(object sender, EventArgs e)
