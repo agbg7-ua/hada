@@ -14,11 +14,11 @@
         <asp:Table ID="Table1" runat="server">
             <asp:TableRow>
                 <asp:TableCell>
-                    <asp:Image ID="Image3" runat="server" ImageUrl="Imagenes/kojima.png" Height="300" Width="200" Style="margin-right: 30px" />
+                    <asp:Image ID="Image3" runat="server" Height="300" Width="200" Style="margin-right: 30px" />
                     <br />
-                    <asp:FileUpload ID="FileUpload1" runat="server" Visible="false"/>
+                    <asp:FileUpload ID="FileUpload1" runat="server" Visible="false" CssClass="bg-dark"/>
                     <br />
-                    <asp:Button ID="Button_upload_image" runat="server" Text="Upload" OnClick="Button_upload_image_click" Visible="false"/>
+                    <asp:Button ID="Button_upload_image" runat="server" Text="Upload" OnClick="Button_upload_image_click" Visible="false" CssClass="btn"/>
 
                 </asp:TableCell>
                 <asp:TableCell>
@@ -72,6 +72,7 @@
         <asp:Button ID="Button_eliminar" runat="server" Text="Eliminar" CssClass="btn" Enabled="false" />
         <asp:Button ID="Button_nuevo" runat="server" Text="Nuevo" CssClass="btn" OnClick="Button_nuevo_click" />
         <asp:Button ID="Button_agregar_imagen" runat="server" Text="Agregar Imagen" CssClass="btn" Visible="false" Enabled="false" />
+        <asp:Button ID="Button_cancelar" runat="server" Text="Cancelar" OnClick="cancelar_click" CssClass="btn" />
 
         <br />
         <asp:Label ID="Label_error_info" runat="server" Text="" ForeColor="#990000"></asp:Label>

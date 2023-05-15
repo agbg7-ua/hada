@@ -6,14 +6,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="border border-white navbar navbar-expand-lg bg-dark">
-        <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark"> Desarrolladoras de videojuegos </p>
+        <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark">Desarrolladoras de videojuegos </p>
     </div>
 
-    <h2 CssClass="h2" style="margin-left:50px">Filtrar</h2>
+    <h2 cssclass="h2" style="margin-left: 50px">Filtrar</h2>
     <div>
 
 
-        <asp:Label ID="Label2" runat="server" Text="Nombre " Font-Bold="true" Font-Size="Large" style="margin-left:50px"></asp:Label>
+        <asp:Label ID="Label2" runat="server" Text="Nombre " Font-Bold="true" Font-Size="Large" Style="margin-left: 50px"></asp:Label>
         <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
         <asp:Label ID="Label1" runat="server" Text="Fecha " Font-Bold="true" Font-Size="Large"></asp:Label>
         <asp:TextBox ID="TextBox_Date" runat="server" TextMode="Date"></asp:TextBox>
@@ -51,7 +51,7 @@
                 </tr>
             </GroupTemplate>
 
-<%--            <GroupSeparatorTemplate>
+            <%--            <GroupSeparatorTemplate>
                 <tr id="Tr1" runat="server" visible="false">
                     <td colspan="3" style="padding: 5px 5px 5px 5px;">
                         <hr />
@@ -73,10 +73,12 @@
                         <asp:table runat="server" xmlns:asp="#unknown" width="500">
                             <asp:tablerow>
                                 <asp:tablecell columnspan="2">
-                                    <asp:hyperlink id="HyperLink1" runat="server"
+<%--                                    <asp:hyperlink id="HyperLink1" runat="server"
                                         navigateurl='<%# "Desarrollador.aspx"%>'>
                                         <asp:image runat="server" imageurl='<%#Eval("imagen") %>' height="120px" width="120px"></asp:image>
-                                    </asp:hyperlink>
+                                    </asp:hyperlink>--%>
+                                    <asp:imagebutton id="boton_lista" runat="server" imageurl='<%#Eval("imagen") %>'  height="120px" width="120px" OnClick="test" CommandArgument='<%# Eval("nombre") %>'></asp:imagebutton>
+
                                 </asp:tablecell>
                                 <asp:tablecell columnspan="2">
                                     <asp:label runat="server" text="Nombre: " font-bold="true"></asp:label>

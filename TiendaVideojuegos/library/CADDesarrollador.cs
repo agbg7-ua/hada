@@ -26,7 +26,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace library
 {
-    internal class CADDesarrollador
+    public class CADDesarrollador
     {
         private string constring;
 
@@ -103,7 +103,7 @@ namespace library
                                         en.imagen,
                                         en.id);
                 c.Open();
-                SqlCommand com = new SqlCommand(sql_q);
+                SqlCommand com = new SqlCommand(sql_q, c);
                 com.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -136,7 +136,7 @@ namespace library
                         en.nombre);
 
                     c.Open();
-                    SqlCommand com = new SqlCommand(sql_q);
+                    SqlCommand com = new SqlCommand(sql_q,c);
                     com.ExecuteNonQuery();
                 }
                 else
@@ -176,7 +176,7 @@ namespace library
                          "select * from Desarrollador where id = {0}",
                          id);
                 c.Open();
-                SqlCommand com = new SqlCommand(sql_q);
+                SqlCommand com = new SqlCommand(sql_q,c);
                 SqlDataReader dr = com.ExecuteReader();
                 if (dr.Read())
                 {
@@ -215,7 +215,7 @@ namespace library
                          "select * from Desarrollador where nombre = '{0}'",
                          nombre);
                 c.Open();
-                SqlCommand com = new SqlCommand(sql_q);
+                SqlCommand com = new SqlCommand(sql_q, c);
                 SqlDataReader dr = com.ExecuteReader();
                 if (dr.Read())
                 {
@@ -224,6 +224,7 @@ namespace library
                     en.origen = dr["origen"].ToString();
                     en.fecha_creacion = DateTime.Parse(dr["fecha_creacion"].ToString());
                     en.web = dr["web"].ToString();
+                    en.imagen = dr["imagen"].ToString();
                     obtenido = true;
                 }
                 if (!obtenido)
@@ -262,7 +263,7 @@ namespace library
                         "select * from Desarrollador where fecha_creacion between '{0}' and '{1}'",
                         inicio,
                         final);
-                SqlCommand com = new SqlCommand(sql_q);
+                SqlCommand com = new SqlCommand(sql_q, c);
                 SqlDataReader dr = com.ExecuteReader();
                 while (dr.Read())
                 {
@@ -292,7 +293,7 @@ namespace library
         public List<ENDesarrollador> obtener_todos()
         {
             List<ENDesarrollador> lista_final = new List<ENDesarrollador>();
-            ENDesarrollador en = new ENDesarrollador();
+            
             SqlConnection c = new SqlConnection(constring);
             try
             {
@@ -303,7 +304,7 @@ namespace library
                 SqlDataReader dr = com.ExecuteReader();
                 while (dr.Read())
                 {
-
+                    ENDesarrollador en = new ENDesarrollador();
                     en.nombre = dr["nombre"].ToString();
                     en.descripcion = dr["descripcion"].ToString();
                     en.origen = dr["origen"].ToString();
