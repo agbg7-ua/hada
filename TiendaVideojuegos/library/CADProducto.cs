@@ -86,31 +86,31 @@ namespace library
         public bool readProducto(ENProducto en) 
         {
             bool read = false;
-            DataSet bdvirtual = new DataSet();
-            SqlConnection c = new SqlConnection(constring);
+            SqlConnection c = null;
+            String comando = "Select * From Producto where id=" + en.id;
 
             try
             {
-                SqlDataAdapter da = new SqlDataAdapter("select * from Producto", c);
-                da.Fill(bdvirtual, "Producto");
-                DataTable t = new DataTable();
-                t = bdvirtual.Tables["Producto"];
+                c = new SqlConnection(constring);
+                c.Open();
 
-                for (int i = 0; i < t.Rows.Count; i++) {
-                    DataRow fila = t.Rows[i];
+                SqlCommand com = new SqlCommand(comando, c);
+                SqlDataReader dr = com.ExecuteReader();
 
-                    if (en.id == int.Parse(fila[0].ToString())) {
-                        read = true;
-                        en.id_categoria = int.Parse(fila[1].ToString());
-                        en.id_desarrollador = int.Parse(fila[2].ToString());
-                        en.nombre = fila[3].ToString();
-                        en.pvp = float.Parse(fila[4].ToString());
-                        en.descripcion = fila[5].ToString();
-                        en.clasificacion = int.Parse(fila[6].ToString());
-                        en.imagen = fila[7].ToString();
-                        en.mostrar = Boolean.Parse(fila[8].ToString());
-                    }
+                if (dr.Read())
+                {
+                    read = true;
+                    en.id_categoria = Convert.ToInt32(dr["id_categoria"].ToString());
+                    en.id_desarrollador = Convert.ToInt32(dr["id_desarrollador"].ToString());
+                    en.nombre = dr["nombre"].ToString();
+                    en.pvp = (float)Convert.ToDouble(dr["pvp"].ToString());
+                    en.descripcion = dr["descripcion"].ToString();
+                    en.fecha_salida = Convert.ToDateTime(dr["fecha_salida"].ToString());
+                    en.clasificacion = Convert.ToInt32(dr["clasificacion"].ToString());
+                    en.imagen = dr["imagen"].ToString();
                 }
+
+                dr.Close();
             }
             catch (SqlException ex)
             {
@@ -134,33 +134,24 @@ namespace library
         public bool readByNameProducto(ENProducto en)
         {
             bool read = false;
-            DataSet bdvirtual = new DataSet();
-            SqlConnection c = new SqlConnection(constring);
+            SqlConnection c = null;
+            String comando = "Select * From Producto where nombre='" + en.nombre + "'";
 
             try
             {
-                SqlDataAdapter da = new SqlDataAdapter("select * from Producto", c);
-                da.Fill(bdvirtual, "Producto");
-                DataTable t = new DataTable();
-                t = bdvirtual.Tables["Producto"];
+                c = new SqlConnection(constring);
+                c.Open();
 
-                for (int i = 0; i < t.Rows.Count; i++)
+                SqlCommand com = new SqlCommand(comando, c);
+                SqlDataReader dr = com.ExecuteReader();
+
+                if (dr.Read())
                 {
-                    DataRow fila = t.Rows[i];
-
-                    if (en.nombre == fila[3].ToString())
-                    {
-                        read = true;
-                        en.id = int.Parse(fila[0].ToString());
-                        en.id_categoria = int.Parse(fila[1].ToString());
-                        en.id_desarrollador = int.Parse(fila[2].ToString());
-                        en.pvp = float.Parse(fila[4].ToString());
-                        en.descripcion = fila[5].ToString();
-                        en.clasificacion = int.Parse(fila[6].ToString());
-                        en.imagen = fila[7].ToString();
-                        en.mostrar = Boolean.Parse(fila[8].ToString());
-                    }
+                    read = true;
+                    en.clasificacion = Convert.ToInt32(dr["clasificacion"].ToString());
                 }
+
+                dr.Close();
             }
             catch (SqlException ex)
             {
@@ -210,79 +201,74 @@ namespace library
             }
         }
 
-        // Método para actualizar un Producto -> modo desconectado
-        public DataSet updateProducto(ENProducto en, int i)
+        // Método para actualizar un Producto -> modo conectado
+        public bool updateProducto(ENProducto en)
         {
-            DataSet bdvirtual = new DataSet();
-            SqlConnection c = new SqlConnection(constring);
+            bool update = false;
+            SqlConnection c = null;
+            String comando = "Update Producto set nombre='" + en.nombre + "', pvp=" + en.pvp + ", descripcion='" + en.descripcion + "', clasificacion=" + en.clasificacion + " where id=" + en.id;
 
             try
             {
-                String comando = "Select * From Producto";
-                SqlDataAdapter da = new SqlDataAdapter(comando, c);
-                da.Fill(bdvirtual, "Producto");
-                DataTable t = new DataTable();
-                t = bdvirtual.Tables["Producto"];
-                t.Rows[i]["id_categoria"] = en.id_categoria;
-                t.Rows[i]["id_desarrollador"] = en.id_desarrollador;
-                t.Rows[i]["nombre"] = en.nombre;
-                t.Rows[i]["pvp"] = en.pvp;
-                t.Rows[i]["descripcion"] = en.descripcion;
-                t.Rows[i]["clasificacion"] = en.clasificacion;
-                t.Rows[i]["imagen"] = en.imagen;
-                t.Rows[i]["mostrar"] = en.mostrar;
-                SqlCommandBuilder cbuilder = new SqlCommandBuilder(da);
-                da.Update(bdvirtual, "Producto");
-                return bdvirtual;
+                c = new SqlConnection(constring);
+                c.Open();
+
+                SqlCommand com = new SqlCommand(comando, c);
+
+                com.ExecuteNonQuery();
+                update = true;
             }
             catch (SqlException ex)
             {
+                update = false;
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
-                return bdvirtual;
             }
             catch (Exception ex)
             {
+                update = false;
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
-                return bdvirtual;
             }
             finally
             {
                 if (c != null) c.Close();
             }
+
+            return update;
         }
 
         // Método para borrar un Producto -> modo desconectado
-        public DataSet deleteProducto(ENProducto en, int i)
+        public bool deleteProducto(ENProducto en)
         {
-            DataSet bdvirtual = new DataSet();
-            SqlConnection c = new SqlConnection(constring);
+            bool delete = false;
+            SqlConnection c = null;
+            String comando = "Delete From Producto where id= " + en.id;
 
             try
             {
-                String comando = "Select * From Producto";
-                SqlDataAdapter da = new SqlDataAdapter(comando, c);
-                da.Fill(bdvirtual, "Producto");
-                DataTable t = new DataTable();
-                t = bdvirtual.Tables["Producto"];
-                t.Rows[i].Delete();
-                SqlCommandBuilder cbuilder = new SqlCommandBuilder(da);
-                da.Update(bdvirtual, "Producto");
-                return bdvirtual;
+                c = new SqlConnection(constring);
+                c.Open();
+
+                SqlCommand com = new SqlCommand(comando, c);
+
+                com.ExecuteNonQuery();
+                delete = true;
             }
             catch (SqlException ex)
             {
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
-                return bdvirtual;
+                return delete;
             }
             catch (Exception ex)
             {
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
-                return bdvirtual;
+                return delete;
             }
             finally
             {
                 if (c != null) c.Close();
             }
+
+            return delete;
         }
 
         // Método para enseñar todos los Productos -> modo desconectado
