@@ -12,64 +12,21 @@ namespace tiendaWeb.AdminPáginas
     public partial class EditarProductoAdmin : System.Web.UI.Page
     {
         ENProducto en = new ENProducto();
-        DataSet d = new DataSet();
-        string idProd;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             en.id = Convert.ToInt32(Request.Params["idProd"]);
             en.readProducto();
 
-            d = en.showProducto();
+            ProductImage.ImageUrl = en.imagen;
+            nombre.Attributes.Add("placeholder", en.nombre);
+            precio.Attributes.Add("placeholder", en.pvp.ToString());
+            descripcion.Attributes.Add("placeholder", en.descripcion);
 
-            if (d.Tables[0].Rows.Count > 0)
+            if (!Page.IsPostBack)
             {
-                listView.DataSource = d;
-                listView.DataBind();
+                clasificacion.SelectedValue = en.clasificacion.ToString();
             }
-            else
-            {
-                textboxVacio.Visible = true;
-            }
-        }
-
-        protected void Clasificacion(object sender, ListViewItemEventArgs e)
-        {
-            if (e.Item.ItemType == ListViewItemType.DataItem)
-            {
-                ListViewDataItem dataItem = (ListViewDataItem)e.Item;
-
-                DropDownList clas = (DropDownList)dataItem.FindControl("clasificacion");
-
-                en.id = Convert.ToInt32(Request.Params["idProd"]);
-                en.readProducto();
-
-                if (en.clasificacion == 2)
-                {
-                    clas.SelectedValue = "2";
-                }
-                else if (en.clasificacion == 3)
-                {
-                    clas.SelectedValue = "3";
-                }
-                else if (en.clasificacion == 4)
-                {
-                    clas.SelectedValue = "4";
-                }
-                else if (en.clasificacion == 5)
-                {
-                    clas.SelectedValue = "5";
-                }
-                else
-                {
-                    clas.SelectedValue = "1";
-                }
-            }
-        }
-
-        protected void clasificacion_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
         }
 
         protected void ButtonVolver(object sender, EventArgs e)
@@ -79,18 +36,30 @@ namespace tiendaWeb.AdminPáginas
 
         protected void ButtonGuardar(object sender, EventArgs e)
         {
+            ENProducto aux = new ENProducto();
+            en.id = Convert.ToInt32(Request.Params["idProd"]);
+            en.readProducto();
 
-                int i = Convert.ToInt32(Request.Params["idProd"]);
-                TextBox name = (TextBox)FindControl("nombre");
-                TextBox price = (TextBox)FindControl("precio");
-                TextBox date = (TextBox)FindControl("fecha");
+            if (nombre.Text != "")
+            { 
+                en.nombre = nombre.Text;
+            } 
+            if (precio.Text != "")
+            {
+                en.pvp = (float)Convert.ToDouble(precio.Text);
+            }
+            if (descripcion.Text != "")
+            {
+                en.descripcion = descripcion.Text;
+            }
 
-                en.nombre = name.Text;
-                en.pvp = float.Parse(price.Text);
-                en.fecha_salida = DateTime.Parse(date.Text);
-                en.updateProducto(i);
-                Response.Redirect("ProductoAdmin.aspx");
-            
+            en.clasificacion = Convert.ToInt32(clasificacion.SelectedValue);
+
+            textboxVacio.Visible = true;
+            textboxVacio.Text = clasificacion.SelectedValue;
+
+            en.updateProducto();
+            Response.Redirect("ProductoAdmin.aspx");
         }
     }
 }

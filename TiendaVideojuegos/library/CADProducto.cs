@@ -100,7 +100,14 @@ namespace library
                 if (dr.Read())
                 {
                     read = true;
+                    en.id_categoria = Convert.ToInt32(dr["id_categoria"].ToString());
+                    en.id_desarrollador = Convert.ToInt32(dr["id_desarrollador"].ToString());
+                    en.nombre = dr["nombre"].ToString();
+                    en.pvp = (float)Convert.ToDouble(dr["pvp"].ToString());
+                    en.descripcion = dr["descripcion"].ToString();
+                    en.fecha_salida = Convert.ToDateTime(dr["fecha_salida"].ToString());
                     en.clasificacion = Convert.ToInt32(dr["clasificacion"].ToString());
+                    en.imagen = dr["imagen"].ToString();
                 }
 
                 dr.Close();
@@ -194,45 +201,39 @@ namespace library
             }
         }
 
-        // Método para actualizar un Producto -> modo desconectado
-        public DataSet updateProducto(ENProducto en, int i)
+        // Método para actualizar un Producto -> modo conectado
+        public bool updateProducto(ENProducto en)
         {
-            DataSet bdvirtual = new DataSet();
-            SqlConnection c = new SqlConnection(constring);
+            bool update = false;
+            SqlConnection c = null;
+            String comando = "Update Producto set nombre='" + en.nombre + "', pvp=" + en.pvp + ", descripcion='" + en.descripcion + "', clasificacion=" + en.clasificacion + " where id=" + en.id;
 
             try
             {
-                String comando = "Select * From Producto";
-                SqlDataAdapter da = new SqlDataAdapter(comando, c);
-                da.Fill(bdvirtual, "Producto");
-                DataTable t = new DataTable();
-                t = bdvirtual.Tables["Producto"];
-                t.Rows[i]["id_categoria"] = en.id_categoria;
-                t.Rows[i]["id_desarrollador"] = en.id_desarrollador;
-                t.Rows[i]["nombre"] = en.nombre;
-                t.Rows[i]["pvp"] = en.pvp;
-                t.Rows[i]["descripcion"] = en.descripcion;
-                t.Rows[i]["clasificacion"] = en.clasificacion;
-                t.Rows[i]["imagen"] = en.imagen;
-                t.Rows[i]["mostrar"] = en.mostrar;
-                SqlCommandBuilder cbuilder = new SqlCommandBuilder(da);
-                da.Update(bdvirtual, "Producto");
-                return bdvirtual;
+                c = new SqlConnection(constring);
+                c.Open();
+
+                SqlCommand com = new SqlCommand(comando, c);
+
+                com.ExecuteNonQuery();
+                update = true;
             }
             catch (SqlException ex)
             {
+                update = false;
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
-                return bdvirtual;
             }
             catch (Exception ex)
             {
+                update = false;
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
-                return bdvirtual;
             }
             finally
             {
                 if (c != null) c.Close();
             }
+
+            return update;
         }
 
         // Método para borrar un Producto -> modo desconectado

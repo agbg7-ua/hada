@@ -138,40 +138,25 @@ namespace library
         }
 
         // Método para actualizar un producto
-        public DataSet updateProducto(int i)
+        public bool updateProducto()
         {
-            DataSet a = new DataSet();
             CADProducto c = new CADProducto();
             ENProducto en = new ENProducto();
             ENCategoriaProducto cat = new ENCategoriaProducto();
 
-            en.id_categoria = this.id_categoria;
-            en.id_desarrollador = this.id_desarrollador;
-            en.nombre = this.nombre;
-            en.pvp = this.pvp;
-            en.descripcion = this.descripcion;
-            en.fecha_salida = this.fecha_salida;
-            en.clasificacion = this.clasificacion;
-            en.imagen = this.imagen;
-            en.mostrar = this.mostrar;
+            en.id = this.id;
 
-            cat.id = this.id_categoria;
+            if (en.readProducto())
+            {
+                cat.id = this.id_categoria;
 
-            // Comprobamos que existe el producto y la categoría de producto
-            if (c.readProducto(this) == true && cat.readCategoriaProducto() == true) {
-                this.id_categoria = en.id_categoria;
-                this.id_desarrollador = en.id_desarrollador;
-                this.nombre = en.nombre;
-                this.pvp = en.pvp;
-                this.descripcion = en.descripcion;
-                this.fecha_salida = en.fecha_salida;
-                this.clasificacion = en.clasificacion;
-                this.imagen = en.imagen;
-                this.mostrar = en.mostrar;
-                a = c.updateProducto(this, i);
+                if (cat.readCategoriaProducto())
+                {
+                    return c.updateProducto(this);
+                }
             }
-            
-            return a;
+
+            return false;
         }
 
         // Método para borrar un producto

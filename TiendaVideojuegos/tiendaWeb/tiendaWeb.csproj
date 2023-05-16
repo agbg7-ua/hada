@@ -70,6 +70,7 @@
     <Content Include="Admin.aspx" />
     <Content Include="AdminPáginas\CarritoAdmin.aspx" />
     <Content Include="AdminPáginas\CategoriaProductoAdmin.aspx" />
+    <Content Include="AdminPáginas\EditarCategoriaProductoAdmin.aspx" />
     <Content Include="AdminPáginas\EditarProductoAdmin.aspx" />
     <Content Include="AdminPáginas\ProductoAdmin.aspx" />
     <Content Include="App_Data\Database.mdf" />
@@ -124,6 +125,13 @@
     </Compile>
     <Compile Include="AdminPáginas\CategoriaProductoAdmin.aspx.designer.cs">
       <DependentUpon>CategoriaProductoAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPáginas\EditarCategoriaProductoAdmin.aspx.cs">
+      <DependentUpon>EditarCategoriaProductoAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPáginas\EditarCategoriaProductoAdmin.aspx.designer.cs">
+      <DependentUpon>EditarCategoriaProductoAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminPáginas\EditarProductoAdmin.aspx.cs">
       <DependentUpon>EditarProductoAdmin.aspx</DependentUpon>

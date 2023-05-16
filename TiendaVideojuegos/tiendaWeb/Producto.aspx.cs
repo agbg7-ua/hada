@@ -13,7 +13,6 @@ namespace tiendaWeb
     {
         ENProducto en = new ENProducto();
         DataSet d = new DataSet();
-        string idProd;
 
         protected void Page_Load(object sender, EventArgs e)
         {

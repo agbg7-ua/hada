@@ -112,7 +112,7 @@ namespace library
         {
             bool update = false;
             SqlConnection c = null;
-            String comando = "Update CategoriaProducto set nombre='" + en.nombre + "', descripcion='" + en.descripcion + "', imagen='" + en.imagen + "' where id='" + en.id + "'";
+            String comando = "Update CategoriaProducto set nombre='" + en.nombre + "', descripcion='" + en.descripcion + "', imagen='" + en.imagen + "' where id=" + en.id;
 
             try
             {

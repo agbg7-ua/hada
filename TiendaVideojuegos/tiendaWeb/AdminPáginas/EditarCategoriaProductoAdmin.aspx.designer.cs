@@ -11,7 +11,7 @@ namespace tiendaWeb.AdminPáginas
 {
 
 
-    public partial class EditarProductoAdmin
+    public partial class EditarCategoriaProductoAdmin
     {
 
         /// <summary>
@@ -31,24 +31,6 @@ namespace tiendaWeb.AdminPáginas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox nombre;
-
-        /// <summary>
-        /// Control precio.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox precio;
-
-        /// <summary>
-        /// Control clasificacion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList clasificacion;
 
         /// <summary>
         /// Control descripcion.

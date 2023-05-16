@@ -40,10 +40,7 @@ namespace tiendaWeb.AdminPáginas
             LinkButton myButton = (LinkButton)sender;
             string i = myButton.CommandArgument.ToString();
 
-            textboxVacio.Visible = true;
-            textboxVacio.Text = i;
-
-            //Response.Redirect("~/Producto.aspx?idProd=" + i);
+            Response.Redirect("EditarCategoriaProductoAdmin.aspx?idProd=" + i);
         }
 
         protected void ButtonBorrar(object sender, EventArgs e)
