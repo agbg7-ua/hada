@@ -22,6 +22,8 @@ namespace tiendaWeb.AdminPáginas
             {
                 if (Session["username"] != null)
                 {
+                    usu.username = Session["username"].ToString();
+
                     if (!usu.isAdminUsuario())
                     {
                         Response.Redirect("~/Home.aspx");
@@ -31,18 +33,18 @@ namespace tiendaWeb.AdminPáginas
                 {
                     Response.Redirect("~/Home.aspx");
                 }
-            }
 
-            d = producto.showAllProducto();
+                d = producto.showAllProducto();
 
-            if (d.Tables[0].Rows.Count > 0)
-            {
-                listView.DataSource = d;
-                listView.DataBind();
-            }
-            else
-            {
-                textboxVacio.Visible = true;
+                if (d.Tables[0].Rows.Count > 0)
+                {
+                    listView.DataSource = d;
+                    listView.DataBind();
+                }
+                else
+                {
+                    textboxVacio.Visible = true;
+                }
             }
         }
 
