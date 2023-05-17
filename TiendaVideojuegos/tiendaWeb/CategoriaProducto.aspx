@@ -31,19 +31,14 @@
 
                 <ItemTemplate>
                     <td style="width:300px; height:350px; padding: 5px 5px 5px 25px;">
-                        <div class="productItem">
-                            <asp:HyperLink ID="HyperLink1" runat="server" 
-                                NavigateUrl='<%# "ListarProductoCategoría.aspx?idCat=" + Eval("id")%>'>
-                                <div>
-                                    <asp:Image ID="ProductImage" runat="server" Width="200px" Height="200px"
+                        <div class="card" style="background-color: #c3c3c3;">
+                            <asp:Image ID="Image1" CssClass="" runat="server" Width="280px" Height="280px"
                                         ImageUrl='<%# Eval("imagen") %>' />	
-                                </div>
-                                <div>
-                                    <b class="font-weight-bold text-dark h5"> 
-                                        <%# Eval("nombre") %>
-                                    </b>
-                                </div>
-                            </asp:HyperLink>
+                            <div class="card-body">
+                                <h5 class="card-title"> <%# Eval("nombre") %> </h5>
+                                <p class="card-text">  <%# Eval("descripcion") %> </p>
+                                <a href='<%# "ListarProductoCategoría.aspx?idCat=" + Eval("id")%>' class="btn btn-info">Ver Productos</a>
+                            </div>
                         </div>
                     </td>
                 </ItemTemplate>
