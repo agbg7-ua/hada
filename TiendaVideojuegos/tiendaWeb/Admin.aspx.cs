@@ -10,9 +10,26 @@ namespace tiendaWeb
 {
     public partial class Admin : System.Web.UI.Page
     {
+        ENUsuario usu = new ENUsuario();
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
+                if (Session["username"] != null)
+                {
+                    usu.username = Session["username"].ToString();
 
+                    if (!usu.isAdminUsuario())
+                    {
+                        Response.Redirect("~/Home.aspx");
+                    }
+                }
+                else
+                {
+                    Response.Redirect("~/Home.aspx");
+                }
+            }
         }
 
         protected void button_usuarioOnClientClick(object sender, EventArgs e)

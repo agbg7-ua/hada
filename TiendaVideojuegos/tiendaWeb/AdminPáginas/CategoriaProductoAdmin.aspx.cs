@@ -12,11 +12,27 @@ namespace tiendaWeb.AdminPáginas
     public partial class CategoriaProductoAdmin : System.Web.UI.Page
     {
         ENCategoriaProducto catproducto = new ENCategoriaProducto();
+        ENUsuario usu = new ENUsuario();
 
         DataSet d = new DataSet();
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
+                if (Session["username"] != null)
+                {
+                    if (!usu.isAdminUsuario())
+                    {
+                        Response.Redirect("~/Home.aspx");
+                    }
+                }
+                else
+                {
+                    Response.Redirect("~/Home.aspx");
+                }
+            }
+
             d = catproducto.showAllCategoriaProducto();
 
             if (d.Tables[0].Rows.Count > 0)
@@ -32,7 +48,7 @@ namespace tiendaWeb.AdminPáginas
 
         protected void ButtonAñadir(object sender, EventArgs e)
         {
-            Response.Redirect("~/Admin.aspx");
+            Response.Redirect("InsertarCategoriaProductoAdmin.aspx");
         }
 
         protected void ButtonEditar(object sender, EventArgs e)

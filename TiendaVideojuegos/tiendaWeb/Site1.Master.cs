@@ -14,12 +14,11 @@ namespace tiendaWeb
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            usu.username = Session["username"].ToString();
-
             if (!Page.IsPostBack)
             {
                 if (Session["username"] != null)
                 {
+                    usu.username = Session["username"].ToString();
                     usuario.Visible = false;
                     perfil.Visible = true;
                     carrito.Visible = true;

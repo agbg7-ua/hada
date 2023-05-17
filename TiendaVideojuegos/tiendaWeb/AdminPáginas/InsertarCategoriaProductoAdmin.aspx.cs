@@ -9,12 +9,9 @@ using library;
 
 namespace tiendaWeb.AdminPáginas
 {
-    public partial class CarritoAdmin : System.Web.UI.Page
+    public partial class InsertarCategoriaProductoAdmin : System.Web.UI.Page
     {
-        ENProducto producto = new ENProducto();
         ENUsuario usu = new ENUsuario();
-
-        DataSet d = new DataSet();
 
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -72,6 +72,8 @@
     <Content Include="AdminPáginas\CategoriaProductoAdmin.aspx" />
     <Content Include="AdminPáginas\EditarCategoriaProductoAdmin.aspx" />
     <Content Include="AdminPáginas\EditarProductoAdmin.aspx" />
+    <Content Include="AdminPáginas\InsertarCategoriaProductoAdmin.aspx" />
+    <Content Include="AdminPáginas\InsertarProductoAdmin.aspx" />
     <Content Include="AdminPáginas\ProductoAdmin.aspx" />
     <Content Include="App_Data\Database.mdf" />
     <Content Include="App_Data\Database_log.ldf">
@@ -139,6 +141,20 @@
     </Compile>
     <Compile Include="AdminPáginas\EditarProductoAdmin.aspx.designer.cs">
       <DependentUpon>EditarProductoAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPáginas\InsertarCategoriaProductoAdmin.aspx.cs">
+      <DependentUpon>InsertarCategoriaProductoAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPáginas\InsertarCategoriaProductoAdmin.aspx.designer.cs">
+      <DependentUpon>InsertarCategoriaProductoAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPáginas\InsertarProductoAdmin.aspx.cs">
+      <DependentUpon>InsertarProductoAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPáginas\InsertarProductoAdmin.aspx.designer.cs">
+      <DependentUpon>InsertarProductoAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminPáginas\ProductoAdmin.aspx.cs">
       <DependentUpon>ProductoAdmin.aspx</DependentUpon>

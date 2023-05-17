@@ -12,19 +12,31 @@ namespace tiendaWeb.AdminPáginas
     public partial class EditarProductoAdmin : System.Web.UI.Page
     {
         ENProducto en = new ENProducto();
+        ENUsuario usu = new ENUsuario();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             en.id = Convert.ToInt32(Request.Params["idProd"]);
             en.readProducto();
 
-            ProductImage.ImageUrl = en.imagen;
-            nombre.Attributes.Add("placeholder", en.nombre);
-            precio.Attributes.Add("placeholder", en.pvp.ToString());
-            descripcion.Attributes.Add("placeholder", en.descripcion);
-
             if (!Page.IsPostBack)
             {
+                if (Session["username"] != null)
+                {
+                    if (!usu.isAdminUsuario())
+                    {
+                        Response.Redirect("~/Home.aspx");
+                    }
+                }
+                else 
+                {
+                    Response.Redirect("~/Home.aspx");
+                }
+
+                ProductImage.ImageUrl = en.imagen;
+                nombre.Attributes.Add("placeholder", en.nombre);
+                precio.Attributes.Add("placeholder", en.pvp.ToString());
+                descripcion.Attributes.Add("placeholder", en.descripcion);
                 clasificacion.SelectedValue = en.clasificacion.ToString();
             }
         }

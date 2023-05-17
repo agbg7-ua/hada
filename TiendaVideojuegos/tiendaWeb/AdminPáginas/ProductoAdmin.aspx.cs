@@ -13,11 +13,26 @@ namespace tiendaWeb.AdminPáginas
     {
 
         ENProducto producto = new ENProducto();
-
+        ENUsuario usu = new ENUsuario();
         DataSet d = new DataSet();
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
+                if (Session["username"] != null)
+                {
+                    if (!usu.isAdminUsuario())
+                    {
+                        Response.Redirect("~/Home.aspx");
+                    }
+                }
+                else
+                {
+                    Response.Redirect("~/Home.aspx");
+                }
+            }
+
             d = producto.showAllProducto();
 
             if (d.Tables[0].Rows.Count > 0)
@@ -73,7 +88,7 @@ namespace tiendaWeb.AdminPáginas
 
         protected void ButtonAñadir(object sender, EventArgs e)
         {
-            Response.Redirect("~/Admin.aspx");
+            Response.Redirect("InsertarProductoAdmin.aspx");
         }
 
         protected void ButtonEditar(object sender, EventArgs e)
