@@ -185,6 +185,7 @@ namespace library
                     en.origen = dr["origen"].ToString();
                     en.fecha_creacion = DateTime.Parse(dr["fecha_creacion"].ToString());
                     en.web = dr["web"].ToString();
+                    en.imagen = dr["imagen"].ToString();
                     obtenido = true;
                 }
             }
@@ -311,6 +312,7 @@ namespace library
                     en.fecha_creacion = DateTime.Parse(dr["fecha_creacion"].ToString());
                     en.web = dr["web"].ToString();
                     en.imagen = dr["imagen"].ToString();
+                    en.id = int.Parse(dr["id"].ToString());
                     lista_final.Add(en);
                 }
             }

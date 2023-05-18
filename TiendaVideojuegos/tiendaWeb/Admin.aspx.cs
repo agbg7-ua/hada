@@ -42,7 +42,7 @@ namespace tiendaWeb
 
         protected void button_desarrolladorOnClientClick(object sender, EventArgs e)
         {
-            Response.Redirect("#");
+            Response.Redirect("AdminPáginas/DesarrolladorAdmin.aspx");
         }
 
     }

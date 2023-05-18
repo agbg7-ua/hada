@@ -69,8 +69,10 @@
   <ItemGroup>
     <Content Include="Admin.aspx" />
     <Content Include="AdminPáginas\CarritoAdmin.aspx" />
+    <Content Include="AdminPáginas\DesarrolladorAdmin.aspx" />
     <Content Include="AdminPáginas\CategoriaProductoAdmin.aspx" />
     <Content Include="AdminPáginas\EditarCategoriaProductoAdmin.aspx" />
+    <Content Include="AdminPáginas\EditarDesarrolladorAdmin.aspx" />
     <Content Include="AdminPáginas\EditarProductoAdmin.aspx" />
     <Content Include="AdminPáginas\ProductoAdmin.aspx" />
     <Content Include="App_Data\Database.mdf" />
@@ -119,6 +121,13 @@
     <Compile Include="AdminPáginas\CarritoAdmin.aspx.designer.cs">
       <DependentUpon>CarritoAdmin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AdminPáginas\DesarrolladorAdmin.aspx.cs">
+      <DependentUpon>DesarrolladorAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPáginas\DesarrolladorAdmin.aspx.designer.cs">
+      <DependentUpon>DesarrolladorAdmin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdminPáginas\CategoriaProductoAdmin.aspx.cs">
       <DependentUpon>CategoriaProductoAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -132,6 +141,13 @@
     </Compile>
     <Compile Include="AdminPáginas\EditarCategoriaProductoAdmin.aspx.designer.cs">
       <DependentUpon>EditarCategoriaProductoAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPáginas\EditarDesarrolladorAdmin.aspx.cs">
+      <DependentUpon>EditarDesarrolladorAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPáginas\EditarDesarrolladorAdmin.aspx.designer.cs">
+      <DependentUpon>EditarDesarrolladorAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminPáginas\EditarProductoAdmin.aspx.cs">
       <DependentUpon>EditarProductoAdmin.aspx</DependentUpon>
