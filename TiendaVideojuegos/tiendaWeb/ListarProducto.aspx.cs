@@ -52,5 +52,24 @@ namespace tiendaWeb
                 textboxVacio.Visible = true;
             }
         }
+
+        protected void Buttons(object sender, ListViewItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListViewItemType.DataItem)
+            {
+                ListViewDataItem dataItem = (ListViewDataItem)e.Item;
+
+                LinkButton comprar = (LinkButton)dataItem.FindControl("comprar");
+
+                if (Session["username"] != null)
+                {
+                    comprar.Visible = true;
+                }
+                else
+                {
+                    comprar.Visible = false;
+                }
+            }
+        }
     }
 }
