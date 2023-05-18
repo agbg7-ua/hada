@@ -34,6 +34,7 @@
                                     <br>
                                     </br>
                                     <asp:LinkButton CssClass="btn btn-warning" runat="server" ID="carrito" Text="Añadir al carrito" Visible="true" OnClick="button_carrito_OnClientClick" OnClientClick="button_carrito_OnClientClick" CommandArgument='<%# Eval("id") %>'/>
+                                    <asp:LinkButton CssClass="btn btn-success" runat="server" ID="comprar" Text="Comprar ya" Visible="true" OnClick="button_comprar_OnClientClick" OnClientClick="button_comprar_OnClientClick" CommandArgument='<%# Eval("id") %>'/>
                                     <asp:LinkButton CssClass="btn btn-danger" runat="server" ID="registrarse" Text="Registrarse/Iniciar Sesión" Visible="true" OnClick="button_registro_OnClientClick" OnClientClick="button_registro_OnClientClick" />
                                     </br>
                                     </br>

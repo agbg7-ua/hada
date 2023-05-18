@@ -40,16 +40,19 @@ namespace tiendaWeb
                 ListViewDataItem dataItem = (ListViewDataItem)e.Item;
 
                 LinkButton guardar = (LinkButton)dataItem.FindControl("carrito");
+                LinkButton comprar = (LinkButton)dataItem.FindControl("comprar");
                 LinkButton registro = (LinkButton)dataItem.FindControl("registrarse");
 
                 if (Session["username"] != null)
                 {
                     guardar.Visible = true;
+                    comprar.Visible = true;
                     registro.Visible = false;
                 }
                 else
                 {
                     guardar.Visible = false;
+                    comprar.Visible = false;
                     registro.Visible = true;
                 }
             }
@@ -58,6 +61,11 @@ namespace tiendaWeb
         protected void button_carrito_OnClientClick(object sender, EventArgs e) 
         {
             
+        }
+
+        protected void button_comprar_OnClientClick(object sender, EventArgs e)
+        {
+
         }
 
         protected void button_registro_OnClientClick(object sender, EventArgs e)

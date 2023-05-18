@@ -60,7 +60,7 @@
                 <%# Eval("nombre") %>
             </td>
             <td>
-                <%# Eval("pvp") %>
+                <%# Eval("pvp") %>€
             </td>
             <td>
                 <%# Eval("fecha_salida") %>
