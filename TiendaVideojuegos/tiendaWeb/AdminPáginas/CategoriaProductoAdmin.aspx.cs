@@ -22,6 +22,8 @@ namespace tiendaWeb.AdminPáginas
             {
                 if (Session["username"] != null)
                 {
+                    usu.username = Session["username"].ToString();
+
                     if (!usu.isAdminUsuario())
                     {
                         Response.Redirect("~/Home.aspx");
