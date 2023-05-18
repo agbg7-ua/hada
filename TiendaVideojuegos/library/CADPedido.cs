@@ -64,16 +64,16 @@ namespace library
             {
                 c = new SqlConnection(constring);
                 c.Open();
-                SqlCommand readSql = new SqlCommand("Select * from Usuarios", c);
+                SqlCommand readSql = new SqlCommand("Select * from Pedido", c);
                 SqlDataReader dr = readSql.ExecuteReader();
                 while (dr.Read())
                 {
                     if (dr["id"].ToString() == en.id.ToString())
                     {
                         res = true;
-                        en.id_usuario = int.Parse(dr["id_usuario"].ToString());
+                        en.id_usuario = dr["id_usuario"].ToString();
                         en.fecha = DateTime.Parse(dr["fecha"].ToString());
-                        en.importe_total = double.Parse(dr["importe_total"].ToString());
+                        en.importe_total = float.Parse(dr["importe_total"].ToString());
                     }
                 }
             }
@@ -111,7 +111,7 @@ namespace library
                 {
                     throw new ArgumentException("IMPORTE TOTAL NULO");
                 }
-                SqlCommand updateSql = new SqlCommand("UPDATE Pedido SET id_usuario ='" + en.id_usuario + "', fecha = '" + en.fecha + "', importe_total= '" + en.importe_total + "' where id = '" + en.id + "'", c);
+                SqlCommand updateSql = new SqlCommand("UPDATE Pedido SET id_usuario ='" + en.id_usuario + "', importe_total= " + en.importe_total + " where id = " + en.id, c);
                 updateSql.ExecuteNonQuery();
                 res = true;
 
@@ -144,7 +144,7 @@ namespace library
             {
                 c = new SqlConnection(constring);
                 c.Open();
-                SqlCommand deleteSql = new SqlCommand("Delete from Pedido where id = '" + en.id + "'", c);
+                SqlCommand deleteSql = new SqlCommand("Delete from Pedido where id = " + en.id, c);
                 deleteSql.ExecuteNonQuery();
                 res = true;
 
@@ -208,7 +208,7 @@ namespace library
 
             try
             {
-                String comando = "Select * From Pedido where id_usuario=" + en.nombre + " order by importe_total asc";
+                String comando = "Select * From Pedido where id_usuario='" + en.username + "' order by importe_total asc";
                 SqlDataAdapter da = new SqlDataAdapter(comando, c);
                 da.Fill(bdvirtual, "Pedido");
                 return bdvirtual;
@@ -240,7 +240,7 @@ namespace library
 
             try
             {
-                String comando = "Select * From Pedido where id_usuario=" + en.nombre + " order by importe_total desc";
+                String comando = "Select * From Pedido where id_usuario='" + en.username + "' order by importe_total desc";
                 SqlDataAdapter da = new SqlDataAdapter(comando, c);
                 da.Fill(bdvirtual, "Pedido");
                 return bdvirtual;

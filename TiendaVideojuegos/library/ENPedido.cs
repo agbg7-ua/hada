@@ -10,9 +10,9 @@ namespace library
     public class ENPedido
     {
         private int _id;
-        private int _id_usuario;
+        private string _id_usuario;
         private DateTime _fecha;
-        private double _importe_total;
+        private float _importe_total;
         public int id
         {
             get { return _id; }
@@ -21,7 +21,7 @@ namespace library
                 _id = value;
             }
         }
-        public int id_usuario
+        public string id_usuario
         {
             get { return _id_usuario; }
             set
@@ -37,7 +37,7 @@ namespace library
                 _fecha = value;
             }
         }
-        public double importe_total
+        public float importe_total
         {
             get { return _importe_total; }
             set
@@ -50,13 +50,13 @@ namespace library
         public ENPedido()
         {
             this.id = 0;
-            this.id_usuario = 0;
+            this.id_usuario = "";
             this.fecha = new DateTime();
             this.importe_total = 0;
         }
 
         //Constructor sobrecargado
-        public ENPedido(int id, int id_usuario, DateTime fecha, double importe_total)
+        public ENPedido(int id, string id_usuario, DateTime fecha, float importe_total)
         {
             this.id = id;
             this.id_usuario = id_usuario;
