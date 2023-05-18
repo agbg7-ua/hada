@@ -13,7 +13,6 @@ namespace tiendaWeb
     {
         ENProducto en = new ENProducto();
         DataSet d = new DataSet();
-        string idProd;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -36,16 +35,6 @@ namespace tiendaWeb
         protected void button_carrito_OnClientClick(object sender, EventArgs e) 
         {
             
-        }
-
-        protected void button_editar_OnClientClick(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void button_eliminar_OnClientClick(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -45,6 +45,16 @@ namespace library
                 _importe_total = value;
             }
         }
+
+        // Constructor por defecto
+        public ENPedido()
+        {
+            this.id = 0;
+            this.id_usuario = 0;
+            this.fecha = new DateTime();
+            this.importe_total = 0;
+        }
+
         //Constructor sobrecargado
         public ENPedido(int id, int id_usuario, DateTime fecha, double importe_total)
         {

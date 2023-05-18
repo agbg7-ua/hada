@@ -78,6 +78,24 @@ namespace tiendaWeb
         protected global::System.Web.UI.WebControls.Button pedidos;
 
         /// <summary>
+        /// Control cerrar_sesion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button cerrar_sesion;
+
+        /// <summary>
+        /// Control administrador.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button administrador;
+
+        /// <summary>
         /// Control tbox.
         /// </summary>
         /// <remarks>

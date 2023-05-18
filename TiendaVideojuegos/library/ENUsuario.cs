@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using library;
+using System.Data;
 
 namespace library
 {
@@ -86,6 +87,7 @@ namespace library
             this.codigo_postal = "";
             this.telefono = "";
         }
+
         public ENUsuario(string username, string nombre, string apellidos, string email, string password, int edad, string calle,string pueblo, string provincia, string codigo_postal, string telefono)
         {
             this.username = username;
@@ -100,6 +102,7 @@ namespace library
             this.codigo_postal = codigo_postal;
             this.telefono = telefono;
         }
+
         public ENUsuario(ENUsuario usu)
         {
             this.username = usu.username;
@@ -114,16 +117,18 @@ namespace library
             this.codigo_postal = usu.codigo_postal;
             this.telefono = usu.telefono;
         }
-        public bool createUsuario()
+
+        public bool signIn()
         {
             CADUsuario usu = new CADUsuario();
             bool create = false;
             if (!usu.readUsuario(this))
             {
-                create = usu.createUsuario(this);
+                create = usu.signIn(this);
             }
             return create;
         }
+
         public bool updateUsuario()
         {
             ENUsuario aux = new ENUsuario();
@@ -158,6 +163,7 @@ namespace library
             }
             return update;
         }
+
         public bool deleteUsuario()
         {
             CADUsuario usu = new CADUsuario();
@@ -168,66 +174,53 @@ namespace library
             }
             return read;
         }
-        public bool signIn()
+
+        public bool logIn()
         {
+            ENUsuario en = new ENUsuario();
             CADUsuario usu = new CADUsuario();
+            en.username = this.username;
             bool read = false;
-            if (usu.readUsuario(this))
+            if (usu.readUsuario(en))
             {
-                read = usu.signIn(this);
+                if (en.password == this.password)
+                {
+                    read = true;
+                }
             }
             return read;
         }
+
         public bool readUsuario()
         {
             CADUsuario cad = new CADUsuario();
             return cad.readUsuario(this);
         }
-        
-        public bool addDesarrollador()
+
+        public DataSet profileUsuario()
         {
-            CADUsuario cad = new CADUsuario();
-            return cad.addDesarrollador(admin);
+            DataSet a = new DataSet();
+            CADUsuario usu = new CADUsuario();
+            if (usu.readUsuario(this))
+            {
+                a = usu.profileUsuario(this);
+            }
+
+            return a;
         }
-        public bool addProducto()
+
+        // Método que dice si un usuario es administrador o no
+        public bool isAdminUsuario()
         {
-            CADUsuario cad = new CADUsuario();
-            return cad.addProducto(admin);
-        }
-        public bool addOferta()
-        {
-            CADUsuario cad = new CADUsuario();
-            return cad.addOferta(admin);
-        }
-        public bool deleteDesarrollador()
-        {
-            CADUsuario cad = new CADUsuario();
-            return cad.deleteDesarrollador(admin);
-        }
-        public bool deleteProducto()
-        {
-            CADUsuario cad = new CADUsuario();
-            return cad.deleteProducto(admin);
-        }
-        public bool deleteOferta()
-        {
-            CADUsuario cad = new CADUsuario();
-            return cad.deleteOferta(admin);
-        }
-        public bool modifyDesarrollador()
-        {
-            CADUsuario cad = new CADUsuario();
-            return cad.modifyDesarrollador(admin);
-        }
-        public bool modifyProducto()
-        {
-            CADUsuario cad = new CADUsuario();
-            return cad.modifyProducto(admin);
-        }
-        public bool modifyOferta()
-        {
-            CADUsuario cad = new CADUsuario();
-            return cad.modifyOferta(admin);
+            CADUsuario usu = new CADUsuario();
+            bool isAdmin = false;
+            if (usu.readUsuario(this))
+            {
+                if (this.admin == true) {
+                    isAdmin = true;
+                }
+            }
+            return isAdmin;
         }
     }
 }

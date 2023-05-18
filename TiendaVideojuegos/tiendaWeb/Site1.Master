@@ -54,9 +54,11 @@
 
                 <div class="btn-group" style="padding-right: 5px;">
                     <asp:Button runat="server" Height="50px" ID="usuario" CssClass="btn btn-dark" Text="Registro/Inicio sesión" OnClientClick="button_usuarioOnClientClick" OnClick="button_usuarioOnClientClick"/>
-                    <asp:Button runat="server" ID="perfil" CssClass="btn btn-dark" Text="Tu perfil" OnClientClick="button_perfilOnClientClick" OnClick="button_perfilOnClientClick"/>
-                    <asp:Button runat="server" ID="carrito" CssClass="btn btn-dark" Text="Carrito" OnClientClick="button_carritoOnClientClick" OnClick="button_carritoOnClientClick"/>
-                    <asp:Button runat="server" ID="pedidos" CssClass="btn btn-dark" Text="Pedidos" OnClientClick="button_pedidosOnClientClick" OnClick="button_pedidosOnClientClick"/>
+                    <asp:Button runat="server" Height="50px" ID="perfil" CssClass="btn btn-dark" Text="Tu perfil" OnClientClick="button_perfilOnClientClick" OnClick="button_perfilOnClientClick"/>
+                    <asp:Button runat="server" Height="50px" ID="carrito" CssClass="btn btn-dark" Text="Carrito" OnClientClick="button_carritoOnClientClick" OnClick="button_carritoOnClientClick"/>
+                    <asp:Button runat="server" Height="50px" ID="pedidos" CssClass="btn btn-dark" Text="Pedidos" OnClientClick="button_pedidosOnClientClick" OnClick="button_pedidosOnClientClick"/>
+                    <asp:Button runat="server" Height="50px" ID="cerrar_sesion" CssClass="btn btn-dark" Text="Cerrar Sesión" OnClientClick="button_sesionOnClientClick" OnClick="button_sesionOnClientClick"/>
+                    <asp:Button runat="server" Height="50px" ID="administrador" CssClass="btn btn-dark" Text="Admin" OnClientClick="button_adminOnClientClick" OnClick="button_adminOnClientClick"/>
                 </div>
 
                 <div class="form-inline my-2 my-lg-0">

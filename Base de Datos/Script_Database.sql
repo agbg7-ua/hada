@@ -33,13 +33,15 @@ CREATE TABLE [dbo].[CategoriaProducto] (
 -- DESARROLLADOR
 
 CREATE TABLE [dbo].[Desarrollador] (
-    [id]        	INT           IDENTITY (1, 1) NOT NULL,
-    [nombre] 		VARCHAR (30)  NOT NULL,
-    [descripcion] 	TEXT          NOT NULL,
-    [origen]      	VARCHAR (25)  NOT NULL,
-    [fecha_creacion]    DATE          NOT NULL,
-    [web]      		VARCHAR (50)  NULL,
-    PRIMARY KEY CLUSTERED ([id] ASC)
+    [id]             INT           IDENTITY (1, 1) NOT NULL,
+    [nombre]         VARCHAR (30)  NOT NULL,
+    [descripcion]    TEXT          NOT NULL,
+    [origen]         VARCHAR (25)  NOT NULL,
+    [fecha_creacion] DATE          NOT NULL,
+    [web]            VARCHAR (50)  NULL,
+    [imagen]         VARCHAR (MAX) NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC),
+    UNIQUE NONCLUSTERED ([nombre] ASC)
 );
 
 -- --------------------------------------------------------------------------------------------

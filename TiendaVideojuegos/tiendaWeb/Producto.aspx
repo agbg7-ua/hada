@@ -19,14 +19,12 @@
                                     <p class="font-weight-bold text-dark h1"> 
                                             <%# Eval("nombre") %>
                                     </p>
-                                    <br>
                                     </br>
                                     <p class="card-text font-weight-bold h4"> Precio: 
                                     </p>
                                     <p class=" card-text h5">
                                         <%# Eval("pvp","{0:c}") %>
                                     </p>
-                                    <br>
                                     </br>
                                     <p class="card-text font-weight-bold h4"> Fecha de salida: 
                                     </p>
@@ -36,8 +34,6 @@
                                     <br>
                                     </br>
                                     <asp:Button CssClass="btn btn-warning" runat="server" ID="carrito" Text="Añadir al carrito" Visible="true" OnClick="button_carrito_OnClientClick" OnClientClick="button_carrito_OnClientClick" />
-                                    <asp:Button CssClass="btn btn-secondary" runat="server" ID="Button2" Text="Editar" Visible="true" OnClick="button_editar_OnClientClick" OnClientClick="button_editar_OnClientClick" />
-                                    <asp:Button CssClass="btn btn-danger" runat="server" ID="Button3" Text="Eliminar" Visible="true" OnClick="button_eliminar_OnClientClick" OnClientClick="button_eliminar_OnClientClick" />
                                     </br>
                                     </br>
                                     <p class="font-weight-bold text-dark h5"> Descripción: 

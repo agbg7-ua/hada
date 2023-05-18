@@ -11,7 +11,7 @@ namespace tiendaWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Session.Add("username", "usuario 1");
         }
     }
 }
