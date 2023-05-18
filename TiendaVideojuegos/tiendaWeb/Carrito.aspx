@@ -23,7 +23,7 @@
                 <thead class="thead-dark">
                     <tr>
                         <th>
-                            Línea de Carrito
+                            Linea de Carrito
                         </th>
                         <th>
                             Imagen de Producto
@@ -68,6 +68,10 @@
         </ItemTemplate>
     </asp:ListView>
     <br />
+
+    <div class="" style="padding-left: 20px;">
+        <asp:Label runat="server" ID="total" CssClass="font-weight-bold"></asp:Label>
+    </div>
 
     <div style="width:100%; height: 100px; align-content:center; text-align:center">
         <asp:Label CssClass="labelVacio" runat="server" ID="textboxVacio" Text="No se encontraron productos, intentelo más tarde." Visible="false" ></asp:Label>

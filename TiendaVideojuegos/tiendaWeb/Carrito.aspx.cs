@@ -33,6 +33,8 @@ namespace tiendaWeb
             usu.readUsuario();
             car.readCarritoByUser(usu);
 
+            total.Text = "Total: " + car.importe_total + "€";
+
             d = lcar.showLineasCarritoByCarrito(car);
 
             if (d.Tables[0].Rows.Count > 0)
