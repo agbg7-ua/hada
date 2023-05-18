@@ -4,117 +4,70 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data;
 using library;
+using System.Data;
 
 namespace tiendaWeb
 {
     public partial class LineaPedido : System.Web.UI.Page
     {
+        ENPedido pedido = new ENPedido();
+        ENProducto producto = new ENProducto();
+        ENUsuario usu = new ENUsuario();
+        DataSet d = new DataSet();
+        ENLineaPedido elp = new ENLineaPedido();
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            pedido.id = Convert.ToInt32(Request.Params["idPed"]);
+            pedido.readPedido();
 
-        }
+            titulo.Text = "Pedido nº " + pedido.id;
 
-        protected void ButtonCreate_Click(object sender, EventArgs e)
-        {
-            ENLineaPedido en = new ENLineaPedido();
-            if (IDLBox.Text == "" || IDPedBox.Text == "" || IDProdBox.Text == "" || CantBox.Text == "" || ImportBox.Text == "")
+            if (!Page.IsPostBack)
             {
-                resLabel.Text = "DATOS VACÍOS";
-            }
-            else
-            {
-                en.id_pedido = int.Parse(IDPedBox.Text);
-                en.id_linea = int.Parse(IDLBox.Text);
-                en.id_producto = int.Parse(IDProdBox.Text);
-                en.cantidad = int.Parse(CantBox.Text);
-                en.importe = int.Parse(ImportBox.Text);
-                if (!en.readLineaPedido())
+                if (Session["username"] != null)
                 {
-                    en.createLineaPedido();
-                    resLabel.Text = "Linea de Pedido creada";
+                    usu.username = Session["username"].ToString();
                 }
                 else
                 {
-                    resLabel.Text = "No se puede crear la línea de pedido";
+                    Response.Redirect("~/Home.aspx");
                 }
             }
-        }
 
-        protected void ButtonUpdate_Click(object sender, EventArgs e)
-        {
-            ENLineaPedido en = new ENLineaPedido();
-            if (IDLBox.Text == "" || IDPedBox.Text == "" || IDProdBox.Text == "" || CantBox.Text == "" || ImportBox.Text == "")
+            d = elp.listaLineasPedido(pedido);
+            ;
+            total.Text = "Total: " + pedido.importe_total + "€";
+
+            if ((d.Tables.Count != 0) && (d.Tables[0].Rows.Count > 0))
             {
-                resLabel.Text = "DATOS VACÍOS";
+                listView.DataSource = d;
+                listView.DataBind();
             }
             else
             {
-                en.id_pedido = int.Parse(IDPedBox.Text);
-                en.id_linea = int.Parse(IDLBox.Text);
-                en.id_producto = int.Parse(IDProdBox.Text);
-                en.cantidad = int.Parse(CantBox.Text);
-                en.importe = int.Parse(ImportBox.Text);
-                if (en.readLineaPedido())
-                {
-                    en.updateLineaPedido();
-                    resLabel.Text = "Línea de pedido actualizada";
-                }
-                else
-                {
-                    resLabel.Text = "No se puede actualizar la línea de pedido";
-                }
+                textboxVacio.Visible = true;
             }
         }
 
-        protected void ButtonDelete_Click(object sender, EventArgs e)
+        protected void ImagenProducto(object sender, ListViewItemEventArgs e)
         {
-            ENLineaPedido en = new ENLineaPedido();
-            if (IDLBox.Text == "" || IDPedBox.Text == "")
+            if (e.Item.ItemType == ListViewItemType.DataItem)
             {
-                resLabel.Text = "DATOS VACÍOS";
-            }
-            else
-            {
-                en.id_pedido = int.Parse(IDPedBox.Text);
-                en.id_linea = int.Parse(IDLBox.Text);
-                if (en.deleteLineaPedido())
-                {
-                    resLabel.Text = "Línea de pedido borrada";
-                }
-                else
-                {
-                    resLabel.Text = "No se puede borrar la línea de pedido";
-                }
-            }
-        }
+                ListViewDataItem dataItem = (ListViewDataItem)e.Item;
 
-        protected void ButtonAllPed_Click(object sender, EventArgs e)
-        {
-            ENLineaPedido en = new ENLineaPedido();
-            ENPedido enP = new ENPedido();
-            if (IDPedBox.Text == "")
-            {
-                resLabel.Text = "DATOS VACÍOS";
-            }
-            else
-            {
-                en.id_pedido = int.Parse(IDPedBox.Text);
-                enP.id = int.Parse(IDPedBox.Text);
-                DataSet ds = new DataSet();
-                ds = en.listaLineasPedido(enP);
-                if (ds.Tables[0].Rows.Count > 0)
-                {
-                    listaLineasPedido.DataSource = ds;
-                    listaLineasPedido.DataBind();
-                }
-            }
-        }
+                Image imagen1 = (Image)dataItem.FindControl("Image1");
+                Label name = (Label)dataItem.FindControl("nombre");
 
-        protected void ButtonAllProd_Click(object sender, EventArgs e)
-        {
+                int clas = Convert.ToInt32(DataBinder.Eval(dataItem.DataItem, "id_producto").ToString());
 
+                producto.id = clas;
+                producto.readProducto();
+
+                imagen1.ImageUrl = producto.imagen;
+                name.Text = producto.nombre;
+            }
         }
     }
 }

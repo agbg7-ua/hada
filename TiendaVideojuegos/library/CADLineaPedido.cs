@@ -66,7 +66,7 @@ namespace library
             {
                 c = new SqlConnection(constring);
                 c.Open();
-                SqlCommand readSql = new SqlCommand("Select * from Usuarios", c);
+                SqlCommand readSql = new SqlCommand("Select * from LineaPedido", c);
                 SqlDataReader dr = readSql.ExecuteReader();
                 while (dr.Read())
                 {
