@@ -3,8 +3,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <h1 style="background-color:grey;color: black;text-align:center "> Comentarios</h1>
-<div class="game" style="width: 55%; float:left; height:295px; border: 3px solid grey;">
+        <div class="border border-white navbar navbar-expand-lg bg-dark">
+        <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark"> Comentarios </p>
+    </div>
+<div class="game" style="width: 55%; float:left; height:295px; border: 3px solid black;">
     <div class="image" style="width: 30%; float:left; height:288px;">
     <asp:Image ID="myImage" runat="server" ImageUrl="Imagenes/nba1.jpg" Width=100% Height=100%/>
         </div>
@@ -12,9 +14,13 @@
         <br/>
     <h3> NBA 2K23</h3><br/>
     <asp:Label ID="Sin" runat="server" style="margin:5px">NBA 2K23 es un videojuego de baloncesto de 2022 desarrollado por Visual Concepts y publicado por 2K, basado en la Asociación Nacional de Baloncesto. Es la entrega número 24 de la franquicia NBA 2K y es el sucesor de NBA 2K22.</asp:Label>
+            <div class="button" style = "margin-top: 20px">
+        <asp:Button class="regbutton" style="background-color:grey;color:white" ID="Button1" runat="server" OnClick="comentButton" Text="Añadir un comentario"  />
     </div>
+    </div>
+
 </div>
-<div class ="father" style="width: 45%; float:right; height:295px;border-bottom: 3px solid grey; border-top: 3px solid grey">
+<div class ="father" style="width: 45%; float:right; height:295px;border-bottom: 3px solid black; border-top: 3px solid black">
     <span class="heading">Puntuación de los usuarios</span>
     <span class="fa fa-star checked"></span>
     <span class="fa fa-star checked"></span>

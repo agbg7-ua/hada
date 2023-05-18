@@ -47,6 +47,9 @@ namespace tiendaWeb
         {
             string usuario;
             ENUsuario usu = new ENUsuario();
+            usu.edad = int.Parse(textEdad.Text);
+            usu.pueblo = textLocalidad.Text;
+            usu.provincia = textProvincia.Text;
             usu.nombre = textNombre.Text;
             usu.password = textPassword.Text;
             usu.apellidos = textApellidos.Text;
@@ -55,6 +58,7 @@ namespace tiendaWeb
             usu.email = textEmail.Text;
             usu.telefono = textNumero.Text;
             usu.username = textUsername.Text;
+            usu.admin = false;
             usuario = usu.username;
             if (usu.signIn())
             {

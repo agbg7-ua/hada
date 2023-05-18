@@ -7,7 +7,7 @@ using library;
 
 namespace library
 {
-    class ENComentario
+    public class ENComentario
     {
         private int _id_producto;
         private int _id;

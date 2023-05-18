@@ -24,15 +24,6 @@ namespace tiendaWeb
         protected global::System.Web.UI.WebControls.TextBox TextBox1;
 
         /// <summary>
-        /// Control UserNameReq.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator UserNameReq;
-
-        /// <summary>
         /// Control passwordTextBox.
         /// </summary>
         /// <remarks>
@@ -40,15 +31,6 @@ namespace tiendaWeb
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox passwordTextBox;
-
-        /// <summary>
-        /// Control PasswordReq.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator PasswordReq;
 
         /// <summary>
         /// Control showPasswordCheckBox.
@@ -96,6 +78,15 @@ namespace tiendaWeb
         protected global::System.Web.UI.WebControls.TextBox textApellidos;
 
         /// <summary>
+        /// Control textEdad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox textEdad;
+
+        /// <summary>
         /// Control textNumero.
         /// </summary>
         /// <remarks>
@@ -123,22 +114,22 @@ namespace tiendaWeb
         protected global::System.Web.UI.WebControls.TextBox textCodigo;
 
         /// <summary>
-        /// Control DropDownList1.
+        /// Control textLocalidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.TextBox textLocalidad;
 
         /// <summary>
-        /// Control DropDownList3.
+        /// Control textProvincia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList3;
+        protected global::System.Web.UI.WebControls.TextBox textProvincia;
 
         /// <summary>
         /// Control textUsername.
@@ -159,15 +150,6 @@ namespace tiendaWeb
         protected global::System.Web.UI.WebControls.TextBox textEmail;
 
         /// <summary>
-        /// Control Requiredemail.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator Requiredemail;
-
-        /// <summary>
         /// Control EmailValidator.
         /// </summary>
         /// <remarks>
@@ -186,15 +168,6 @@ namespace tiendaWeb
         protected global::System.Web.UI.WebControls.TextBox textPassword;
 
         /// <summary>
-        /// Control Requiredpass.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator Requiredpass;
-
-        /// <summary>
         /// Control textDoble.
         /// </summary>
         /// <remarks>
@@ -202,15 +175,6 @@ namespace tiendaWeb
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox textDoble;
-
-        /// <summary>
-        /// Control Validator.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator Validator;
 
         /// <summary>
         /// Control outputMsg2.

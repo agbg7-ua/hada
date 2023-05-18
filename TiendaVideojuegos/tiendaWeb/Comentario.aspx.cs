@@ -13,5 +13,9 @@ namespace tiendaWeb
         {
 
         }
+        protected void comentButton(object sender, EventArgs e)
+        {
+            Response.Redirect("~/NuevoComentario.aspx");
+        }
     }
 }
