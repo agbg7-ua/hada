@@ -127,5 +127,14 @@ namespace library
 
             return a;
         }
+
+        // Actualizar importe de carrito
+        // Mostrar todos los carritos
+        public DataSet listarCarritos()
+        {
+            CADCarrito c = new CADCarrito();
+            DataSet a = c.listarCarritos();
+            return a;
+        }
     }
 }

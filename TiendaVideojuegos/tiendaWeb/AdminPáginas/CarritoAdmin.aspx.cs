@@ -11,7 +11,7 @@ namespace tiendaWeb.AdminPáginas
 {
     public partial class CarritoAdmin : System.Web.UI.Page
     {
-        ENProducto producto = new ENProducto();
+        ENCarrito carrito = new ENCarrito();
         ENUsuario usu = new ENUsuario();
 
         DataSet d = new DataSet();
@@ -34,6 +34,26 @@ namespace tiendaWeb.AdminPáginas
                     Response.Redirect("~/Home.aspx");
                 }
             }
+
+            d = carrito.listarCarritos();
+
+            if (d.Tables[0].Rows.Count > 0)
+            {
+                listView.DataSource = d;
+                listView.DataBind();
+            }
+            else
+            {
+                textboxVacio.Visible = true;
+            }
+        }
+
+        protected void ButtonVer(object sender, EventArgs e)
+        {
+            LinkButton myButton = (LinkButton)sender;
+            string i = myButton.CommandArgument.ToString();
+
+            Response.Redirect("VerCarritoAdmin.aspx?idCarrito=" + i);
         }
     }
 }

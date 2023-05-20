@@ -1,12 +1,12 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="CarritoAdmin.aspx.cs" Inherits="tiendaWeb.AdminPáginas.CarritoAdmin" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="VerCarritoAdmin.aspx.cs" Inherits="tiendaWeb.AdminPáginas.VerCarritoAdmin" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="border border-white navbar navbar-expand-lg bg-dark">
-        <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark"> Administración de Carrito </p>
+     <div class="border border-white navbar navbar-expand-lg bg-dark">
+        <asp:Label runat="server" ID="titulo" Cssclass="font-weight-bold h2 text-center mx-auto text-white bg-dark"/>
     </div>
 
-    <asp:ListView runat="server" ID="listView">
+    <asp:ListView runat="server" ID="listView" OnItemDataBound="ImagenProducto">
         <GroupTemplate>
             <tr>
                 <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
@@ -14,20 +14,23 @@
         </GroupTemplate>
 
         <LayoutTemplate>
-            <table class="table table-hover" style="padding-left: 20px;">
+            <table class="table table-hover border-bottom border-dark" style="padding-left: 20px;">
                 <thead class="thead-dark">
                     <tr>
                         <th>
-                            Id
+                            Línea de Carrito
                         </th>
                         <th>
-                            Usuario
+                            Imagen de Producto
+                        </th>
+                        <th>
+                            Nombre de Producto
+                        </th>
+                        <th>
+                            Cantidad
                         </th>
                         <th>
                             Importe
-                        </th>
-                        <th>
-                            Opciones
                         </th>
                     </tr>
                 </thead>
@@ -37,20 +40,27 @@
 
         <ItemTemplate>
             <td>
-                 <%# Eval("id") %>
+                 <%# Eval("id_linea") %>
             </td>
             <td>
-                 <%# Eval("id_usuario") %>
+                 <asp:Image ID="Image1" runat="server" Width="60px" Height="60px" ImageUrl="" />	
             </td>
             <td>
-                <%# Eval("importe_total") %>€
+                <asp:Label ID="nombre" runat="server" CssClass="label label-default" />
             </td>
             <td>
-                <asp:LinkButton runat="server" ID="ver" CssClass="btn btn-primary" OnClientClick="ButtonVer" OnClick="ButtonVer" Text="Ver" CommandArgument='<%#Eval("id_usuario") %>' />
+                <%# Eval("cantidad") %>
+            </td>
+            <td>
+                <%# Eval("importe") %>€
             </td>
         </ItemTemplate>
     </asp:ListView>
     <br />
+
+    <div class="" style="padding-left: 20px;">
+        <asp:Label runat="server" ID="total" CssClass="font-weight-bold"></asp:Label>
+    </div>
 
     <div style="width:100%; height: 100px; align-content:center; text-align:center">
         <asp:Label CssClass="labelVacio" runat="server" ID="textboxVacio" Text="No se encontraron productos, intentelo más tarde." Visible="false" ></asp:Label>
