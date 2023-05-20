@@ -9,10 +9,10 @@ using System.Data;
 
 namespace tiendaWeb.AdminPáginas
 {
-    public partial class VerCarritoAdmin : System.Web.UI.Page
+    public partial class VerPedidoAdmin : System.Web.UI.Page
     {
-        ENLineaCarrito lcar = new ENLineaCarrito();
-        ENCarrito car = new ENCarrito();
+        ENLineaPedido lped = new ENLineaPedido();
+        ENPedido ped = new ENPedido();
         ENUsuario usu = new ENUsuario();
         ENProducto producto = new ENProducto();
 
@@ -37,13 +37,14 @@ namespace tiendaWeb.AdminPáginas
                 }
             }
 
-            catchId();
-            usu.readUsuario();
-            car.readCarritoByUser(usu);
+            ped.id = Convert.ToInt32(Request.Params["idPedido"]);
+            ped.readPedido();
 
-            total.Text = "Total: " + car.importe_total + "€";
+            titulo.Text = "Pedido nº " + ped.id + " de " + ped.id_usuario;
 
-            d = lcar.showLineasCarritoByCarrito(car);
+            total.Text = "Total: " + ped.importe_total + "€";
+
+            d = lped.listaLineasPedido(ped);
 
             if (d.Tables[0].Rows.Count > 0)
             {
@@ -58,9 +59,12 @@ namespace tiendaWeb.AdminPáginas
 
         protected void catchId()
         {
-            usu.username = Request.Params["idCarrito"];
+            lped.id_linea = Convert.ToInt32(Request.Params["idPedido"]);
+            lped.readLineaPedido();
+            ped.id = lped.id_pedido;
+            ped.readPedido();
 
-            titulo.Text = "Carrito de " + usu.username;
+            titulo.Text = "Pedido nº " + ped.id + "de " + ped.id_usuario;
         }
 
         protected void ImagenProducto(object sender, ListViewItemEventArgs e)

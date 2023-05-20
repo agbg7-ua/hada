@@ -1,9 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="CarritoAdmin.aspx.cs" Inherits="tiendaWeb.AdminPáginas.CarritoAdmin" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="PedidoAdmin.aspx.cs" Inherits="tiendaWeb.AdminPáginas.PedidoAdmin" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="border border-white navbar navbar-expand-lg bg-dark">
-        <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark"> Administración de Carritos </p>
+        <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark"> Administración de Pedidos </p>
     </div>
 
     <asp:ListView runat="server" ID="listView">
@@ -22,6 +22,9 @@
                         </th>
                         <th>
                             Usuario
+                        </th>
+                        <th>
+                            Fecha
                         </th>
                         <th>
                             Importe
@@ -43,10 +46,14 @@
                  <%# Eval("id_usuario") %>
             </td>
             <td>
+                 <%# Eval("fecha") %>
+            </td>
+            <td>
                 <%# Eval("importe_total") %>€
             </td>
             <td>
-                <asp:LinkButton runat="server" ID="ver" CssClass="btn btn-primary" OnClientClick="ButtonVer" OnClick="ButtonVer" Text="Ver" CommandArgument='<%#Eval("id_usuario") %>' />
+                <asp:LinkButton runat="server" ID="ver" CssClass="btn btn-primary" OnClientClick="ButtonVer" OnClick="ButtonVer" Text="Ver" CommandArgument='<%#Eval("id") %>' />
+                <asp:LinkButton runat="server" ID="borrar" CssClass="btn btn-danger" OnClientClick="ButtonBorrar" OnClick="ButtonBorrar" Text="Borrar" CommandArgument='<%#Eval("id") %>' />
             </td>
         </ItemTemplate>
     </asp:ListView>
