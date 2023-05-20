@@ -45,6 +45,7 @@ namespace tiendaWeb
 
                 if (Session["username"] != null)
                 {
+                    usu.username = Session["username"].ToString();
                     guardar.Visible = true;
                     comprar.Visible = true;
                     registro.Visible = false;
@@ -60,7 +61,24 @@ namespace tiendaWeb
 
         protected void button_carrito_OnClientClick(object sender, EventArgs e) 
         {
-            
+            ENProducto prod = new ENProducto();
+            DateTime hoy = DateTime.Now;
+            LinkButton myButton = (LinkButton)sender;
+            int i = Convert.ToInt32(myButton.CommandArgument.ToString());
+            prod.id = i;
+            prod.readProducto();
+
+            ENCarrito car = new ENCarrito();
+            ENLineaCarrito lcar = new ENLineaCarrito();
+            car.readCarritoByUser(usu);
+            lcar.id_carrito = car.id;
+            lcar.id_producto = i;
+            lcar.cantidad = 1;
+            lcar.fecha = hoy;
+            lcar.importe = prod.pvp;
+            lcar.createLineaCarrito();
+
+            Response.Redirect("Carrito.aspx");
         }
 
         protected void button_comprar_OnClientClick(object sender, EventArgs e)
