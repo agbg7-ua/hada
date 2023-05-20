@@ -34,7 +34,7 @@ namespace tiendaWeb
 
         protected void button_usuarioOnClientClick(object sender, EventArgs e)
         {
-            Response.Redirect("#");
+            Response.Redirect("AdminPáginas/UsuarioAdmin.aspx");
         }
 
         protected void button_productoOnClientClick(object sender, EventArgs e)
@@ -54,7 +54,7 @@ namespace tiendaWeb
 
         protected void button_pedidoOnClientClick(object sender, EventArgs e)
         {
-            Response.Redirect("#");
+            Response.Redirect("AdminPáginas/PedidoAdmin.aspx");
         }
 
         protected void button_desarrolladorOnClientClick(object sender, EventArgs e)

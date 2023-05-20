@@ -76,7 +76,12 @@
     <Content Include="AdminPáginas\EditarProductoAdmin.aspx" />
     <Content Include="AdminPáginas\InsertarCategoriaProductoAdmin.aspx" />
     <Content Include="AdminPáginas\InsertarProductoAdmin.aspx" />
+    <Content Include="AdminPáginas\PedidoAdmin.aspx" />
     <Content Include="AdminPáginas\ProductoAdmin.aspx" />
+    <Content Include="AdminPáginas\UsuarioAdmin.aspx" />
+    <Content Include="AdminPáginas\VerCarritoAdmin.aspx" />
+    <Content Include="AdminPáginas\VerPedidoAdmin.aspx" />
+    <Content Include="AdminPáginas\VerUsuarioAdmin.aspx" />
     <Content Include="App_Data\Database.mdf" />
     <Content Include="App_Data\Database_log.ldf">
       <DependentUpon>Database.mdf</DependentUpon>
@@ -172,12 +177,47 @@
     <Compile Include="AdminPáginas\InsertarProductoAdmin.aspx.designer.cs">
       <DependentUpon>InsertarProductoAdmin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AdminPáginas\PedidoAdmin.aspx.cs">
+      <DependentUpon>PedidoAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPáginas\PedidoAdmin.aspx.designer.cs">
+      <DependentUpon>PedidoAdmin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdminPáginas\ProductoAdmin.aspx.cs">
       <DependentUpon>ProductoAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AdminPáginas\ProductoAdmin.aspx.designer.cs">
       <DependentUpon>ProductoAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPáginas\UsuarioAdmin.aspx.cs">
+      <DependentUpon>UsuarioAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPáginas\UsuarioAdmin.aspx.designer.cs">
+      <DependentUpon>UsuarioAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPáginas\VerCarritoAdmin.aspx.cs">
+      <DependentUpon>VerCarritoAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPáginas\VerCarritoAdmin.aspx.designer.cs">
+      <DependentUpon>VerCarritoAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPáginas\VerPedidoAdmin.aspx.cs">
+      <DependentUpon>VerPedidoAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPáginas\VerPedidoAdmin.aspx.designer.cs">
+      <DependentUpon>VerPedidoAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPáginas\VerUsuarioAdmin.aspx.cs">
+      <DependentUpon>VerUsuarioAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPáginas\VerUsuarioAdmin.aspx.designer.cs">
+      <DependentUpon>VerUsuarioAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="BuscarProducto.aspx.cs">
       <DependentUpon>BuscarProducto.aspx</DependentUpon>

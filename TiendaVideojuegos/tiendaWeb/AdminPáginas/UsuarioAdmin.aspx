@@ -1,9 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="PedidoAdmin.aspx.cs" Inherits="tiendaWeb.AdminPáginas.PedidoAdmin" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="UsuarioAdmin.aspx.cs" Inherits="tiendaWeb.AdminPáginas.UsuarioAdmin" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="border border-white navbar navbar-expand-lg bg-dark">
-        <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark"> Administración de Pedidos </p>
+     <div class="border border-white navbar navbar-expand-lg bg-dark">
+        <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark"> Administración de Usuarios </p>
     </div>
 
     <asp:ListView runat="server" ID="listView">
@@ -18,16 +18,22 @@
                 <thead class="thead-dark">
                     <tr>
                         <th>
-                            Id
+                            Username
                         </th>
                         <th>
-                            Usuario
+                            Nombre
                         </th>
                         <th>
-                            Fecha
+                            Apellidos
                         </th>
                         <th>
-                            Importe
+                            Email
+                        </th>
+                        <th>
+                            Teléfono
+                        </th>
+                        <th>
+                            Admin
                         </th>
                         <th>
                             Opciones
@@ -40,20 +46,27 @@
 
         <ItemTemplate>
             <td>
-                 <%# Eval("id") %>
+                 <%# Eval("username") %>
             </td>
             <td>
-                 <%# Eval("id_usuario") %>
+                <%# Eval("nombre") %>
             </td>
             <td>
-                 <%# Eval("fecha") %>
+                <%# Eval("apellidos") %>
             </td>
             <td>
-                <%# Eval("importe_total") %>€
+                <%# Eval("email") %>
             </td>
             <td>
-                <asp:LinkButton runat="server" ID="ver" CssClass="btn btn-primary" OnClientClick="ButtonVer" OnClick="ButtonVer" Text="Ver" CommandArgument='<%#Eval("id") %>' />
-                <asp:LinkButton runat="server" ID="borrar" CssClass="btn btn-danger" OnClientClick="ButtonBorrar" OnClick="ButtonBorrar" Text="Borrar" CommandArgument='<%#Eval("id") %>' />
+                <%# Eval("telefono") %>
+            </td>
+            <td>
+                <%# Eval("admin") %>
+            </td>
+            <td>
+                <asp:LinkButton runat="server" id="ver" CssClass="btn btn-info" OnClientClick="ButtonVer" OnClick="ButtonVer" Text="Ver" CommandArgument='<%#Eval("username") %>' />
+                <asp:LinkButton runat="server" id="cambiar" CssClass="btn btn-success" OnClientClick="ButtonCambiar" OnClick="ButtonCambiar" Text="Cambiar Admin" CommandArgument='<%#Eval("username") %>' />
+                <asp:LinkButton runat="server" id="borrar" CssClass="btn btn-danger" OnClientClick="ButtonBorrar" OnClick="ButtonBorrar" Text="Borrar" CommandArgument='<%#Eval("username") %>' />
             </td>
         </ItemTemplate>
     </asp:ListView>

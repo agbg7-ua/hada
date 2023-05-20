@@ -16,7 +16,7 @@
         </GroupTemplate>
 
         <LayoutTemplate>
-            <table class="table table-hover">
+            <table class="table table-hover border-bottom border-dark">
                 <thead class="thead-dark">
                     <tr>
                         <th>

@@ -222,5 +222,28 @@ namespace library
             }
             return isAdmin;
         }
+
+        // Método para enseñar todos los usuarios
+        public DataSet showAllUsers()
+        {
+            CADUsuario c = new CADUsuario();
+            DataSet a = c.showAllUsers();
+            return a;
+        }
+
+        public bool updateAdminUser()
+        {
+            ENUsuario aux = new ENUsuario();
+            CADUsuario usu = new CADUsuario();
+
+            bool update = false;
+            aux.admin = this.admin;
+            if (usu.readUsuario(this))
+            {
+                this.admin = aux.admin;
+                update = usu.updateAdminUser(this);
+            }
+            return update;
+        }
     }
 }
