@@ -39,6 +39,12 @@ namespace library
             get { return importe; }
             set { _importe = value; }
         }
+
+        public ENLineaPedido()
+        { 
+        
+        }
+
         public ENLineaPedido(int id_pedido, int id_linea, int id_producto, int cantidad, double importe)
         {
             this.id_pedido = id_pedido;

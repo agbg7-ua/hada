@@ -1,97 +1,68 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="LineaPedido.aspx.cs" Inherits="tiendaWeb.LineaPedido" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link rel="stylesheet" href="css/pedidoStyle.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h2>Línea de pedido</h2>
-    <p>
-        <asp:Label ID="Label1" runat="server" class="tab" Text="ID Pedido:"></asp:Label>
-        <asp:TextBox ID="IDPedBox" runat="server"></asp:TextBox></p>
-    <p>
-        <asp:Label ID="Label3" runat="server" class="tab" Text="ID Línea:"></asp:Label>
-        <asp:TextBox ID="IDLBox" runat="server"></asp:TextBox></p>
-    <p>
-        <asp:Label ID="Label4" runat="server" class="tab" Text="ID Producto:"></asp:Label>
-        <asp:TextBox ID="IDProdBox" runat="server"></asp:TextBox></p>
-    <p>
-        <asp:Label ID="Label5" runat="server" class="tab" Text="Cantidad:"></asp:Label>
-        <asp:TextBox ID="CantBox" runat="server"></asp:TextBox></p>
-    <p>
-        <asp:Label ID="Label6" runat="server" class="tab" Text="Importe: "></asp:Label>
-        <asp:TextBox ID="ImportBox" runat="server"></asp:TextBox></p>
-    <p>
-        <asp:Button ID="ButtonCreate" runat="server" Text="Crear" OnClick="ButtonCreate_Click" />
-        <asp:Button ID="ButtonUpdate" runat="server" Text="Actualizar" OnClick="ButtonUpdate_Click" />
-        <asp:Button ID="ButtonDelete" runat="server" Text="Borrar" OnClick="ButtonDelete_Click" />
-    </p>
-    <p>
-        <asp:Button ID="ButtonAll" runat="server" Text="Mostrar todas las líneas de pedido" OnClick="ButtonAll_Click" />
-        <asp:Button ID="ButtonAllPed" runat="server" Text="Mostrar todas las líneas de un mismo pedido" OnClick="ButtonAllPed_Click" />
-        <asp:Button ID="ButtonAllProd" runat="server" Text="Mostrar todas las líneas de un mismo producto" OnClick="ButtonAllProd_Click" />
-        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Pedido.aspx">Pedido</asp:HyperLink>
-    </p>
-    <p>
-         <asp:ListView runat="server" ID="ListaPedidos">
-  <LayoutTemplate>
-    <table cellpadding="1" runat="server" id="tblPedidos" 
-        style="width:460px" class ="LV">
-      <tr runat="server" id="itemPlaceholder">
-      </tr>
-    </table>
+   <div class="border border-white navbar navbar-expand-lg bg-dark">
+        <asp:Label runat="server" ID="titulo" Cssclass="font-weight-bold h2 text-center mx-auto text-white bg-dark"/>
+    </div>
 
-    <asp:DataPager runat="server" ID="DataPager" PageSize="3">
-      <Fields>
-        <asp:NumericPagerField
-          ButtonCount="3"
-          PreviousPageText="<--"
-          NextPageText="-->" />
-      </Fields>
-    </asp:DataPager>
-  </LayoutTemplate>
-  <ItemTemplate>
-     <tr runat="server">
-       <td valign="top" colspan="1" align="left" 
-           class="ID_Pedido">
-           <asp:Label Text="ID Pedido: " runat="server" class="tab" />
-         <asp:Label ID="id_pedidoLb" runat="server" 
-           Text='<%#Eval("id_pedido") %>' />
-       </td>
-     </tr>
-     <tr runat="server">
-       <td valign="top" class="id_Linea">
-           <asp:Label ID="LabelId_Linea" runat="server" class="tab" Text="ID Línea: "></asp:Label>
-         <asp:Label ID="id_lineaLb" runat="server" 
-             Text='<%#Eval("id_linea") %>' />
-         <br />
-       </td>
-    </tr>
-    <tr>
-       <td valign="top" class="id_producto">
-           <asp:Label ID="LabelId_Producto" runat="server" class="tab" Text="ID Producto: "></asp:Label>
-         <asp:Label ID="id_productoLb" runat="server" 
-             Text='<%#Eval("id_producto") %>' />
-         <br />
-       </td>
-    </tr>
-      <tr>
-       <td valign="top" class="cantidad">
-           <asp:Label ID="LabelCantidad" runat="server" class="tab" Text="Cantidad: "></asp:Label>
-         <asp:Label ID="cantidadLb" runat="server" 
-             Text='<%#Eval("cantidad") %>' />
-         <br />
-       </td>
-    </tr>
-    <tr>
-       <td valign="top" class="importe_total">
-           <asp:Label ID="Label2" runat="server" class="tab" Text="Importe: "> </asp:Label>
-         <asp:Label syle="margin-bottom:72px" ID="LabelImporte" runat="server" 
-             Text='<%#Eval("importe") %>'  />
-         <br />
-           <br />
-       </td>
-    </tr>
-     </tr>
-   </ItemTemplate>
-</asp:ListView>
-    </p>
+    <asp:ListView runat="server" ID="listView" OnItemDataBound="ImagenProducto">
+        <GroupTemplate>
+            <tr>
+                <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
+            </tr>
+        </GroupTemplate>
+
+        <LayoutTemplate>
+            <table class="table table-hover border-bottom border-dark" style="padding-left: 20px;">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>
+                            Id
+                        </th>
+                        <th>
+                            Imagen
+                        </th>
+                        <th>
+                            Nombre de Producto
+                        </th>
+                        <th>
+                            Cantidad
+                        </th>
+                        <th>
+                            Importe
+                        </th>
+                    </tr>
+                </thead>
+                <asp:PlaceHolder ID="groupPlaceHolder" runat="server" />
+            </table>
+        </LayoutTemplate>
+
+        <ItemTemplate>
+            <td>
+                 <%# Eval("id_linea") %>
+            </td>
+            <td>
+                 <asp:Image ID="Image1" runat="server" Width="70px" Height="70px" ImageUrl="" />	
+            </td>
+            <td>
+                 <asp:Label ID="nombre" runat="server" CssClass="label label-default" />
+            </td>
+            <td>
+                <%# Eval("cantidad") %>
+            </td>
+            <td>
+                <%# Eval("importe") %>€
+            </td>
+        </ItemTemplate>
+    </asp:ListView>
+    <br />
+    <div class="" style="padding-left: 20px;">
+        <asp:Label runat="server" ID="total" CssClass="font-weight-bold"></asp:Label>
+    </div>
+
+    <div style="width:100%; height: 100px; align-content:center; text-align:center">
+        <asp:Label CssClass="labelVacio" runat="server" ID="textboxVacio" Text="No se encontraron productos, intentelo más tarde." Visible="false" ></asp:Label>
+    </div>
+
 </asp:Content>

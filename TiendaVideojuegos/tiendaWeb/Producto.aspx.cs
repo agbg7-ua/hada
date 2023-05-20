@@ -13,6 +13,7 @@ namespace tiendaWeb
     {
         ENProducto en = new ENProducto();
         DataSet d = new DataSet();
+        ENUsuario usu = new ENUsuario();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -32,9 +33,44 @@ namespace tiendaWeb
             }
         }
 
+        protected void Buttons(object sender, ListViewItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListViewItemType.DataItem)
+            {
+                ListViewDataItem dataItem = (ListViewDataItem)e.Item;
+
+                LinkButton guardar = (LinkButton)dataItem.FindControl("carrito");
+                LinkButton comprar = (LinkButton)dataItem.FindControl("comprar");
+                LinkButton registro = (LinkButton)dataItem.FindControl("registrarse");
+
+                if (Session["username"] != null)
+                {
+                    guardar.Visible = true;
+                    comprar.Visible = true;
+                    registro.Visible = false;
+                }
+                else
+                {
+                    guardar.Visible = false;
+                    comprar.Visible = false;
+                    registro.Visible = true;
+                }
+            }
+        }
+
         protected void button_carrito_OnClientClick(object sender, EventArgs e) 
         {
             
+        }
+
+        protected void button_comprar_OnClientClick(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void button_registro_OnClientClick(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Registro.aspx");
         }
     }
 }

@@ -16,7 +16,7 @@
         </GroupTemplate>
 
         <LayoutTemplate>
-            <table class="table table-hover" style="padding-left: 20px;">
+            <table class="table table-hover border-bottom border-dark" style="padding-left: 20px;">
                 <thead class="thead-dark">
                     <tr>
                         <th>
@@ -60,7 +60,7 @@
                 <%# Eval("nombre") %>
             </td>
             <td>
-                <%# Eval("pvp") %>
+                <%# Eval("pvp") %>€
             </td>
             <td>
                 <%# Eval("fecha_salida") %>
