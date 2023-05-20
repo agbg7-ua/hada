@@ -83,7 +83,29 @@ namespace tiendaWeb
 
         protected void button_comprar_OnClientClick(object sender, EventArgs e)
         {
+            ENProducto prod = new ENProducto();
+            ENPedido ped = new ENPedido();
+            DateTime hoy = DateTime.Now;
 
+            LinkButton myButton = (LinkButton)sender;
+            int i = Convert.ToInt32(myButton.CommandArgument.ToString());
+            prod.id = i;
+            prod.readProducto();
+
+            ped.id_usuario = usu.username;
+            ped.fecha = hoy;
+            ped.importe_total = prod.pvp;
+            ped.createPedido();
+
+            
+            ENLineaPedido lped = new ENLineaPedido();
+
+            lped.id_pedido = ped.id;
+            lped.id_producto = prod.id;
+            lped.cantidad = 1;
+            lped.importe = prod.pvp;
+            lped.createLineaPedido();
+            
         }
 
         protected void button_registro_OnClientClick(object sender, EventArgs e)

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using library;
+using System.Data;
 //CREATE TABLE[dbo].[Desarrollador] (
 //    [id]            INT IDENTITY(1, 1) NOT NULL,
 //    [nombre] 		VARCHAR (30)  NOT NULL,
@@ -131,6 +132,11 @@ namespace library
             return cad.obtener_by_nombre(nombre);
         }
 
-
+        public DataSet getDesarrollador()
+        {
+            CADDesarrollador c = new CADDesarrollador();
+            DataSet a = c.getDesarrollador();
+            return a;
+        }
     }
 }

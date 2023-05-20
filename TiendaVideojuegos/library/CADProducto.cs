@@ -56,9 +56,10 @@ namespace library
                 nuevafila[3] = en.nombre;
                 nuevafila[4] = en.pvp;
                 nuevafila[5] = en.descripcion;
-                nuevafila[6] = en.clasificacion;
-                nuevafila[7] = en.imagen;
-                nuevafila[8] = en.mostrar;
+                nuevafila[6] = en.fecha_salida;
+                nuevafila[7] = en.clasificacion;
+                nuevafila[8] = en.imagen;
+                nuevafila[9] = en.mostrar;
                 t.Rows.Add(nuevafila);
                 SqlCommandBuilder cbuilder = new SqlCommandBuilder(da);
                 da.Update(bdvirtual, "Producto");

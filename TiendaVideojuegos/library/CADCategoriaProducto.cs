@@ -205,5 +205,33 @@ namespace library
                 if (c != null) c.Close();
             }
         }
+
+        public DataSet getCategoriaProducto()
+        {
+            DataSet bdvirtual = new DataSet();
+            SqlConnection c = new SqlConnection(constring);
+
+            try
+            {
+                String comando = "Select nombre, id From CategoriaProducto";
+                SqlDataAdapter da = new SqlDataAdapter(comando, c);
+                da.Fill(bdvirtual, "CategoriaProducto");
+                return bdvirtual;
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            finally
+            {
+                if (c != null) c.Close();
+            }
+        }
     }
 }

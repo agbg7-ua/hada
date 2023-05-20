@@ -60,7 +60,7 @@ namespace tiendaWeb.AdminPáginas
             } 
             if (precio.Text != "")
             {
-                en.pvp = (float)Convert.ToDouble(precio.Text);
+                en.pvp = float.Parse(precio.Text, System.Globalization.CultureInfo.InvariantCulture.NumberFormat);
             }
             if (descripcion.Text != "")
             {

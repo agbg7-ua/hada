@@ -28,32 +28,39 @@ namespace library
         // Crear Pedido
         public bool createPedido(ENPedido en)
         {
-            bool res = false;
-            SqlConnection c = null;
+            bool created = false;
+            DataSet bdvirtual = new DataSet();
+            SqlConnection c = new SqlConnection(constring);
+
             try
             {
-                c = new SqlConnection(constring);
-                c.Open();
-                SqlCommand insertSql = new SqlCommand("Insert into Pedido(id,id_usuario,fecha,importe_total) VALUES ('" + en.id + "','" + en.id_usuario + "','" + en.fecha + "','" + en.importe_total + "')", c);
-                insertSql.ExecuteNonQuery();
-                res = true;
+                SqlDataAdapter da = new SqlDataAdapter("Select * From Pedido", c);
+                da.Fill(bdvirtual, "Pedido");
+                DataTable t = new DataTable();
+                t = bdvirtual.Tables["Pedido"];
+                DataRow nuevafila = t.NewRow();
+                nuevafila[1] = en.id_usuario;
+                nuevafila[2] = en.fecha;
+                nuevafila[3] = en.importe_total;
+                t.Rows.Add(nuevafila);
+                SqlCommandBuilder cbuilder = new SqlCommandBuilder(da);
+                da.Update(bdvirtual, "Pedido");
+                created = true;
             }
-            catch (SqlException sqlEx)
+            catch (SqlException ex)
             {
-                Console.WriteLine("Error: {0}", sqlEx.Message);
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: {0}", ex.Message);
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
             }
             finally
             {
-                if (c != null)
-                {
-                    c.Close();
-                }
+                if (c != null) c.Close();
             }
-            return res;
+
+            return created;
         }
         // Leer Pedido
         public bool readPedido(ENPedido en)

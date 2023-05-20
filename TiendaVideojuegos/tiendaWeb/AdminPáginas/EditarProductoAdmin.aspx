@@ -14,15 +14,15 @@
                         <asp:TextBox runat="server" ID="nombre" CssClass="form-control form-group" placeholder="" Width="300px"></asp:TextBox>
                     </p>
                 </p>
-                <br>
-                </br>
+                <br/>
+                <br/>
                 <p class="card-text font-weight-bold h5"> Precio: 
                     <p>
                         <asp:TextBox runat="server" ID="precio" CssClass="form-control form-group" placeholder="" Width="150px"></asp:TextBox>
                     </p>
                 </p>
-                <br>
-                </br>
+                <br/>
+                <br/>
                 <p class="card-text font-weight-bold h5"> Clasificación: 
                     <p>
                         <asp:dropdownlist runat="server" id="clasificacion" CssClass="form-control form-group dropdown-toggle" Width="150px"> 
@@ -35,7 +35,7 @@
                     </p>
                 </p>
                 <br>
-                </br>
+                <br />
                 <p class="font-weight-bold text-dark h5"> Descripción: 
                 </p>
                 <div class="form-group">
