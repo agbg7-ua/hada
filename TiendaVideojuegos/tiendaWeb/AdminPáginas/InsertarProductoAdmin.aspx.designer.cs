@@ -39,7 +39,16 @@ namespace tiendaWeb.AdminPáginas
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl pvp;
+        protected global::System.Web.UI.WebControls.TextBox pvp;
+
+        /// <summary>
+        /// Control preciovacio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator preciovacio;
 
         /// <summary>
         /// Control descripcion.
@@ -48,7 +57,16 @@ namespace tiendaWeb.AdminPáginas
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea descripcion;
+        protected global::System.Web.UI.WebControls.TextBox descripcion;
+
+        /// <summary>
+        /// Control descvacio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator descvacio;
 
         /// <summary>
         /// Control categoria.
@@ -78,15 +96,6 @@ namespace tiendaWeb.AdminPáginas
         protected global::System.Web.UI.WebControls.DropDownList clasificacion;
 
         /// <summary>
-        /// Control lblMessage.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMessage;
-
-        /// <summary>
         /// Control mostrar.
         /// </summary>
         /// <remarks>
@@ -103,6 +112,15 @@ namespace tiendaWeb.AdminPáginas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button guardar;
+
+        /// <summary>
+        /// Control volver.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button volver;
 
         /// <summary>
         /// Control Msg.
@@ -123,12 +141,12 @@ namespace tiendaWeb.AdminPáginas
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationS;
 
         /// <summary>
-        /// Control textboxVacio.
+        /// Control tarde.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label textboxVacio;
+        protected global::System.Web.UI.WebControls.Label tarde;
     }
 }

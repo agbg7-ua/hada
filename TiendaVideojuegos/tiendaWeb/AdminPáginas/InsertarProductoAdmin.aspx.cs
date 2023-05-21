@@ -48,7 +48,8 @@ namespace tiendaWeb.AdminPáginas
                 }
                 else
                 {
-                    textboxVacio.Visible = true;
+                    tarde.Visible = true;
+                    tarde.Text = "No existen Géneros en estos momentos, por favor inténtelo más tarde";
                 }
 
                 ddes = des.getDesarrollador();
@@ -62,7 +63,8 @@ namespace tiendaWeb.AdminPáginas
                 }
                 else
                 {
-                    textboxVacio.Visible = true;
+                    tarde.Visible = true;
+                    tarde.Text = "No existen Desarrolladoras en estos momentos, por favor inténtelo más tarde";
                 }
             }
         }
@@ -70,6 +72,7 @@ namespace tiendaWeb.AdminPáginas
         protected void ButtonGuardar(Object sender, EventArgs e)
         {
             string image;
+            
             //Access the File using the Name of HTML INPUT File.
             HttpPostedFile postedFile = Request.Files["FileUpload"];
 
@@ -79,7 +82,6 @@ namespace tiendaWeb.AdminPáginas
                 //Save the File.
                 string filePath = Server.MapPath("~/Imagenes/Uploads/") + Path.GetFileName(postedFile.FileName);
                 postedFile.SaveAs(filePath);
-                lblMessage.Visible = true;
                 image = postedFile.FileName;
             }
             else 
@@ -90,24 +92,41 @@ namespace tiendaWeb.AdminPáginas
             DateTime hoy = DateTime.Now;
 
             string name = nombre.Text;
-            float number = float.Parse(pvp.Value);
-            string description = descripcion.Value;
+            string number = pvp.Text;
+            float price;
+            bool valid = float.TryParse(number, out price);  
+            string description = descripcion.Text;
             int category = Convert.ToInt32(categoria.SelectedValue);
             int desarrolladora = Convert.ToInt32(desarrollador.SelectedValue);
             int clas = Convert.ToInt32(clasificacion.SelectedValue);
             bool show = mostrar.Checked;
 
-            prod.id_categoria = category;
-            prod.id_desarrollador = desarrolladora;
-            prod.nombre = name;
-            prod.pvp = number;
-            prod.descripcion = description;
-            prod.clasificacion = clas;
-            prod.imagen = "~/Imagenes/Uploads/" + image;
-            prod.mostrar = show;
-            prod.fecha_salida = hoy;
-            prod.createProducto();
-            //Response.Redirect("ProductoAdmin.aspx");
+            if (Page.IsValid)
+            {
+                prod.id_categoria = category;
+                prod.id_desarrollador = desarrolladora;
+                prod.nombre = name;
+                prod.pvp = price;
+                prod.descripcion = description;
+                prod.clasificacion = clas;
+                prod.imagen = "~/Imagenes/Uploads/" + image;
+                prod.mostrar = show;
+                prod.fecha_salida = hoy;
+
+                if (prod.createProducto())
+                {
+                    Response.Redirect("ProductoAdmin.aspx");
+                }
+                else 
+                {
+                    Msg.Text = "El nombre introducido ya existe";
+                }
+            }
+        }
+
+        protected void ButtonVolver(Object sender, EventArgs e)
+        {
+            Response.Redirect("ProductoAdmin.aspx");
         }
     }
 }
