@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="InsertarProductoAdmin.aspx.cs" Inherits="tiendaWeb.AdminPáginas.InsertarProductoAdmin" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -16,8 +17,8 @@
                     <asp:TextBox runat="server" ID="nombre" TextMode="SingleLine" CssClass="form-control"></asp:TextBox>
                     <label for="nombre">Nombre del Videojuego</label>
                     <div class="invalid-feedback">
-                        <asp:requiredfieldvalidator id="nombrevacio" runat="server" ControlToValidate="nombre" ErrorMessage="Nombre de Videojuego es un campo obligatorio" SetFocusOnError="true" Display="Dynamic"></asp:requiredfieldvalidator>
-                        <asp:RegularExpressionValidator runat="server" ControlToValidate="nombre" ErrorMessage="El nombre debe contener caracteres alfanuméricos y no debe superar los 45 caracteres" ValidationExpression="[a-zA-Z0-9]{1,45}$"></asp:RegularExpressionValidator>
+                        <asp:requiredfieldvalidator id="nombrevacio" runat="server" ControlToValidate="nombre" ErrorMessage="Nombre del Videojuego es un campo obligatorio" SetFocusOnError="true" Display="Dynamic"></asp:requiredfieldvalidator>
+                        <asp:RegularExpressionValidator runat="server" ControlToValidate="nombre" ErrorMessage="El nombre debe contener caracteres alfanuméricos y no debe superar los 45 caracteres" ValidationExpression="[a-zA-Z0-9' ']{1,45}$"></asp:RegularExpressionValidator>
                     </div>
                 </div>
                 <div class="form-floating mb-3">
@@ -73,14 +74,14 @@
     </div>
 
     <div class="container-fluid align-content-center" style="width: 500px; padding-top: 20px; padding-right: 20px; padding-left: 20px; padding-bottom: 20px;">
-        <div class="alert alert-danger" role="alert">
+        <div class="alert alert-danger" role="alert" id="alerta" runat="server">
             <p class="message">
                 <asp:Label ID="Msg" runat="server" ></asp:Label>
                 <asp:ValidationSummary ID="ValidationS" runat="server" DisplayMode="BulletList" font-size="Small" />
             </p>
         </div>
 
-        <div class="alert alert-warning" role="alert">
+        <div class="alert alert-warning" role="alert"  id="warning" runat="server">
             <p class="message">
                 <asp:Label ID="tarde" runat="server" Visible="false"></asp:Label>
             </p>

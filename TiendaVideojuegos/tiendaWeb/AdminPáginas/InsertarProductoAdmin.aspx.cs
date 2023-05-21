@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using library;
 using System.Data;
 using System.IO;
+using System.Globalization;
 
 namespace tiendaWeb.AdminPáginas
 {
@@ -37,9 +38,12 @@ namespace tiendaWeb.AdminPáginas
                     Response.Redirect("~/Home.aspx");
                 }
 
+                alerta.Visible = false;
+                warning.Visible = false;
+
                 d = cat.getCategoriaProducto();
 
-                if (d.Tables[0].Rows.Count > 0)
+                if ((d.Tables.Count != 0) && (d.Tables[0].Rows.Count > 0))
                 {
                     categoria.DataSource = d;
                     categoria.DataTextField = "nombre";
@@ -48,13 +52,14 @@ namespace tiendaWeb.AdminPáginas
                 }
                 else
                 {
+                    warning.Visible = true;
                     tarde.Visible = true;
                     tarde.Text = "No existen Géneros en estos momentos, por favor inténtelo más tarde";
                 }
 
                 ddes = des.getDesarrollador();
 
-                if (ddes.Tables[0].Rows.Count > 0)
+                if ((ddes.Tables.Count != 0) && (ddes.Tables[0].Rows.Count > 0))
                 {
                     desarrollador.DataSource = ddes;
                     desarrollador.DataTextField = "nombre";
@@ -63,6 +68,7 @@ namespace tiendaWeb.AdminPáginas
                 }
                 else
                 {
+                    warning.Visible = true;
                     tarde.Visible = true;
                     tarde.Text = "No existen Desarrolladoras en estos momentos, por favor inténtelo más tarde";
                 }
@@ -72,7 +78,8 @@ namespace tiendaWeb.AdminPáginas
         protected void ButtonGuardar(Object sender, EventArgs e)
         {
             string image;
-            
+            float price;
+
             //Access the File using the Name of HTML INPUT File.
             HttpPostedFile postedFile = Request.Files["FileUpload"];
 
@@ -92,9 +99,12 @@ namespace tiendaWeb.AdminPáginas
             DateTime hoy = DateTime.Now;
 
             string name = nombre.Text;
-            string number = pvp.Text;
-            float price;
-            bool valid = float.TryParse(number, out price);  
+
+            if (float.TryParse(pvp.Text, out price))
+            {
+                price = float.Parse(pvp.Text, System.Globalization.CultureInfo.InvariantCulture);
+            }
+
             string description = descripcion.Text;
             int category = Convert.ToInt32(categoria.SelectedValue);
             int desarrolladora = Convert.ToInt32(desarrollador.SelectedValue);
@@ -117,10 +127,14 @@ namespace tiendaWeb.AdminPáginas
                 {
                     Response.Redirect("ProductoAdmin.aspx");
                 }
-                else 
+                else
                 {
                     Msg.Text = "El nombre introducido ya existe";
                 }
+            }
+            else 
+            {
+                alerta.Visible = true;
             }
         }
 
