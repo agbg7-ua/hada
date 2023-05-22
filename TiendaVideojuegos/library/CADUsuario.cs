@@ -128,7 +128,7 @@ namespace library
         {
             bool read_user = false;
             SqlConnection c = null;
-            String comando = "Select * From Usuario";
+            String comando = "Select * From Usuario where username='" + usu.username + "'";
 
             try
             {
@@ -140,21 +140,18 @@ namespace library
 
                 if (dr.Read())
                 {
-                    if (dr["username"].ToString() == usu.username)
-                    {
-                        read_user = true;
-                        usu.nombre = dr["nombre"].ToString();
-                        usu.apellidos = dr["apellidos"].ToString();
-                        usu.email = dr["email"].ToString();
-                        usu.password = dr["contraseña"].ToString();
-                        usu.edad = int.Parse(dr["edad"].ToString());
-                        usu.calle = dr["calle"].ToString();
-                        usu.pueblo = dr["pueblo"].ToString();
-                        usu.provincia = dr["provincia"].ToString();
-                        usu.codigo_postal = dr["codigo_postal"].ToString();
-                        usu.telefono = dr["telefono"].ToString();
-                        usu.admin = bool.Parse(dr["admin"].ToString());
-                    }
+                    read_user = true;
+                    usu.nombre = dr["nombre"].ToString();
+                    usu.apellidos = dr["apellidos"].ToString();
+                    usu.email = dr["email"].ToString();
+                    usu.password = dr["contraseña"].ToString();
+                    usu.edad = int.Parse(dr["edad"].ToString());
+                    usu.calle = dr["calle"].ToString();
+                    usu.pueblo = dr["pueblo"].ToString();
+                    usu.provincia = dr["provincia"].ToString();
+                    usu.codigo_postal = dr["codigo_postal"].ToString();
+                    usu.telefono = dr["telefono"].ToString();
+                    usu.admin = bool.Parse(dr["admin"].ToString());
                 }
 
                 dr.Close();
@@ -204,6 +201,69 @@ namespace library
             {
                 if (c != null) c.Close();
             }
+        }
+
+        // Método para enseñar todos los Usuarios -> modo desconectado
+        public DataSet showAllUsers()
+        {
+            DataSet bdvirtual = new DataSet();
+            SqlConnection c = new SqlConnection(constring);
+
+            try
+            {
+                String comando = "Select * From Usuario";
+                SqlDataAdapter da = new SqlDataAdapter(comando, c);
+                da.Fill(bdvirtual, "Usuario");
+                return bdvirtual;
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            finally
+            {
+                if (c != null) c.Close();
+            }
+        }
+
+        public bool updateAdminUser(ENUsuario usu)
+        {
+            bool update = false;
+            SqlConnection c = null;
+            String comando = "Update Usuario set admin='" + usu.admin + "' where username='" + usu.username + "'";
+
+            try
+            {
+                c = new SqlConnection(constring);
+                c.Open();
+
+                SqlCommand com = new SqlCommand(comando, c);
+
+                com.ExecuteNonQuery();
+                update = true;
+            }
+            catch (SqlException ex)
+            {
+                update = false;
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+            }
+            catch (Exception ex)
+            {
+                update = false;
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+            }
+            finally
+            {
+                if (c != null) c.Close();
+            }
+
+            return update;
         }
     }
 }

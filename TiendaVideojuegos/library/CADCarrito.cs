@@ -281,5 +281,39 @@ namespace library
             }
         }
 
+        //Lista todos los Carritos
+        public DataSet listarCarritos()
+        {
+            DataSet bdvirtual = new DataSet();
+            SqlConnection c = new SqlConnection(constring);
+
+            try
+            {
+                String comando = "Select * From Carrito";
+                SqlDataAdapter da = new SqlDataAdapter(comando, c);
+                da.Fill(bdvirtual, "Carrito");
+
+                return bdvirtual;
+            }
+            catch (SqlException sqlEx)
+            {
+                Console.WriteLine("Error: {0}", sqlEx.Message);
+                return bdvirtual;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: {0}", ex.Message);
+                return bdvirtual;
+
+            }
+            finally
+            {
+                if (c != null)
+                {
+                    c.Close();
+                }
+            }
+        }
+
     }
 }

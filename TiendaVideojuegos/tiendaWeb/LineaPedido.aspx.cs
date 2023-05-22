@@ -37,7 +37,7 @@ namespace tiendaWeb
             }
 
             d = elp.listaLineasPedido(pedido);
-            ;
+;
             total.Text = "Total: " + pedido.importe_total + "€";
 
             if ((d.Tables.Count != 0) && (d.Tables[0].Rows.Count > 0))

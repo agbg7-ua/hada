@@ -144,7 +144,7 @@ namespace library
             {
                 c = new SqlConnection(constring);
                 c.Open();
-                SqlCommand deleteSql = new SqlCommand("Delete from Pedido where id = " + en.id, c);
+                SqlCommand deleteSql = new SqlCommand("Delete from Pedido where id = " + en.id , c);
                 deleteSql.ExecuteNonQuery();
                 res = true;
 

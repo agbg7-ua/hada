@@ -8,7 +8,7 @@
     </div>
 
     <div>
-        <asp:ListView ID="ListView1" runat="server" GroupItemCount="1">
+        <asp:ListView ID="ListView1" runat="server" GroupItemCount="1" OnItemDataBound="Buttons">
              <ItemTemplate>
                         <div class="content" style="width: 100%; padding-left: 40px; padding-top: 40px;">
                                 <div class="float-left">
@@ -19,14 +19,12 @@
                                     <p class="font-weight-bold text-dark h1"> 
                                             <%# Eval("nombre") %>
                                     </p>
-                                    <br>
                                     </br>
                                     <p class="card-text font-weight-bold h4"> Precio: 
                                     </p>
                                     <p class=" card-text h5">
                                         <%# Eval("pvp","{0:c}") %>
                                     </p>
-                                    <br>
                                     </br>
                                     <p class="card-text font-weight-bold h4"> Fecha de salida: 
                                     </p>
@@ -35,9 +33,9 @@
                                     </p>
                                     <br>
                                     </br>
-                                    <asp:Button CssClass="btn btn-warning" runat="server" ID="carrito" Text="Añadir al carrito" Visible="true" OnClick="button_carrito_OnClientClick" OnClientClick="button_carrito_OnClientClick" />
-                                    <asp:Button CssClass="btn btn-secondary" runat="server" ID="Button2" Text="Editar" Visible="true" OnClick="button_editar_OnClientClick" OnClientClick="button_editar_OnClientClick" />
-                                    <asp:Button CssClass="btn btn-danger" runat="server" ID="Button3" Text="Eliminar" Visible="true" OnClick="button_eliminar_OnClientClick" OnClientClick="button_eliminar_OnClientClick" />
+                                    <asp:LinkButton CssClass="btn btn-warning" runat="server" ID="carrito" Text="Añadir al carrito" Visible="true" OnClick="button_carrito_OnClientClick" OnClientClick="button_carrito_OnClientClick" CommandArgument='<%# Eval("id") %>'/>
+                                    <asp:LinkButton CssClass="btn btn-success" runat="server" ID="comprar" Text="Comprar ya" Visible="true" OnClick="button_comprar_OnClientClick" OnClientClick="button_comprar_OnClientClick" CommandArgument='<%# Eval("id") %>'/>
+                                    <asp:LinkButton CssClass="btn btn-danger" runat="server" ID="registrarse" Text="Registrarse/Iniciar Sesión" Visible="true" OnClick="button_registro_OnClientClick" OnClientClick="button_registro_OnClientClick" />
                                     </br>
                                     </br>
                                     <p class="font-weight-bold text-dark h5"> Descripción: 

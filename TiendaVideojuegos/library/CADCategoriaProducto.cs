@@ -112,7 +112,7 @@ namespace library
         {
             bool update = false;
             SqlConnection c = null;
-            String comando = "Update CategoriaProducto set nombre='" + en.nombre + "', descripcion='" + en.descripcion + "', imagen='" + en.imagen + "' where id='" + en.id + "'";
+            String comando = "Update CategoriaProducto set nombre='" + en.nombre + "', descripcion='" + en.descripcion + "', imagen='" + en.imagen + "' where id=" + en.id;
 
             try
             {
@@ -147,7 +147,7 @@ namespace library
         {
             bool delete = false;
             SqlConnection c = null;
-            String comando = "Delete From CategoriaProducto where id = '" + en.id + "'";
+            String comando = "Delete From CategoriaProducto where id = " + en.id;
 
             try
             {

@@ -14,7 +14,7 @@
 <body>
     <!-- Menú princpial común en todas las páginas -->
     <form id="form1" runat="server">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="Home.aspx">ALLGames</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -22,41 +22,43 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <asp:Menu ID="menu" runat="server" Orientation="horizontal" CssClass="navbar-nav mr-auto" StaticMenuStyle-CssClass="nav-item" StaticSelectedStyle-CssClass="nav-item" StaticSubMenuIndent="16px" DynamicMenuStyle-CssClass="nav-item dropdown-menu" RenderingMode="List" role="navigation" itemscope="itemscope" itemtype="https://schema.org/SiteNavigationElement">
-                <LevelMenuItemStyles>
-                    <asp:MenuItemStyle CssClass="dropdown-item text-white bg-dark" HorizontalPadding="15px" Height="50px" VerticalPadding="15px" />
-                </LevelMenuItemStyles>
-                <LevelSelectedStyles>
-                    <asp:MenuItemStyle CssClass="nav-item active text-white bg-dark" Font-Underline="False" />
-                </LevelSelectedStyles>
-                <StaticHoverStyle Font-Underline="true" />
-                <StaticSelectedStyle Font-Bold="true"   />
-                <DynamicMenuItemStyle CssClass="dropdown-item" />
-                <items>
-                <asp:menuitem NavigateUrl="#"
-                    text="Catálogo"
-                    tooltip="Catalogo">
-                    <asp:menuitem NavigateUrl="~/CategoriaProducto.aspx"
-                        text="Géneros"
-                        tooltip="Generos"/>
-                    <asp:menuitem NavigateUrl="~/ListarProducto.aspx"
-                        text="Videojuegos"
-                        tooltip="Videojuegos"/>
-                    <asp:menuitem NavigateUrl="~/ListaDesarrolladores.aspx"
-                        text="Desarrolladores"
-                        tooltip="Desarrolladores"/>
-                </asp:menuitem>
-                <asp:menuitem NavigateUrl="#"
-                    text="Sobre nosotros"
-                    tooltip="Sobre nosotros">
-                </asp:menuitem>
-                </items>
+                    <LevelMenuItemStyles>
+                        <asp:MenuItemStyle CssClass="dropdown-item text-white bg-dark" HorizontalPadding="15px" Height="50px" VerticalPadding="15px" />
+                    </LevelMenuItemStyles>
+                    <LevelSelectedStyles>
+                        <asp:MenuItemStyle CssClass="nav-item active text-white bg-dark" Font-Underline="False" />
+                    </LevelSelectedStyles>
+                    <StaticHoverStyle Font-Underline="true" />
+                    <StaticSelectedStyle Font-Bold="true"   />
+                    <DynamicMenuItemStyle CssClass="dropdown-item" />
+                    <items>
+                        <asp:menuitem NavigateUrl="#"
+                            text="Catálogo"
+                            tooltip="Catalogo">
+                            <asp:menuitem NavigateUrl="~/CategoriaProducto.aspx"
+                                text="Géneros"
+                                tooltip="Generos"/>
+                            <asp:menuitem NavigateUrl="~/ListarProducto.aspx"
+                                text="Videojuegos"
+                                tooltip="Videojuegos"/>
+                            <asp:menuitem NavigateUrl="~/ListaDesarrolladores.aspx"
+                                text="Desarrolladores"
+                                tooltip="Desarrolladores"/>
+                        </asp:menuitem>
+                        <asp:menuitem NavigateUrl="#"
+                            text="Sobre nosotros"
+                            tooltip="Sobre nosotros">
+                        </asp:menuitem>
+                    </items>
                 </asp:Menu>
 
                 <div class="btn-group" style="padding-right: 5px;">
                     <asp:Button runat="server" Height="50px" ID="usuario" CssClass="btn btn-dark" Text="Registro/Inicio sesión" OnClientClick="button_usuarioOnClientClick" OnClick="button_usuarioOnClientClick"/>
-                    <asp:Button runat="server" ID="perfil" CssClass="btn btn-dark" Text="Tu perfil" OnClientClick="button_perfilOnClientClick" OnClick="button_perfilOnClientClick"/>
-                    <asp:Button runat="server" ID="carrito" CssClass="btn btn-dark" Text="Carrito" OnClientClick="button_carritoOnClientClick" OnClick="button_carritoOnClientClick"/>
-                    <asp:Button runat="server" ID="pedidos" CssClass="btn btn-dark" Text="Pedidos" OnClientClick="button_pedidosOnClientClick" OnClick="button_pedidosOnClientClick"/>
+                    <asp:Button runat="server" Height="50px" ID="perfil" CssClass="btn btn-dark" Text="Tu perfil" OnClientClick="button_perfilOnClientClick" OnClick="button_perfilOnClientClick"/>
+                    <asp:Button runat="server" Height="50px" ID="carrito" CssClass="btn btn-dark" Text="Carrito" OnClientClick="button_carritoOnClientClick" OnClick="button_carritoOnClientClick"/>
+                    <asp:Button runat="server" Height="50px" ID="pedidos" CssClass="btn btn-dark" Text="Pedidos" OnClientClick="button_pedidosOnClientClick" OnClick="button_pedidosOnClientClick"/>
+                    <asp:Button runat="server" Height="50px" ID="cerrar_sesion" CssClass="btn btn-dark" Text="Cerrar Sesión" OnClientClick="button_sesionOnClientClick" OnClick="button_sesionOnClientClick"/>
+                    <asp:Button runat="server" Height="50px" ID="administrador" CssClass="btn btn-dark" Text="Admin" OnClientClick="button_adminOnClientClick" OnClick="button_adminOnClientClick"/>
                 </div>
 
                 <div class="form-inline my-2 my-lg-0">
@@ -64,7 +66,7 @@
                     <asp:Button CssClass="btn btn-outline-success my-2 my-sm-0" runat="server" ID="buscar" Text="Buscar" Visible="true" OnClick="button_buscar_OnClientClick" OnClientClick="button_buscar_OnClientClick" />
                 </div>
             </div>
-            </nav>
+        </nav>
         <div>
             <!-- Contendrá el body de las páginas (teniendo el menú) -->
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
