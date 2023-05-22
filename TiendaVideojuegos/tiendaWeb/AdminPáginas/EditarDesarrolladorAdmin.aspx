@@ -33,21 +33,29 @@
 
                         <asp:Label ID="Label3" runat="server" Text="Origen: " Font-Bold="true"></asp:Label>
 
-                        <asp:TextBox ID="TextBox_origen" runat="server" CssClass="form-control input-lg" Visible="true"></asp:TextBox>
-                        <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ErrorMessage="RegularExpressionValidator" ControlToValidate="TextBox_origen" ValidationExpression="^.*$"></asp:RegularExpressionValidator>
+                        <%--<asp:TextBox ID="TextBox_origen" runat="server" CssClass="form-control input-lg" Visible="true"></asp:TextBox>--%>
+                        <asp:DropDownList ID="DropDownList1" runat="server">
+                            <asp:ListItem>Spain</asp:ListItem>
+                            <asp:ListItem>EEUU</asp:ListItem>
+                            <asp:ListItem>France</asp:ListItem>
+                            <asp:ListItem>Asia</asp:ListItem>
+                            <asp:ListItem>Africa</asp:ListItem>
+                            <asp:ListItem>Oceania</asp:ListItem>
+                        </asp:DropDownList>               
+                        <%--<asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ErrorMessage="RegularExpressionValidator" ControlToValidate="TextBox_origen" ValidationExpression="^.*$"></asp:RegularExpressionValidator>--%>
                         <br />
                         <br />
                         <asp:Label ID="Label7" runat="server" Text="Fecha de creacion: " Font-Bold="true"></asp:Label>
 
-                        <asp:TextBox ID="TextBox_fecha" runat="server" CssClass="form-control input-lg" Visible="true"></asp:TextBox>
+                        <%--<asp:TextBox ID="TextBox_fecha" runat="server" CssClass="form-control input-lg" Visible="true"></asp:TextBox>--%>
                         <asp:TextBox ID="TextBox_Date" runat="server" TextMode="Date"></asp:TextBox>
-                        <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="RegularExpressionValidator" ControlToValidate="TextBox_fecha" ValidationExpression="^.*$"></asp:RegularExpressionValidator>
+                        <%--<asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="RegularExpressionValidator" ControlToValidate="TextBox_fecha" ValidationExpression="^.*$"></asp:RegularExpressionValidator>--%>
                         <br />
                         <br />
                         <asp:Label ID="Label9" runat="server" Text="Website: " Font-Bold="true"></asp:Label>
 
                         <asp:TextBox ID="TextBox_web" runat="server" CssClass="form-control input-lg" Visible="true"></asp:TextBox>
-                        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="RegularExpressionValidator" ControlToValidate="TextBox_web" ValidationExpression="^.*$"></asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="RegularExpressionValidator" ControlToValidate="TextBox_web" ValidationExpression="^((https?):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$"></asp:RegularExpressionValidator>
                     </div>
 
                 </asp:TableCell>

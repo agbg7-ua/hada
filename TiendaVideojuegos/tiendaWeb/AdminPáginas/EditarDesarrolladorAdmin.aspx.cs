@@ -33,7 +33,7 @@ namespace tiendaWeb.AdminPáginas
 
                     TextBox_nombre.Text = en.nombre;
                     TextBox_descripcion.Text = en.descripcion;
-                    TextBox_origen.Text = en.origen;
+                    //TextBox_origen.Text = en.origen;
                     TextBox_web.Text = en.web;
                 }
                 catch (Exception ex)
@@ -72,7 +72,7 @@ namespace tiendaWeb.AdminPáginas
             nuevo.id = Convert.ToInt32(Session["desarrolladorID"]);
             nuevo.nombre = TextBox_nombre.Text;
             nuevo.descripcion = TextBox_descripcion.Text.Replace("'","''");
-            nuevo.origen = TextBox_origen.Text;
+            //nuevo.origen = TextBox_origen.Text;
             nuevo.web = TextBox_web.Text;
             //nuevo.fecha_creacion = Convert.ToDateTime(TextBox_Date.Text);
             nuevo.imagen = ProductImage.ImageUrl;
@@ -97,7 +97,7 @@ namespace tiendaWeb.AdminPáginas
             ProductImage.ImageUrl = backup.imagen;
             TextBox_nombre.Text = backup.nombre;
             TextBox_descripcion.Text = backup.descripcion;
-            TextBox_origen.Text = backup.origen;
+            //TextBox_origen.Text = backup.origen;
             TextBox_web.Text = backup.web;
         }
 

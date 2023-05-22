@@ -107,12 +107,10 @@ Bungie Studios és una empresa dissenyadora de videojocs fundada en 1991 sota el
 
 
             List<Item> list = new List<Item>();
-            list.Add(new Item() { ImageURL = "~/Imagenes/sample.jpeg", Title = "             Titulo 1" });
-            list.Add(new Item() { ImageURL = "~/Imagenes/rana.png", Title = "             Titulo 2" });
-            list.Add(new Item() { ImageURL = "~/Imagenes/dredge.png", Title = "             Titulo 3" });
-            list.Add(new Item() { ImageURL = "~/Imagenes/dredge.png", Title = "             Titulo 3" });
-            list.Add(new Item() { ImageURL = "~/Imagenes/rana.png", Title = "             Titulo 2" });
-            list.Add(new Item() { ImageURL = "~/Imagenes/sample.jpeg", Title = "             Titulo 1" });
+            list.Add(new Item() { ImageURL = "~/Imagenes/red.jpg", Title = " The red strings club" });
+            list.Add(new Item() { ImageURL = "~/Imagenes/dredge.png", Title = "             Dredge" });
+            list.Add(new Item() { ImageURL = "~/Imagenes/gods.jpg", Title = "Gods Will be watching" });
+            list.Add(new Item() { ImageURL = "~/Imagenes/essay.jpg", Title = "Essays on Empathy" });
             ListView1.DataSource = list;
             ListView1.DataBind();
         }
