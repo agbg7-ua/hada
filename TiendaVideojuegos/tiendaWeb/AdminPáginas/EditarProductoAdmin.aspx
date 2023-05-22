@@ -14,33 +14,31 @@
         <ItemTemplate>
             <div class="form">
                 <label class="card-text font-weight-bold h4"> Nombre del Videojuego: </label>
-                <asp:TextBox runat="server" ID="nombre" CssClass="form-control" placeholder=""></asp:TextBox>
+                <asp:TextBox runat="server" ID="nombre" CssClass="form-control" placeholder="" TextMode="SingleLine"></asp:TextBox>
                 <div class="invalid-feedback">
-                    <asp:requiredfieldvalidator id="nombrevacio" runat="server" ControlToValidate="nombre" ErrorMessage="Nombre del Videojuego es un campo obligatorio" SetFocusOnError="true" Display="Dynamic"></asp:requiredfieldvalidator>
                     <asp:RegularExpressionValidator runat="server" ControlToValidate="nombre" ErrorMessage="El nombre debe contener caracteres alfanuméricos y no debe superar los 45 caracteres" ValidationExpression="[a-zA-Z0-9' ']{1,45}$"></asp:RegularExpressionValidator>
                 </div>
                 <br/>
-                 <div class="form-floating mb-3" style="padding-left: 20px;">
-                    <label class="card-text font-weight-bold h4"> Precio: </label>
-                    <asp:TextBox runat="server" ID="pvp" CssClass="form-control" placeholder="" Width="300px" TextMode="Number" step="0.01" min="0"></asp:TextBox>
-                    <div class="invalid-feedback">
-                        <asp:requiredfieldvalidator id="preciovacio" runat="server" ControlToValidate="pvp" ErrorMessage="Precio es un campo obligatorio"></asp:requiredfieldvalidator>
-                        <asp:RegularExpressionValidator runat="server" ControlToValidate="pvp" ErrorMessage="El precio no es válido" ValidationExpression="^\d*\.?\d*$"></asp:RegularExpressionValidator>
-                    </div>
+                <label class="card-text font-weight-bold h4"> Precio: </label>
+                <asp:TextBox runat="server" ID="pvp" CssClass="form-control" placeholder="" Width="300px" TextMode="Number" step="0.01" min="0"></asp:TextBox>
+                <div class="invalid-feedback">
+                    <asp:RegularExpressionValidator runat="server" ControlToValidate="pvp" ErrorMessage="El precio no es válido" ValidationExpression="^\d*\.?\d*$"></asp:RegularExpressionValidator>
                 </div>
                 <br />
                 <div>
-                    <small id="cat" class="form-text text-muted">Género</small>
+                    <label class="card-text font-weight-bold h4"> Género: </label>
                     <asp:DropDownList runat="server" ID="categoria" CssClass="form-select">
 
                     </asp:DropDownList>
                 </div>
+                <br />
                 <div>
-                    <small id="des" class="form-text text-muted">Desarrolladora</small>
+                    <label class="card-text font-weight-bold h4"> Desarrolladora: </label>
                     <asp:DropDownList runat="server" ID="desarrollador" CssClass="form-select">
 
                     </asp:DropDownList>
                 </div>
+                <br/>
                 <div>
                     <label class="card-text font-weight-bold h4"> Clasificación: </label>
                     <asp:DropDownList runat="server" ID="clasificacion" CssClass="form-select">
@@ -52,22 +50,28 @@
                     </asp:DropDownList>
                 </div>
                 <br />
-                <p class="font-weight-bold text-dark h5"> Descripción: 
-                </p>
-                <div class="form-group">
-                    <asp:TextBox runat="server" ID="descripcion" class="form-control" Width="500px" Height="150px" placeholder="" ></asp:TextBox>
+                <label class="card-text font-weight-bold h4"> Descripción: </label>
+                <asp:TextBox runat="server" ID="descripcion" CssClass="form-control" placeholder="" TextMode="MultiLine"></asp:TextBox>
+                <br/>
+                <div class="form-check form-switch">
+                    <input runat="server" class="form-check-input" type="checkbox" id="mostrar">
+                    <label class="form-check-label" for="mostrar">Mostrar</label>
                 </div>
-            
+                <br/>
             </div>
         </ItemTemplate>
 
         <asp:Button runat="server" id="volver" CssClass="btn btn-secondary" OnClientClick="ButtonVolver" OnClick="ButtonVolver" Text="Volver" />
         <asp:LinkButton runat="server" id="guardar" CssClass="btn btn-warning" OnClientClick="ButtonGuardar" OnClick="ButtonGuardar" Text="Guardar" />
-
     </div>
 
-    <div style="width:100%; height: 100px; align-content:center; text-align:center">
-        <asp:Label CssClass="labelVacio" runat="server" ID="textboxVacio" Text="No se encontraron productos, intentelo más tarde." Visible="false" ></asp:Label>
+    <div class="container-fluid align-content-center" style="width: 700px; padding-top: 20px; padding-right: 20px; padding-left: 20px; padding-bottom: 20px;" id="alerta" runat="server">
+        <div class="alert alert-danger" role="alert">
+            <p class="message">
+                <asp:Label ID="Msg" runat="server" ></asp:Label>
+                <asp:ValidationSummary ID="ValidationS" runat="server" DisplayMode="BulletList" font-size="Small" />
+            </p>
+        </div>
     </div>
 
 </asp:Content>

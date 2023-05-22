@@ -53,12 +53,13 @@
                 </asp:Menu>
 
                 <div class="btn-group" style="padding-right: 5px;">
+                    <asp:Button runat="server" Height="50px" ID="administrador" CssClass="btn btn-dark" Text="Admin" OnClientClick="button_adminOnClientClick" OnClick="button_adminOnClientClick"/>
                     <asp:Button runat="server" Height="50px" ID="usuario" CssClass="btn btn-dark" Text="Registro/Inicio sesión" OnClientClick="button_usuarioOnClientClick" OnClick="button_usuarioOnClientClick"/>
                     <asp:Button runat="server" Height="50px" ID="perfil" CssClass="btn btn-dark" Text="Tu perfil" OnClientClick="button_perfilOnClientClick" OnClick="button_perfilOnClientClick"/>
                     <asp:Button runat="server" Height="50px" ID="carrito" CssClass="btn btn-dark" Text="Carrito" OnClientClick="button_carritoOnClientClick" OnClick="button_carritoOnClientClick"/>
                     <asp:Button runat="server" Height="50px" ID="pedidos" CssClass="btn btn-dark" Text="Pedidos" OnClientClick="button_pedidosOnClientClick" OnClick="button_pedidosOnClientClick"/>
                     <asp:Button runat="server" Height="50px" ID="cerrar_sesion" CssClass="btn btn-dark" Text="Cerrar Sesión" OnClientClick="button_sesionOnClientClick" OnClick="button_sesionOnClientClick"/>
-                    <asp:Button runat="server" Height="50px" ID="administrador" CssClass="btn btn-dark" Text="Admin" OnClientClick="button_adminOnClientClick" OnClick="button_adminOnClientClick"/>
+
                 </div>
 
                 <div class="form-inline my-2 my-lg-0">
@@ -72,6 +73,38 @@
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
+
+        <footer class="bg-dark text-center text-white">
+          <!-- Grid container -->
+          <div class="container p-4 pb-0">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+              <!-- Facebook -->
+                <asp:ImageButton ID="Facebook" runat="server" ImageUrl="~/Imagenes/facebook.png"  Width="30px" Height="30px"/>
+
+              <!-- Twitter -->
+              <asp:ImageButton ID="Twitter" runat="server" ImageUrl="~/Imagenes/twitter.png"  Width="30px" Height="30px"/>
+
+              <!-- Google -->
+              <asp:ImageButton ID="Google" runat="server" ImageUrl="~/Imagenes/google.png"  Width="30px" Height="30px"/>
+
+              <!-- Instagram -->
+              <asp:ImageButton ID="Instagram" runat="server" ImageUrl="~/Imagenes/instagram.png"  Width="30px" Height="30px"/>
+
+              <!-- Github -->
+              <asp:ImageButton ID="Github" runat="server" ImageUrl="~/Imagenes/github.png"  Width="30px" Height="30px" />
+            </section>
+            <!-- Section: Social media -->
+          </div>
+          <!-- Grid container -->
+
+          <!-- Copyright -->
+          <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2023 Copyright: All right reserved.
+          </div>
+          <!-- Copyright -->
+        </footer>
+
     </form>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

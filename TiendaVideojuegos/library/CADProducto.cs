@@ -207,7 +207,7 @@ namespace library
         {
             bool update = false;
             SqlConnection c = null;
-            String comando = "Update Producto set nombre='" + en.nombre + "', pvp=" + en.pvp + ", descripcion='" + en.descripcion + "', clasificacion=" + en.clasificacion + " where id=" + en.id;
+            String comando = "Update Producto set id_categoria=" + en.id_categoria + ", id_desarrollador=" + en.id_desarrollador + ", nombre='" + en.nombre + "', pvp=" + en.pvp + ", descripcion='" + en.descripcion + "', clasificacion=" + en.clasificacion + ", mostrar='" + en.mostrar + "' where id=" + en.id;
 
             try
             {
@@ -282,6 +282,35 @@ namespace library
             {
                 String comando = "Select * From Producto where mostrar=1";
                 SqlDataAdapter da = new SqlDataAdapter(comando,c);
+                da.Fill(bdvirtual, "Producto");
+                return bdvirtual;
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            finally
+            {
+                if (c != null) c.Close();
+            }
+        }
+
+        // Método para enseñar todos los Productos -> modo desconectado
+        public DataSet showAllProductoAdmin()
+        {
+            DataSet bdvirtual = new DataSet();
+            SqlConnection c = new SqlConnection(constring);
+
+            try
+            {
+                String comando = "Select * From Producto";
+                SqlDataAdapter da = new SqlDataAdapter(comando, c);
                 da.Fill(bdvirtual, "Producto");
                 return bdvirtual;
             }

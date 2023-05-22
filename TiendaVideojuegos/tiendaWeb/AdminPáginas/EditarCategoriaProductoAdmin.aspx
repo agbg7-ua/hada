@@ -3,34 +3,38 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <ItemTemplate>
-        <div class="content" style="width: 100%; padding-left: 40px; padding-top: 40px;">
-            <div class="float-left">
-                <asp:Image ID="ProductImage" runat="server" Width="350px" Height="350px" CssClass="img-thumbnail"  />	
-            </div>
-            <div class="container" style="padding-left: 0px; padding-top: 25px;">
-                <p class="card-text font-weight-bold h4"> Nombre del Videojuego: 
-                    <p>
-                        <asp:TextBox runat="server" ID="nombre" CssClass="form-control form-group"  Width="300px" placeholder=""></asp:TextBox>
-                    </p>
-                </p>
-                </br>
-                <p class="font-weight-bold text-dark h5"> Descripción: 
-                </p>
-                <div class="form-group">
-                    <asp:TextBox runat="server" ID="descripcion" class="form-control" Width="500px" Height="150px"  placeholder=""></asp:TextBox>
-                </div>
-            </div>
-        </div>
-    </ItemTemplate>
+    <div class="border border-white navbar navbar-expand-lg bg-dark">
+        <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark"> Editar Género </p>
+    </div>
 
-    <div style="padding-left:40px;">
+    <br />
+
+     <div class="container-fluid align-content-center" style="width: 700px; padding-top: 20px; padding-right: 20px; padding-left: 20px; padding-bottom: 20px;">
+        <ItemTemplate>
+            <div class="form">
+                <label class="card-text font-weight-bold h4"> Nombre del Género: </label>
+                <asp:TextBox runat="server" ID="nombre" CssClass="form-control" placeholder="" TextMode="SingleLine"></asp:TextBox>
+                <div class="invalid-feedback">
+                    <asp:RegularExpressionValidator runat="server" ControlToValidate="nombre" ErrorMessage="El nombre debe contener caracteres alfanuméricos y no debe superar los 45 caracteres" ValidationExpression="[a-zA-Z0-9' ']{1,45}$"></asp:RegularExpressionValidator>
+                </div>              
+                <br/>
+                <label class="card-text font-weight-bold h4"> Descripción: </label>
+                <asp:TextBox runat="server" ID="descripcion" CssClass="form-control" placeholder="" TextMode="MultiLine"></asp:TextBox>
+                <br/>
+            </div>
+        </ItemTemplate>
+
         <asp:Button runat="server" id="volver" CssClass="btn btn-secondary" OnClientClick="ButtonVolver" OnClick="ButtonVolver" Text="Volver" />
         <asp:LinkButton runat="server" id="guardar" CssClass="btn btn-warning" OnClientClick="ButtonGuardar" OnClick="ButtonGuardar" Text="Guardar" />
     </div>
 
-    <div style="width:100%; height: 100px; align-content:center; text-align:center">
-        <asp:Label CssClass="labelVacio" runat="server" ID="textboxVacio" Text="No se encontraron productos, intentelo más tarde." Visible="false" ></asp:Label>
+    <div class="container-fluid align-content-center" style="width: 700px; padding-top: 20px; padding-right: 20px; padding-left: 20px; padding-bottom: 20px;">
+        <div class="alert alert-danger" role="alert">
+            <p class="message">
+                <asp:Label ID="Msg" runat="server" ></asp:Label>
+                <asp:ValidationSummary ID="ValidationS" runat="server" DisplayMode="BulletList" font-size="Small" />
+            </p>
+        </div>
     </div>
 
 </asp:Content>

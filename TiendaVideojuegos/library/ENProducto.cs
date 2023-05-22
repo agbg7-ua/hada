@@ -182,6 +182,13 @@ namespace library
             return a;
         }
 
+        public DataSet showAllProductoAdmin()
+        {
+            CADProducto c = new CADProducto();
+            DataSet a = c.showAllProductoAdmin();
+            return a;
+        }
+
         // ---------------------------------------------------------------------- 
         /*
          * Ordenar Productos de una Categoría

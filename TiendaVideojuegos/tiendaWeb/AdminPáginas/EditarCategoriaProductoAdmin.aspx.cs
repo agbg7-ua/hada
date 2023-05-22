@@ -36,7 +36,6 @@ namespace tiendaWeb.AdminPáginas
             en.id = Convert.ToInt32(Request.Params["idProd"]);
             en.readCategoriaProducto();
 
-            ProductImage.ImageUrl = en.imagen;
             nombre.Attributes.Add("placeholder", en.nombre);
             descripcion.Attributes.Add("placeholder", en.descripcion);
         }
@@ -49,10 +48,41 @@ namespace tiendaWeb.AdminPáginas
         protected void ButtonGuardar(object sender, EventArgs e)
         {
             en.id = Convert.ToInt32(Request.Params["idProd"]);
-            en.nombre = nombre.Text;
-            en.descripcion = descripcion.Text;
-            en.updateCategoriaProducto();
-            Response.Redirect("CategoriaProductoAdmin.aspx");
+            en.readCategoriaProducto();
+
+            string name, description;
+
+            if (nombre.Text == "")
+            {
+                name = en.nombre;
+            }
+            else
+            {
+                name = nombre.Text;
+            }
+            if (descripcion.Text == "")
+            {
+                description = en.descripcion;
+            }
+            else 
+            {
+                description = descripcion.Text;
+            }
+
+            if (Page.IsValid)
+            {
+                en.nombre = name;
+                en.descripcion = description;
+
+                if (en.updateCategoriaProducto())
+                {
+                    Response.Redirect("CategoriaProductoAdmin.aspx");
+                }
+                else
+                {
+                    Msg.Text = "El nombre introducido ya existe";
+                }
+            }
         }
     }
 }

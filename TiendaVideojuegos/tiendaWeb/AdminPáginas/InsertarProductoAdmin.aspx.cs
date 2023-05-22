@@ -129,6 +129,7 @@ namespace tiendaWeb.AdminPáginas
                 }
                 else
                 {
+                    alerta.Visible = true;
                     Msg.Text = "El nombre introducido ya existe";
                 }
             }
