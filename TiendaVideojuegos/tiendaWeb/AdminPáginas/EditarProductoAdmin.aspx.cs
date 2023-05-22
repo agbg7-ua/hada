@@ -35,10 +35,10 @@ namespace tiendaWeb.AdminPáginas
                     Response.Redirect("~/Home.aspx");
                 }
 
-                ProductImage.ImageUrl = en.imagen;
+                //ProductImage.ImageUrl = en.imagen;
                 nombre.Attributes.Add("placeholder", en.nombre);
-                precio.Attributes.Add("placeholder", en.pvp.ToString());
-                descripcion.Attributes.Add("placeholder", en.descripcion);
+                pvp.Attributes.Add("Text", en.pvp.ToString());
+                descripcion.Attributes.Add("Text", en.descripcion);
                 clasificacion.SelectedValue = en.clasificacion.ToString();
             }
         }
@@ -58,9 +58,9 @@ namespace tiendaWeb.AdminPáginas
             { 
                 en.nombre = nombre.Text;
             } 
-            if (precio.Text != "")
+            if (pvp.Text != "")
             {
-                en.pvp = float.Parse(precio.Text, System.Globalization.CultureInfo.InvariantCulture.NumberFormat);
+                en.pvp = float.Parse(pvp.Text, System.Globalization.CultureInfo.InvariantCulture.NumberFormat);
             }
             if (descripcion.Text != "")
             {
