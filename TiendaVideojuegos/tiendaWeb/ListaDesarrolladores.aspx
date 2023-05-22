@@ -19,7 +19,47 @@
         <asp:TextBox ID="TextBox_Date" runat="server" TextMode="Date"></asp:TextBox>
 
         <asp:Label ID="Label3" runat="server" Text="Pais de origen" Font-Bold="true" Font-Size="Large"></asp:Label>
-        <asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList>
+        <asp:DropDownList ID="DropDownList1" runat="server">
+            <asp:ListItem>Seleccionar Pais de origen</asp:ListItem>
+            <asp:ListItem>Estados Unidos</asp:ListItem>
+            <asp:ListItem>Canada</asp:ListItem>
+            <asp:ListItem>Mexico</asp:ListItem>
+            <asp:ListItem>Inglaterra</asp:ListItem>
+            <asp:ListItem>Francia</asp:ListItem>
+            <asp:ListItem>Alemania</asp:ListItem>
+            <asp:ListItem>Italia</asp:ListItem>
+            <asp:ListItem>España</asp:ListItem>
+            <asp:ListItem>China</asp:ListItem>
+            <asp:ListItem>Japon</asp:ListItem>
+            <asp:ListItem>Corea del Sur</asp:ListItem>
+            <asp:ListItem>Australia</asp:ListItem>
+            <asp:ListItem>Brasil</asp:ListItem>
+            <asp:ListItem>Argentina</asp:ListItem>
+            <asp:ListItem>Chile</asp:ListItem>
+            <asp:ListItem>Colombia</asp:ListItem>
+            <asp:ListItem>Peru</asp:ListItem>
+            <asp:ListItem>Venezuela</asp:ListItem>
+            <asp:ListItem>Uruguay</asp:ListItem>
+            <asp:ListItem>Paraguay</asp:ListItem>
+            <asp:ListItem>Ecuador</asp:ListItem>
+            <asp:ListItem>Bolivia</asp:ListItem>
+            <asp:ListItem>Costa Rica</asp:ListItem>
+            <asp:ListItem>Panama</asp:ListItem>
+            <asp:ListItem>El Salvador</asp:ListItem>
+            <asp:ListItem>Honduras</asp:ListItem>
+            <asp:ListItem>Nicaragua</asp:ListItem>
+            <asp:ListItem>Guatemala</asp:ListItem>
+            <asp:ListItem>Belgica</asp:ListItem>
+            <asp:ListItem>Portugal</asp:ListItem>
+            <asp:ListItem>Irlanda</asp:ListItem>
+            <asp:ListItem>Suiza</asp:ListItem>
+            <asp:ListItem>Suecia</asp:ListItem>
+            <asp:ListItem>Noruega</asp:ListItem>
+            <asp:ListItem>Dinamarca</asp:ListItem>
+            <asp:ListItem>Finlandia</asp:ListItem>
+            <asp:ListItem>Polonia</asp:ListItem>
+            <asp:ListItem>Rusia</asp:ListItem>
+        </asp:DropDownList>
 
     </div>
 
