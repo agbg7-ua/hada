@@ -68,13 +68,12 @@ namespace library
         {
             bool res = false;
             CADPedido c = new CADPedido();
-            if (!c.readPedido(this))
-            {
+            
                 if (c.createPedido(this))
                 {
                     res = true;
                 }
-            }
+            
             return res;
         }
         // Leer Pedido
@@ -88,6 +87,18 @@ namespace library
             }
             return res;
         }
+
+        public bool lastPedido()
+        {
+            bool res = false;
+            CADPedido c = new CADPedido();
+            if (c.lastPedido(this))
+            {
+                res = true;
+            }
+            return res;
+        }
+
         //Actualizar Pedido
         public bool updatePedido()
         {
@@ -124,27 +135,27 @@ namespace library
             return a;
         }
         // Listar Pedidos importe_total ASCENDENTE -> de un mismo usuario
-        public DataSet listarPedidosImporteAsc(ENUsuario en)
+        public DataSet listarPedidosIdAsc(ENUsuario en)
         {
             DataSet a = new DataSet();
 
             if (en.readUsuario() == true)
             {
                 CADPedido c = new CADPedido();
-                a = c.listarPedidosImporteAsc(en);
+                a = c.listarPedidosIdAsc(en);
             }
 
             return a;
         }
         // Listar Pedidos importe_total DESCENDENTE -> de un mismo usuario
-        public DataSet listarPedidosImporteDesc(ENUsuario en)
+        public DataSet listarPedidosIdDesc(ENUsuario en)
         {
             DataSet a = new DataSet();
 
             if (en.readUsuario() == true)
             {
                 CADPedido c = new CADPedido();
-                a = c.listarPedidosImporteDesc(en);
+                a = c.listarPedidosIdDesc(en);
             }
 
             return a;

@@ -58,13 +58,12 @@ namespace library
         {
             bool res = false;
             CADLineaPedido c = new CADLineaPedido();
-            if (!c.readLineaPedido(this))
-            {
+            
                 if (c.createLineaPedido(this))
                 {
                     res = true;
                 }
-            }
+            
             return res;
         }
         // Leer Línea de Pedida
