@@ -61,10 +61,12 @@ namespace tiendaWeb.AdminPáginas
 
                 nombre.Attributes.Add("placeholder", en.nombre);
                 pvp.Attributes.Add("placeholder", en.pvp.ToString());
-                categoria.SelectedValue = "en.id_categoria";
-                desarrollador.SelectedValue = "en.id_desarrollador";
+                categoria.SelectedValue = en.id_categoria.ToString();
+                desarrollador.SelectedValue = en.id_desarrollador.ToString();
                 clasificacion.SelectedValue = en.clasificacion.ToString();
-                mostrar.Value = "en.mostrar";
+
+                mostrar.Checked = en.mostrar;
+                
                 descripcion.Attributes.Add("placeholder", en.descripcion);
             }
         }
@@ -131,7 +133,7 @@ namespace tiendaWeb.AdminPáginas
                 }
                 else
                 {
-                    Msg.Text = "El nombre introducido ya existe";
+                    Msg.Text = "El nombre del producto ya existe";
                 }
             }
         }

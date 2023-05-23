@@ -109,7 +109,7 @@ namespace tiendaWeb.AdminPáginas
             int i = int.Parse(myButton.CommandArgument.ToString());
 
             en.id = i;
-            
+
             en.deleteProducto();
             Response.Redirect("ProductoAdmin.aspx");
         }
