@@ -15,15 +15,6 @@ namespace tiendaWeb.AdminPáginas
     {
 
         /// <summary>
-        /// Control ProductImage.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ProductImage;
-
-        /// <summary>
         /// Control nombre.
         /// </summary>
         /// <remarks>
@@ -60,12 +51,21 @@ namespace tiendaWeb.AdminPáginas
         protected global::System.Web.UI.WebControls.LinkButton guardar;
 
         /// <summary>
-        /// Control textboxVacio.
+        /// Control Msg.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label textboxVacio;
+        protected global::System.Web.UI.WebControls.Label Msg;
+
+        /// <summary>
+        /// Control ValidationS.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationS;
     }
 }

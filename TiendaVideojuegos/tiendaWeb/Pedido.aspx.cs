@@ -33,11 +33,11 @@ namespace tiendaWeb
             usu.username = Session["username"].ToString();
             if (ddlTest.SelectedValue == "2")
             {
-                d = pedido.listarPedidosImporteDesc(usu);
+                d = pedido.listarPedidosIdDesc(usu);
             }
             else
             {
-                d = pedido.listarPedidosImporteAsc(usu);
+                d = pedido.listarPedidosIdAsc(usu);
             }
             
             if ((d.Tables.Count != 0) && (d.Tables[0].Rows.Count > 0))

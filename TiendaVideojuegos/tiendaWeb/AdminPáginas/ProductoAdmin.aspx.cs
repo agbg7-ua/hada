@@ -34,7 +34,7 @@ namespace tiendaWeb.AdminPáginas
                     Response.Redirect("~/Home.aspx");
                 }
 
-                d = producto.showAllProducto();
+                d = producto.showAllProductoAdmin();
 
                 if (d.Tables[0].Rows.Count > 0)
                 {
@@ -109,7 +109,7 @@ namespace tiendaWeb.AdminPáginas
             int i = int.Parse(myButton.CommandArgument.ToString());
 
             en.id = i;
-            
+
             en.deleteProducto();
             Response.Redirect("ProductoAdmin.aspx");
         }

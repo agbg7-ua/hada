@@ -117,5 +117,12 @@ namespace library
             DataSet a = c.showAllCategoriaProducto();
             return a;
         }
+
+        public DataSet getCategoriaProducto()
+        {
+            CADCategoriaProducto c = new CADCategoriaProducto();
+            DataSet a = c.getCategoriaProducto();
+            return a;
+        }
     }
 }

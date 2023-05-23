@@ -44,6 +44,11 @@ namespace tiendaWeb
             }
         }
 
+        protected void button_allgamesOnClientClick(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Home.aspx");
+        }
+
         protected void button_buscar_OnClientClick(object sender, EventArgs e)
         {
             string cad = "BuscarProducto.aspx?b=" + tbox.Text;

@@ -32,6 +32,7 @@ namespace library
                 DataTable t = new DataTable();
                 t = bdvirtual.Tables["LineaCarrito"];
                 DataRow nuevafila = t.NewRow();
+                nuevafila[0] = en.id_carrito;
                 nuevafila[2] = en.id_producto;
                 nuevafila[3] = en.cantidad;
                 nuevafila[4] = en.importe;

@@ -29,6 +29,9 @@
                             Nombre
                         </th>
                         <th>
+                            Descripción
+                        </th>
+                        <th>
                             Opciones
                         </th>
                     </tr>
@@ -42,10 +45,13 @@
                  <%# Eval("id") %>
             </td>
             <td>
-                 <asp:Image ID="Image1" runat="server" Width="50px" Height="50px" ImageUrl='<%# Eval("imagen") %>' />	
+                 <asp:Image ID="Image1" runat="server" Width="60px" Height="60px" ImageUrl='<%# Eval("imagen") %>' />	
             </td>
             <td>
                 <%# Eval("nombre") %>
+            </td>
+            <td style="width: 40%; padding-right: 20px;">
+                <%# Eval("descripcion") %>
             </td>
             <td>
                 <asp:LinkButton runat="server" id="editar" CssClass="btn btn-warning" OnClientClick="ButtonEditar" OnClick="ButtonEditar" Text="Editar" CommandArgument='<%#Eval("id") %>' />

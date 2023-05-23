@@ -56,9 +56,11 @@ namespace library
                 nuevafila[3] = en.nombre;
                 nuevafila[4] = en.pvp;
                 nuevafila[5] = en.descripcion;
-                nuevafila[6] = en.clasificacion;
-                nuevafila[7] = en.imagen;
-                nuevafila[8] = en.mostrar;
+                nuevafila[6] = en.fecha_salida;
+                nuevafila[7] = en.clasificacion;
+                nuevafila[8] = en.imagen;
+                nuevafila[9] = en.mostrar;
+                nuevafila[10] = en.borrado;
                 t.Rows.Add(nuevafila);
                 SqlCommandBuilder cbuilder = new SqlCommandBuilder(da);
                 da.Update(bdvirtual, "Producto");
@@ -87,7 +89,7 @@ namespace library
         {
             bool read = false;
             SqlConnection c = null;
-            String comando = "Select * From Producto where id=" + en.id;
+            String comando = "Select * From Producto where id=" + en.id + " and borrado=0";
 
             try
             {
@@ -108,6 +110,7 @@ namespace library
                     en.fecha_salida = Convert.ToDateTime(dr["fecha_salida"].ToString());
                     en.clasificacion = Convert.ToInt32(dr["clasificacion"].ToString());
                     en.imagen = dr["imagen"].ToString();
+                    en.mostrar = Convert.ToBoolean(dr["mostrar"].ToString());
                 }
 
                 dr.Close();
@@ -135,7 +138,7 @@ namespace library
         {
             bool read = false;
             SqlConnection c = null;
-            String comando = "Select * From Producto where nombre='" + en.nombre + "'";
+            String comando = "Select * From Producto where nombre='" + en.nombre + "' and borrado=0";
 
             try
             {
@@ -179,7 +182,7 @@ namespace library
           
             try
             { 
-                String comando = "Select * From Producto where id=" + en.id;
+                String comando = "Select * From Producto where id=" + en.id + " and borrado=0";
                 SqlDataAdapter da = new SqlDataAdapter(comando, c);
                 da.Fill(bdvirtual, "Producto");
 
@@ -201,39 +204,62 @@ namespace library
             }
         }
 
-        // Método para actualizar un Producto -> modo conectado
         public bool updateProducto(ENProducto en)
         {
             bool update = false;
-            SqlConnection c = null;
-            String comando = "Update Producto set nombre='" + en.nombre + "', pvp=" + en.pvp + ", descripcion='" + en.descripcion + "', clasificacion=" + en.clasificacion + " where id=" + en.id;
+            DataSet bdvirtual = new DataSet();
+            SqlConnection c = new SqlConnection(constring);
 
             try
             {
-                c = new SqlConnection(constring);
-                c.Open();
+                String comando = "Select * From Producto where borrado=0";
+                SqlDataAdapter da = new SqlDataAdapter(comando, c);
+                da.Fill(bdvirtual, "Producto");
+                DataTable t = new DataTable();
+                t = bdvirtual.Tables["Producto"];
+                int i = 0;
+                while (i < t.Rows.Count)
+                {
+                    if (t.Rows[i]["nombre"].ToString() == en.nombre.ToString())
+                    {
+                        if (t.Rows[i]["id"].ToString() != en.id.ToString())
+                        {
+                            update = false;
+                            break;
+                        }
+                    }
+                    if (t.Rows[i]["id"].ToString() == en.id.ToString())
+                    {
+                        t.Rows[i]["id_categoria"] = en.id_categoria;
+                        t.Rows[i]["id_desarrollador"] = en.id_desarrollador;
+                        t.Rows[i]["nombre"] = en.nombre;
+                        t.Rows[i]["pvp"] = en.pvp;
+                        t.Rows[i]["descripcion"] = en.descripcion;
+                        t.Rows[i]["clasificacion"] = en.clasificacion;
+                        t.Rows[i]["mostrar"] = en.mostrar;
+                        update = true;
+                    }
+                    i++;
+                }
 
-                SqlCommand com = new SqlCommand(comando, c);
-
-                com.ExecuteNonQuery();
-                update = true;
+                SqlCommandBuilder cbuilder = new SqlCommandBuilder(da);
+                da.Update(bdvirtual, "Producto");
+                return update;
             }
             catch (SqlException ex)
             {
-                update = false;
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return update;
             }
             catch (Exception ex)
             {
-                update = false;
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return update;
             }
             finally
             {
                 if (c != null) c.Close();
             }
-
-            return update;
         }
 
         // Método para borrar un Producto -> modo desconectado
@@ -241,7 +267,7 @@ namespace library
         {
             bool delete = false;
             SqlConnection c = null;
-            String comando = "Delete From Producto where id= " + en.id;
+            String comando = "Update Producto set borrado=1 where id= " + en.id + " and borrado=0";
 
             try
             {
@@ -279,8 +305,37 @@ namespace library
 
             try 
             {
-                String comando = "Select * From Producto where mostrar=1";
+                String comando = "Select * From Producto where mostrar=1 and borrado=0";
                 SqlDataAdapter da = new SqlDataAdapter(comando,c);
+                da.Fill(bdvirtual, "Producto");
+                return bdvirtual;
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            finally
+            {
+                if (c != null) c.Close();
+            }
+        }
+
+        // Método para enseñar todos los Productos -> modo desconectado
+        public DataSet showAllProductoAdmin()
+        {
+            DataSet bdvirtual = new DataSet();
+            SqlConnection c = new SqlConnection(constring);
+
+            try
+            {
+                String comando = "Select * From Producto where borrado=0";
+                SqlDataAdapter da = new SqlDataAdapter(comando, c);
                 da.Fill(bdvirtual, "Producto");
                 return bdvirtual;
             }
@@ -314,7 +369,7 @@ namespace library
 
             try 
             {
-                String comando = "Select * From Producto where id_categoria=" + en.id + "and mostrar=1 order by nombre asc";
+                String comando = "Select * From Producto where id_categoria=" + en.id + "and mostrar=1 and borrado=0 order by nombre asc";
                 SqlDataAdapter da = new SqlDataAdapter(comando, c);
                 da.Fill(bdvirtual, "Producto");
                 return bdvirtual;
@@ -343,7 +398,7 @@ namespace library
 
             try
             {
-                String comando = "Select * From Producto where id_categoria=" + en.id + " and mostrar=1 order by nombre desc";
+                String comando = "Select * From Producto where id_categoria=" + en.id + " and mostrar=1 and borrado=0 order by nombre desc";
                 SqlDataAdapter da = new SqlDataAdapter(comando, c);
                 da.Fill(bdvirtual, "Producto");
                 return bdvirtual;
@@ -372,7 +427,7 @@ namespace library
 
             try
             {
-                String comando = "Select * From Producto where id_categoria=" + en.id + " and mostrar=1 order by pvp asc";
+                String comando = "Select * From Producto where id_categoria=" + en.id + " and mostrar=1 and borrado=0 order by pvp asc";
                 SqlDataAdapter da = new SqlDataAdapter(comando, c);
                 da.Fill(bdvirtual, "Producto");
                 return bdvirtual;
@@ -401,7 +456,7 @@ namespace library
 
             try
             {
-                String comando = "Select * From Producto where id_categoria=" + en.id + " and mostrar=1 order by pvp desc";
+                String comando = "Select * From Producto where id_categoria=" + en.id + " and mostrar=1 and borrado=0 order by pvp desc";
                 SqlDataAdapter da = new SqlDataAdapter(comando, c);
                 da.Fill(bdvirtual, "Producto");
                 return bdvirtual;
@@ -436,7 +491,7 @@ namespace library
 
             try
             {
-                String comando = "Select * From Producto where mostrar=1 order by nombre asc";
+                String comando = "Select * From Producto where mostrar=1 and borrado=0 order by nombre asc";
                 SqlDataAdapter da = new SqlDataAdapter(comando, c);
                 da.Fill(bdvirtual, "Producto");
                 return bdvirtual;
@@ -465,7 +520,7 @@ namespace library
 
             try
             {
-                String comando = "Select * From Producto where mostrar=1 order by nombre desc";
+                String comando = "Select * From Producto where mostrar=1 and borrado=0 order by nombre desc";
                 SqlDataAdapter da = new SqlDataAdapter(comando, c);
                 da.Fill(bdvirtual, "Producto");
                 return bdvirtual;
@@ -494,7 +549,7 @@ namespace library
 
             try
             {
-                String comando = "Select * From Producto where mostrar=1 order by pvp asc";
+                String comando = "Select * From Producto where mostrar=1 and borrado=0 order by pvp asc";
                 SqlDataAdapter da = new SqlDataAdapter(comando, c);
                 da.Fill(bdvirtual, "Producto");
                 return bdvirtual;
@@ -523,7 +578,7 @@ namespace library
 
             try
             {
-                String comando = "Select * From Producto where mostrar=1 order by pvp desc";
+                String comando = "Select * From Producto where mostrar=1 and borrado=0 order by pvp desc";
                 SqlDataAdapter da = new SqlDataAdapter(comando, c);
                 da.Fill(bdvirtual, "Producto");
                 return bdvirtual;
@@ -552,7 +607,7 @@ namespace library
 
             try
             {
-                String comando = "Select * From Producto where nombre like '%" + name + "%' and mostrar=1";
+                String comando = "Select * From Producto where nombre like '%" + name + "%' and mostrar=1 and borrado=0";
                 SqlDataAdapter da = new SqlDataAdapter(comando, c);
                 da.Fill(bdvirtual, "Producto");
                 return bdvirtual;

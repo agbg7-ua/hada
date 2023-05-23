@@ -12,8 +12,9 @@ namespace tiendaWeb
     public partial class ListarProducto : System.Web.UI.Page
     {
         ENProducto producto = new ENProducto();
-
+        ENUsuario usu = new ENUsuario();
         DataSet d = new DataSet();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -70,6 +71,31 @@ namespace tiendaWeb
                     comprar.Visible = false;
                 }
             }
+        }
+
+        protected void ButtonComprar(Object sender, EventArgs e)
+        {
+            LinkButton buy = (LinkButton)sender;
+            int id_prod = Convert.ToInt32(buy.CommandArgument.ToString());
+            producto.id = id_prod;
+            producto.readProducto();
+
+            usu.username = Session["username"].ToString();
+            ENPedido ped = new ENPedido();
+            ENLineaPedido lped = new ENLineaPedido();
+            DateTime hoy = DateTime.Now;
+
+            ped.id_usuario = usu.username;
+            ped.fecha = hoy;
+            ped.importe_total = producto.pvp;
+            ped.createPedido();
+            ped.lastPedido();
+
+            lped.id_pedido = ped.id;
+            lped.id_producto = producto.id;
+            lped.cantidad = 1;
+            lped.importe = producto.pvp;
+            lped.createLineaPedido();
         }
     }
 }

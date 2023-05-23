@@ -15,15 +15,6 @@ namespace tiendaWeb.AdminPáginas
     {
 
         /// <summary>
-        /// Control ProductImage.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ProductImage;
-
-        /// <summary>
         /// Control nombre.
         /// </summary>
         /// <remarks>
@@ -33,13 +24,31 @@ namespace tiendaWeb.AdminPáginas
         protected global::System.Web.UI.WebControls.TextBox nombre;
 
         /// <summary>
-        /// Control precio.
+        /// Control pvp.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox precio;
+        protected global::System.Web.UI.WebControls.TextBox pvp;
+
+        /// <summary>
+        /// Control categoria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList categoria;
+
+        /// <summary>
+        /// Control desarrollador.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList desarrollador;
 
         /// <summary>
         /// Control clasificacion.
@@ -60,6 +69,15 @@ namespace tiendaWeb.AdminPáginas
         protected global::System.Web.UI.WebControls.TextBox descripcion;
 
         /// <summary>
+        /// Control mostrar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox mostrar;
+
+        /// <summary>
         /// Control volver.
         /// </summary>
         /// <remarks>
@@ -78,12 +96,30 @@ namespace tiendaWeb.AdminPáginas
         protected global::System.Web.UI.WebControls.LinkButton guardar;
 
         /// <summary>
-        /// Control textboxVacio.
+        /// Control alerta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label textboxVacio;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alerta;
+
+        /// <summary>
+        /// Control Msg.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Msg;
+
+        /// <summary>
+        /// Control ValidationS.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationS;
     }
 }

@@ -30,33 +30,42 @@ namespace library
         // Crear Línea de Pedido
         public bool createLineaPedido(ENLineaPedido en)
         {
-            bool res = false;
-            SqlConnection c = null;
+            bool created = false;
+            DataSet bdvirtual = new DataSet();
+            SqlConnection c = new SqlConnection(constring);
+
             try
             {
-                c = new SqlConnection(constring);
-                c.Open();
-                SqlCommand insertSql = new SqlCommand("Insert into LineaPedido(id_pedido,id_linea,id_producto,cantidad,importe) VALUES ('" + en.id_pedido + "','" + en.id_linea + "','" + en.id_producto + "','" + en.cantidad + "','" + en.importe + "')", c);
-                insertSql.ExecuteNonQuery();
-                res = true;
+                SqlDataAdapter da = new SqlDataAdapter("Select * From LineaPedido", c);
+                da.Fill(bdvirtual, "LineaPedido");
+                DataTable t = new DataTable();
+                t = bdvirtual.Tables["LineaPedido"];
+                DataRow nuevafila = t.NewRow();
+                nuevafila[0] = en.id_pedido;
+                nuevafila[2] = en.id_producto;
+                nuevafila[3] = en.cantidad;
+                nuevafila[4] = en.importe;
+                t.Rows.Add(nuevafila);
+                SqlCommandBuilder cbuilder = new SqlCommandBuilder(da);
+                da.Update(bdvirtual, "LineaPedido");
+                created = true;
             }
-            catch (SqlException sqlEx)
+            catch (SqlException ex)
             {
-                Console.WriteLine("Error: {0}", sqlEx.Message);
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: {0}", ex.Message);
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
             }
             finally
             {
-                if (c != null)
-                {
-                    c.Close();
-                }
+                if (c != null) c.Close();
             }
-            return res;
+
+            return created;
         }
+    
         // Leer Línea de Pedida
         public bool readLineaPedido(ENLineaPedido en)
         {
@@ -75,7 +84,7 @@ namespace library
                         res = true;
                         en.id_producto = int.Parse(dr["id_producto"].ToString());
                         en.cantidad = int.Parse(dr["cantidad"].ToString());
-                        en.importe = double.Parse(dr["importe"].ToString());
+                        en.importe = float.Parse(dr["importe"].ToString());
                     }
                 }
             }

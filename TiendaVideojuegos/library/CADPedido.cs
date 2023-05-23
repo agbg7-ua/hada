@@ -28,32 +28,39 @@ namespace library
         // Crear Pedido
         public bool createPedido(ENPedido en)
         {
-            bool res = false;
-            SqlConnection c = null;
+            bool created = false;
+            DataSet bdvirtual = new DataSet();
+            SqlConnection c = new SqlConnection(constring);
+
             try
             {
-                c = new SqlConnection(constring);
-                c.Open();
-                SqlCommand insertSql = new SqlCommand("Insert into Pedido(id,id_usuario,fecha,importe_total) VALUES ('" + en.id + "','" + en.id_usuario + "','" + en.fecha + "','" + en.importe_total + "')", c);
-                insertSql.ExecuteNonQuery();
-                res = true;
+                SqlDataAdapter da = new SqlDataAdapter("Select * From Pedido", c);
+                da.Fill(bdvirtual, "Pedido");
+                DataTable t = new DataTable();
+                t = bdvirtual.Tables["Pedido"];
+                DataRow nuevafila = t.NewRow();
+                nuevafila[1] = en.id_usuario;
+                nuevafila[2] = en.fecha;
+                nuevafila[3] = en.importe_total;
+                t.Rows.Add(nuevafila);
+                SqlCommandBuilder cbuilder = new SqlCommandBuilder(da);
+                da.Update(bdvirtual, "Pedido");
+                created = true;
             }
-            catch (SqlException sqlEx)
+            catch (SqlException ex)
             {
-                Console.WriteLine("Error: {0}", sqlEx.Message);
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: {0}", ex.Message);
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
             }
             finally
             {
-                if (c != null)
-                {
-                    c.Close();
-                }
+                if (c != null) c.Close();
             }
-            return res;
+
+            return created;
         }
         // Leer Pedido
         public bool readPedido(ENPedido en)
@@ -94,6 +101,43 @@ namespace library
             }
             return res;
         }
+
+        public bool lastPedido(ENPedido en)
+        {
+            bool res = false;
+            SqlConnection c = null;
+            try
+            {
+                c = new SqlConnection(constring);
+                c.Open();
+                SqlCommand readSql = new SqlCommand("Select * from Pedido where id_usuario='" + en.id_usuario + "'", c);
+                SqlDataReader dr = readSql.ExecuteReader();
+                while (dr.Read())
+                {
+                    en.id = Convert.ToInt32(dr["id"].ToString());
+                    res = true;
+                }
+                return res;
+            }
+            catch (SqlException sqlEx)
+            {
+                Console.WriteLine("Error: {0}", sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: {0}", ex.Message);
+            }
+            finally
+            {
+                if (c != null)
+                {
+                    c.Close();
+                }
+            }
+            return res;
+        }
+
+
         //Actualizar Pedido
         public bool updatePedido(ENPedido en)
         {
@@ -201,14 +245,14 @@ namespace library
             }
         }
         // Listar Pedidos importe_total ASCENDENTE -> de un mismo usuario
-        public DataSet listarPedidosImporteAsc(ENUsuario en)
+        public DataSet listarPedidosIdAsc(ENUsuario en)
         {
             DataSet bdvirtual = new DataSet();
             SqlConnection c = new SqlConnection(constring);
 
             try
             {
-                String comando = "Select * From Pedido where id_usuario='" + en.username + "' order by importe_total asc";
+                String comando = "Select * From Pedido where id_usuario='" + en.username + "' order by id asc";
                 SqlDataAdapter da = new SqlDataAdapter(comando, c);
                 da.Fill(bdvirtual, "Pedido");
                 return bdvirtual;
@@ -233,14 +277,14 @@ namespace library
             }
         }
         // Listar Pedidos importe_total DESCENDENTE -> de un mismo usuario
-        public DataSet listarPedidosImporteDesc(ENUsuario en)
+        public DataSet listarPedidosIdDesc(ENUsuario en)
         {
             DataSet bdvirtual = new DataSet();
             SqlConnection c = new SqlConnection(constring);
 
             try
             {
-                String comando = "Select * From Pedido where id_usuario='" + en.username + "' order by importe_total desc";
+                String comando = "Select * From Pedido where id_usuario='" + en.username + "' order by id desc";
                 SqlDataAdapter da = new SqlDataAdapter(comando, c);
                 da.Fill(bdvirtual, "Pedido");
                 return bdvirtual;

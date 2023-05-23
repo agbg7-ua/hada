@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using library;
 using System.Data;
+using System.Web.UI.HtmlControls;
 
 namespace tiendaWeb
 {
@@ -20,52 +21,91 @@ namespace tiendaWeb
             en.id = Convert.ToInt32(Request.Params["idProd"]);
             en.readProducto();
 
-            d = en.showProducto();
+            ProductImage.ImageUrl = en.imagen;
+            nombre.Text = en.nombre;
+            precio.Text = en.pvp.ToString() + "€";
+            fecha.Text = en.fecha_salida.Date.ToString();
+            descripcion.Text = en.descripcion;
 
-            if (d.Tables[0].Rows.Count > 0)
+            if (Session["username"] != null)
             {
-                ListView1.DataSource = d;
-                ListView1.DataBind();
+                usu.username = Session["username"].ToString();
+                carrito.Visible = true;
+                comprar.Visible = true;
+                registrarse.Visible = false;
             }
             else
             {
-                textboxVacio.Visible = true;
-            }
-        }
-
-        protected void Buttons(object sender, ListViewItemEventArgs e)
-        {
-            if (e.Item.ItemType == ListViewItemType.DataItem)
-            {
-                ListViewDataItem dataItem = (ListViewDataItem)e.Item;
-
-                LinkButton guardar = (LinkButton)dataItem.FindControl("carrito");
-                LinkButton comprar = (LinkButton)dataItem.FindControl("comprar");
-                LinkButton registro = (LinkButton)dataItem.FindControl("registrarse");
-
-                if (Session["username"] != null)
-                {
-                    guardar.Visible = true;
-                    comprar.Visible = true;
-                    registro.Visible = false;
-                }
-                else
-                {
-                    guardar.Visible = false;
-                    comprar.Visible = false;
-                    registro.Visible = true;
-                }
+                carrito.Visible = false;
+                comprar.Visible = false;
+                registrarse.Visible = true;
             }
         }
 
         protected void button_carrito_OnClientClick(object sender, EventArgs e) 
         {
-            
+            ENProducto prod = new ENProducto();
+            DateTime hoy = DateTime.Now;
+            int cant;
+ 
+            prod.id = en.id;
+            prod.readProducto();
+
+            if (cantidad.Text == "")
+            {
+                cant = 1;
+            }
+            else
+            {
+                cant = Convert.ToInt32(cantidad.Text);
+            }
+
+            ENCarrito car = new ENCarrito();
+            ENLineaCarrito lcar = new ENLineaCarrito();
+            car.readCarritoByUser(usu);
+            lcar.id_carrito = car.id;
+            lcar.id_producto = prod.id;
+            lcar.cantidad = cant;
+            lcar.fecha = hoy;
+            lcar.importe = prod.pvp * lcar.cantidad;
+            lcar.createLineaCarrito();
+
+            Response.Redirect("Carrito.aspx");
         }
 
         protected void button_comprar_OnClientClick(object sender, EventArgs e)
         {
+            ENProducto prod = new ENProducto();
+            ENPedido ped = new ENPedido();
+            DateTime hoy = DateTime.Now;
+            int cant;
 
+            prod.id = en.id;
+            prod.readProducto();
+
+            if (cantidad.Text == "")
+            {
+                cant = 1;
+            }
+            else
+            {
+                cant = Convert.ToInt32(cantidad.Text);
+            }
+
+            ped.id_usuario = usu.username;
+            ped.fecha = hoy;
+            ped.importe_total = prod.pvp * cant;
+            ped.createPedido();
+            ped.lastPedido();
+            
+            ENLineaPedido lped = new ENLineaPedido();
+
+            lped.id_pedido = ped.id;
+            lped.id_producto = prod.id;
+            lped.cantidad = cant;
+            lped.importe = prod.pvp * cant;
+            lped.createLineaPedido();
+            
         }
 
         protected void button_registro_OnClientClick(object sender, EventArgs e)

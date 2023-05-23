@@ -13,7 +13,7 @@ namespace library
         private int _id_linea;
         private int _id_producto;
         private int _cantidad;
-        private double _importe;
+        private float _importe;
         public int id_pedido
         {
             get { return _id_pedido; }
@@ -21,7 +21,7 @@ namespace library
         }
         public int id_linea
         {
-            get { return id_linea; }
+            get { return _id_linea; }
             set { _id_linea = value; }
         }
         public int id_producto
@@ -34,9 +34,9 @@ namespace library
             get { return _cantidad; }
             set { _cantidad = value; }
         }
-        public double importe
+        public float importe
         {
-            get { return importe; }
+            get { return _importe; }
             set { _importe = value; }
         }
 
@@ -45,7 +45,7 @@ namespace library
         
         }
 
-        public ENLineaPedido(int id_pedido, int id_linea, int id_producto, int cantidad, double importe)
+        public ENLineaPedido(int id_pedido, int id_linea, int id_producto, int cantidad, float importe)
         {
             this.id_pedido = id_pedido;
             this.id_linea = id_linea;
@@ -58,13 +58,12 @@ namespace library
         {
             bool res = false;
             CADLineaPedido c = new CADLineaPedido();
-            if (!c.readLineaPedido(this))
-            {
+            
                 if (c.createLineaPedido(this))
                 {
                     res = true;
                 }
-            }
+            
             return res;
         }
         // Leer Línea de Pedida

@@ -46,7 +46,7 @@
                                 <h5 class="card-title"> <%# Eval("nombre") %> </h5>
                                 <p class="card-text">  <%# Eval("pvp") %>€ </p>
                                 <a href='<%# "Producto.aspx?idProd=" + Eval("id")%>' class="btn btn-info">Ver Producto</a>
-                                <asp:LinkButton runat="server" ID="comprar" CssClass="btn btn-success" Text="Comprar"/>
+                                <asp:LinkButton runat="server" ID="comprar" CssClass="btn btn-success" Text="Comprar" OnClick="ButtonComprar" OnClientClick="ButtonComprar" CommandArgument='<%# Eval("id") %>'/>
                             </div>
                         </div>
                     </td>

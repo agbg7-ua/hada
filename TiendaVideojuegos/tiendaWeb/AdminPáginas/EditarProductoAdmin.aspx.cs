@@ -13,6 +13,10 @@ namespace tiendaWeb.AdminPáginas
     {
         ENProducto en = new ENProducto();
         ENUsuario usu = new ENUsuario();
+        ENCategoriaProducto cat = new ENCategoriaProducto();
+        ENDesarrollador des = new ENDesarrollador();
+        DataSet d = new DataSet();
+        DataSet ddes = new DataSet();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -35,11 +39,35 @@ namespace tiendaWeb.AdminPáginas
                     Response.Redirect("~/Home.aspx");
                 }
 
-                ProductImage.ImageUrl = en.imagen;
+                d = cat.getCategoriaProducto();
+
+                if ((d.Tables.Count != 0) && (d.Tables[0].Rows.Count > 0))
+                {
+                    categoria.DataSource = d;
+                    categoria.DataTextField = "nombre";
+                    categoria.DataValueField = "id";
+                    categoria.DataBind();
+                }
+
+                ddes = des.getDesarrollador();
+
+                if ((ddes.Tables.Count != 0) && (ddes.Tables[0].Rows.Count > 0))
+                {
+                    desarrollador.DataSource = ddes;
+                    desarrollador.DataTextField = "nombre";
+                    desarrollador.DataValueField = "id";
+                    desarrollador.DataBind();
+                }
+
                 nombre.Attributes.Add("placeholder", en.nombre);
-                precio.Attributes.Add("placeholder", en.pvp.ToString());
-                descripcion.Attributes.Add("placeholder", en.descripcion);
+                pvp.Attributes.Add("placeholder", en.pvp.ToString());
+                categoria.SelectedValue = en.id_categoria.ToString();
+                desarrollador.SelectedValue = en.id_desarrollador.ToString();
                 clasificacion.SelectedValue = en.clasificacion.ToString();
+
+                mostrar.Checked = en.mostrar;
+                
+                descripcion.Attributes.Add("placeholder", en.descripcion);
             }
         }
 
@@ -50,30 +78,64 @@ namespace tiendaWeb.AdminPáginas
 
         protected void ButtonGuardar(object sender, EventArgs e)
         {
-            ENProducto aux = new ENProducto();
             en.id = Convert.ToInt32(Request.Params["idProd"]);
             en.readProducto();
 
-            if (nombre.Text != "")
-            { 
-                en.nombre = nombre.Text;
-            } 
-            if (precio.Text != "")
+            string name, description;
+            float price;
+
+            if (nombre.Text == "")
             {
-                en.pvp = (float)Convert.ToDouble(precio.Text);
+                name = en.nombre;
             }
-            if (descripcion.Text != "")
+            else 
             {
-                en.descripcion = descripcion.Text;
+                name = nombre.Text;
+            }
+            if (pvp.Text == "")
+            {
+                price = en.pvp;
+            }
+            else 
+            {
+                if (float.TryParse(pvp.Text, out price))
+                {
+                    price = float.Parse(pvp.Text, System.Globalization.CultureInfo.InvariantCulture);
+                }
+            }
+            if (descripcion.Text == "")
+            {
+                description = en.descripcion;
+            }
+            else
+            {
+                description = descripcion.Text;
             }
 
-            en.clasificacion = Convert.ToInt32(clasificacion.SelectedValue);
+            int category = Convert.ToInt32(categoria.SelectedValue);
+            int desarrolladora = Convert.ToInt32(desarrollador.SelectedValue);
+            int clas = Convert.ToInt32(clasificacion.SelectedValue);
+            bool show = mostrar.Checked;
 
-            textboxVacio.Visible = true;
-            textboxVacio.Text = clasificacion.SelectedValue;
+            if (Page.IsValid)
+            {
+                en.id_categoria = category;
+                en.id_desarrollador = desarrolladora;
+                en.nombre = name;
+                en.pvp = price;
+                en.descripcion = description;
+                en.clasificacion = clas;
+                en.mostrar = show;
 
-            en.updateProducto();
-            Response.Redirect("ProductoAdmin.aspx");
+                if (en.updateProducto())
+                {
+                    Response.Redirect("ProductoAdmin.aspx");
+                }
+                else
+                {
+                    Msg.Text = "El nombre del producto ya existe";
+                }
+            }
         }
     }
 }

@@ -80,13 +80,20 @@ namespace library
             set { _mostrar = value; }
         }
 
+        private bool _borrado;
+        public bool borrado
+        {
+            get { return _borrado; }
+            set { _borrado = value; }
+        }
+
         // Constructor vacío
         public ENProducto() { 
         
         }
 
         // Constructor sobrecargado
-        public ENProducto(int id_categoria, int id_desarrollador, string nombre, float pvp, string descripcion, DateTime fecha_salida, int clasificacion, string imagen, bool mostrar) 
+        public ENProducto(int id_categoria, int id_desarrollador, string nombre, float pvp, string descripcion, DateTime fecha_salida, int clasificacion, string imagen, bool mostrar, bool borrado) 
         {
             this.id_categoria = id_categoria;
             this.id_desarrollador = id_desarrollador;
@@ -97,6 +104,7 @@ namespace library
             this.clasificacion = clasificacion;
             this.imagen = imagen;
             this.mostrar = mostrar;
+            this.borrado = borrado;
         }
 
         // Método para crear un producto
@@ -148,12 +156,7 @@ namespace library
 
             if (en.readProducto())
             {
-                cat.id = this.id_categoria;
-
-                if (cat.readCategoriaProducto())
-                {
-                    return c.updateProducto(this);
-                }
+                return c.updateProducto(this);
             }
 
             return false;
@@ -165,11 +168,7 @@ namespace library
             bool delete = false;
             CADProducto c = new CADProducto();
 
-            // Comprobamos que existe el producto
-            if (c.readProducto(this) == true)
-            {
-                delete = c.deleteProducto(this);
-            }
+            delete = c.deleteProducto(this);
     
             return delete;
         }
@@ -179,6 +178,13 @@ namespace library
         {
             CADProducto c = new CADProducto();
             DataSet a = c.showAllProducto();
+            return a;
+        }
+
+        public DataSet showAllProductoAdmin()
+        {
+            CADProducto c = new CADProducto();
+            DataSet a = c.showAllProductoAdmin();
             return a;
         }
 
