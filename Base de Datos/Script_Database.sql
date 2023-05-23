@@ -58,6 +58,7 @@ CREATE TABLE [dbo].[Producto] (
     [clasificacion]     INT            NULL,
     [imagen]            VARCHAR (MAX)  NULL,
     [mostrar]          	BIT            DEFAULT ((0)) NOT NULL,
+    [borrado]          BIT            DEFAULT ((0)) NOT NULL,
     PRIMARY KEY CLUSTERED ([id] ASC),
     UNIQUE NONCLUSTERED ([nombre] ASC),
     CONSTRAINT [fk_Producto_CategoriaProducto] FOREIGN KEY ([id_categoria]) REFERENCES [dbo].[CategoriaProducto] ([id]),
@@ -85,19 +86,9 @@ CREATE TABLE [dbo].[Comentario] (
 CREATE TABLE [dbo].[Oferta] (
     [id] 		INT  		IDENTITY (1, 1) NOT NULL,
     [oferta]      	DECIMAL (7,2)  	NULL,
+    [id_producto]      	INT  	NOT NULL,
     PRIMARY KEY CLUSTERED ([id] ASC),
-    CONSTRAINT [fk_Oferta_Producto] FOREIGN KEY ([id]) REFERENCES [dbo].[Producto] ([id])
-);
-
--- --------------------------------------------------------------------------------------------
--- OFERTA_HAS_PRODUCTO
-
-CREATE TABLE [dbo].[Oferta_has_Producto] (
-    [oferta_id] 	INT  	NOT NULL,
-    [producto_id]      	INT  	NOT NULL,
-    PRIMARY KEY CLUSTERED ([oferta_id] ASC, [producto_id] ASC),
-    CONSTRAINT [fk_OfertaHProducto_Oferta] FOREIGN KEY ([oferta_id]) REFERENCES [dbo].[Oferta] ([id]),
-    CONSTRAINT [fk_OfertaHProducto_Producto] FOREIGN KEY ([producto_id]) REFERENCES [dbo].[Producto] ([id])
+    CONSTRAINT [fk_Oferta_Producto] FOREIGN KEY ([id_producto]) REFERENCES [dbo].[Producto] ([id])
 );
 
 -- --------------------------------------------------------------------------------------------
