@@ -224,6 +224,7 @@ namespace library
                 SqlDataReader dr = com.ExecuteReader();
                 if (dr.Read())
                 {
+                    en.id = Convert.ToInt32(dr["id"]);
                     en.nombre = dr["nombre"].ToString();
                     en.descripcion = dr["descripcion"].ToString();
                     en.origen = dr["origen"].ToString();
@@ -357,6 +358,85 @@ namespace library
             {
                 if (c != null) c.Close();
             }
+        }
+
+        // funtion that filter a list of developers by name, date and/or origin
+        public List<ENDesarrollador> filtrar(ENDesarrollador original)
+        {
+            string nombre = original.nombre;
+            DateTime fecha = original.fecha_creacion;
+            string origen = original.origen;
+
+            List<ENDesarrollador> lista_final = new List<ENDesarrollador>();
+            lista_final = obtener_todos();
+
+            if (nombre != "")
+            {
+                // filter the list by the names thats contains the string nombre
+                lista_final = lista_final.Where(x => x.nombre.Contains(nombre)).ToList();
+                //lista_final = lista_final.Where(x => x.nombre == nombre).ToList();
+            }
+            if (fecha != DateTime.MinValue)
+            {
+                lista_final = lista_final.Where(x => x.fecha_creacion == fecha).ToList();
+            }
+            if (origen != "")
+            {
+                lista_final = lista_final.Where(x => x.origen == origen).ToList();
+            }
+            return lista_final;
+        }
+
+
+        public List<string> obtener_paises()
+        {
+            List<string> countries = new List<string>();
+            List<ENDesarrollador> lista = new List<ENDesarrollador>();
+            lista = obtener_todos();
+            // make a list of all countries in origen field , witthout repear
+            foreach(ENDesarrollador des in lista)
+            {
+                if (!countries.Contains(des.origen))
+                {
+                    countries.Add(des.origen);
+                }
+            }
+
+            return countries;
+        }
+
+
+        public List<ENProducto> obtener_juegos(ENDesarrollador origen)
+        {
+            // get a list of all games of a developer
+            List<ENProducto> lista = new List<ENProducto>();
+            SqlConnection c = new SqlConnection(constring);
+            try
+            {
+                c.Open();
+                String sql_q = String.Format(
+                                           "select * from Producto where id_desarrollador=" + origen.id.ToString() + ";");
+                SqlCommand com = new SqlCommand(sql_q, c);
+                SqlDataReader dr = com.ExecuteReader();
+                while (dr.Read())
+                {
+                    ENProducto en = new ENProducto();
+                    en.id = Convert.ToInt32(dr["id"].ToString());
+                    en.nombre = dr["nombre"].ToString();
+                    en.imagen = dr["imagen"].ToString();
+                    lista.Add(en);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Excepcion al leer los Productos del desarrollador : " + ex.Message);
+            }
+            finally
+            {
+                c.Close();
+            }
+            return lista;
         }
     }
 }

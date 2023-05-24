@@ -120,14 +120,14 @@
                 <td style="width: 300px; height: 350px; padding: 5px 5px 5px 25px;">
                     <div class="productItem">
                         <asp:HyperLink ID="HyperLink1" runat="server"
-                            NavigateUrl='<%# "Producto.aspx"%>'>
+                            NavigateUrl='<%# "Producto.aspx?idProd=" + Eval("id")%>'>
                             <div class="col-sm-4">
-                                <asp:Image ID="Image1" runat="server" ImageUrl='<%#Eval("ImageUrl") %>' Height="200" Width="150" />
+                                <asp:Image ID="Image1" runat="server" ImageUrl='<%#Eval("imagen") %>' Height="200" Width="150" />
                             </div>
                             <div>
-                                <asp:Label ID="Label4" runat="server" Text='<%#Eval("Title") %>'></asp:Label>
+                                <asp:Label ID="Label4" runat="server" Text='<%#Eval("nombre") %>'></asp:Label>
                             </div>
-                        </asp:HyperLink>
+                            </asp:HyperLink>
                     </div>
                 </td>
             </ItemTemplate>

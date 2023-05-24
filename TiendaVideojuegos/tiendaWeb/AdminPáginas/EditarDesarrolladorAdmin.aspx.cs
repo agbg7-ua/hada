@@ -18,6 +18,7 @@ namespace tiendaWeb.AdminPáginas
 
             if (!Page.IsPostBack)
             {
+
                 int id = Convert.ToInt32(Session["desarrolladorID"]);
                 try
                 {
@@ -33,7 +34,10 @@ namespace tiendaWeb.AdminPáginas
 
                     TextBox_nombre.Text = en.nombre;
                     TextBox_descripcion.Text = en.descripcion;
+                    DropDownList1.Text = en.origen;
+                    Label_info.Text = en.fecha_creacion.ToString("yyyy-MM-dd");
                     //TextBox_origen.Text = en.origen;
+                    TextBox_Date.Text = en.fecha_creacion.ToString("yyyy-MM-dd");
                     TextBox_web.Text = en.web;
                 }
                 catch (Exception ex)
@@ -68,16 +72,17 @@ namespace tiendaWeb.AdminPáginas
 
         protected void Button_guardar_Click(object sender, EventArgs e)
         {
-            ENDesarrollador nuevo = new ENDesarrollador();
-            nuevo.id = Convert.ToInt32(Session["desarrolladorID"]);
-            nuevo.nombre = TextBox_nombre.Text;
-            nuevo.descripcion = TextBox_descripcion.Text.Replace("'","''");
-            //nuevo.origen = TextBox_origen.Text;
-            nuevo.web = TextBox_web.Text;
-            //nuevo.fecha_creacion = Convert.ToDateTime(TextBox_Date.Text);
-            nuevo.imagen = ProductImage.ImageUrl;
             try
             {
+                ENDesarrollador nuevo = new ENDesarrollador();
+                nuevo.id = Convert.ToInt32(Session["desarrolladorID"]);
+                nuevo.nombre = TextBox_nombre.Text;
+                nuevo.descripcion = TextBox_descripcion.Text.Replace("'", "''");
+                nuevo.origen = DropDownList1.Text;
+                nuevo.web = TextBox_web.Text;
+                nuevo.fecha_creacion = Convert.ToDateTime(TextBox_Date.Text);
+                nuevo.imagen = ProductImage.ImageUrl;
+
                 nuevo.modificar();
                 Label_info.Text = "Desarrollador modificado con exito";
             }
@@ -89,16 +94,16 @@ namespace tiendaWeb.AdminPáginas
 
         protected void Button_cancelar_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("DesarrolladorAdmin.aspx");
         }
 
         protected void Button_recargar_Click(object sender, EventArgs e)
         {
-            ProductImage.ImageUrl = backup.imagen;
-            TextBox_nombre.Text = backup.nombre;
-            TextBox_descripcion.Text = backup.descripcion;
-            //TextBox_origen.Text = backup.origen;
-            TextBox_web.Text = backup.web;
+            //ProductImage.ImageUrl = backup.imagen;
+            //TextBox_nombre.Text = backup.nombre;
+            //TextBox_descripcion.Text = backup.descripcion;
+            ////TextBox_origen.Text = backup.origen;
+            //TextBox_web.Text = backup.web;
         }
 
         protected void Button_upload_image_Click(object sender, EventArgs e)

@@ -61,6 +61,14 @@ Bungie Studios és una empresa dissenyadora de videojocs fundada en 1991 sota el
                     Image3.ImageUrl = imagen;
 
                     Label_error_info.Text = imagen;
+
+
+
+                    List<ENProducto> juegos = new List<ENProducto>();
+                    juegos = en.obtener_juegos();
+
+                    ListView1.DataSource = juegos;
+                    ListView1.DataBind();
                 }
                 catch (Exception ex)
                 {
@@ -106,13 +114,7 @@ Bungie Studios és una empresa dissenyadora de videojocs fundada en 1991 sota el
             //GridView1.DataBind();
 
 
-            List<Item> list = new List<Item>();
-            list.Add(new Item() { ImageURL = "~/Imagenes/red.jpg", Title = " The red strings club" });
-            list.Add(new Item() { ImageURL = "~/Imagenes/dredge.png", Title = "             Dredge" });
-            list.Add(new Item() { ImageURL = "~/Imagenes/gods.jpg", Title = "Gods Will be watching" });
-            list.Add(new Item() { ImageURL = "~/Imagenes/essay.jpg", Title = "Essays on Empathy" });
-            ListView1.DataSource = list;
-            ListView1.DataBind();
+
         }
 
         //protected void TextBox1_TextChanged(object sender, EventArgs e)

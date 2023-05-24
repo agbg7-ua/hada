@@ -31,7 +31,7 @@ namespace tiendaWeb.AdminPáginas
 
         protected void ButtonAñadir(object sender, EventArgs e)
         {
-            Response.Redirect("~/Admin.aspx");
+            Response.Redirect("InsertarDesarrolladorAdmin.aspx");
         }
 
         protected void ButtonEditar(object sender, EventArgs e)

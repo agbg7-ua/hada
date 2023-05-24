@@ -24,6 +24,7 @@ namespace library
         private string _descripcion;
         private string _origen;
         private DateTime _fecha_creacion;
+        private string _fecha_string;
         private string _web;
         private string _imagen;
         private bool _borrado;
@@ -52,7 +53,10 @@ namespace library
         public DateTime fecha_creacion
         {
             get { return _fecha_creacion; }
-            set { _fecha_creacion = value; }
+            set {
+                _fecha_creacion = value;
+                _fecha_string = value.ToString("yyyy-MM-dd");
+            }
         }
         public string web
         {
@@ -70,6 +74,12 @@ namespace library
         {
             get { return _borrado; }
             set { _borrado = value; }
+        }
+
+        public string fecha_string
+        {
+            get { return _fecha_string; }
+            set { _fecha_string = value; }
         }
 
         public ENDesarrollador()
@@ -146,6 +156,25 @@ namespace library
             CADDesarrollador c = new CADDesarrollador();
             DataSet a = c.getDesarrollador();
             return a;
+        }
+
+
+        public List<ENDesarrollador> filtrar()
+        {
+            CADDesarrollador cad = new CADDesarrollador();
+            return cad.filtrar(this);
+        }
+
+        public List<string> obtener_paises()
+        {
+            CADDesarrollador cad = new CADDesarrollador();
+            return cad.obtener_paises();
+        }
+
+        public List<ENProducto> obtener_juegos()
+        {
+            CADDesarrollador cad = new CADDesarrollador();
+            return cad.obtener_juegos(this);
         }
     }
 }

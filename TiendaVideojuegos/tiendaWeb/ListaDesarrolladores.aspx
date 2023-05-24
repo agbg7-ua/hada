@@ -20,46 +20,10 @@
 
         <asp:Label ID="Label3" runat="server" Text="Pais de origen" Font-Bold="true" Font-Size="Large"></asp:Label>
         <asp:DropDownList ID="DropDownList1" runat="server">
-            <asp:ListItem>Seleccionar Pais de origen</asp:ListItem>
-            <asp:ListItem>Estados Unidos</asp:ListItem>
-            <asp:ListItem>Canada</asp:ListItem>
-            <asp:ListItem>Mexico</asp:ListItem>
-            <asp:ListItem>Inglaterra</asp:ListItem>
-            <asp:ListItem>Francia</asp:ListItem>
-            <asp:ListItem>Alemania</asp:ListItem>
-            <asp:ListItem>Italia</asp:ListItem>
-            <asp:ListItem>España</asp:ListItem>
-            <asp:ListItem>China</asp:ListItem>
-            <asp:ListItem>Japon</asp:ListItem>
-            <asp:ListItem>Corea del Sur</asp:ListItem>
-            <asp:ListItem>Australia</asp:ListItem>
-            <asp:ListItem>Brasil</asp:ListItem>
-            <asp:ListItem>Argentina</asp:ListItem>
-            <asp:ListItem>Chile</asp:ListItem>
-            <asp:ListItem>Colombia</asp:ListItem>
-            <asp:ListItem>Peru</asp:ListItem>
-            <asp:ListItem>Venezuela</asp:ListItem>
-            <asp:ListItem>Uruguay</asp:ListItem>
-            <asp:ListItem>Paraguay</asp:ListItem>
-            <asp:ListItem>Ecuador</asp:ListItem>
-            <asp:ListItem>Bolivia</asp:ListItem>
-            <asp:ListItem>Costa Rica</asp:ListItem>
-            <asp:ListItem>Panama</asp:ListItem>
-            <asp:ListItem>El Salvador</asp:ListItem>
-            <asp:ListItem>Honduras</asp:ListItem>
-            <asp:ListItem>Nicaragua</asp:ListItem>
-            <asp:ListItem>Guatemala</asp:ListItem>
-            <asp:ListItem>Belgica</asp:ListItem>
-            <asp:ListItem>Portugal</asp:ListItem>
-            <asp:ListItem>Irlanda</asp:ListItem>
-            <asp:ListItem>Suiza</asp:ListItem>
-            <asp:ListItem>Suecia</asp:ListItem>
-            <asp:ListItem>Noruega</asp:ListItem>
-            <asp:ListItem>Dinamarca</asp:ListItem>
-            <asp:ListItem>Finlandia</asp:ListItem>
-            <asp:ListItem>Polonia</asp:ListItem>
-            <asp:ListItem>Rusia</asp:ListItem>
         </asp:DropDownList>
+
+        <asp:Button ID="Button_buscar" runat="server" Text="Buscar" Onclick="Button_buscar_Click"/>
+        <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="Imagenes/reset.png" Width="25" Height="25" BorderColor="Black" OnClick="ImageButton1_Click" />
 
     </div>
 
@@ -120,15 +84,18 @@
                                     <asp:imagebutton id="boton_lista" runat="server" imageurl='<%#Eval("imagen") %>'  height="120px" width="120px" OnClick="test" CommandArgument='<%# Eval("nombre") %>'></asp:imagebutton>
 
                                 </asp:tablecell>
-                                <asp:tablecell columnspan="2">
+                                <asp:tablecell columnspan="2" aling="left   ">
                                     <asp:label runat="server" text="Nombre: " font-bold="true"></asp:label>
                                     <asp:hyperlink id="HyperLink2" runat="server"
                                         navigateurl='<%# "Desarrollador.aspx"%>'>
                                         <asp:label id="label_nombre" runat="server" text='<%#Eval("nombre") %>'></asp:label>
                                     </asp:hyperlink>
                                     <br />
-                                    <asp:label runat="server" text="Fecha de creacion: " font-bold="true"></asp:label>
+                                    <asp:label runat="server" text="Web: " font-bold="true"></asp:label>
                                     <asp:label id="label_fecha" runat="server" text='<%#Eval("web") %>'></asp:label>
+                                                                        <br />
+                                    <asp:label runat="server" text="Fecha de creacion: " font-bold="true"></asp:label>
+                                    <asp:label id="label4" runat="server" text='<%#Eval("fecha_string") %>'></asp:label>
                                     <br />
                                     <asp:label runat="server" text="Pais de origen: " font-bold="true"></asp:label>
                                     <asp:label id="label_pais" runat="server" text='<%#Eval("origen") %>'></asp:label>
