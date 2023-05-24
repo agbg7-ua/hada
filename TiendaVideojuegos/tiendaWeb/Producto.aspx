@@ -20,19 +20,16 @@
                                             <asp:label runat="server" ID="nombre"/>
                                     </p>
                                     <br>
-                                    </br>
                                     <p class=" card-text h3">
                                         <asp:label runat="server" ID="precio"/>
                                     </p>
                                     <br>
-                                    </br>
                                     <p class="card-text font-weight-bold h5"> Fecha de salida: 
                                     </p>
                                     <p class=" card-text h5">
                                         <asp:label runat="server" ID="fecha"/>
                                     </p>
                                     <br>
-                                    </br>
                                     <div class="d-flex justify-content-start" style="padding-bottom: 20px;">
                                         <p class="card-text font-weight-bold h5" style="padding-right: 20px; padding-top: 7px;"> Cantidad: </p>
                                         <asp:TextBox runat="server" ID="cantidad" CssClass="form-control" min="1" max="5" TextMode="Number" style="width: 100px;" onkeydown="return false" placeholder="1"/>
@@ -41,10 +38,13 @@
                                     <asp:LinkButton CssClass="btn btn-success" runat="server" ID="comprar" Text="Comprar ya" Visible="true" OnClick="button_comprar_OnClientClick" OnClientClick="button_comprar_OnClientClick"/>
                                     <asp:LinkButton CssClass="btn btn-danger" runat="server" ID="registrarse" Text="Registrarse/Iniciar Sesión" Visible="true" OnClick="button_registro_OnClientClick" OnClientClick="button_registro_OnClientClick" />
                                 </div>
-                            <div style="padding-top: 70px; padding-right: 400px;">
+                            <div style="padding-top: 60px; padding-right: 400px; padding-bottom: 20px;">
                                 <p class="font-weight-bold text-dark h5"> Descripción: </p>
                                 <asp:TextBox runat="server" ID="descripcion" CssClass="form-control" TextMode="MultiLine" ReadOnly="true" Rows="5" />
                             </div>
+                            <asp:HyperLink runat="server" ID="comentario" >
+                                <asp:Label runat="server" ID="vercom" Text="Ver comentarios" />
+                            </asp:HyperLink>
                         </div>
                 </ItemTemplate>
            

@@ -96,6 +96,24 @@ namespace tiendaWeb
         protected global::System.Web.UI.WebControls.TextBox descripcion;
 
         /// <summary>
+        /// Control comentario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink comentario;
+
+        /// <summary>
+        /// Control vercom.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label vercom;
+
+        /// <summary>
         /// Control textboxVacio.
         /// </summary>
         /// <remarks>

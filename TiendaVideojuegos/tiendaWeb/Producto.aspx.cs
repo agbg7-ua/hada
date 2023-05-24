@@ -26,6 +26,7 @@ namespace tiendaWeb
             precio.Text = en.pvp.ToString() + "€";
             fecha.Text = en.fecha_salida.Date.ToString();
             descripcion.Text = en.descripcion;
+            comentario.NavigateUrl = "Comentario.aspx?idProd=" + en.id;
 
             if (Session["username"] != null)
             {
