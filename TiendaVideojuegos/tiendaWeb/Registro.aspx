@@ -13,7 +13,7 @@
          Contraseña:<br /> <asp:TextBox ID="passwordTextBox" runat="server" placeholder =" Contraseña" TextMode="Password" ClientIDMode="Static"> </asp:TextBox><br />
         <asp:CheckBox ID="showPasswordCheckBox" runat="server" Text="Show Password" AutoPostBack="True" OnTextChanged="showPasswordButton_Click" /><br />
          <asp:Label ID="outputMsg" runat="server" Text="Label"><br /></asp:Label><br />
-         <asp:Button class="regbutton" ID="iniciabutton" runat="server" Text="Iniciar sesión" OnClick="Button1_Click" />
+         <asp:Button class="regbutton" ID="iniciabutton" runat="server" Text="Iniciar sesión" OnClick="Button1_Click"  />
      </div>
      <div class="container" style="width: 50%; float:right; height:900px">
         <h3 style="text-align: center;margin-top:20px">Regístrate</h3><br />

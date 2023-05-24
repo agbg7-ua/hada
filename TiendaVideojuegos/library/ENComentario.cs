@@ -88,11 +88,7 @@ namespace library
             CADComentario cad = new CADComentario();
             return cad.deleteComentario(this);
         }
-        public bool showComentario()
-        {
-            CADComentario cad = new CADComentario();
-            return cad.showComentario(this);
-        }
+
         public bool readComentario()
         {
             CADComentario cad = new CADComentario();

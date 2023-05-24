@@ -34,7 +34,8 @@ namespace tiendaWeb
             usuario = usu.username;
             if (usu.readUsuario())
             {
-                Response.Redirect("~/Usuario.aspx" + Uri.EscapeDataString(usuario));
+                Session["Datos"] = usuario;
+                Response.Redirect("~/Usuario.aspx");
             }
             else
             {
@@ -62,7 +63,8 @@ namespace tiendaWeb
             usuario = usu.username;
             if (usu.signIn())
             {
-                Response.Redirect("~/Usuario.aspx" + Uri.EscapeDataString(usuario));
+                Session["Datos"] = usuario;
+                Response.Redirect("~/Usuario.aspx");
             }
             else
             {

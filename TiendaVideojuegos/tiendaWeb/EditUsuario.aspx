@@ -21,8 +21,9 @@
             <p style="font-size:20px;margin:3px"> <b>Código postal:<br /> </b> <asp:TextBox ID="TextBox5" runat="server" placeholder ="Código postal"></asp:TextBox></p>
             <p style="font-size:20px;margin:3px"> <b>Localidad:<br /> </b> <asp:TextBox ID="TextBox6" runat="server" placeholder ="Localidad"></asp:TextBox></p>
             <p style="font-size:20px;margin:3px"> <b>Provincia:<br /> </b> <asp:TextBox ID="TextBox7" runat="server" placeholder ="Provincia"></asp:TextBox> </p>
-            <p style="font-size:20px;margin:3px"><b> País:<br /></b> <asp:TextBox ID="TextBox8" runat="server" placeholder ="País"></asp:TextBox> </p><br />
-            <asp:Button class="regbutton" ID="Button1" runat="server" Text="Finalizar" />
+            <p style="font-size:20px;margin:3px"><b> Edad:<br /></b> <asp:TextBox ID="TextBox8" runat="server" placeholder ="País"></asp:TextBox> </p><br />
+            <asp:Label ID="outputMsg" runat="server" Text="Label"><br /></asp:Label>
+            <asp:Button class="regbutton" ID="Button1" runat="server" Text="Finalizar" OnClick="Button1_Click" />
 
      </div>
     </div>

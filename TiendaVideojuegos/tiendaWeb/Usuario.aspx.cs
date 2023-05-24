@@ -12,9 +12,8 @@ namespace tiendaWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string usuario = Request.QueryString["usuario"];
             ENUsuario usu = new ENUsuario();
-            usu.username = usuario;
+            usu.username = (string)Session["Datos"];
             if (usu.readUsuario())
             {
                 NameUsu.Text = usu.nombre;
@@ -29,6 +28,13 @@ namespace tiendaWeb
                 EmailUsu.Text = usu.email;
             }
 
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            string usuario = (string)Session["Datos"];
+            Session["Datos1"] = usuario;
+            Response.Redirect("~/EditUsuario.aspx");
         }
     }
 }

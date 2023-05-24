@@ -26,7 +26,7 @@ namespace library
                 SqlConnection conection = null;
                 conection = new SqlConnection(constring);
                 conection.Open();
-                string str = "Insert INTO[dbo].[Usuario](username,nombre, apellidos,email,contraseña, edad,calle,pueblo,provincia,codigo_postal,telefono,admin) VALUES('" + usu.username + "', '" + usu.nombre + "', '" + usu.apellidos + "', '" + usu.email + "', '" + usu.password + 
+                string str = "Insert INTO Usuario (username,nombre,apellidos,email,contraseña,edad,calle,pueblo,provincia,codigo_postal,telefono,admin) VALUES('" + usu.username + "', '" + usu.nombre + "', '" + usu.apellidos + "', '" + usu.email + "', '" + usu.password + 
                 "', " + usu.edad + ", '" + usu.calle + "', '" + usu.pueblo + "', '" + usu.provincia + "', '" + usu.codigo_postal +
                 "', " + usu.telefono + "', " + usu.admin + ")";
                 SqlCommand cons = new SqlCommand(str, conection);
