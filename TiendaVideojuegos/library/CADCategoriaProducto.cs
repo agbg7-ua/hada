@@ -112,7 +112,7 @@ namespace library
         {
             bool update = false;
             SqlConnection c = null;
-            String comando = "Update CategoriaProducto set nombre='" + en.nombre + "', descripcion='" + en.descripcion + "', imagen='" + en.imagen + "' where id='" + en.id + "'";
+            String comando = "Update CategoriaProducto set nombre='" + en.nombre + "', descripcion='" + en.descripcion + "', imagen='" + en.imagen + "' where id=" + en.id;
 
             try
             {
@@ -147,7 +147,8 @@ namespace library
         {
             bool delete = false;
             SqlConnection c = null;
-            String comando = "Delete From CategoriaProducto where id = '" + en.id + "'";
+            String comando = "Update CategoriaProducto set borrado=1 where id =" + en.id;
+            String comando2 = "Update Producto set borrado=1 where id_categoria=" + en.id;
 
             try
             {
@@ -155,8 +156,10 @@ namespace library
                 c.Open();
 
                 SqlCommand com = new SqlCommand(comando, c);
+                SqlCommand com2 = new SqlCommand(comando2, c);
 
                 com.ExecuteNonQuery();
+                com2.ExecuteNonQuery();
                 delete = true;
             }
             catch (SqlException ex)
@@ -185,7 +188,35 @@ namespace library
 
             try
             {
-                String comando = "Select * From CategoriaProducto";
+                String comando = "Select * From CategoriaProducto where borrado=0";
+                SqlDataAdapter da = new SqlDataAdapter(comando, c);
+                da.Fill(bdvirtual, "CategoriaProducto");
+                return bdvirtual;
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return bdvirtual;
+            }
+            finally
+            {
+                if (c != null) c.Close();
+            }
+        }
+
+        public DataSet getCategoriaProducto()
+        {
+            DataSet bdvirtual = new DataSet();
+            SqlConnection c = new SqlConnection(constring);
+
+            try
+            {
+                String comando = "Select nombre, id From CategoriaProducto";
                 SqlDataAdapter da = new SqlDataAdapter(comando, c);
                 da.Fill(bdvirtual, "CategoriaProducto");
                 return bdvirtual;

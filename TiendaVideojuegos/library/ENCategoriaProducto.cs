@@ -41,17 +41,26 @@ namespace library
             set { _imagen = value; }
         }
 
+        private bool _borrado;
+
+        public bool borrado
+        {
+            get { return _borrado; }
+            set { _borrado = value; }
+        }
+
         // Constructor vacío
         public ENCategoriaProducto() { 
         
         }
 
         // Constructor sobrecargado
-        public ENCategoriaProducto(string nombre, string descripcion, string imagen) 
+        public ENCategoriaProducto(string nombre, string descripcion, string imagen, bool borrado) 
         {
             this.nombre = nombre;
             this.descripcion = descripcion;
             this.imagen = imagen;
+            this.borrado = borrado;
         }
 
         // Método para crear una categoría de producto
@@ -115,6 +124,13 @@ namespace library
         {
             CADCategoriaProducto c = new CADCategoriaProducto();
             DataSet a = c.showAllCategoriaProducto();
+            return a;
+        }
+
+        public DataSet getCategoriaProducto()
+        {
+            CADCategoriaProducto c = new CADCategoriaProducto();
+            DataSet a = c.getCategoriaProducto();
             return a;
         }
     }

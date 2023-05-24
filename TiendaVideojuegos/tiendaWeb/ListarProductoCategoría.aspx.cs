@@ -13,6 +13,7 @@ namespace tiendaWeb
     {
         ENCategoriaProducto enCat = new ENCategoriaProducto();
         ENProducto enProd = new ENProducto();
+        ENUsuario usu = new ENUsuario();
         DataSet d = new DataSet();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -64,6 +65,50 @@ namespace tiendaWeb
             {
                 textboxVacio.Visible = true;
             }
+        }
+
+        protected void Buttons(object sender, ListViewItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListViewItemType.DataItem)
+            {
+                ListViewDataItem dataItem = (ListViewDataItem)e.Item;
+
+                LinkButton comprar = (LinkButton)dataItem.FindControl("comprar");
+
+                if (Session["username"] != null)
+                {
+                    comprar.Visible = true;
+                }
+                else
+                {
+                    comprar.Visible = false;
+                }
+            }
+        }
+
+        protected void ButtonComprar(Object sender, EventArgs e)
+        {
+            LinkButton buy = (LinkButton)sender;
+            int id_prod = Convert.ToInt32(buy.CommandArgument.ToString());
+            enProd.id = id_prod;
+            enProd.readProducto();
+
+            usu.username = Session["username"].ToString();
+            ENPedido ped = new ENPedido();
+            ENLineaPedido lped = new ENLineaPedido();
+            DateTime hoy = DateTime.Now;
+
+            ped.id_usuario = usu.username;
+            ped.fecha = hoy;
+            ped.importe_total = enProd.pvp;
+            ped.createPedido();
+            ped.lastPedido();
+
+            lped.id_pedido = ped.id;
+            lped.id_producto = enProd.id;
+            lped.cantidad = 1;
+            lped.importe = enProd.pvp;
+            lped.createLineaPedido();
         }
     }
 }

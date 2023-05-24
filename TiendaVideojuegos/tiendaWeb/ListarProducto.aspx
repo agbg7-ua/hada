@@ -17,7 +17,7 @@
 
     <div class= "col-auto text-center mx-auto">
 
-            <asp:ListView runat="server" ID="listView" GroupItemCount="6">
+            <asp:ListView runat="server" ID="listView" GroupItemCount="6" OnItemDataBound="Buttons">
 
                 <GroupTemplate>
                     <tr>
@@ -38,25 +38,16 @@
                 </LayoutTemplate>
 
                 <ItemTemplate>
-                    <td style="width:300px; height:350px; padding: 5px 5px 5px 25px;">
-                        <div class="productItem">
-                            <asp:HyperLink ID="HyperLink1" runat="server" 
-                                NavigateUrl='<%# "Producto.aspx?idProd=" + Eval("id")%>'>
-                                <div>
-                                    <asp:Image ID="ProductImage" runat="server" Width="200px" Height="200px"
+                    <td style="width:300px; height:350px; padding: 5px 5px 5px 25px; padding-top: 20px;">
+                        <div class="card border border-dark" style="height: 475px;">
+                            <asp:Image ID="ProductImage" CssClass="" runat="server" Width="280px" Height="280px"
                                         ImageUrl='<%# Eval("imagen") %>' />	
-                                </div>
-                                <div>
-                                    <b class="font-weight-bold text-dark h5"> 
-                                        <%# Eval("nombre") %>
-                                    </b>
-                                </div>
-                                <div>
-                                    <b class="font-weight-bold text-dark h5"> 
-                                        <%# Eval("pvp") %>
-                                    </b>
-                                </div>
-                            </asp:HyperLink>
+                            <div class="card-body" style="background-color: #d6d5d5;">
+                                <h5 class="card-title"> <%# Eval("nombre") %> </h5>
+                                <p class="card-text">  <%# Eval("pvp") %>€ </p>
+                                <a href='<%# "Producto.aspx?idProd=" + Eval("id")%>' class="btn btn-info">Ver Producto</a>
+                                <asp:LinkButton runat="server" ID="comprar" CssClass="btn btn-success" Text="Comprar" OnClick="ButtonComprar" OnClientClick="ButtonComprar" CommandArgument='<%# Eval("id") %>'/>
+                            </div>
                         </div>
                     </td>
                 </ItemTemplate>

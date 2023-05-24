@@ -5,19 +5,26 @@
 
     <div class="border border-white navbar navbar-expand-lg bg-dark">
         <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark"> Administrador </p>
-        <div class="dropdown">
-            <asp:dropdownlist runat="server" id="ddlTest" CssClass="float-right btn btn-secondary dropdown-toggle" OnSelectedIndexChanged="ddlTest_SelectedIndexChanged" AutoPostBack="true"> 
-                 <asp:listitem text="..." value="0" Selected="True"></asp:listitem>
-                 <asp:listitem text="Géneros" value="1"></asp:listitem>
-                 <asp:listitem text="Videojuegos" value="2"></asp:listitem>
-                 <asp:listitem text="Desarrolladoras" value="3"></asp:listitem>
-                 <asp:listitem text="Pedidos" value="4"></asp:listitem>
-            </asp:dropdownlist>
-        </div>
     </div>
+    <br/>
 
-    <div style="width:100%; height: 100px; align-content:center; text-align:center">
-        <asp:Label CssClass="labelVacio" runat="server" ID="textboxVacio" Text="No se encontraron productos, intentelo más tarde." Visible="false" ></asp:Label>
+    <div class="container-fluid" style="height: 100%">
+        <div style="width:100%; height: 100px; align-content:center; text-align:center">
+            <blockquote class="blockquote">
+                <p style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"><strong>Bienvenido a Administración</strong></p>
+            </blockquote>
+        </div>
+
+        <div style="width:100%; height: 100px; align-content:center; text-align:center">
+            <div class="text-center" style="padding-right: 5px;">
+                <asp:Button runat="server" Height="50px" ID="usuario" CssClass="btn btn-secondary" Text="Usuarios" OnClientClick="button_usuarioOnClientClick" OnClick="button_usuarioOnClientClick"/>
+                <asp:Button runat="server" Height="50px" ID="producto" CssClass="btn btn-secondary" Text="Videojuegos" OnClientClick="button_productoOnClientClick" OnClick="button_productoOnClientClick"/>
+                <asp:Button runat="server" Height="50px" ID="categoria" CssClass="btn btn-secondary" Text="Géneros" OnClientClick="button_categoriaOnClientClick" OnClick="button_categoriaOnClientClick"/>
+                <asp:Button runat="server" Height="50px" ID="carrito" CssClass="btn btn-secondary" Text="Carritos" OnClientClick="button_carritoOnClientClick" OnClick="button_carritoOnClientClick"/>
+                <asp:Button runat="server" Height="50px" ID="pedido" CssClass="btn btn-secondary" Text="Pedidos" OnClientClick="button_pedidoOnClientClick" OnClick="button_pedidoOnClientClick"/>
+                <asp:Button runat="server" Height="50px" ID="desarrollador" CssClass="btn btn-secondary" Text="Desarrolladores" OnClientClick="button_desarrolladorOnClientClick" OnClick="button_desarrolladorOnClientClick"/>
+            </div>
+        </div>
     </div>
 
 </asp:Content>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using library;
 
 namespace tiendaWeb
 {
@@ -11,7 +12,7 @@ namespace tiendaWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+           Session.Add("username", "usuario 1");
         }
     }
 }

@@ -3,17 +3,18 @@
     <link rel="stylesheet" href="css/carousel.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide justify-content-center" data-ride="carousel" style="background-color: #c3c3c3;">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
+
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img class="d-block w-100" src="Imagenes/Carousel/slide.jpg" alt="First slide">
             </div>
-            <div class="carousel-item">
+                <div class="carousel-item">
                 <img class="d-block w-100" src="Imagenes/Carousel/slide1.jpg" alt="Second slide">
             </div>
             <div class="carousel-item">
@@ -29,6 +30,7 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+
     <script>
         $('.carousel').carousel({
             interval: 1000

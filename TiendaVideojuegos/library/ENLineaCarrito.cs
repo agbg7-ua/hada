@@ -119,17 +119,16 @@ namespace library
         }
 
 
-        public DataSet deleteLineaCarrito(int i)
+        public bool deleteLineaCarrito()
         {
             CADLineaCarrito cad = new CADLineaCarrito();
-            DataSet a = new DataSet();
 
             if (cad.readLineaCarrito(this))
             {
-                a = cad.deleteLineaCarrito(this, i);
+                return cad.deleteLineaCarrito(this);
             }
 
-            return a;
+            return false;
         }
 
         public DataSet vaciarCarrito(ENCarrito en)
@@ -156,6 +155,12 @@ namespace library
             }
 
             return a;
+        }
+
+        public bool deleteByProducto(ENProducto en)
+        {
+            CADLineaCarrito lcar = new CADLineaCarrito();
+            return lcar.deleteByProducto(en);
         }
     }
 }
