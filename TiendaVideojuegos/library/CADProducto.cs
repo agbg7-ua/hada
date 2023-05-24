@@ -133,6 +133,54 @@ namespace library
             return read;
         }
 
+        public bool readProductoEliminado(ENProducto en)
+        {
+            bool read = false;
+            SqlConnection c = null;
+            String comando = "Select * From Producto where id=" + en.id;
+
+            try
+            {
+                c = new SqlConnection(constring);
+                c.Open();
+
+                SqlCommand com = new SqlCommand(comando, c);
+                SqlDataReader dr = com.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    read = true;
+                    en.id_categoria = Convert.ToInt32(dr["id_categoria"].ToString());
+                    en.id_desarrollador = Convert.ToInt32(dr["id_desarrollador"].ToString());
+                    en.nombre = dr["nombre"].ToString();
+                    en.pvp = (float)Convert.ToDouble(dr["pvp"].ToString());
+                    en.descripcion = dr["descripcion"].ToString();
+                    en.fecha_salida = Convert.ToDateTime(dr["fecha_salida"].ToString());
+                    en.clasificacion = Convert.ToInt32(dr["clasificacion"].ToString());
+                    en.imagen = dr["imagen"].ToString();
+                    en.mostrar = Convert.ToBoolean(dr["mostrar"].ToString());
+                }
+
+                dr.Close();
+            }
+            catch (SqlException ex)
+            {
+                read = false;
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+            }
+            catch (Exception ex)
+            {
+                read = false;
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+            }
+            finally
+            {
+                if (c != null) c.Close();
+            }
+
+            return read;
+        }
+
         // Método para leer un Producto (por nombre) -> modo desconectado
         public bool readByNameProducto(ENProducto en)
         {

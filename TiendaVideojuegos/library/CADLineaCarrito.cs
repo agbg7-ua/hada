@@ -137,7 +137,7 @@ namespace library
         {
             bool delete = false;
             SqlConnection c = null;
-            String comando = "Select * From LineaCarrito where id_linea=" + en.id_linea;
+            String comando = "Delete From LineaCarrito where id_linea=" + en.id_linea + " and id_carrito=" + en.id_carrito;
 
             try
             {
@@ -231,6 +231,42 @@ namespace library
             {
                 if (c != null) c.Close();
             }
+        }
+
+        public bool deleteByProducto(ENProducto en)
+        {
+            bool delete = false;
+            SqlConnection c = null;
+            string comando;
+
+            comando = "Delete From LineaCarrito where id_producto=" + en.id;
+
+            try
+            {
+                c = new SqlConnection(constring);
+                c.Open();
+
+                SqlCommand com = new SqlCommand(comando, c);
+
+                com.ExecuteNonQuery();
+                delete = true;
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                delete = false; ;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                delete = false; ;
+            }
+            finally
+            {
+                if (c != null) c.Close();
+            }
+
+            return delete;
         }
     }
 }

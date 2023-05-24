@@ -130,6 +130,12 @@ namespace library
             return c.readProducto(this);
         }
 
+        public bool readProductoEliminado()
+        {
+            CADProducto c = new CADProducto();
+            return c.readProductoEliminado(this);
+        }
+
         // Método que lee un producto por su nombre -> nombre es UNIQUE por lo que comprobamos si ya existe un producto con dicho nombre
         public bool readByNameProducto()
         {

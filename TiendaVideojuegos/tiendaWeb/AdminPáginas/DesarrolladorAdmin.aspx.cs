@@ -47,14 +47,15 @@ namespace tiendaWeb.AdminPáginas
 
         protected void ButtonBorrar(object sender, EventArgs e)
         {
-            //ENCategoriaProducto en = new ENCategoriaProducto();
+            ENDesarrollador en = new ENDesarrollador();
 
-            //LinkButton myButton = (LinkButton)sender;
-            //int i = int.Parse(myButton.CommandArgument.ToString());
+            LinkButton myButton = (LinkButton)sender;
+            int i = int.Parse(myButton.CommandArgument.ToString());
 
-            //en.id = i;
+            en.id = i;
+            en.obtener_by_id(i);
 
-            //en.deleteCategoriaProducto();
+            en.eliminar();
             Response.Redirect("DesarrolladorAdmin.aspx");
         }
     }

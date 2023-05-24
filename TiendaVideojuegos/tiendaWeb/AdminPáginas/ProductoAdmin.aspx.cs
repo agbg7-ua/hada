@@ -104,12 +104,14 @@ namespace tiendaWeb.AdminPáginas
         protected void ButtonBorrar(object sender, EventArgs e)
         {
             ENProducto en = new ENProducto();
+            ENLineaCarrito lcar = new ENLineaCarrito();
 
             LinkButton myButton = (LinkButton)sender;
             int i = int.Parse(myButton.CommandArgument.ToString());
 
             en.id = i;
 
+            lcar.deleteByProducto(en);
             en.deleteProducto();
             Response.Redirect("ProductoAdmin.aspx");
         }
