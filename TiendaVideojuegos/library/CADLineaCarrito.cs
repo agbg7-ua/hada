@@ -32,6 +32,7 @@ namespace library
                 DataTable t = new DataTable();
                 t = bdvirtual.Tables["LineaCarrito"];
                 DataRow nuevafila = t.NewRow();
+                nuevafila[0] = en.id_carrito;
                 nuevafila[2] = en.id_producto;
                 nuevafila[3] = en.cantidad;
                 nuevafila[4] = en.importe;
@@ -60,27 +61,23 @@ namespace library
         public bool readLineaCarrito(ENLineaCarrito en)
         {
             bool read = false;
-            DataSet bdvirtual = new DataSet();
-            SqlConnection c = new SqlConnection(constring);
+            SqlConnection c = null;
 
             try
             {
-                SqlDataAdapter da = new SqlDataAdapter("select * from LineaCarrito", c);
-                da.Fill(bdvirtual, "LineaCarrito");
-                DataTable t = new DataTable();
-                t = bdvirtual.Tables["LineaCarrito"];
-
-                for (int i = 0; i < t.Rows.Count; i++)
+                c = new SqlConnection(constring);
+                c.Open();
+                SqlCommand readSql = new SqlCommand("Select * from LineaCarrito", c);
+                SqlDataReader dr = readSql.ExecuteReader();
+                while (dr.Read())
                 {
-                    DataRow fila = t.Rows[i];
-
-                    if (en.id_carrito == int.Parse(fila[0].ToString()) && en.id_linea == int.Parse(fila[1].ToString()))
+                    if (dr["id_linea"].ToString() == en.id_linea.ToString() && dr["id_carrito"].ToString() == en.id_carrito.ToString())
                     {
                         read = true;
-                        en.id_producto = int.Parse(fila[2].ToString());
-                        en.cantidad = int.Parse(fila[3].ToString());
-                        en.importe = float.Parse(fila[4].ToString());
-                        en.fecha = DateTime.Parse(fila[5].ToString());
+                        en.id_producto = int.Parse(dr["id_producto"].ToString());
+                        en.cantidad = int.Parse(dr["cantidad"].ToString());
+                        en.importe = float.Parse(dr["importe"].ToString());
+                        en.fecha = DateTime.Parse(dr["fecha"].ToString());
                     }
                 }
             }
@@ -136,37 +133,38 @@ namespace library
                 if (c != null) c.Close();
             }
         }
-        public DataSet deleteLineaCarrito(ENLineaCarrito en, int i)
+        public bool deleteLineaCarrito(ENLineaCarrito en)
         {
-            DataSet bdvirtual = new DataSet();
-            SqlConnection c = new SqlConnection(constring);
+            bool delete = false;
+            SqlConnection c = null;
+            String comando = "Delete From LineaCarrito where id_linea=" + en.id_linea + " and id_carrito=" + en.id_carrito;
 
             try
             {
-                String comando = "Select * From LineaCarrito";
-                SqlDataAdapter da = new SqlDataAdapter(comando, c);
-                da.Fill(bdvirtual, "LineaCarrito");
-                DataTable t = new DataTable();
-                t = bdvirtual.Tables["LineaCarrito"];
-                t.Rows[i].Delete();
-                SqlCommandBuilder cbuilder = new SqlCommandBuilder(da);
-                da.Update(bdvirtual, "LineaCarrito");
-                return bdvirtual;
+                c = new SqlConnection(constring);
+                c.Open();
+
+                SqlCommand com = new SqlCommand(comando, c);
+
+                com.ExecuteNonQuery();
+                delete = true;
             }
             catch (SqlException ex)
             {
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
-                return bdvirtual;
+                delete = false; ;
             }
             catch (Exception ex)
             {
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
-                return bdvirtual;
+                delete = false; ;
             }
             finally
             {
                 if (c != null) c.Close();
             }
+
+            return delete;
         }
 
         public DataSet vaciarCarrito(ENCarrito en)
@@ -233,6 +231,42 @@ namespace library
             {
                 if (c != null) c.Close();
             }
+        }
+
+        public bool deleteByProducto(ENProducto en)
+        {
+            bool delete = false;
+            SqlConnection c = null;
+            string comando;
+
+            comando = "Delete From LineaCarrito where id_producto=" + en.id;
+
+            try
+            {
+                c = new SqlConnection(constring);
+                c.Open();
+
+                SqlCommand com = new SqlCommand(comando, c);
+
+                com.ExecuteNonQuery();
+                delete = true;
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                delete = false; ;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                delete = false; ;
+            }
+            finally
+            {
+                if (c != null) c.Close();
+            }
+
+            return delete;
         }
     }
 }

@@ -10,38 +10,57 @@ namespace tiendaWeb
 {
     public partial class Admin : System.Web.UI.Page
     {
+        ENUsuario usu = new ENUsuario();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
-                ddlTest_SelectedIndexChanged(this, e);
+                if (Session["username"] != null)
+                {
+                    usu.username = Session["username"].ToString();
+
+                    if (!usu.isAdminUsuario())
+                    {
+                        Response.Redirect("~/Home.aspx");
+                    }
+                }
+                else
+                {
+                    Response.Redirect("~/Home.aspx");
+                }
             }
         }
 
-        // Dropdownlist --> opción seleccionada
-        protected void ddlTest_SelectedIndexChanged(object sender, EventArgs e)
+        protected void button_usuarioOnClientClick(object sender, EventArgs e)
         {
-            if (ddlTest.SelectedValue == "1")
-            {
-                Response.Redirect("CategoriaProducto.aspx");
-            }
-            else if (ddlTest.SelectedValue == "2")
-            {
-                Response.Redirect("Producto.aspx");
-            }
-            else if (ddlTest.SelectedValue == "3")
-            {
-                Response.Redirect("Desarrollador.aspx");
-            }
-            else if (ddlTest.SelectedValue == "4")
-            {
-                Response.Redirect("Pedido.aspx");
-            }
-            else
-            {
-                textboxVacio.Visible = true;
-                textboxVacio.Text = "Elija la opción que desee";
-            }
+            Response.Redirect("AdminPáginas/UsuarioAdmin.aspx");
         }
+
+        protected void button_productoOnClientClick(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminPáginas/ProductoAdmin.aspx");
+        }
+
+        protected void button_categoriaOnClientClick(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminPáginas/CategoriaProductoAdmin.aspx");
+        }
+
+        protected void button_carritoOnClientClick(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminPáginas/CarritoAdmin.aspx");
+        }
+
+        protected void button_pedidoOnClientClick(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminPáginas/PedidoAdmin.aspx");
+        }
+
+        protected void button_desarrolladorOnClientClick(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminPáginas/DesarrolladorAdmin.aspx");
+        }
+
     }
 }

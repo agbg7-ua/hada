@@ -30,21 +30,17 @@
                 </LayoutTemplate>
 
                 <ItemTemplate>
-                    <td style="width:300px; height:350px; padding: 5px 5px 5px 25px;">
-                        <div class="productItem">
-                            <asp:HyperLink ID="HyperLink1" runat="server" 
-                                NavigateUrl='<%# "ListarProductoCategoría.aspx?idCat=" + Eval("id")%>'>
-                                <div>
-                                    <asp:Image ID="ProductImage" runat="server" Width="200px" Height="200px"
-                                        ImageUrl='<%# Eval("imagen") %>' />	
+                    <td style="width:300px; height:350px; padding: 5px 5px 5px 25px; padding-top: 20px;">
+                        <asp:HyperLink runat="server" ID="categoria" NavigateUrl='<%# "ListarProductoCategoría.aspx?idCat=" + Eval("id")%>' CssClass="text-dark">
+                            <div class="card border border-dark" style="background-color: #c3c3c3; height: 550px;">
+                                <asp:Image ID="Image1" CssClass="" runat="server" Width="280px" Height="280px"
+                                            ImageUrl='<%# Eval("imagen") %>' />	
+                                <div class="card-body table-responsive">
+                                    <h5 class="card-title text-dark"> <%# Eval("nombre") %> </h5>
+                                    <p class="card-text text-dark">  <%# Eval("descripcion") %> </p>
                                 </div>
-                                <div>
-                                    <b class="font-weight-bold text-dark h5"> 
-                                        <%# Eval("nombre") %>
-                                    </b>
-                                </div>
-                            </asp:HyperLink>
-                        </div>
+                            </div>
+                        </asp:HyperLink>
                     </td>
                 </ItemTemplate>
             </asp:ListView>

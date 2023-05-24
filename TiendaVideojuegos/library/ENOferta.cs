@@ -25,7 +25,7 @@ using System.Threading.Tasks;
 
 namespace library
 {
-    internal class ENOferta
+    public class ENOferta
     {
         private int _id;
         private decimal _oferta;
