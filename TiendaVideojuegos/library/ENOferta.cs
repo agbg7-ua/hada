@@ -8,19 +8,9 @@ using System.Threading.Tasks;
 //CREATE TABLE[dbo].[Oferta] (
 //    [id]        INT IDENTITY(1, 1) NOT NULL,
 //    [oferta]      	DECIMAL (7,2)  	NULL,
+//    [id_producto]      	INT  	NOT NULL,
 //    PRIMARY KEY CLUSTERED ([id] ASC),
-//    CONSTRAINT[fk_Oferta_Producto] FOREIGN KEY([id]) REFERENCES[dbo].[Producto]([id])
-//);
-
-//----------------------------------------------------------------------------------------------
-//--OFERTA_HAS_PRODUCTO
-
-//CREATE TABLE[dbo].[Oferta_has_Producto] (
-//    [oferta_id]     INT NOT NULL,
-//    [producto_id]      	INT  	NOT NULL,
-//    PRIMARY KEY CLUSTERED ([oferta_id] ASC, [producto_id] ASC),
-//    CONSTRAINT[fk_OfertaHProducto_Oferta] FOREIGN KEY([oferta_id]) REFERENCES[dbo].[Oferta]([id]),
-//    CONSTRAINT[fk_OfertaHProducto_Producto] FOREIGN KEY([producto_id]) REFERENCES[dbo].[Producto]([id])
+//    CONSTRAINT[fk_Oferta_Producto] FOREIGN KEY([id_producto]) REFERENCES[dbo].[Producto]([id])
 //);
 
 namespace library
@@ -28,70 +18,63 @@ namespace library
     public class ENOferta
     {
         private int _id;
-        private decimal _oferta;
-        private int _producto_id;
+        private float _oferta;
+        private int _id_producto;
 
         public int id { 
             get { return _id; }
             set { _id = value; }
         }
-        public decimal oferta { 
+        public float oferta { 
             get { return _oferta; }
             set { _oferta = value; }
         }
-        public int producto_id {
-            get { return _producto_id; }
-            set { _producto_id = value; }
+        public int id_producto {
+            get { return _id_producto; }
+            set { _id_producto = value; }
         }
 
 
         public ENOferta()
         {
-            this.id = -1;
-            this.oferta = -1;
-            this.producto_id = -1;
+ 
         }
 
-        public ENOferta(int id, decimal oferta, int producto_id)
+        public ENOferta(int id, float oferta, int id_producto)
         {
             this.id = id;
             this.oferta = oferta;
-            this.producto_id = producto_id;
+            this.id_producto = id_producto;
         }
 
-
-
-
-        public ENOferta(ENOferta o)
+        public bool primeraOferta(ENProducto prod)
         {
-            this.id = o.id;
-            this.oferta = o.oferta;
-            this.producto_id = o.producto_id;
+            CADOferta of = new CADOferta();
+            this.id = 1;
+            of.readOferta(this);
+            prod.id = this.id_producto;
+            prod.readProducto();
+            return of.primeraOferta(this, prod);
         }
 
-
-        public bool insertar()
+        public bool segundaOferta(ENProducto prod)
         {
-            CADOferta cad = new CADOferta();
-            return cad.insertar(this);
+            CADOferta of = new CADOferta();
+            this.id = 2;
+            of.readOferta(this);
+            prod.id = this.id_producto;
+            prod.readProducto();
+            return of.segundaOferta(this, prod);
         }
 
-        public bool borrar()
+        public bool terceraOferta(ENProducto prod)
         {
-            CADOferta cad = new CADOferta();
-            return cad.borrar(this);
-        }
-
-        public bool modificar()
-        {
-            CADOferta cad = new CADOferta();
-            return cad.modificar(this);
-        }
-
-        public List<ENOferta> obtener()
-        {
-            CADOferta cad = new CADOferta();
-            return cad.obtener(this);
+            CADOferta of = new CADOferta();
+            this.id = 3;
+            of.readOferta(this);
+            prod.id = this.id_producto;
+            prod.readProducto();
+            return of.terceraOferta(this, prod);
         }
     }
 }

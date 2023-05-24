@@ -107,6 +107,7 @@
     <Content Include="ListarProducto.aspx" />
     <Content Include="ListarProductoCategoría.aspx" />
     <Content Include="NuevoComentario.aspx" />
+    <Content Include="Oferta.aspx" />
     <Content Include="Pedido.aspx" />
     <Content Include="Producto.aspx" />
     <Content Include="Registro.aspx" />
@@ -301,6 +302,13 @@
     </Compile>
     <Compile Include="NuevoComentario.aspx.designer.cs">
       <DependentUpon>NuevoComentario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Oferta.aspx.cs">
+      <DependentUpon>Oferta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Oferta.aspx.designer.cs">
+      <DependentUpon>Oferta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pedido.aspx.cs">
       <DependentUpon>Pedido.aspx</DependentUpon>
