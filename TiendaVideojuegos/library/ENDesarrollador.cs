@@ -26,6 +26,7 @@ namespace library
         private DateTime _fecha_creacion;
         private string _web;
         private string _imagen;
+        private bool _borrado;
 
         public int id
         {
@@ -65,6 +66,12 @@ namespace library
             set { _imagen = value; }
         }
 
+        public bool borrado
+        {
+            get { return _borrado; }
+            set { _borrado = value; }
+        }
+
         public ENDesarrollador()
         {
             this.id = 0;
@@ -75,7 +82,7 @@ namespace library
             this.web = "";
         }
 
-        public ENDesarrollador(int id, string nombre, string descripcion, string origen, DateTime fecha_creacion, string web)
+        public ENDesarrollador(int id, string nombre, string descripcion, string origen, DateTime fecha_creacion, string web, bool borrado)
         {
             this.id = id;
             this.nombre = nombre;
@@ -83,6 +90,7 @@ namespace library
             this.origen = origen;
             this.fecha_creacion = fecha_creacion;
             this.web = web;
+            this.borrado = borrado;
         }
 
         public ENDesarrollador(ENDesarrollador d)
@@ -93,6 +101,7 @@ namespace library
             this.origen = d.origen;
             this.fecha_creacion = d.fecha_creacion;
             this.web = d.web;
+            this.borrado = d.borrado;
         }
 
 

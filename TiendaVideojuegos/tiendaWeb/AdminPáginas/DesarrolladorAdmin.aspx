@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="border border-white navbar navbar-expand-lg bg-dark">
-        <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark"> Administración de Géneros de Videojuegos </p>
+        <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark"> Administración de Desarrolladoras </p>
         <asp:LinkButton runat="server" id="añadir" CssClass="btn btn-outline-success" OnClientClick="ButtonAñadir" OnClick="ButtonAñadir" Text="Añadir" />
     </div>
 

@@ -37,7 +37,7 @@ namespace tiendaWeb
 
             d = lcar.showLineasCarritoByCarrito(car);
 
-            if (d.Tables[0].Rows.Count > 0)
+            if ((d.Tables.Count != 0) && (d.Tables[0].Rows.Count > 0))
             {
                 listView.DataSource = d;
                 listView.DataBind();
@@ -80,11 +80,8 @@ namespace tiendaWeb
             en.id_linea = il;
             en.id_carrito = ic;
 
-            textboxVacio.Visible = true;
-            textboxVacio.Text = ic.ToString();
-
-            //en.deleteLineaCarrito();
-            //Response.Redirect("Carrito.aspx");
+            en.deleteLineaCarrito();
+            Response.Redirect("Carrito.aspx");
         }
     }
 }

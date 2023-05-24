@@ -63,7 +63,7 @@ namespace tiendaWeb
                 int clas = Convert.ToInt32(DataBinder.Eval(dataItem.DataItem, "id_producto").ToString());
 
                 producto.id = clas;
-                producto.readProducto();
+                producto.readProductoEliminado();
 
                 imagen1.ImageUrl = producto.imagen;
                 name.Text = producto.nombre;

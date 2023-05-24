@@ -156,5 +156,11 @@ namespace library
 
             return a;
         }
+
+        public bool deleteByProducto(ENProducto en)
+        {
+            CADLineaCarrito lcar = new CADLineaCarrito();
+            return lcar.deleteByProducto(en);
+        }
     }
 }

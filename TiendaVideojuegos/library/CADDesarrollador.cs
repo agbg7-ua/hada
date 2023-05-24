@@ -125,36 +125,39 @@ namespace library
         /// <returns></returns>
         public bool eliminar(ENDesarrollador en)
         {
-            bool eliminado = false;
-            SqlConnection c = new SqlConnection(constring);
+            bool delete = false;
+            SqlConnection c = null;
+            String comando = "Update Desarrollador set borrado=1 where id =" + en.id;
+            String comando2 = "Update Producto set borrado=1 where id_desarrollador=" + en.id;
+
             try
             {
-                if (en.id != 0 && en.nombre != null)
-                {
-                    String sql_q = String.Format(
-                        "delete from Desarrollador where id = {0} or name = '{1}'",
-                        en.id,
-                        en.nombre);
+                c = new SqlConnection(constring);
+                c.Open();
 
-                    c.Open();
-                    SqlCommand com = new SqlCommand(sql_q,c);
-                    com.ExecuteNonQuery();
-                }
-                else
-                {
-                    throw new Exception("No se puede eliminar un desarrollador sin id");
-                }
+                SqlCommand com = new SqlCommand(comando, c);
+                SqlCommand com2 = new SqlCommand(comando2, c);
 
+                com.ExecuteNonQuery();
+                com2.ExecuteNonQuery();
+                delete = true;
+            }
+            catch (SqlException ex)
+            {
+                delete = false;
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: " + ex.Message);
+                delete = false;
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
             }
             finally
             {
-                c.Close();
+                if (c != null) c.Close();
             }
-            return eliminado;
+
+            return delete;
         }
 
         /// <summary>
@@ -174,7 +177,7 @@ namespace library
                     throw new Exception("No se puede obtener un desarrollador sin id");
                 }
                 String sql_q = String.Format(
-                         "select * from Desarrollador where id = {0}",
+                         "select * from Desarrollador where id = {0} and borrado=0",
                          id);
                 c.Open();
                 SqlCommand com = new SqlCommand(sql_q,c);
@@ -214,7 +217,7 @@ namespace library
                     throw new Exception("No se puede obtener un desarrollador sin nombre");
                 }
                 String sql_q = String.Format(
-                         "select * from Desarrollador where nombre = '{0}'",
+                         "select * from Desarrollador where nombre = '{0}' and borrado=0",
                          nombre);
                 c.Open();
                 SqlCommand com = new SqlCommand(sql_q, c);
@@ -262,7 +265,7 @@ namespace library
             {
                 c.Open();
                 String sql_q = String.Format(
-                        "select * from Desarrollador where fecha_creacion between '{0}' and '{1}'",
+                        "select * from Desarrollador where fecha_creacion between '{0}' and '{1}' and borrado=0",
                         inicio,
                         final);
                 SqlCommand com = new SqlCommand(sql_q, c);
@@ -301,7 +304,7 @@ namespace library
             {
                 c.Open();
                 String sql_q = String.Format(
-                                           "select * from Desarrollador;");
+                                           "select * from Desarrollador where borrado=0;");
                 SqlCommand com = new SqlCommand(sql_q,c);
                 SqlDataReader dr = com.ExecuteReader();
                 while (dr.Read())
@@ -335,7 +338,7 @@ namespace library
 
             try
             {
-                String comando = "Select nombre, id From Desarrollador";
+                String comando = "Select nombre, id From Desarrollador where borrado=0";
                 SqlDataAdapter da = new SqlDataAdapter(comando, c);
                 da.Fill(bdvirtual, "Desarrollador");
                 return bdvirtual;

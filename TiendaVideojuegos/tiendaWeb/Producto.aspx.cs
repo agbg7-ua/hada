@@ -63,7 +63,14 @@ namespace tiendaWeb
 
             ENCarrito car = new ENCarrito();
             ENLineaCarrito lcar = new ENLineaCarrito();
-            car.readCarritoByUser(usu);
+
+            if (!car.readCarritoByUser(usu))
+            {
+                car.id_usuario = usu.username;
+                car.importe_total = prod.pvp * cant;
+                car.createCarrito();
+            }
+
             lcar.id_carrito = car.id;
             lcar.id_producto = prod.id;
             lcar.cantidad = cant;
