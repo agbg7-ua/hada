@@ -167,42 +167,40 @@ namespace library
             return delete;
         }
 
-        public DataSet vaciarCarrito(ENCarrito en)
+        public bool vaciarCarrito(ENCarrito en)
         {
-            DataSet bdvirtual = new DataSet();
-            SqlConnection c = new SqlConnection(constring);
+            bool delete = false;
+            SqlConnection c = null;
+            string comando;
+
+            comando = "Delete From LineaCarrito where id_carrito=" + en.id;
 
             try
             {
-                String comando = "Select * From LineaCarrito";
-                SqlDataAdapter da = new SqlDataAdapter(comando, c);
-                da.Fill(bdvirtual, "LineaCarrito");
-                DataTable t = new DataTable();
-                t = bdvirtual.Tables["LineaCarrito"];
+                c = new SqlConnection(constring);
+                c.Open();
 
-                for (int i = 0; i < t.Rows.Count; i++)
-                {
-                    t.Rows[i].Delete();
-                }
+                SqlCommand com = new SqlCommand(comando, c);
 
-                SqlCommandBuilder cbuilder = new SqlCommandBuilder(da);
-                da.Update(bdvirtual, "LineaCarrito");
-                return bdvirtual;
+                com.ExecuteNonQuery();
+                delete = true;
             }
             catch (SqlException ex)
             {
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
-                return bdvirtual;
+                delete = false; ;
             }
             catch (Exception ex)
             {
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
-                return bdvirtual;
+                delete = false; ;
             }
             finally
             {
                 if (c != null) c.Close();
             }
+
+            return delete;
         }
 
         public DataSet showLineasCarritoByCarrito(ENCarrito en)

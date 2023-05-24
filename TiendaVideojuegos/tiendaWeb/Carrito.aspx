@@ -73,6 +73,11 @@
         <asp:Label runat="server" ID="total" CssClass="font-weight-bold"></asp:Label>
     </div>
 
+    <div class="container-fluid" style="padding-left: 1570px;">
+        <asp:Button runat="server" ID="comprar" CssClass="btn btn-warning" Text="Comprar" OnClick="ButtonComprar" OnClientClick="ButtonComprar"/>
+        <asp:Button runat="server" ID="vaciar" CssClass="btn btn-danger" Text="Vaciar Carrito" OnClick="ButtonVaciar" OnClientClick="ButtonVaciar"/>
+    </div>
+
     <div style="width:100%; height: 100px; align-content:center; text-align:center">
         <asp:Label CssClass="labelVacio" runat="server" ID="textboxVacio" Text="No se encontraron productos, intentelo más tarde." Visible="false" ></asp:Label>
     </div>

@@ -8,7 +8,7 @@
     </div>
     <br/>
 
-    <div class="container-fluid" style="height: 100%">
+    <div class="container-fluid" style="height: 651px">
         <div style="width:100%; height: 100px; align-content:center; text-align:center">
             <blockquote class="blockquote">
                 <p style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"><strong>Bienvenido a Administración</strong></p>

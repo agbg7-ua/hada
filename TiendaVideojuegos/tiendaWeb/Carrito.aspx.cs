@@ -33,18 +33,19 @@ namespace tiendaWeb
             usu.readUsuario();
             car.readCarritoByUser(usu);
 
-            total.Text = "Total: " + car.importe_total + "€";
-
             d = lcar.showLineasCarritoByCarrito(car);
 
             if ((d.Tables.Count != 0) && (d.Tables[0].Rows.Count > 0))
             {
+                total.Text = "Total: " + car.importe_total + "€";
                 listView.DataSource = d;
                 listView.DataBind();
             }
             else
             {
                 textboxVacio.Visible = true;
+                comprar.Visible = false;
+                vaciar.Visible = false;
             }
         }
 
@@ -81,6 +82,25 @@ namespace tiendaWeb
             en.id_carrito = ic;
 
             en.deleteLineaCarrito();
+            Response.Redirect("Carrito.aspx");
+        }
+
+        protected void ButtonComprar(Object sender, EventArgs e)
+        {
+            ENPedido ped = new ENPedido();
+            DateTime hoy = DateTime.Now;
+
+            ped.id_usuario = Session["username"].ToString();
+            ped.fecha = hoy;
+            ped.importe_total = car.importe_total;
+            ped.createPedido();
+
+
+        }
+
+        protected void ButtonVaciar(Object sender, EventArgs e)
+        {
+            lcar.vaciarCarrito(car);
             Response.Redirect("Carrito.aspx");
         }
     }
