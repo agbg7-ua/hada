@@ -19,7 +19,6 @@ namespace tiendaWeb
 
         protected void Button1_Click(Object sender, EventArgs e)
         {
-            string usuario;
             ENUsuario usu = new ENUsuario();
 
             Page.Validate("login");
@@ -27,11 +26,9 @@ namespace tiendaWeb
             {
                 usu.username = username1.Text;
                 usu.password = password1.Text;
-                usuario = usu.username;
                 if (usu.logIn())
                 {
-                    Session["Datos"] = usuario;
-                    Session.Add("username", usuario);
+                    Session.Add("username", usu.username);
                     Response.Redirect("~/Usuario.aspx");
                 }
                 else
@@ -40,35 +37,40 @@ namespace tiendaWeb
                 }
             }
         }
+
         protected void Button2_Click(Object sender, EventArgs e)
         {
-            string usuario;
             ENUsuario usu = new ENUsuario();
-            usu.edad = int.Parse(textEdad.Text);
-            usu.pueblo = textLocalidad.Text;
-            usu.provincia = textProvincia.Text;
-            usu.nombre = textNombre.Text;
-            usu.password = textPassword.Text;
-            usu.apellidos = textApellidos.Text;
-            usu.calle = textDireccion.Text;
-            usu.codigo_postal = textCodigo.Text;
-            usu.email = textEmail.Text;
-            usu.telefono = textNumero.Text;
-            usu.username = textUsername.Text;
-            usu.admin = false;
-            usuario = usu.username;
-            if (usu.signIn())
-            {
-                Session["Datos"] = usuario;
-                Response.Redirect("~/Usuario.aspx");
-            }
-            else
-            {
-                outputMsg2.Text = "Falta algún dato o alguno introducido es incorrecto";
-            }
 
-
+            Page.Validate("signup");
+            if (Page.IsValid)
+            {
+                usu.username = username2.Text;
+                usu.nombre = nombre.Text;
+                usu.apellidos = apellidos.Text;
+                usu.email = email.Text;
+                usu.password = password2.Text;
+                usu.edad = Convert.ToInt32(edad.Text);
+                usu.calle = calle.Text;
+                usu.pueblo = pueblo.Text;
+                usu.provincia = provincia.Text;
+                usu.codigo_postal = codpostal.Text;
+                usu.telefono = telefono.Text;
+                usu.admin = false;
+                if (usu.signIn())
+                {
+                    ENCarrito car = new ENCarrito();
+                    car.id_usuario = usu.username;
+                    car.importe_total = 0;
+                    car.createCarrito();
+                    Session.Add("username", usu.username);
+                    Response.Redirect("Home.aspx");
+                }
+                else 
+                {
+                    Msg2.Text = "El email introducido ya existe";
+                }
+            }
         }
-
     }
 }

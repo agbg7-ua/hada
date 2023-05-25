@@ -63,34 +63,29 @@ namespace library
 
             return creado;
         }
-        public DataSet updateCarrito(ENCarrito en, int Id)
+        public bool updateCarrito(ENCarrito en)
         {
-
-            DataSet bdvirtual = new DataSet();
+            bool update = false;
             SqlConnection c = new SqlConnection(constring);
 
             try
             {
-                String comando = "Select * From Carrito";
-                SqlDataAdapter da = new SqlDataAdapter(comando, c);
-                da.Fill(bdvirtual, "Carrito");
-                DataTable t = new DataTable();
-                t = bdvirtual.Tables["Carrito"];
-                t.Rows[Id]["id_usuario"] = en.id_usuario;
-                t.Rows[Id]["importe_total"] = en.importe_total;
-                SqlCommandBuilder cbuilder = new SqlCommandBuilder(da);
-                da.Update(bdvirtual, "Carrito");
-                return bdvirtual;
+                c.Open();
+                String comando = "Update Carrito set importe_total=" + en.importe_total + " where id_usuario='" + en.id_usuario + "'";
+                SqlCommand com = new SqlCommand(comando, c);
+                com.ExecuteNonQuery();
+                update = true;
+                return update;
             }
             catch (SqlException ex)
             {
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
-                return bdvirtual;
+                return update;
             }
             catch (Exception ex)
             {
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
-                return bdvirtual;
+                return update;
             }
             finally
             {

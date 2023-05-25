@@ -39,6 +39,16 @@ namespace tiendaWeb
             { 
                 listView.DataSource = d;
                 listView.DataBind();
+
+                DataTable t = new DataTable();
+                t = d.Tables[0];
+
+                for (int i = 0; i < t.Rows.Count; i++)
+                {
+                    car.importe_total = car.importe_total + float.Parse(t.Rows[i][4].ToString());
+                }
+                
+                total.Text = "Total: " + car.importe_total.ToString("0. ##") + "€";
             }
             else
             {
@@ -46,17 +56,6 @@ namespace tiendaWeb
                 comprar.Visible = false;
                 vaciar.Visible = false;
             }
-
-            DataTable t = new DataTable();
-            t = d.Tables[0];
-
-            for (int i = 0; i < t.Rows.Count; i++)
-            {
-                car.importe_total = car.importe_total + float.Parse(t.Rows[i][4].ToString());
-            }
-
-            car.updateCarrito(car.id);
-            total.Text = "Total: " + car.importe_total.ToString("0. ##") + "€";
         }
 
         protected void ImagenProducto(object sender, ListViewItemEventArgs e)

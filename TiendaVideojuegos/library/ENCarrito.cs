@@ -68,23 +68,16 @@ namespace library
 
         //Update
 
-        public DataSet updateCarrito(int Id)
+        public bool updateCarrito()
         {
             CADCarrito cad = new CADCarrito();
-            DataSet d = cad.updateCarrito(this, Id);
-            ENCarrito en = new ENCarrito();
-
-            en.id_usuario = this.id_usuario;
-            en.importe_total = this.importe_total;
 
             if (cad.readCarrito(this))
             {
-                this.id_usuario = en.id_usuario;
-                this.importe_total = en.importe_total;
-                d = cad.updateCarrito(this, Id);
+                return cad.updateCarrito(this);
             }
 
-            return d;
+            return false;
         }
 
         //read 
