@@ -15,40 +15,49 @@ namespace tiendaWeb
     {
 
         /// <summary>
-        /// Control TextBox1.
+        /// Control loginvalidation.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.Panel loginvalidation;
 
         /// <summary>
-        /// Control passwordTextBox.
+        /// Control username1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox passwordTextBox;
+        protected global::System.Web.UI.WebControls.TextBox username1;
 
         /// <summary>
-        /// Control showPasswordCheckBox.
+        /// Control username1vacio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox showPasswordCheckBox;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator username1vacio;
 
         /// <summary>
-        /// Control outputMsg.
+        /// Control password1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label outputMsg;
+        protected global::System.Web.UI.WebControls.TextBox password1;
+
+        /// <summary>
+        /// Control password1vacio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator password1vacio;
 
         /// <summary>
         /// Control iniciabutton.
@@ -58,6 +67,33 @@ namespace tiendaWeb
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button iniciabutton;
+
+        /// <summary>
+        /// Control alerta1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alerta1;
+
+        /// <summary>
+        /// Control Msg.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Msg;
+
+        /// <summary>
+        /// Control ValidationS.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationS;
 
         /// <summary>
         /// Control textNombre.

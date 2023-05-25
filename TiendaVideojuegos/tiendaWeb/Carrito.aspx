@@ -60,7 +60,7 @@
                 <%# Eval("cantidad") %>
             </td>
             <td>
-                <%# Eval("importe") %>
+                <%# Eval("importe") %>€
             </td>
             <td>
                 <asp:LinkButton runat="server" id="borrar" CssClass="btn btn-danger" OnClientClick="ButtonBorrar" OnClick="ButtonBorrar" Text="Borrar" CommandArgument='<%#Eval("id_linea") + ";" + Eval("id_carrito")%>' />

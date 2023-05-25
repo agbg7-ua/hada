@@ -36,8 +36,7 @@ namespace tiendaWeb
             d = lcar.showLineasCarritoByCarrito(car);
 
             if ((d.Tables.Count != 0) && (d.Tables[0].Rows.Count > 0))
-            {
-                total.Text = "Total: " + car.importe_total + "€";
+            { 
                 listView.DataSource = d;
                 listView.DataBind();
             }
@@ -47,6 +46,17 @@ namespace tiendaWeb
                 comprar.Visible = false;
                 vaciar.Visible = false;
             }
+
+            DataTable t = new DataTable();
+            t = d.Tables[0];
+
+            for (int i = 0; i < t.Rows.Count; i++)
+            {
+                car.importe_total = car.importe_total + float.Parse(t.Rows[i][4].ToString());
+            }
+
+            car.updateCarrito(car.id);
+            total.Text = "Total: " + car.importe_total.ToString("0. ##") + "€";
         }
 
         protected void ImagenProducto(object sender, ListViewItemEventArgs e)
@@ -88,14 +98,30 @@ namespace tiendaWeb
         protected void ButtonComprar(Object sender, EventArgs e)
         {
             ENPedido ped = new ENPedido();
+            ENLineaPedido lped = new ENLineaPedido();
             DateTime hoy = DateTime.Now;
 
             ped.id_usuario = Session["username"].ToString();
             ped.fecha = hoy;
             ped.importe_total = car.importe_total;
             ped.createPedido();
+            ped.lastPedido();
 
+            DataTable t = new DataTable();
+            t = d.Tables[0];
 
+            for (int i = 0; i < t.Rows.Count; i++)
+            {
+                ENProducto prod = new ENProducto();
+                lped.id_pedido = ped.id;
+                lped.id_producto = Convert.ToInt32(t.Rows[i][2].ToString());
+                lped.cantidad = Convert.ToInt32(t.Rows[i][3].ToString());
+                lped.importe = float.Parse(t.Rows[i][4].ToString());
+                lped.createLineaPedido();
+            }
+
+            lcar.vaciarCarrito(car);
+            Response.Redirect("Pedido.aspx");
         }
 
         protected void ButtonVaciar(Object sender, EventArgs e)
