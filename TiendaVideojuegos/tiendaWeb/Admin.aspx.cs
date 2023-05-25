@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using library;
+using tiendaWeb.AdminPáginas;
 
 namespace tiendaWeb
 {
@@ -62,5 +63,9 @@ namespace tiendaWeb
             Response.Redirect("AdminPáginas/DesarrolladorAdmin.aspx");
         }
 
+        protected void oferta_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminPáginas/OfertaAdmin.aspx");
+        }
     }
 }

@@ -11,7 +11,7 @@
                 <br />
                 <asp:FileUpload ID="FileUpload1" runat="server" Visible="true" CssClass="form-control input-group-sm" />
                 <br />
-                <asp:Button ID="Button_upload_image" runat="server" Text="Upload Image" OnClick="Button_upload_image_Click" Visible="true" CssClass="btn" />
+                <asp:Button ID="Button_upload_image" CausesValidation="false" runat="server" Text="Upload Image" OnClick="Button_upload_image_Click" Visible="true" CssClass="btn" />
 
             </asp:TableCell>
             <asp:TableCell>
