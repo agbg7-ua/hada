@@ -198,5 +198,40 @@ namespace library
                 }
             }
         }
+
+        // Lista los 10 productos más vendidos
+        public DataTable top10Productos()
+        {
+            DataTable table = new DataTable();
+
+            SqlConnection c = new SqlConnection(constring);
+
+            try
+            {
+                c.Open();
+                string command = "SELECT TOP 10 P.nombre, SUM(LP.cantidad) AS total_vendido FROM Producto AS P JOIN LineaPedido AS LP ON P.id = LP.id_producto GROUP BY P.id, P.nombre ORDER BY total_vendido DESC; ";
+                SqlCommand cmd = new SqlCommand(command, c);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(table);
+                return table;
+            }
+            catch (SqlException sqlEx)
+            {
+                Console.WriteLine("Error: {0}", sqlEx.Message);
+                return table;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: {0}", ex.Message);
+                return table;
+            }
+            finally
+            {
+                if (c != null)
+                {
+                    c.Close();
+                }
+            }
+        }
     }
 }
