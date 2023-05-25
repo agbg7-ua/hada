@@ -7,15 +7,6 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
 
-// CREATE TABLE [dbo].[CategoriaProducto] (
-// [id]             INT           IDENTITY(1, 1) NOT NULL,
-// [nombre] 		VARCHAR (45)  NOT NULL,
-// [descripcion] 	TEXT          NOT NULL,
-// [imagen]      	VARCHAR (MAX) NULL,
-// PRIMARY KEY CLUSTERED ([id] ASC),
-// UNIQUE NONCLUSTERED([nombre] ASC)
-// );
-
 namespace library
 {
     class CADCategoriaProducto
@@ -107,7 +98,7 @@ namespace library
             return read_CP;
         }
 
-        // Método para actualizar una Categoría de Producto -> modo conectado
+        // Método para actualizar una Categoría de Producto -> modo desconectado
         public bool updateCategoriaProducto(ENCategoriaProducto en)
         {
             bool update = false;
@@ -142,7 +133,7 @@ namespace library
             return update;
         }
 
-        // Método para borrar una Categoría de Producto -> modo conectado
+        // Método para borrar una Categoría de Producto -> modo desconectado
         public bool deleteCategoriaProducto(ENCategoriaProducto en)
         {
             bool delete = false;
@@ -208,7 +199,8 @@ namespace library
                 if (c != null) c.Close();
             }
         }
-
+        
+        // Método para conseguir una Categoría de Producto -> modo desconectado
         public DataSet getCategoriaProducto()
         {
             DataSet bdvirtual = new DataSet();

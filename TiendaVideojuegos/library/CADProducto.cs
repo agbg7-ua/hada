@@ -7,25 +7,6 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
 
-
-// CREATE TABLE [dbo].[Producto] (
-// [id]                INT            IDENTITY(1, 1) NOT NULL,
-// [id_categoria]      INT   	      NOT NULL,
-// [id_desarrollador]  INT            NOT NULL,
-// [nombre]            VARCHAR (45)   NOT NULL,
-// [pvp] 		       DECIMAL (7,2)  NULL,
-// [descripcion]       TEXT           NOT NULL,
-// [fecha_salida]      DATE           NOT NULL,
-// [clasificacion]     INT            NULL,
-// [imagen]            VARCHAR (MAX)  NULL,
-// [mostrar]           BIT            DEFAULT((0)) NOT NULL,
-// PRIMARY KEY CLUSTERED ([id] ASC),
-// UNIQUE NONCLUSTERED([nombre] ASC),
-// CONSTRAINT[fk_Producto_CategoriaProducto] FOREIGN KEY([id_categoria]) REFERENCES[dbo].[CategoriaProducto]([id]),
-// CONSTRAINT[fk_Producto_Desarrollador] FOREIGN KEY([id_desarrollador]) REFERENCES[dbo].[Desarrollador]([id])
-// );
-
-
 namespace library
 {
     class CADProducto
@@ -84,7 +65,7 @@ namespace library
             return create;
         }
 
-        // Método para leer un Producto (por id) -> modo desconectado
+        // Método para leer un Producto (por id) -> modo conectado
         public bool readProducto(ENProducto en) 
         {
             bool read = false;
@@ -133,6 +114,7 @@ namespace library
             return read;
         }
 
+        // Método para leer un producto (por id) a pesar de haber sido eliminado -> modo conectado
         public bool readProductoEliminado(ENProducto en)
         {
             bool read = false;
@@ -181,7 +163,7 @@ namespace library
             return read;
         }
 
-        // Método para leer un Producto (por nombre) -> modo desconectado
+        // Método para leer un Producto (por nombre) -> modo conectado
         public bool readByNameProducto(ENProducto en)
         {
             bool read = false;
@@ -252,6 +234,7 @@ namespace library
             }
         }
 
+        // Método para actualizar un Producto -> modo desconectado
         public bool updateProducto(ENProducto en)
         {
             bool update = false;
@@ -374,7 +357,7 @@ namespace library
             }
         }
 
-        // Método para enseñar todos los Productos -> modo desconectado
+        // Método para enseñar todos los Productos para el administrador -> modo desconectado
         public DataSet showAllProductoAdmin()
         {
             DataSet bdvirtual = new DataSet();
