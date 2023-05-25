@@ -16,9 +16,10 @@ namespace tiendaWeb
         DataSet d = new DataSet();
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Llamamos al EN que lista todas las Categorías de Productos
             d = catproducto.showAllCategoriaProducto();
 
-            if (d.Tables[0].Rows.Count > 0)
+            if ((d.Tables.Count != 0) && (d.Tables[0].Rows.Count > 0))
             {
                 listView.DataSource = d;
                 listView.DataBind();

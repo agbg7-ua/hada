@@ -34,7 +34,7 @@ namespace tiendaWeb
             titulo.Text = "Videojuegos del Género " + enCat.nombre;
         }
         
-        // Dropdownlist --> opción seleccionada
+        // Dropdownlist --> opción seleccionada sobre cómo listar los Productos
         protected void ddlTest_SelectedIndexChanged(object sender, EventArgs e)
         {
             catchId();
@@ -56,6 +56,7 @@ namespace tiendaWeb
                 d = enProd.showOrderByNameASCProducto(enCat);
             }
 
+            // Rellenamos el ListView
             if ((d.Tables.Count != 0) && (d.Tables[0].Rows.Count > 0))
             {
                 listView.DataSource = d;
@@ -67,12 +68,15 @@ namespace tiendaWeb
             }
         }
 
+        // Método que enseña el botón de comprar únicamente a alguien que haya iniciado sesión
         protected void Buttons(object sender, ListViewItemEventArgs e)
         {
+            // Recorremos el ListView
             if (e.Item.ItemType == ListViewItemType.DataItem)
             {
                 ListViewDataItem dataItem = (ListViewDataItem)e.Item;
 
+                // Buscamos el botón de comprar en el Listview
                 LinkButton comprar = (LinkButton)dataItem.FindControl("comprar");
 
                 if (Session["username"] != null)
@@ -86,6 +90,7 @@ namespace tiendaWeb
             }
         }
 
+        // Creamos un pedido y una línea de pedido del Producto seleccionado
         protected void ButtonComprar(Object sender, EventArgs e)
         {
             LinkButton buy = (LinkButton)sender;
@@ -98,17 +103,22 @@ namespace tiendaWeb
             ENLineaPedido lped = new ENLineaPedido();
             DateTime hoy = DateTime.Now;
 
+            // Creamos un pedido
             ped.id_usuario = usu.username;
             ped.fecha = hoy;
             ped.importe_total = enProd.pvp;
             ped.createPedido();
             ped.lastPedido();
 
+            // Creamos una línea de pedido
             lped.id_pedido = ped.id;
             lped.id_producto = enProd.id;
             lped.cantidad = 1;
             lped.importe = enProd.pvp;
             lped.createLineaPedido();
+
+            // Nos redirige a la página de Pedidos
+            Response.Redirect("Pedido.aspx");
         }
     }
 }

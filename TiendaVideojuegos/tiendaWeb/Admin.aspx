@@ -3,11 +3,13 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <!-- Cabecera de página -->
     <div class="border border-white navbar navbar-expand-lg bg-dark">
         <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark"> Administrador </p>
     </div>
     <br/>
 
+    <!-- Cuerpo de la página: botones que redirigen -->
     <div class="container-fluid" style="height: 651px">
         <div style="width:100%; height: 100px; align-content:center; text-align:center">
             <blockquote class="blockquote">

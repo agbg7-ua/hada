@@ -16,10 +16,12 @@ namespace tiendaWeb
         {
             if (!Page.IsPostBack)
             {
+                // Comprobamos que se haya iniciado sesión
                 if (Session["username"] != null)
                 {
                     usu.username = Session["username"].ToString();
 
+                    // Comprobamos si el usuario es administrador
                     if (!usu.isAdminUsuario())
                     {
                         Response.Redirect("~/Home.aspx");
@@ -31,6 +33,10 @@ namespace tiendaWeb
                 }
             }
         }
+
+        // **********************************************************************
+        // **  Todos los botones que redirigen a sus páginas correspondientes  **
+        // **********************************************************************
 
         protected void button_usuarioOnClientClick(object sender, EventArgs e)
         {
@@ -61,6 +67,5 @@ namespace tiendaWeb
         {
             Response.Redirect("AdminPáginas/DesarrolladorAdmin.aspx");
         }
-
     }
 }
