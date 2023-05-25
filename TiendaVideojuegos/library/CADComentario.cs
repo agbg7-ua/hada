@@ -141,21 +141,113 @@ namespace library
             return create;
         }
 
-         public ENComentario filterProducto(int producto)
+         public DataSet filterProducto(ENProducto prod)
         {
-            ENComentario en = new ENComentario();
-            return en;
-        }
-         public ENComentario filterValoracion(int valoracion)
-        {
-            ENComentario en = new ENComentario();
-            return en;
-        }
-         public ENComentario filterFecha(DateTime fecha)
-        {
-            ENComentario en = new ENComentario();
-            return en;
-        }
+            DataSet dataset = new DataSet();
+            SqlConnection conect = new SqlConnection(constring);
 
+            try
+            {
+                String comando = "Select * From Comentario where id_producto=" + prod.id + "mostrar =1 and borrado=0";
+                SqlDataAdapter ada = new SqlDataAdapter(comando, conect);
+                ada.Fill(dataset, "Comentario");
+                return dataset;
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return dataset;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return dataset;
+            }
+            finally
+            {
+                if (conect != null) conect.Close();
+            }
+        }
+         public DataSet filterValoracion(ENComentario coment)
+        {
+            DataSet dataset = new DataSet();
+            SqlConnection conect = new SqlConnection(constring);
+
+            try
+            {
+                String comando = "Select * From Comentario where valoracion=" + coment.valoracion + "mostrar =1 and borrado=0";
+                SqlDataAdapter ada = new SqlDataAdapter(comando, conect);
+                ada.Fill(dataset, "Comentario");
+                return dataset;
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return dataset;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return dataset;
+            }
+            finally
+            {
+                if (conect != null) conect.Close();
+            }
+        }
+         public DataSet filterFecha(ENComentario coment)
+        {
+            DataSet dataset = new DataSet();
+            SqlConnection conect = new SqlConnection(constring);
+
+            try
+            {
+                String comando = "Select * From Comentario where date=" + coment.date + "mostrar =1 and borrado=0";
+                SqlDataAdapter ada = new SqlDataAdapter(comando, conect);
+                ada.Fill(dataset, "Comentario");
+                return dataset;
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return dataset;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return dataset;
+            }
+            finally
+            {
+                if (conect != null) conect.Close();
+            }
+        }
+        public DataSet showAll(ENProducto producto)
+        {
+            DataSet dataset = new DataSet();
+            SqlConnection conect = new SqlConnection(constring);
+
+            try
+            {
+                String comando = "Select * From Comentario where id_producto=" +producto.id + "mostrar=1 and borrado=0";
+                SqlDataAdapter ada = new SqlDataAdapter(comando, conect);
+                ada.Fill(dataset, "Comentario");
+                return dataset;
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return dataset;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                return dataset;
+            }
+            finally
+            {
+                if (conect != null) conect.Close();
+            }
+        }
     }
 }
