@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -94,22 +95,26 @@ namespace library
             CADComentario cad = new CADComentario();
             return cad.readComentario(this);
         }
-        public ENComentario filterProducto(int producto)
+        public DataSet filterProducto(ENProducto produc)
         {
             CADComentario cad = new CADComentario();
-            return cad.filterProducto(producto);
+            return cad.filterProducto(produc);
         }
-        public ENComentario filterValoracion(int valoracion)
+        public DataSet filterValoracion(ENComentario coment)
         {
             CADComentario cad = new CADComentario();
-            return cad.filterValoracion(valoracion);
+            return cad.filterValoracion(coment);
         }
-        public ENComentario filterFecha(DateTime fecha)
+        public DataSet filterFecha(ENComentario coment)
         {
             CADComentario cad = new CADComentario();
-            return cad.filterFecha(fecha);
+            return cad.filterFecha(coment);
         }
-
+        public DataSet showAll(ENProducto producto)
+        {
+            CADComentario cad = new CADComentario();
+            return cad.showAll(producto);
+        }
 
     }
 }
