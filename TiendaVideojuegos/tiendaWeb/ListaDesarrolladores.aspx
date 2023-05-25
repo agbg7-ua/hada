@@ -19,7 +19,11 @@
         <asp:TextBox ID="TextBox_Date" runat="server" TextMode="Date"></asp:TextBox>
 
         <asp:Label ID="Label3" runat="server" Text="Pais de origen" Font-Bold="true" Font-Size="Large"></asp:Label>
-        <asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList>
+        <asp:DropDownList ID="DropDownList1" runat="server">
+        </asp:DropDownList>
+
+        <asp:Button ID="Button_buscar" runat="server" Text="Buscar" Onclick="Button_buscar_Click"/>
+        <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="Imagenes/reset.png" Width="25" Height="25" BorderColor="Black" OnClick="ImageButton1_Click" />
 
     </div>
 
@@ -80,15 +84,18 @@
                                     <asp:imagebutton id="boton_lista" runat="server" imageurl='<%#Eval("imagen") %>'  height="120px" width="120px" OnClick="test" CommandArgument='<%# Eval("nombre") %>'></asp:imagebutton>
 
                                 </asp:tablecell>
-                                <asp:tablecell columnspan="2">
+                                <asp:tablecell columnspan="2" aling="left   ">
                                     <asp:label runat="server" text="Nombre: " font-bold="true"></asp:label>
                                     <asp:hyperlink id="HyperLink2" runat="server"
                                         navigateurl='<%# "Desarrollador.aspx"%>'>
                                         <asp:label id="label_nombre" runat="server" text='<%#Eval("nombre") %>'></asp:label>
                                     </asp:hyperlink>
                                     <br />
-                                    <asp:label runat="server" text="Fecha de creacion: " font-bold="true"></asp:label>
+                                    <asp:label runat="server" text="Web: " font-bold="true"></asp:label>
                                     <asp:label id="label_fecha" runat="server" text='<%#Eval("web") %>'></asp:label>
+                                                                        <br />
+                                    <asp:label runat="server" text="Fecha de creacion: " font-bold="true"></asp:label>
+                                    <asp:label id="label4" runat="server" text='<%#Eval("fecha_string") %>'></asp:label>
                                     <br />
                                     <asp:label runat="server" text="Pais de origen: " font-bold="true"></asp:label>
                                     <asp:label id="label_pais" runat="server" text='<%#Eval("origen") %>'></asp:label>

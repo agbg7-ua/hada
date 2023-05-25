@@ -53,11 +53,22 @@ namespace tiendaWeb
 
                     ListView1.DataSource = list;
                     ListView1.DataBind();
+
+
+                    List<string> paises = new List<string>();
+                    paises = en.obtener_paises();
+                    paises.Add("Seleccionar Pais de origen");
+                    DropDownList1.DataSource = paises;
+                    DropDownList1.DataBind();
+                    DropDownList1.Text = "Seleccionar Pais de origen";
                 }
                 catch (Exception ex)
                 {
                     Label_error.Text = ex.Message;
                 }
+
+
+
             }
 
         }
@@ -71,6 +82,70 @@ namespace tiendaWeb
             Session["desarrollador"] = nombre;
             // redirect with the name as parameter to the next page
             Response.Redirect("Desarrollador.aspx");
+        }
+
+        protected void Button_buscar_Click(object sender, EventArgs e)
+        {
+            ENDesarrollador en = new ENDesarrollador();
+
+            if (TextBox1.Text != "")
+            {
+                en.nombre = TextBox1.Text;
+            }
+            else
+            {
+                en.nombre = "";
+            }
+            if (TextBox_Date.Text != "")
+            {
+                en.fecha_creacion = Convert.ToDateTime(TextBox_Date.Text);
+            }
+            else
+            {
+                en.fecha_creacion = DateTime.MinValue;
+            }
+            if (DropDownList1.Text != "Seleccionar Pais de origen")
+            {
+                en.origen = DropDownList1.Text;
+            }
+            else
+            {
+                en.origen = "";
+            }
+
+
+            try
+            {
+                List<ENDesarrollador> list = new List<ENDesarrollador>();
+                list = en.filtrar();
+                ListView1.DataSource = list;
+                ListView1.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Label_error.Text = ex.Message;
+            }
+
+        }
+
+        protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
+        {
+            DropDownList1.Text = "Seleccionar Pais de origen";
+            TextBox1.Text = "";
+            TextBox_Date.Text = "";
+
+            try
+            {
+                ENDesarrollador en = new ENDesarrollador();
+                List<ENDesarrollador> list = new List<ENDesarrollador>();
+                list = en.obtener_todos();
+                ListView1.DataSource = list;
+                ListView1.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Label_error.Text = ex.Message;
+            }
         }
     }
 }

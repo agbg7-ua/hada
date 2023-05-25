@@ -72,6 +72,7 @@
     <Content Include="AdminPáginas\DesarrolladorAdmin.aspx" />
     <Content Include="AdminPáginas\CategoriaProductoAdmin.aspx" />
     <Content Include="AdminPáginas\EditarCategoriaProductoAdmin.aspx" />
+    <Content Include="AdminPáginas\InsertarDesarrolladorAdmin.aspx" />
     <Content Include="AdminPáginas\EditarDesarrolladorAdmin.aspx" />
     <Content Include="AdminPáginas\EditarProductoAdmin.aspx" />
     <Content Include="AdminPáginas\InsertarCategoriaProductoAdmin.aspx" />
@@ -107,6 +108,7 @@
     <Content Include="ListarProducto.aspx" />
     <Content Include="ListarProductoCategoría.aspx" />
     <Content Include="NuevoComentario.aspx" />
+    <Content Include="Oferta.aspx" />
     <Content Include="Pedido.aspx" />
     <Content Include="Producto.aspx" />
     <Content Include="Registro.aspx" />
@@ -148,6 +150,13 @@
     </Compile>
     <Compile Include="AdminPáginas\EditarCategoriaProductoAdmin.aspx.designer.cs">
       <DependentUpon>EditarCategoriaProductoAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPáginas\InsertarDesarrolladorAdmin.aspx.cs">
+      <DependentUpon>InsertarDesarrolladorAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPáginas\InsertarDesarrolladorAdmin.aspx.designer.cs">
+      <DependentUpon>InsertarDesarrolladorAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminPáginas\EditarDesarrolladorAdmin.aspx.cs">
       <DependentUpon>EditarDesarrolladorAdmin.aspx</DependentUpon>
@@ -301,6 +310,13 @@
     </Compile>
     <Compile Include="NuevoComentario.aspx.designer.cs">
       <DependentUpon>NuevoComentario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Oferta.aspx.cs">
+      <DependentUpon>Oferta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Oferta.aspx.designer.cs">
+      <DependentUpon>Oferta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pedido.aspx.cs">
       <DependentUpon>Pedido.aspx</DependentUpon>

@@ -11,7 +11,7 @@ namespace tiendaWeb.AdminPáginas
 {
 
 
-    public partial class EditarDesarrolladorAdmin
+    public partial class InsertarDesarrolladorAdmin
     {
 
         /// <summary>
@@ -204,6 +204,15 @@ namespace tiendaWeb.AdminPáginas
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
 
         /// <summary>
+        /// Control ValidationSummary1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+
+        /// <summary>
         /// Control Button_guardar.
         /// </summary>
         /// <remarks>
@@ -222,15 +231,6 @@ namespace tiendaWeb.AdminPáginas
         protected global::System.Web.UI.WebControls.Button Button_cancelar;
 
         /// <summary>
-        /// Control Button_recargar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_recargar;
-
-        /// <summary>
         /// Control volver.
         /// </summary>
         /// <remarks>
@@ -247,14 +247,5 @@ namespace tiendaWeb.AdminPáginas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label_info;
-
-        /// <summary>
-        /// Control textboxVacio.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label textboxVacio;
     }
 }

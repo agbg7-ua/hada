@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 //CREATE TABLE[dbo].[Oferta] (
 //    [id]        INT IDENTITY(1, 1) NOT NULL,
@@ -37,142 +38,158 @@ namespace library
             this.constring = ConfigurationManager.ConnectionStrings["miconexion"].ToString();
         }
 
-        public bool insertar(ENOferta en)
+        public bool readOferta(ENOferta o)
         {
-            bool res = false;
-            string sql = "INSERT INTO Oferta (oferta) VALUES (@oferta)";
-            string sql2 = "INSERT INTO Oferta_has_Producto (oferta_id, producto_id) VALUES (@oferta_id, @producto_id)";
-            try
-            {
-                // usando 'using' para que se cierre la conexion automaticamente aun si hay error
-                using (var con = new System.Data.SqlClient.SqlConnection(constring))
-                {
-                    con.Open();
-                    using (var cmd = new System.Data.SqlClient.SqlCommand(sql, con))
-                    {
-                        cmd.Parameters.AddWithValue("@oferta", en.oferta);
-                        cmd.ExecuteNonQuery();
-                    }
-                    using (var cmd = new System.Data.SqlClient.SqlCommand(sql2, con))
-                    {
-                        cmd.Parameters.AddWithValue("@oferta_id", en.id);
-                        cmd.Parameters.AddWithValue("@producto_id", en.producto_id);
-                        cmd.ExecuteNonQuery();
-                    }
-                    res = true;
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error: " + e.Message);
-            }
-            return res;
-        }
-
-
-
-
-        public bool borrar(ENOferta en)
-        {
-            bool res = false;
-            string sql = "DELETE FROM Oferta WHERE id = @id";
-            string sql2 = "DELETE FROM Oferta_has_Producto WHERE oferta_id = @oferta_id";
-            try
-            {
-                using (SqlConnection con = new SqlConnection(constring))
-                {
-                    con.Open();
-                    using (var cmd = new System.Data.SqlClient.SqlCommand(sql2, con))
-                    {
-                        cmd.Parameters.AddWithValue("@oferta_id", en.id);
-                        cmd.ExecuteNonQuery();
-                    }
-                    using (var cmd = new System.Data.SqlClient.SqlCommand(sql, con))
-                    {
-                        cmd.Parameters.AddWithValue("@id", en.id);
-                        cmd.ExecuteNonQuery();
-                    }
-                    res = true;
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error: " + e.Message);
-            }
-            return res;
-        }
-
-        /// <summary>
-        /// Modifica solo el precio de la oferta
-        /// </summary>
-        /// <param name="en"></param>
-        /// <returns></returns>
-        public bool modificar(ENOferta en)
-        {
-            bool res = false;
-            string sql = "UPDATE Oferta SET oferta = @oferta WHERE id = @id";
+            bool read = false;
+            SqlConnection c = null;
+            String comando = "Select * From Oferta where id=" + o.id;
 
             try
             {
-                using (SqlConnection con = new SqlConnection(constring))
+                c = new SqlConnection(constring);
+                c.Open();
+
+                SqlCommand com = new SqlCommand(comando, c);
+                SqlDataReader dr = com.ExecuteReader();
+
+                if (dr.Read())
                 {
-                    con.Open();
-                    using (var cmd = new System.Data.SqlClient.SqlCommand(sql, con))
-                    {
-                        cmd.Parameters.AddWithValue("@oferta", en.oferta);
-                        cmd.Parameters.AddWithValue("@id", en.id);
-                        cmd.ExecuteNonQuery();
-                    }
-                    res = true;
+                    read = true;
+                    o.id_producto = Convert.ToInt32(dr["id_producto"].ToString());
                 }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error: " + e.Message);
-            }
-            return res;
-        }
 
-
-        public List<ENOferta> obtener(ENOferta oferta)
-        {
-            int id = oferta.id;
-            List<ENOferta> res = new List<ENOferta>();
-
-            string sql = String.Format(@"
-                Select Overta.id, Oferta.oferta, Oferta_has_Producto.producto_id
-                From Oferta, Oferta_has_Producto
-                Where Oferta.id = Oferta_has_Producto.oferta_id
-                and Oferta_has_Producto.producto_id = {0}", id);
-            SqlConnection con = new SqlConnection(constring);
-            try
-            {
-
-                con.Open();
-                SqlCommand cmd = new SqlCommand(sql, con);
-                SqlDataReader dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-                    ENOferta en = new ENOferta();
-                    en.id = dr.GetInt32(0);
-                    en.oferta = dr.GetDecimal(1);
-                    en.producto_id = dr.GetInt32(2);
-                    res.Add(en);
-                }
                 dr.Close();
             }
-            catch (Exception e)
+            catch (SqlException ex)
             {
-                Console.WriteLine("Error: " + e.Message);
+                read = false;
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+            }
+            catch (Exception ex)
+            {
+                read = false;
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
             }
             finally
             {
-                con.Close();
+                if (c != null) c.Close();
             }
-            return res;
+
+            return read;
         }
 
+        public bool primeraOferta(ENOferta o, ENProducto prod)
+        {
+            bool update = false;
+            SqlConnection c = null;
+            o.oferta = prod.pvp / 2;
+            String comando = "Update Producto set borrado=0, mostrar=1 where id=" + prod.id;
+            String comando2 = "Update Oferta set id_producto=" + prod.id + ", oferta=" + o.oferta + " where id=" + o.id;
 
+            try
+            {
+                c = new SqlConnection(constring);
+                c.Open();
 
+                SqlCommand com = new SqlCommand(comando, c);
+                SqlCommand com2 = new SqlCommand(comando2, c);
+
+                com.ExecuteNonQuery();
+                com2.ExecuteNonQuery();
+                update = true;
+            }
+            catch (SqlException ex)
+            {
+                update = false;
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+            }
+            catch (Exception ex)
+            {
+                update = false;
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+            }
+            finally
+            {
+                if (c != null) c.Close();
+            }
+
+            return update;
+        }
+
+        public bool segundaOferta(ENOferta o, ENProducto prod)
+        {
+            bool update = false;
+            SqlConnection c = null;
+            o.oferta = prod.pvp - (prod.pvp * 25 / 100);
+            String comando = "Update Producto set borrado=0, mostrar=1 where id=" + prod.id;
+            String comando2 = "Update Oferta set id_producto=" + prod.id + ", oferta=" + o.oferta + " where id=" + o.id;
+
+            try
+            {
+                c = new SqlConnection(constring);
+                c.Open();
+
+                SqlCommand com = new SqlCommand(comando, c);
+                SqlCommand com2 = new SqlCommand(comando2, c);
+
+                com.ExecuteNonQuery();
+                com2.ExecuteNonQuery();
+                update = true;
+            }
+            catch (SqlException ex)
+            {
+                update = false;
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+            }
+            catch (Exception ex)
+            {
+                update = false;
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+            }
+            finally
+            {
+                if (c != null) c.Close();
+            }
+
+            return update;
+        }
+
+        public bool terceraOferta(ENOferta o, ENProducto prod)
+        {
+            bool update = false;
+            SqlConnection c = null;
+            o.oferta = prod.pvp - (prod.pvp * 15 / 100);
+            String comando = "Update Producto set borrado=0, mostrar=1 where id=" + prod.id;
+            String comando2 = "Update Oferta set id_producto=" + prod.id + ", oferta=" + o.oferta + " where id=" + o.id;
+
+            try
+            {
+                c = new SqlConnection(constring);
+                c.Open();
+
+                SqlCommand com = new SqlCommand(comando, c);
+                SqlCommand com2 = new SqlCommand(comando2, c);
+
+                com.ExecuteNonQuery();
+                com2.ExecuteNonQuery();
+                update = true;
+            }
+            catch (SqlException ex)
+            {
+                update = false;
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+            }
+            catch (Exception ex)
+            {
+                update = false;
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+            }
+            finally
+            {
+                if (c != null) c.Close();
+            }
+
+            return update;
+        }
     }
 }
