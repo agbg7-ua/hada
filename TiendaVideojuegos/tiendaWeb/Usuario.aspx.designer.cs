@@ -24,13 +24,13 @@ namespace tiendaWeb
         protected global::System.Web.UI.WebControls.Image Image1;
 
         /// <summary>
-        /// Control Usu.
+        /// Control Username.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Usu;
+        protected global::System.Web.UI.WebControls.Label Username;
 
         /// <summary>
         /// Control EmailUsu.
@@ -58,6 +58,15 @@ namespace tiendaWeb
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label SurnameUsu;
+
+        /// <summary>
+        /// Control EdadUsu.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label EdadUsu;
 
         /// <summary>
         /// Control NumberUsu.
@@ -103,15 +112,6 @@ namespace tiendaWeb
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label ProvUsu;
-
-        /// <summary>
-        /// Control CountryUsu.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label CountryUsu;
 
         /// <summary>
         /// Control Button1.

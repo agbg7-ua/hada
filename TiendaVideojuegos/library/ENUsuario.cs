@@ -14,7 +14,7 @@ namespace library
         private string _nombre;
         private string _apellidos;
         private string _email;
-        private string _contrasenya;
+        private string _password;
         private int _edad;
         private string _calle;
         private string _pueblo;
@@ -40,8 +40,8 @@ namespace library
             set {_email = value;}
         }
         public string password { 
-            get {return _contrasenya;}
-            set {_contrasenya = value;}
+            get {return _password;}
+            set {_password = value;}
         }
         public int edad { 
             get {return _edad;}
@@ -86,6 +86,7 @@ namespace library
             this.provincia = "";
             this.codigo_postal = "";
             this.telefono = "";
+            this.admin = false;
         }
 
         public ENUsuario(string username, string nombre, string apellidos, string email, string password, int edad, string calle,string pueblo, string provincia, string codigo_postal, string telefono)

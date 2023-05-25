@@ -2,7 +2,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<h1 style="background-color:grey">TU PERFIL</h1>
+    <div class="border border-white navbar navbar-expand-lg bg-dark">
+        <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark"> Edita tu Perfil </p>
+    </div>
+
      <div class="col">
      <div class="container" style="width: 50%; float:left; height:750px;text-align:center;border-right:3px solid black;border-bottom:3px solid black;border-top:3px solid black">
             <asp:Image ID="Image1" runat="server" ImageUrl="Imagenes/profile.jpg"  alt="Avatar" class="avatar" style="margin:3px"/><br>
@@ -18,8 +21,9 @@
             <p style="font-size:20px;margin:3px"> <b>Código postal:<br /> </b> <asp:TextBox ID="TextBox5" runat="server" placeholder ="Código postal"></asp:TextBox></p>
             <p style="font-size:20px;margin:3px"> <b>Localidad:<br /> </b> <asp:TextBox ID="TextBox6" runat="server" placeholder ="Localidad"></asp:TextBox></p>
             <p style="font-size:20px;margin:3px"> <b>Provincia:<br /> </b> <asp:TextBox ID="TextBox7" runat="server" placeholder ="Provincia"></asp:TextBox> </p>
-            <p style="font-size:20px;margin:3px"><b> País:<br /></b> <asp:TextBox ID="TextBox8" runat="server" placeholder ="País"></asp:TextBox> </p><br />
-            <asp:Button class="regbutton" ID="Button1" runat="server" Text="Finalizar" />
+            <p style="font-size:20px;margin:3px"><b> Edad:<br /></b> <asp:TextBox ID="TextBox8" runat="server" placeholder ="País"></asp:TextBox> </p><br />
+            <asp:Label ID="outputMsg" runat="server" Text="Label"><br /></asp:Label>
+            <asp:Button class="regbutton" ID="Button1" runat="server" Text="Finalizar" OnClick="Button1_Click" />
 
      </div>
     </div>
