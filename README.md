@@ -55,3 +55,9 @@ Una vez agregada la Base de Datos, tendrá que hacer una nueva consulta y copiar
 Para introducir datos en la página, realice una nueva consulta en la base de datos y coppie y pegue el contenido del archivo llamado "Rellenar base de datos.sql", que se encuentra en el archivo "Base de Datos".  
 En caso de que quiera explorar la web como un usuario no administrador, regístrese con el username: usuario; y contraseña: usuario.  
 En caso de que quiera disfrutar de las libertades de un administrador, regístrese con el username: profesor; y la contraseña: profesor.
+
+## TABLA DE TRABAJOS REALIZADOS POR ALUMNO  
+
+| Andrea Gómez Bobes | ENUsuario.cs, CADUsuario.cs, ENComentario.cs, CADComentario.cs, Comentario.aspx, EditUsuario.aspx, NuevoComentario.aspx, Registro.aspx, Usuario.aspx |
+| Carlos Pérez Pascual | ENPedido.cs, CADPedido.cs, ENLineaPedido.cs, CADLineaPedido.cs, LineaPedido.aspx, Pedido.aspx, SobreNosotros.aspx |
+| Jorge Sánchez Pastor | ENDesarrollador.cs, CADDesarrollador.cs, ENOferta.cs, CADOferta.cs, Desarrollador.aspx, ListaDesarrolladores.aspx, Oferta.aspx, DesarrolladorAdmin.aspx, EditarDesarrolladorAdmin.aspx, InsertarDesarrolladorAdmin.aspx, OfertaAdmin.aspx |
