@@ -1,47 +1,71 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Comentario.aspx.cs" Inherits="tiendaWeb.Oferta" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <div class="border border-white navbar navbar-expand-lg bg-dark">
+    <div class="border border-white navbar navbar-expand-lg bg-dark">
         <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark"> Comentarios </p>
     </div>
-<div class="game" style=" height:400px; border: 3px solid black;">
-    <div class="image" style="width: 30%; float:left; height:388px;">
-    <asp:Image ID="myImage" runat="server" ImageUrl=" " Width=100% Height=100%/>
+
+    <div style="min-height: 100vh">
+        <div class="game" style=" height:400px; border: 3px solid black;">
+            <div class="image" style="width: 30%; float:left; height:388px;">
+            <asp:Image ID="myImage" runat="server" ImageUrl=" " Width=100% Height=100%/>
         </div>
-    <div class="desc" style="width: 68%; float:right; height:288px; font-size:x-large">
+        <div class="desc" style="width: 68%; float:right; height:288px; font-size:x-large">
         <br/>
 
-        <asp:Label ID="nameText" runat="server" style="margin:5px; font-size:20px; font-weight:bold"></asp:Label><br />
-    <asp:Label ID="descText" runat="server" style="margin:5px"></asp:Label>
-            <div class="button" style = "margin-top: 20px">
-        <asp:Button class="regbutton" style="background-color:grey;color:white" ID="Button1" runat="server" OnClick="comentButton" Text="Añadir un comentario"  />
-    </div>
-    </div>
-
-</div><br />
-        <h6>Filtrar por valoraciones</h6>
-        <div class="dropdown">
-            <asp:dropdownlist runat="server" id="ddlTest"  OnSelectedIndexChanged="ddlTest_SelectedIndexChanged" AutoPostBack="true"> 
-                 <asp:listitem text="Valoraciones con 5 estrellas" value="5" Selected="True"></asp:listitem>
-                 <asp:listitem text="Valoraciones con 4 estrellas" value="2"></asp:listitem>
-                 <asp:listitem text="Valoraciones con 3 estrellas" value="3"></asp:listitem>
-                 <asp:listitem text="Valoraciones con 2 estrellas" value="2"></asp:listitem>
-                <asp:listitem text="Valoraciones con 1 estrella" value="1"></asp:listitem>
-            </asp:dropdownlist>
+            <asp:Label ID="nameText" runat="server" style="margin:5px; font-size:20px; font-weight:bold"></asp:Label><br />
+            <asp:Label ID="descText" runat="server" style="margin:5px"></asp:Label>
+                <div class="button" style = "margin-top: 20px">
+                    <asp:Button class="regbutton" style="background-color:grey;color:white" ID="Button1" runat="server" OnClick="comentButton" Text="Añadir un comentario"  />
+                </div>
         </div>
 
-         <asp:GridView ID="gridView" runat="server" AutoGenerateColumns="False" 
-    CssClass="comment-grid">
-    <Columns>
-        <asp:BoundField DataField="CommenterName" HeaderText="Name" />
-        <asp:BoundField DataField="CommentText" HeaderText="Comment" />
-        <asp:BoundField DataField="Timestamp" HeaderText="Timestamp" />
-    </Columns>
-</asp:GridView>
-         <asp:Label ID="outputMsg" runat="server" Text="Label"><br /></asp:Label><br />
-   
+    </div><br />
+
+    <div class= "col-auto text-center mx-auto">
+
+            <asp:ListView runat="server" ID="listView" GroupItemCount="6">
+
+                <GroupTemplate>
+                    <tr>
+                        <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
+                    </tr>
+                </GroupTemplate>
+
+                <GroupSeparatorTemplate>
+                    <tr id="Tr1" runat="server" visible="false">
+                        <td colspan="3" style="padding: 5px 5px 5px 5px;"><hr /></td>
+                    </tr>
+                </GroupSeparatorTemplate>
+
+                <LayoutTemplate>
+                    <table>
+                        <asp:PlaceHolder ID="groupPlaceHolder" runat="server" />
+                    </table>
+                </LayoutTemplate>
+
+                <ItemTemplate>
+                    <!-- Estilo card inspirado de Bootstrap -->
+                    <td style="width:300px; height:200px; padding: 5px 5px 5px 25px; padding-top: 20px;">
+                            <div class="card border border-dark" style="background-color: #c3c3c3; height: 200px;">
+                                <div class="card-body table-responsive">
+                                    <h5 class="card-title text-dark"> <%# Eval("id_usuario") %> </h5>
+                                    <p class="card-text">  <%# Eval("fecha") %> </p>
+                                    <p class="card-text">  <%# Eval("comentario") %> </p>
+                                </div>
+                            </div>
+                    </td>
+                </ItemTemplate>
+            </asp:ListView>
+            <br />
+        </div>
+
+        <div style="width:100%; height: 100px; align-content:center; text-align:center">
+                <asp:Label CssClass="labelVacio" runat="server" ID="textboxVacio" Text="" Visible="false" ></asp:Label>
+            </div>
+    </div>
 
 <style>
     * {

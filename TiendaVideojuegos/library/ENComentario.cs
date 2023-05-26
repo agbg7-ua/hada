@@ -112,8 +112,11 @@ namespace library
         }
         public DataSet showAll(ENProducto producto)
         {
+            DataSet a = new DataSet();
             CADComentario cad = new CADComentario();
-            return cad.showAll(producto);
+            a = cad.showAll(producto);
+
+            return a;
         }
 
     }
