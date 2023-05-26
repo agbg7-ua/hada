@@ -48,7 +48,7 @@
                                 text="Desarrolladores"
                                 tooltip="Desarrolladores"/>
                         </asp:menuitem>
-                        <asp:menuitem NavigateUrl="#"
+                        <asp:menuitem NavigateUrl="~/SobreNosotros.aspx"
                             text="Sobre nosotros"
                             tooltip="Sobre nosotros">
                         </asp:menuitem>

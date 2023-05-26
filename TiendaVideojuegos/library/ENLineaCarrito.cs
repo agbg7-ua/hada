@@ -131,17 +131,16 @@ namespace library
             return false;
         }
 
-        public DataSet vaciarCarrito(ENCarrito en)
+        public bool vaciarCarrito(ENCarrito en)
         {
             CADLineaCarrito c = new CADLineaCarrito();
-            DataSet a = new DataSet();
 
             if (en.readCarrito() == true)
             {
-                a = c.vaciarCarrito(en);
+                return c.vaciarCarrito(en);
             }
 
-            return a;
+            return false;
         }
 
         public DataSet showLineasCarritoByCarrito(ENCarrito en)

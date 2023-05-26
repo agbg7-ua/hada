@@ -21,38 +21,35 @@ namespace library
         public bool signIn(ENUsuario usu)
         {
             bool create = false;
-            SqlConnection c = null;
-            String comando = "Insert Into Usuario (nombre, apellidos, email, contraseña, edad, calle, pueblo, provincia, codigo_postal, telefono, admin) " +
-                "VALUES ('" + usu.nombre + "', '" + usu.apellidos + "', '" + usu.email + "', '" + usu.password + 
-                "', " + usu.edad + ", '" + usu.calle + "', '" + usu.pueblo + "', '" + usu.provincia + "', '" + usu.codigo_postal + 
-                "', " + usu.telefono + "', " + usu.admin + ")";
-
+            SqlConnection conection = new SqlConnection(constring);
+            String str = "Insert INTO Usuario (username,nombre,apellidos,email,contraseña,edad,calle,pueblo,provincia,codigo_postal,telefono,admin) VALUES('" + usu.username + "', '" + usu.nombre + "', '" + usu.apellidos + "', '" + usu.email + "', '" + usu.password +
+                "', " + usu.edad + ", '" + usu.calle + "', '" + usu.pueblo + "', '" + usu.provincia + "', '" + usu.codigo_postal +
+                "', '" + usu.telefono + "', '" + usu.admin + "')";
             try
             {
-                c = new SqlConnection(constring);
-                c.Open();
-                SqlCommand com = new SqlCommand(comando, c);
-
-                com.ExecuteNonQuery();
+                conection.Open();
+                SqlCommand cons = new SqlCommand(str, conection);
+                cons.ExecuteNonQuery();
                 create = true;
             }
-            catch (SqlException ex)
+            catch (SqlException e)
             {
                 create = false;
-                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
                 create = false;
-                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
             }
             finally
             {
-                if (c != null) c.Close();
+                if (conection != null) conection.Close();
             }
-
             return create;
         }
+
 
         public bool updateUsuario(ENUsuario usu)
         {

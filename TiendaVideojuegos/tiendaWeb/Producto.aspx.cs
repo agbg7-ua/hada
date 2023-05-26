@@ -113,7 +113,8 @@ namespace tiendaWeb
             lped.cantidad = cant;
             lped.importe = prod.pvp * cant;
             lped.createLineaPedido();
-            
+
+            Response.Redirect("Pedido.aspx");
         }
 
         protected void button_registro_OnClientClick(object sender, EventArgs e)

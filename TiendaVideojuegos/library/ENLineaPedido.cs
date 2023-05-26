@@ -118,5 +118,14 @@ namespace library
 
             return a;
         }
+
+        //Listar 10 productos más vendidos
+        public DataTable top10Productos()
+        {
+            CADLineaPedido c = new CADLineaPedido();
+            DataTable a = new DataTable();
+            a = c.top10Productos();
+            return a;
+        }
     }
 }

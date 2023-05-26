@@ -1,132 +1,167 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Registro.aspx.cs" Inherits="tiendaWeb.Usuario" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Registro.aspx.cs" Inherits="tiendaWeb.Registro" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="styles.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div class="col">
-     <div class="container" style="width: 50%; float:left; height:800px;">
-       <hr>
-        <h3 style="text-align:center">Inicia sesión</h3><br />
-         Usuario:<br /> <asp:TextBox ID="TextBox1" runat="server" placeholder="Usuario" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
-         <asp:RequiredFieldValidator ID="UserNameReq" runat="server"
-            ControlToValidate="TextBox1" ErrorMessage="Introduce el usuario!!">
-         </asp:RequiredFieldValidator><br />
-         Contraseña:<br /> <asp:TextBox ID="TextBox2" runat="server" placeholder =" Contraseña" TextMode="Password" ClientIDMode="Static" OnTextChanged="TextBox2_TextChanged"> </asp:TextBox>
-         <asp:RequiredFieldValidator ID="PasswordReq" runat="server" ControlToValidate="TextBox2" ErrorMessage="Introduce la contraseña!!"></asp:RequiredFieldValidator><br />
-         <asp:CheckBox ID="ckShowPass" runat="server" Text="Show password" onclick="myshowp()" OnCheckedChanged="ckShowPass_CheckedChanged" />
-         <asp:Button class="regbutton" ID="Button1" runat="server" Text="Iniciar sesión" OnClick="Button1_Click" />
-         <hr />
-     </div>
-     <div class="container" style="width: 50%; float:right; height:800px">
-         <hr>
-        <h3 style="text-align: center;">Regístrate</h3><br />
-         <div>
-             <div style="float:left">
-             Nombre:<br /> <asp:TextBox ID="TextBox6" runat="server" placeholder="Nombre"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
-            ControlToValidate="TextBox6" ErrorMessage="Introduce un nombre!!"></asp:RequiredFieldValidator><br />
-             </div>
-             <div style="float:right">
-                 
-                     Apellidos:<br /> <asp:TextBox ID="TextBox7" runat="server" placeholder="Apellidos"></asp:TextBox>
-         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
-            ControlToValidate="TextBox7" ErrorMessage="Introduce apellidos!"></asp:RequiredFieldValidator><br />
-             </div>
-         </div>
-
-                  Número de teléfono:<br /> <asp:TextBox ID="TextBox8" runat="server" placeholder="Número de teléfono"></asp:TextBox>
-         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
-            ControlToValidate="TextBox3" ErrorMessage="Introduce un número de teléfono!!"></asp:RequiredFieldValidator><br />
-                  Dirección:<br /> <asp:TextBox ID="TextBox9" runat="server" placeholder="Dirección"></asp:TextBox>
-         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
-            ControlToValidate="TextBox9" ErrorMessage="Introduce una dirección!!"></asp:RequiredFieldValidator><br />
-                  Código Postal:<br /> <asp:TextBox ID="TextBox10" runat="server" placeholder="Código Postal"></asp:TextBox>
-         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
-            ControlToValidate="TextBox10" ErrorMessage="Introduce un código postal!!"></asp:RequiredFieldValidator><br />
-                  Localidad:<br /> <asp:DropDownList ID="DropDownList1" runat="server"
-                            Width="90px" AutoPostBack="False">
-                             <asp:ListItem Value="Be">Benidorm</asp:ListItem>
-                             <asp:ListItem>Torrevieja</asp:ListItem>
-                             <asp:ListItem>Sagunto</asp:ListItem>
-                            </asp:DropDownList><br />
-                  Provincia:<br /> <asp:DropDownList ID="DropDownList3" runat="server"
-                            Width="90px" AutoPostBack="False">
-                             <asp:ListItem Value="Al">Alicante</asp:ListItem>
-                             <asp:ListItem>Castellón</asp:ListItem>
-                             <asp:ListItem>Valencia</asp:ListItem>
-                            </asp:DropDownList><br />
-                  País:<br /> <asp:DropDownList ID="DropDownList2" runat="server"
-                            Width="90px" AutoPostBack="False">
-                             <asp:ListItem Value="Esp">España</asp:ListItem>
-                             <asp:ListItem>Portugal</asp:ListItem>
-                             <asp:ListItem>Italia</asp:ListItem>
-                            </asp:DropDownList><br />
-         
-         Email:<br /> <asp:TextBox ID="TextBox3" runat="server" placeholder="Email"></asp:TextBox>
-         <asp:RequiredFieldValidator ID="Requiredemail" runat="server"
-            ControlToValidate="TextBox3" ErrorMessage="Introduce un correo electrónico!!"></asp:RequiredFieldValidator>
-         <asp:RegularExpressionValidator id="EmailValidator" 
-                     ControlToValidate="TextBox3"
-                     ValidationExpression="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"
-                     Display="Static"
-                     ErrorMessage="No es un correo válido"
-                     runat="server"></asp:RegularExpressionValidator><br />
-         Contraseña:<br /> <asp:TextBox ID="TextBox4" runat="server" placeholder =" Contraseña" > </asp:TextBox>
-         <asp:RequiredFieldValidator ID="Requiredpass" runat="server" ControlToValidate="TextBox4" ErrorMessage="Introduce una contraseña!!"></asp:RequiredFieldValidator><br />
-         Repite contraseña:<br /> <asp:TextBox ID="TextBox5" runat="server" placeholder =" Repite contraseña"> </asp:TextBox>
-         <asp:CompareValidator ID="Validator" runat ="server" ControlToValidate="TextBox5" ControlToCompare="TextBox4" Type="String" ErrorMessage="Introduce la misma contraseña!!" ></asp:CompareValidator>
-         <asp:RequiredFieldValidator ID="RequiredReppass" runat="server" ControlToValidate="TextBox5"></asp:RequiredFieldValidator><br />
-         <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-         <asp:Button class="regbutton" ID="Button2" runat="server" Text="Registrarse" />
-
-         <hr />
-
-     </div>
+    <div class="border border-white navbar navbar-expand-lg bg-dark">
+        <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark"> Inicio sesión/Registro </p>
     </div>
-    <script>
-    function myshowp() {
-        ckbox = $('#ckShowPass')
-        txtBox = $('#TextBox2')
 
-        if (ckbox.is(':checked')) {
-            txtBox.attr("Type", "Text");
+     <div class="container" style="width: 50%; float:left; height:900px;">
+        <h3 style="text-align:center; margin-top:20px">Inicia sesión</h3><br />
+         <asp:Panel runat="server" ID="loginvalidation" DefaultButton="iniciabutton">
+             <div class="form-floating mb-3">
+                 <asp:TextBox runat="server" ID="username1" TextMode="SingleLine" CssClass="form-control" ValidationGroup="login"></asp:TextBox>
+                 <label for="username1">Username</label>
+                 <div class="invalid-feedback">
+                    <asp:requiredfieldvalidator id="username1vacio" runat="server" ControlToValidate="username1" ErrorMessage="Username es un campo obligatorio" SetFocusOnError="true" Display="Dynamic" ValidationGroup="login"></asp:requiredfieldvalidator>
+                    <asp:RegularExpressionValidator runat="server" ControlToValidate="username1" ErrorMessage="Username no debe superar los 30 caracteres" ValidationExpression="[a-zA-Z0-9' ']{1,30}$" ValidationGroup="login"></asp:RegularExpressionValidator>
+                 </div>
+             </div>
+             <div class="form-floating mb-3">
+                 <asp:TextBox runat="server" ID="password1" TextMode="Password" CssClass="form-control" ValidationGroup="login"></asp:TextBox>
+                 <label for="password1">Contraseña</label>
+                 <div class="invalid-feedback">
+                    <asp:requiredfieldvalidator id="password1vacio" runat="server" ControlToValidate="password1" ErrorMessage="Contraseña es un campo obligatorio" SetFocusOnError="true" Display="Dynamic" ValidationGroup="login"></asp:requiredfieldvalidator>
+                    <asp:RegularExpressionValidator runat="server" ControlToValidate="password1" ErrorMessage="Contraseña no debe superar los 30 caracteres" ValidationExpression="[a-zA-Z0-9]{1,30}$" ValidationGroup="login"></asp:RegularExpressionValidator>
+                 </div>
+             </div>
+            <asp:Button class="regbutton" ID="iniciabutton" runat="server" Text="Iniciar sesión" OnClick="Button1_Click"  ValidationGroup="login"/>
+            <div class="container-fluid align-content-center" style="width: 500px; padding-top: 20px; padding-right: 20px; padding-left: 20px; padding-bottom: 20px;">
+                <div class="alert alert-danger" role="alert" id="alerta1" runat="server" >
+                    <p class="message">
+                        <asp:Label ID="Msg" runat="server" ></asp:Label>
+                        <asp:ValidationSummary ID="ValidationS" runat="server" DisplayMode="BulletList" font-size="Small" ValidationGroup="login"/>
+                    </p>
+                </div>
+            </div>
+        </asp:Panel>
+     </div>
+     <div class="container" style="width: 50%; float:right; height: 900px">
+        <h3 style="text-align: center;margin-top:20px">Regístrate</h3><br />
+        <asp:Panel runat="server" ID="signupvalidation" DefaultButton="registbutton">
+            <div class="form-floating mb-3">
+                <asp:TextBox runat="server" ID="nombre" TextMode="SingleLine" CssClass="form-control" ValidationGroup="signup"></asp:TextBox>
+                <label for="nombre">Nombre</label>
+                <div class="invalid-feedback">
+                    <asp:requiredfieldvalidator id="nombrevacio" runat="server" ControlToValidate="nombre" ErrorMessage="Nombre es un campo obligatorio" SetFocusOnError="true" Display="Dynamic" ValidationGroup="signup"></asp:requiredfieldvalidator>
+                    <asp:RegularExpressionValidator runat="server" ControlToValidate="username1" ErrorMessage="Nombre no debe superar los 30 caracteres" ValidationExpression="[a-zA-Z]{1,30}$" ValidationGroup="signup"></asp:RegularExpressionValidator>
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <asp:TextBox runat="server" ID="apellidos" TextMode="SingleLine" CssClass="form-control" ValidationGroup="signup"></asp:TextBox>
+                <label for="apellidos">Apellidos</label>
+                <div class="invalid-feedback">
+                    <asp:requiredfieldvalidator id="apellidosvacio" runat="server" ControlToValidate="apellidos" ErrorMessage="Apellidos es un campo obligatorio" SetFocusOnError="true" Display="Dynamic" ValidationGroup="signup"></asp:requiredfieldvalidator>
+                    <asp:RegularExpressionValidator runat="server" ControlToValidate="username1" ErrorMessage="Apellidos no debe superar los 30 caracteres" ValidationExpression="[a-zA-Z' ']{1,30}$" ValidationGroup="signup"></asp:RegularExpressionValidator>
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <asp:TextBox runat="server" ID="edad" TextMode="Number" CssClass="form-control" ValidationGroup="signup" min="16" max="110"></asp:TextBox>
+                <label for="edad">Edad</label>
+                <div class="invalid-feedback">
+                    <asp:requiredfieldvalidator id="edadvacio" runat="server" ControlToValidate="edad" ErrorMessage="Edad es un campo obligatorio" SetFocusOnError="true" Display="Dynamic" ValidationGroup="signup"></asp:requiredfieldvalidator>
+                    <asp:RegularExpressionValidator runat="server" ControlToValidate="edad" ErrorMessage="Edad debe ser un número entero" ValidationExpression="[0-9]{1,3}$" ValidationGroup="signup"></asp:RegularExpressionValidator>
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <asp:TextBox runat="server" ID="telefono" TextMode="SingleLine" CssClass="form-control" ValidationGroup="signup"></asp:TextBox>
+                <label for="telefono">Teléfono</label>
+                <div class="invalid-feedback">
+                    <asp:requiredfieldvalidator id="telefonovacio" runat="server" ControlToValidate="telefono" ErrorMessage="Teléfono es un campo obligatorio" SetFocusOnError="true" Display="Dynamic" ValidationGroup="signup"></asp:requiredfieldvalidator>
+                    <asp:RegularExpressionValidator runat="server" ControlToValidate="telefono" ErrorMessage="Teléfono no cumple con los requisitos" ValidationExpression="[0-9]{1,12}$" ValidationGroup="signup"></asp:RegularExpressionValidator>
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <asp:TextBox runat="server" ID="calle" TextMode="SingleLine" CssClass="form-control" ValidationGroup="signup"></asp:TextBox>
+                <label for="calle">Calle</label>
+                <div class="invalid-feedback">
+                    <asp:requiredfieldvalidator id="callevacio" runat="server" ControlToValidate="calle" ErrorMessage="Calle es un campo obligatorio" SetFocusOnError="true" Display="Dynamic" ValidationGroup="signup"></asp:requiredfieldvalidator>
+                    <asp:RegularExpressionValidator runat="server" ControlToValidate="calle" ErrorMessage="Calle no cumple con los requisitos" ValidationExpression="[a-zA-Z0-9' ']{1,45}" ValidationGroup="signup"></asp:RegularExpressionValidator>
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <asp:TextBox runat="server" ID="pueblo" TextMode="SingleLine" CssClass="form-control" ValidationGroup="signup"></asp:TextBox>
+                <label for="pueblo">Pueblo</label>
+                <div class="invalid-feedback">
+                    <asp:requiredfieldvalidator id="pueblovacio" runat="server" ControlToValidate="pueblo" ErrorMessage="Pueblo es un campo obligatorio" SetFocusOnError="true" Display="Dynamic" ValidationGroup="signup"></asp:requiredfieldvalidator>
+                    <asp:RegularExpressionValidator runat="server" ControlToValidate="pueblo" ErrorMessage="Pueblo no cumple con los requisitos" ValidationExpression="[a-zA-Z' ']{1,45}" ValidationGroup="signup"></asp:RegularExpressionValidator>
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <asp:TextBox runat="server" ID="provincia" TextMode="SingleLine" CssClass="form-control" ValidationGroup="signup"></asp:TextBox>
+                <label for="provincia">Provincia</label>
+                <div class="invalid-feedback">
+                    <asp:requiredfieldvalidator id="provinciavacio" runat="server" ControlToValidate="provincia" ErrorMessage="Provincia es un campo obligatorio" SetFocusOnError="true" Display="Dynamic" ValidationGroup="signup"></asp:requiredfieldvalidator>
+                    <asp:RegularExpressionValidator runat="server" ControlToValidate="provincia" ErrorMessage="Provincia no cumple con los requisitos" ValidationExpression="[a-zA-Z' ']{1,45}" ValidationGroup="signup"></asp:RegularExpressionValidator>
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <asp:TextBox runat="server" ID="codpostal" TextMode="SingleLine" CssClass="form-control" ValidationGroup="signup"></asp:TextBox>
+                <label for="codpostal">Código postal</label>
+                <div class="invalid-feedback">
+                    <asp:requiredfieldvalidator id="codpostalvacio" runat="server" ControlToValidate="codpostal" ErrorMessage="Código postal es un campo obligatorio" SetFocusOnError="true" Display="Dynamic" ValidationGroup="signup"></asp:requiredfieldvalidator>
+                    <asp:RegularExpressionValidator runat="server" ControlToValidate="codpostal" ErrorMessage="Código postal no cumple con los requisitos" ValidationExpression="[0-9]{1,45}" ValidationGroup="signup"></asp:RegularExpressionValidator>
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <asp:TextBox runat="server" ID="email" TextMode="SingleLine" CssClass="form-control" ValidationGroup="signup"></asp:TextBox>
+                <label for="email">Email</label>
+                <div class="invalid-feedback">
+                    <asp:requiredfieldvalidator id="emailvacio" runat="server" ControlToValidate="email" ErrorMessage="Email es un campo obligatorio" SetFocusOnError="true" Display="Dynamic" ValidationGroup="signup"></asp:requiredfieldvalidator>
+                    <asp:RegularExpressionValidator runat="server" ControlToValidate="email" ErrorMessage="Email no cumple con los requisitos" ValidationExpression="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" ValidationGroup="signup"></asp:RegularExpressionValidator>
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <asp:TextBox runat="server" ID="username2" TextMode="SingleLine" CssClass="form-control" ValidationGroup="signup"></asp:TextBox>
+                <label for="username2">Username</label>
+                <div class="invalid-feedback">
+                    <asp:requiredfieldvalidator id="username2vacio" runat="server" ControlToValidate="username2" ErrorMessage="Username es un campo obligatorio" SetFocusOnError="true" Display="Dynamic" ValidationGroup="signup"></asp:requiredfieldvalidator>
+                    <asp:RegularExpressionValidator runat="server" ControlToValidate="username2" ErrorMessage="Username debe contener caracteres alfanuméricos y no superar los 30 caracteres" ValidationExpression="[a-zA-Z0-9]{1,30}$" ValidationGroup="signup"></asp:RegularExpressionValidator>
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <asp:TextBox runat="server" ID="password2" TextMode="Password" CssClass="form-control" ValidationGroup="signup"></asp:TextBox>
+                <label for="password2">Contraseña</label>
+                <div class="invalid-feedback">
+                    <asp:requiredfieldvalidator id="password2vacio" runat="server" ControlToValidate="password2" ErrorMessage="Contraseña es un campo obligatorio" SetFocusOnError="true" Display="Dynamic" ValidationGroup="signup"></asp:requiredfieldvalidator>
+                    <asp:RegularExpressionValidator runat="server" ControlToValidate="password2" ErrorMessage="Contraseña debe contener caracteres alfanuméricos y no superar los 30 caracteres" ValidationExpression="[a-zA-Z0-9]{1,30}$" ValidationGroup="signup"></asp:RegularExpressionValidator>
+                </div>
+            </div>
+            <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+            <asp:Button class="regbutton" ID="registbutton" runat="server" Text="Registrarse" OnClick="Button2_Click" ValidationGroup="signup"/>
+            <div class="container-fluid align-content-center" style="width: 500px; padding-top: 20px; padding-right: 20px; padding-left: 20px; padding-bottom: 20px;">
+                <div class="alert alert-danger" role="alert" id="Div1" runat="server" >
+                    <p class="message">
+                        <asp:Label ID="Msg2" runat="server" ></asp:Label>
+                        <asp:ValidationSummary ID="signupvalidations" runat="server" DisplayMode="BulletList" font-size="Small" ValidationGroup="signup"/>
+                    </p>
+                </div>
+            </div>
+        </asp:Panel>
+    </div>
+    <style>
+
+        .container {
+            border:3px solid black;
+            background-color:white;
         }
-        else {
-            txtBox.attr("Type", "Password");
+
+        a {
+            color: dodgerblue;
         }
-    }
-    </script>
-   <style>
-       body {
-           background-size:100%;
-           background-color:white;
-}
-    .col{
-    display: flex; 
-    width: 100%;
-    }
-    .container {
-        flex:1;
-        padding: 16px;
-    }
-    hr {
-    border: 1px solid black;
-    margin-bottom:25px;
-}
-    a {
-  color: dodgerblue;
-    }
-    .regbutton{
-      background-color: purple;
-      color: white;
-      padding: 16px 20px;
-      border: none;
-      cursor: pointer;
-      width: 100%;
-      opacity: 0.9;
-    }
-</style>
+        .regbutton{
+            background-color: forestgreen;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+    </style>
 
 </asp:Content>
 
