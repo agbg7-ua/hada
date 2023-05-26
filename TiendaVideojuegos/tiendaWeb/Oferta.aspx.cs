@@ -32,7 +32,20 @@ namespace tiendaWeb
                 }
             }
 
-            of1.primeraOferta(prod1);
+            ENOferta o1 = new ENOferta();
+            o1.id = 1;
+            ENOferta o2 = new ENOferta();
+            o2.id = 2;
+            ENOferta o3 = new ENOferta();
+            o3.id = 3;
+            o1.readOferta();
+            o2.readOferta();
+            o3.readOferta();
+            of1 = o1;
+            of2 = o2;
+            of3 = o3;
+            //of1.primeraOferta(prod1);
+
             prod1.id = of1.id_producto;
             prod1.readProducto();
 
@@ -41,7 +54,8 @@ namespace tiendaWeb
             precioant1.Text = prod1.pvp.ToString("0. ##") + "€";
             oferta1.Text = of1.oferta.ToString("0. ##") + "€";
 
-            of2.segundaOferta(prod2);
+            //of2.segundaOferta(prod2);
+
             prod2.id = of2.id_producto;
             prod2.readProducto();
 
@@ -50,7 +64,8 @@ namespace tiendaWeb
             precioant2.Text = prod2.pvp.ToString("0. ##") + "€";
             oferta2.Text = of2.oferta.ToString("0. ##") + "€";
 
-            of3.terceraOferta(prod3);
+            //of3.terceraOferta(prod3);
+
             prod3.id = of3.id_producto;
             prod3.readProducto();
 

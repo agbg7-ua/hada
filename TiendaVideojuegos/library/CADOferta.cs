@@ -56,6 +56,7 @@ namespace library
                 {
                     read = true;
                     o.id_producto = Convert.ToInt32(dr["id_producto"].ToString());
+                    o.oferta = Convert.ToSingle(dr["oferta"].ToString());
                 }
 
                 dr.Close();
@@ -63,11 +64,14 @@ namespace library
             catch (SqlException ex)
             {
                 read = false;
+                // thor the excepton
+
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
             }
             catch (Exception ex)
             {
                 read = false;
+
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
             }
             finally
@@ -82,7 +86,7 @@ namespace library
         {
             bool update = false;
             SqlConnection c = null;
-            o.oferta = prod.pvp / 2;
+            o.oferta = prod.pvp - (prod.pvp * (o.oferta / 100));
             String comando = "Update Producto set borrado=0, mostrar=1 where id=" + prod.id;
             String comando2 = "Update Oferta set id_producto=" + prod.id + ", oferta=" + o.oferta + " where id=" + o.id;
 
@@ -101,11 +105,13 @@ namespace library
             catch (SqlException ex)
             {
                 update = false;
+                throw ex;
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
             }
             catch (Exception ex)
             {
                 update = false;
+                throw ex;
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
             }
             finally
@@ -120,7 +126,7 @@ namespace library
         {
             bool update = false;
             SqlConnection c = null;
-            o.oferta = prod.pvp - (prod.pvp * 25 / 100);
+            o.oferta = prod.pvp - (prod.pvp * (o.oferta / 100));
             String comando = "Update Producto set borrado=0, mostrar=1 where id=" + prod.id;
             String comando2 = "Update Oferta set id_producto=" + prod.id + ", oferta=" + o.oferta + " where id=" + o.id;
 
@@ -139,12 +145,16 @@ namespace library
             catch (SqlException ex)
             {
                 update = false;
+
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                throw ex;
             }
             catch (Exception ex)
             {
                 update = false;
+
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                throw ex;
             }
             finally
             {
@@ -158,7 +168,7 @@ namespace library
         {
             bool update = false;
             SqlConnection c = null;
-            o.oferta = prod.pvp - (prod.pvp * 15 / 100);
+            o.oferta = prod.pvp - (prod.pvp * (o.oferta / 100));
             String comando = "Update Producto set borrado=0, mostrar=1 where id=" + prod.id;
             String comando2 = "Update Oferta set id_producto=" + prod.id + ", oferta=" + o.oferta + " where id=" + o.id;
 
@@ -178,11 +188,50 @@ namespace library
             {
                 update = false;
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                throw ex;
             }
             catch (Exception ex)
             {
                 update = false;
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+                throw ex;
+            }
+            finally
+            {
+                if (c != null) c.Close();
+            }
+
+            return update;
+        }
+
+
+
+
+        public bool borrar(ENOferta o)
+        {
+            bool update = false;
+            SqlConnection c = null;
+            String comando2 = "Update Oferta set id_producto=NULL, oferta=NULL where id=" + o.id;
+
+            try
+            {
+                c = new SqlConnection(constring);
+                c.Open();
+
+                SqlCommand com2 = new SqlCommand(comando2, c);
+
+                com2.ExecuteNonQuery();
+                update = true;
+            }
+            catch (SqlException ex)
+            {
+                update = false;
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                update = false;
+                throw ex;
             }
             finally
             {

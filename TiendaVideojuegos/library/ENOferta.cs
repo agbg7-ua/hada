@@ -47,34 +47,50 @@ namespace library
             this.id_producto = id_producto;
         }
 
-        public bool primeraOferta(ENProducto prod)
+        public bool primeraOferta(ENProducto prod,int descuento)
         {
             CADOferta of = new CADOferta();
             this.id = 1;
-            of.readOferta(this);
+            //of.readOferta(this);
+            this.oferta = descuento;
             prod.id = this.id_producto;
             prod.readProducto();
             return of.primeraOferta(this, prod);
         }
 
-        public bool segundaOferta(ENProducto prod)
+        public bool segundaOferta(ENProducto prod, int descuento)
         {
             CADOferta of = new CADOferta();
             this.id = 2;
-            of.readOferta(this);
+            //of.readOferta(this);
+            this.oferta = descuento;
             prod.id = this.id_producto;
             prod.readProducto();
             return of.segundaOferta(this, prod);
         }
 
-        public bool terceraOferta(ENProducto prod)
+        public bool terceraOferta(ENProducto prod, int descuento)
         {
             CADOferta of = new CADOferta();
             this.id = 3;
-            of.readOferta(this);
+            //of.readOferta(this);
+            this.oferta = descuento;
             prod.id = this.id_producto;
             prod.readProducto();
             return of.terceraOferta(this, prod);
         }
+
+
+        public bool readOferta()
+        {
+            CADOferta of = new CADOferta();
+            return of.readOferta(this);
+        }
+
+        public bool borrar()
+        {
+            CADOferta of = new CADOferta();
+            return of.borrar(this);
+        }   
     }
 }
