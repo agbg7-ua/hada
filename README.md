@@ -42,12 +42,14 @@ Por último, y la posible mejora principal sería hacer que los usuarios tambié
 El script y el pdf de la base de datos se encuentra en la carpeta llamada "Base de Datos".
 
 ## ACLARACIONES ENTREGA 3
-En esta tercera entrega, se podrán oberservar muchas de las funciones que un usuario cualquiera no podría reaalizar: como modificar un pedido, producto o desarroladora. Esto se debe a que como un extra, tendremos que crear un menú de administrador que será por la existencia de usuarios admin. Pero de esta forma, podemos enseñar todas las funcionalidades básicas que tendrá nuestra página web.
-Además, para poder ver en su totalidad la página web, hay un script en la carpeta Base de Datos, la cual se podrá utilizar para añadir la base de datos directamente al programa. 
+En esta tercera entrega, se podrán oberservar muchas de las funciones que un usuario cualquiera no podría reaalizar: como modificar un pedido, producto o desarroladora. Esto se debe a que como un extra, tendremos que crear un menú de administrador que será por la existencia de usuarios admin. Pero de esta forma, podemos enseñar todas las funcionalidades básicas que tendrá nuestra página web.  
+Además, para poder ver en su totalidad la página web, hay un script en la carpeta Base de Datos, la cual se podrá utilizar para añadir la base de datos directamente al programa.  
 Por último, en la carpeta EntregaProyecto se encuentra esta entrega en el archivo entregaInterfaz.zip.
 
 ## ENTREGA FINAL
-Todo lo detallado en la parte de "Entidades", ha sido implementado. Además, hemos añadido dos mejoras, las cuales se tratan de dos gráficas: Top 10 Producto más vendidos, y TOP 10 Usuarios que más han comprado en nuestra web. Debido a las especificaciones de la práctica, esta última gráfica no es del todo realista ya que solo hemos añadido dos usuarios (como indica la práctica). Además de estas mejoras, cabe destacar que hemos creado una propiedad en los Usuarios que es: administración. Si un usuario es admin, podrá acceder a a una página de Administrador donde se le permite administrar algunas entidades, y podrá realizar funciones básicas CRUD (donde se haya vbisto posible), por ejemplo, no tiene sentido que un administrador sea capaz de eliminar un carrito o eliminar un pedido cuando este ya ha sido realizado.
+Todo lo detallado en la parte de "Entidades", ha sido implementado. Además, hemos añadido dos mejoras, las cuales se tratan de dos gráficas: Top 10 Producto más vendidos, y TOP 10 Usuarios que más han comprado en nuestra web. Debido a las especificaciones de la práctica, esta última gráfica no es del todo realista ya que solo hemos añadido dos usuarios (como indica la práctica). Además de estas mejoras, cabe destacar que hemos creado una propiedad en los Usuarios que es: administración. Si un usuario es admin, podrá acceder a a una página de Administrador donde se le permite administrar algunas entidades, y podrá realizar funciones básicas CRUD (donde se haya visto posible), por ejemplo, no tiene sentido que un administrador sea capaz de eliminar un carrito o eliminar un pedido cuando este ya ha sido realizado.  
+Hemos tenido problemas con el Visual Studio de uno de nuestros compañeros, Carlos Pérez Pascual, el cual no ha podido hacer merge con la rama "develop", por lo que su trabajo ha sido incluido a partir de la rama de la coordinadora Carolina Fernández, para poder hacer merge con develop. En caso de duda, se pueden mirar los commits realizados por el compañero en su rama: 24436754J.  
+La Presentación se encuentra en la carpeta llamada "Presentación", y el nombre del powerpoint es: "ALLGames.ppt"
 
 ## INSTRUCCIONES DE USO
 Para empezar, debe eliminar la carpeta que se llama App_data y agregar un nuevo elemento en tiendaWeb, que será una Base de Datos de SQL Server, al que tendrá que llamar: Database.mdf.  
@@ -58,6 +60,10 @@ En caso de que quiera disfrutar de las libertades de un administrador, regístre
 
 ## TABLA DE TRABAJOS REALIZADOS POR ALUMNO  
 
+| Nombre             | Trabajos |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Andrea Gómez Bobes | ENUsuario.cs, CADUsuario.cs, ENComentario.cs, CADComentario.cs, Comentario.aspx, EditUsuario.aspx, NuevoComentario.aspx, Registro.aspx, Usuario.aspx |
 | Carlos Pérez Pascual | ENPedido.cs, CADPedido.cs, ENLineaPedido.cs, CADLineaPedido.cs, LineaPedido.aspx, Pedido.aspx, SobreNosotros.aspx |
-| Jorge Sánchez Pastor | ENDesarrollador.cs, CADDesarrollador.cs, ENOferta.cs, CADOferta.cs, Desarrollador.aspx, ListaDesarrolladores.aspx, Oferta.aspx, DesarrolladorAdmin.aspx, EditarDesarrolladorAdmin.aspx, InsertarDesarrolladorAdmin.aspx, OfertaAdmin.aspx |
+| Jorge Sánchez Pastor | ENDesarrollador.cs, CADDesarrollador.cs, ENOferta.cs, CADOferta.cs, Desarrollador.aspx, ListaDesarrolladores.aspx, Oferta.aspx, DesarrolladorAdmin.aspx, EditarDesarrolladorAdmin.aspx, InsertarDesarrolladorAdmin.aspx, OfertaAdmin.aspx, Parte de la Base de Datos |
+| Salma Benmoussa | ENCarrito.cs, CADCarrito.cs, ENLineaCarrito.cs, CADLineaCarrito.cs, Carrito.aspx |
+| Carolina Fernández | ENCategoriaProducto.cs, CADCategoriaProducto.cs, ENProducto.cs, CADProducto.cs, Admin.aspx, BuscarProducto.aspx, CategoriaProducto.aspx, Home.aspx, ListarProducto.aspx, ListarProductoCategoría.aspx, Producto.aspx, Site1.Master, CarritoAdmin.aspx, CategoriaProductoAdmin.aspx, EditarCategoriaProductoAdmin.aspx, EditarProductoAdmin.aspx, InsertarCategoriaProductoAdmin.aspx, InsertarProductoAdmin.aspx, PedidoAdmin.aspx, ProductoAdmin.aspx, UsuarioAdmin.aspx, VerCarritoAdmin.aspx, VerPedidoAdmin.aspx, Parte de la Base de Datos |
