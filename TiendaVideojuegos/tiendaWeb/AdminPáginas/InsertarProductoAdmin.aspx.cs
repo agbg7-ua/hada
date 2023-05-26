@@ -20,8 +20,14 @@ namespace tiendaWeb.AdminPáginas
         DataSet d = new DataSet();
         DataSet ddes = new DataSet();
 
+        /// <summary>
+        /// Page_Load de la página
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Comprobamos que el usuario esté registrado que sea administrador
             if (!Page.IsPostBack)
             {
                 if (Session["username"] != null)
@@ -43,6 +49,7 @@ namespace tiendaWeb.AdminPáginas
 
                 d = cat.getCategoriaProducto();
 
+                // Rellenamos el dropdownlist con las categorías existentes
                 if ((d.Tables.Count != 0) && (d.Tables[0].Rows.Count > 0))
                 {
                     categoria.DataSource = d;
@@ -59,6 +66,7 @@ namespace tiendaWeb.AdminPáginas
 
                 ddes = des.getDesarrollador();
 
+                // Rellenamos el dropdownlist con las desarrolladoras existentes
                 if ((ddes.Tables.Count != 0) && (ddes.Tables[0].Rows.Count > 0))
                 {
                     desarrollador.DataSource = ddes;
@@ -75,6 +83,11 @@ namespace tiendaWeb.AdminPáginas
             }
         }
 
+        /// <summary>
+        /// Botón de guardar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ButtonGuardar(Object sender, EventArgs e)
         {
             string image;
@@ -111,6 +124,7 @@ namespace tiendaWeb.AdminPáginas
             int clas = Convert.ToInt32(clasificacion.SelectedValue);
             bool show = mostrar.Checked;
 
+            // Comprobamos las validaciones
             if (Page.IsValid)
             {
                 prod.id_categoria = category;
@@ -123,6 +137,7 @@ namespace tiendaWeb.AdminPáginas
                 prod.mostrar = show;
                 prod.fecha_salida = hoy;
 
+                // Si no se crea., será porque el nombre ya existe
                 if (prod.createProducto())
                 {
                     Response.Redirect("ProductoAdmin.aspx");
@@ -139,6 +154,11 @@ namespace tiendaWeb.AdminPáginas
             }
         }
 
+        /// <summary>
+        /// Botón de volver
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ButtonVolver(Object sender, EventArgs e)
         {
             Response.Redirect("ProductoAdmin.aspx");

@@ -7,37 +7,25 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
 
-
-// CREATE TABLE [dbo].[Producto] (
-// [id]                INT            IDENTITY(1, 1) NOT NULL,
-// [id_categoria]      INT   	      NOT NULL,
-// [id_desarrollador]  INT            NOT NULL,
-// [nombre]            VARCHAR (45)   NOT NULL,
-// [pvp] 		       DECIMAL (7,2)  NULL,
-// [descripcion]       TEXT           NOT NULL,
-// [fecha_salida]      DATE           NOT NULL,
-// [clasificacion]     INT            NULL,
-// [imagen]            VARCHAR (MAX)  NULL,
-// [mostrar]           BIT            DEFAULT((0)) NOT NULL,
-// PRIMARY KEY CLUSTERED ([id] ASC),
-// UNIQUE NONCLUSTERED([nombre] ASC),
-// CONSTRAINT[fk_Producto_CategoriaProducto] FOREIGN KEY([id_categoria]) REFERENCES[dbo].[CategoriaProducto]([id]),
-// CONSTRAINT[fk_Producto_Desarrollador] FOREIGN KEY([id_desarrollador]) REFERENCES[dbo].[Desarrollador]([id])
-// );
-
-
 namespace library
 {
     class CADProducto
     {
         private string constring;
 
+        /// <summary>
+        /// Conexión
+        /// </summary>
         public CADProducto() 
         { 
             this.constring = ConfigurationManager.ConnectionStrings["miconexion"].ToString();
         }
 
-        // Método para crear un Producto -> modo desconectado
+        /// <summary>
+        /// Método para crear un Producto -> modo desconectado
+        /// </summary>
+        /// <param name="en"></param>
+        /// <returns></returns>
         public bool createProducto(ENProducto en)
         {
             bool create = false;
@@ -84,7 +72,11 @@ namespace library
             return create;
         }
 
-        // Método para leer un Producto (por id) -> modo desconectado
+        /// <summary>
+        /// Método para leer un Producto (por id) -> modo conectado
+        /// </summary>
+        /// <param name="en"></param>
+        /// <returns></returns>
         public bool readProducto(ENProducto en) 
         {
             bool read = false;
@@ -133,6 +125,11 @@ namespace library
             return read;
         }
 
+        /// <summary>
+        /// Método para leer un producto (por id) a pesar de haber sido eliminado -> modo conectado
+        /// </summary>
+        /// <param name="en"></param>
+        /// <returns></returns>
         public bool readProductoEliminado(ENProducto en)
         {
             bool read = false;
@@ -181,7 +178,11 @@ namespace library
             return read;
         }
 
-        // Método para leer un Producto (por nombre) -> modo desconectado
+        /// <summary>
+        /// Método para leer un Producto (por nombre) -> modo conectado
+        /// </summary>
+        /// <param name="en"></param>
+        /// <returns></returns>
         public bool readByNameProducto(ENProducto en)
         {
             bool read = false;
@@ -222,7 +223,11 @@ namespace library
             return read;
         }
 
-        // Métodor para enseñar Producto -> modo desconectado
+        /// <summary>
+        /// Método para enseñar Producto -> modo desconectado
+        /// </summary>
+        /// <param name="en"></param>
+        /// <returns></returns>
         public DataSet showProducto(ENProducto en)
         {
             DataSet bdvirtual = new DataSet();
@@ -252,6 +257,11 @@ namespace library
             }
         }
 
+        /// <summary>
+        /// Método para actualizar un Producto -> modo desconectado
+        /// </summary>
+        /// <param name="en"></param>
+        /// <returns></returns>
         public bool updateProducto(ENProducto en)
         {
             bool update = false;
@@ -310,7 +320,11 @@ namespace library
             }
         }
 
-        // Método para borrar un Producto -> modo desconectado
+        /// <summary>
+        /// Método para borrar un Producto -> modo desconectado
+        /// </summary>
+        /// <param name="en"></param>
+        /// <returns></returns>
         public bool deleteProducto(ENProducto en)
         {
             bool delete = false;
@@ -345,7 +359,10 @@ namespace library
             return delete;
         }
 
-        // Método para enseñar todos los Productos -> modo desconectado
+        /// <summary>
+        /// Método para enseñar todos los Productos -> modo desconectado
+        /// </summary>
+        /// <returns></returns>
         public DataSet showAllProducto()
         {
             DataSet bdvirtual = new DataSet();
@@ -374,7 +391,10 @@ namespace library
             }
         }
 
-        // Método para enseñar todos los Productos -> modo desconectado
+        /// <summary>
+        /// Método para enseñar todos los Productos para el administrador -> modo desconectado
+        /// </summary>
+        /// <returns></returns>
         public DataSet showAllProductoAdmin()
         {
             DataSet bdvirtual = new DataSet();
@@ -409,7 +429,11 @@ namespace library
         */
         // ----------------------------------------------------------------------
 
-        // Método para enseñar por nombre en orden ascendiente Productos -> modo desconectado
+        /// <summary>
+        /// Método para enseñar por nombre en orden ascendiente Productos -> modo desconectado
+        /// </summary>
+        /// <param name="en"></param>
+        /// <returns></returns>
         public DataSet showOrderByNameASCProducto(ENCategoriaProducto en)
         {
             DataSet bdvirtual = new DataSet();
@@ -438,7 +462,11 @@ namespace library
             }
         }
 
-        // Método para enseñar por nombre en orden descendiente Productos -> modo desconectado
+        /// <summary>
+        /// Método para enseñar por nombre en orden descendiente Productos -> modo desconectado
+        /// </summary>
+        /// <param name="en"></param>
+        /// <returns></returns>
         public DataSet showOrderByNameDESCProducto(ENCategoriaProducto en)
         {
             DataSet bdvirtual = new DataSet();
@@ -467,7 +495,11 @@ namespace library
             }
         }
 
-        // Método para enseñar por precio en orden ascendiente Productos -> modo desconectado
+        /// <summary>
+        /// Método para enseñar por precio en orden ascendiente Productos -> modo desconectado
+        /// </summary>
+        /// <param name="en"></param>
+        /// <returns></returns>
         public DataSet showOrderByPriceASCProducto(ENCategoriaProducto en)
         {
             DataSet bdvirtual = new DataSet();
@@ -496,7 +528,11 @@ namespace library
             }
         }
 
-        // Método para enseñar por precio en orden descendiente Productos -> modo desconectado
+        /// <summary>
+        /// Método para enseñar por precio en orden descendiente Productos -> modo desconectado
+        /// </summary>
+        /// <param name="en"></param>
+        /// <returns></returns>
         public DataSet showOrderByPriceDESCProducto(ENCategoriaProducto en)
         {
             DataSet bdvirtual = new DataSet();
@@ -531,7 +567,10 @@ namespace library
         */
         // ----------------------------------------------------------------------
 
-        // Método para enseñar por nombre en orden ascendiente Productos -> modo desconectado
+        /// <summary>
+        /// Método para enseñar por nombre en orden ascendiente Productos -> modo desconectado
+        /// </summary>
+        /// <returns></returns>
         public DataSet showOrderByNameASCProductos()
         {
             DataSet bdvirtual = new DataSet();
@@ -560,7 +599,10 @@ namespace library
             }
         }
 
-        // Método para enseñar por nombre en orden descendiente Productos -> modo desconectado
+        /// <summary>
+        /// Método para enseñar por nombre en orden descendiente Productos -> modo desconectado
+        /// </summary>
+        /// <returns></returns>
         public DataSet showOrderByNameDESCProductos()
         {
             DataSet bdvirtual = new DataSet();
@@ -589,7 +631,10 @@ namespace library
             }
         }
 
-        // Método para enseñar por precio en orden ascendiente Productos -> modo desconectado
+        /// <summary>
+        /// Método para enseñar por precio en orden ascendiente Productos -> modo desconectado
+        /// </summary>
+        /// <returns></returns>
         public DataSet showOrderByPriceASCProductos()
         {
             DataSet bdvirtual = new DataSet();
@@ -618,7 +663,10 @@ namespace library
             }
         }
 
-        // Método para enseñar por precio en orden descendiente Productos -> modo desconectado
+        /// <summary>
+        /// Método para enseñar por precio en orden descendiente Productos -> modo desconectado
+        /// </summary>
+        /// <returns></returns>
         public DataSet showOrderByPriceDESCProductos()
         {
             DataSet bdvirtual = new DataSet();
@@ -647,7 +695,11 @@ namespace library
             }
         }
 
-        // Método para buscar Productos por nombre -> modo desconectado
+        /// <summary>
+        /// Método para buscar Productos por nombre -> modo desconectado
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public DataSet searchByNameProducto(String name)
         {
             DataSet bdvirtual = new DataSet();

@@ -16,6 +16,11 @@ namespace tiendaWeb
         ENUsuario usu = new ENUsuario();
         DataSet d = new DataSet();
 
+        /// <summary>
+        /// Page_Load de la página
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack) 
@@ -23,8 +28,10 @@ namespace tiendaWeb
                 ddlTest_SelectedIndexChanged(this, e);
             }
         }
-        
-        // Recoger género seleccionado
+
+        /// <summary>
+        /// Recoger género seleccionado
+        /// </summary>
         protected void catchId()
         {
             enCat.id = Convert.ToInt32(Request.Params["idCat"]);
@@ -33,8 +40,12 @@ namespace tiendaWeb
             enCat.readCategoriaProducto();
             titulo.Text = "Videojuegos del Género " + enCat.nombre;
         }
-        
-        // Dropdownlist --> opción seleccionada
+
+        /// <summary>
+        /// Dropdownlist --> opción seleccionada sobre cómo listar los Productos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ddlTest_SelectedIndexChanged(object sender, EventArgs e)
         {
             catchId();
@@ -56,6 +67,7 @@ namespace tiendaWeb
                 d = enProd.showOrderByNameASCProducto(enCat);
             }
 
+            // Rellenamos el ListView
             if ((d.Tables.Count != 0) && (d.Tables[0].Rows.Count > 0))
             {
                 listView.DataSource = d;
@@ -67,12 +79,19 @@ namespace tiendaWeb
             }
         }
 
+        /// <summary>
+        /// Método que enseña el botón de comprar únicamente a alguien que haya iniciado sesión
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Buttons(object sender, ListViewItemEventArgs e)
         {
+            // Recorremos el ListView
             if (e.Item.ItemType == ListViewItemType.DataItem)
             {
                 ListViewDataItem dataItem = (ListViewDataItem)e.Item;
 
+                // Buscamos el botón de comprar en el Listview
                 LinkButton comprar = (LinkButton)dataItem.FindControl("comprar");
 
                 if (Session["username"] != null)
@@ -86,6 +105,11 @@ namespace tiendaWeb
             }
         }
 
+        /// <summary>
+        /// Creamos un pedido y una línea de pedido del Producto seleccionado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ButtonComprar(Object sender, EventArgs e)
         {
             LinkButton buy = (LinkButton)sender;
@@ -98,17 +122,22 @@ namespace tiendaWeb
             ENLineaPedido lped = new ENLineaPedido();
             DateTime hoy = DateTime.Now;
 
+            // Creamos un pedido
             ped.id_usuario = usu.username;
             ped.fecha = hoy;
             ped.importe_total = enProd.pvp;
             ped.createPedido();
             ped.lastPedido();
 
+            // Creamos una línea de pedido
             lped.id_pedido = ped.id;
             lped.id_producto = enProd.id;
             lped.cantidad = 1;
             lped.importe = enProd.pvp;
             lped.createLineaPedido();
+
+            // Nos redirige a la página de Pedidos
+            Response.Redirect("Pedido.aspx");
         }
     }
 }

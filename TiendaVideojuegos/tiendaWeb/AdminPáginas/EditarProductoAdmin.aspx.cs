@@ -18,11 +18,18 @@ namespace tiendaWeb.AdminPáginas
         DataSet d = new DataSet();
         DataSet ddes = new DataSet();
 
+        /// <summary>
+        /// Page_Load de la página
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Recogemos el id del Producto a Editar
             en.id = Convert.ToInt32(Request.Params["idProd"]);
             en.readProducto();
 
+            // Comprobamos que el usuario esté registrado que sea administrador
             if (!Page.IsPostBack)
             {
                 if (Session["username"] != null)
@@ -41,6 +48,7 @@ namespace tiendaWeb.AdminPáginas
 
                 d = cat.getCategoriaProducto();
 
+                // Rellenamos el dropdown con las categorías existentes
                 if ((d.Tables.Count != 0) && (d.Tables[0].Rows.Count > 0))
                 {
                     categoria.DataSource = d;
@@ -51,6 +59,7 @@ namespace tiendaWeb.AdminPáginas
 
                 ddes = des.getDesarrollador();
 
+                // Rellenamos el dropdown con las categorías existentes
                 if ((ddes.Tables.Count != 0) && (ddes.Tables[0].Rows.Count > 0))
                 {
                     desarrollador.DataSource = ddes;
@@ -59,23 +68,32 @@ namespace tiendaWeb.AdminPáginas
                     desarrollador.DataBind();
                 }
 
+                // Rellenamos los placeholder con los datos del Producto
                 nombre.Attributes.Add("placeholder", en.nombre);
                 pvp.Attributes.Add("placeholder", en.pvp.ToString());
                 categoria.SelectedValue = en.id_categoria.ToString();
                 desarrollador.SelectedValue = en.id_desarrollador.ToString();
                 clasificacion.SelectedValue = en.clasificacion.ToString();
-
                 mostrar.Checked = en.mostrar;
-                
                 descripcion.Attributes.Add("placeholder", en.descripcion);
             }
         }
 
+        /// <summary>
+        /// Botón de volver
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ButtonVolver(object sender, EventArgs e)
         {
             Response.Redirect("ProductoAdmin.aspx");
         }
 
+        /// <summary>
+        /// Botón de guardar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ButtonGuardar(object sender, EventArgs e)
         {
             en.id = Convert.ToInt32(Request.Params["idProd"]);
@@ -84,6 +102,7 @@ namespace tiendaWeb.AdminPáginas
             string name, description;
             float price;
 
+            // En caso de que los campos no hayan sido rellenados, se dejarán los datos anteriores
             if (nombre.Text == "")
             {
                 name = en.nombre;
@@ -117,6 +136,7 @@ namespace tiendaWeb.AdminPáginas
             int clas = Convert.ToInt32(clasificacion.SelectedValue);
             bool show = mostrar.Checked;
 
+            // Comprobamos las validaciones
             if (Page.IsValid)
             {
                 en.id_categoria = category;
@@ -127,6 +147,7 @@ namespace tiendaWeb.AdminPáginas
                 en.clasificacion = clas;
                 en.mostrar = show;
 
+                // Si no se actualiza, será porque el nombre ya existe
                 if (en.updateProducto())
                 {
                     Response.Redirect("ProductoAdmin.aspx");

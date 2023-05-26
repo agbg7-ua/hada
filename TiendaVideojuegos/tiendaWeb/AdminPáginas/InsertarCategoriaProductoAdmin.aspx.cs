@@ -15,8 +15,14 @@ namespace tiendaWeb.AdminPáginas
         ENUsuario usu = new ENUsuario();
         ENCategoriaProducto cat = new ENCategoriaProducto();
 
+        /// <summary>
+        /// Page_Load de la página
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Comprobamos que el usuario esté registrado que sea administrador
             if (!Page.IsPostBack)
             {
                 if (Session["username"] != null)
@@ -37,6 +43,11 @@ namespace tiendaWeb.AdminPáginas
             }
         }
 
+        /// <summary>
+        /// Botón de guardar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ButtonGuardar(Object sender, EventArgs e)
         {
             string image;
@@ -60,12 +71,14 @@ namespace tiendaWeb.AdminPáginas
             string name = nombre.Text;
             string description = descripcion.Text;
 
+            // Comprobamos las validaciones
             if (Page.IsValid)
             {
                 cat.nombre = name;
                 cat.descripcion = description;
                 cat.imagen = "~/Imagenes/Uploads/" + image;
 
+                // Si no se crea, es porque el nombre ya existe
                 if (cat.createCategoriaProducto())
                 {
                     Response.Redirect("CategoriaProductoAdmin.aspx");
@@ -81,6 +94,11 @@ namespace tiendaWeb.AdminPáginas
             }
         }
 
+        /// <summary>
+        /// Botón de volver
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ButtonVolver(Object sender, EventArgs e)
         {
             Response.Redirect("CategoriaProductoAdmin.aspx");

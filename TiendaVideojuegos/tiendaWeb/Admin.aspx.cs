@@ -13,14 +13,21 @@ namespace tiendaWeb
     {
         ENUsuario usu = new ENUsuario();
 
+        /// <summary>
+        /// Page_Load de la página
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
+                // Comprobamos que se haya iniciado sesión
                 if (Session["username"] != null)
                 {
                     usu.username = Session["username"].ToString();
 
+                    // Comprobamos si el usuario es administrador
                     if (!usu.isAdminUsuario())
                     {
                         Response.Redirect("~/Home.aspx");
@@ -32,6 +39,10 @@ namespace tiendaWeb
                 }
             }
         }
+
+        // **********************************************************************
+        // **  Todos los botones que redirigen a sus páginas correspondientes  **
+        // **********************************************************************
 
         protected void button_usuarioOnClientClick(object sender, EventArgs e)
         {

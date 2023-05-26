@@ -7,27 +7,25 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
 
-// CREATE TABLE [dbo].[CategoriaProducto] (
-// [id]             INT           IDENTITY(1, 1) NOT NULL,
-// [nombre] 		VARCHAR (45)  NOT NULL,
-// [descripcion] 	TEXT          NOT NULL,
-// [imagen]      	VARCHAR (MAX) NULL,
-// PRIMARY KEY CLUSTERED ([id] ASC),
-// UNIQUE NONCLUSTERED([nombre] ASC)
-// );
-
 namespace library
 {
     class CADCategoriaProducto
     {
         private string constring;
 
+        /// <summary>
+        /// Conexión
+        /// </summary>
         public CADCategoriaProducto() 
         { 
             this.constring = ConfigurationManager.ConnectionStrings["miconexion"].ToString();
         }
 
-        // Método para crear una Categoría de Producto -> modo conectado
+        /// <summary>
+        /// Método para crear una Categoría de Producto -> modo conectado
+        /// </summary>
+        /// <param name="en"></param>
+        /// <returns></returns>
         public bool createCategoriaProducto(ENCategoriaProducto en) 
         {
             bool create = false;
@@ -61,7 +59,11 @@ namespace library
             return create;
         }
 
-        // Método para leer una Categoría de Producto -> modo conectado
+        /// <summary>
+        /// Método para leer una Categoría de Producto -> modo conectado
+        /// </summary>
+        /// <param name="en"></param>
+        /// <returns></returns>
         public bool readCategoriaProducto(ENCategoriaProducto en)
         {
             bool read_CP = false;
@@ -107,7 +109,11 @@ namespace library
             return read_CP;
         }
 
-        // Método para actualizar una Categoría de Producto -> modo conectado
+        /// <summary>
+        /// Método para actualizar una Categoría de Producto -> modo desconectado
+        /// </summary>
+        /// <param name="en"></param>
+        /// <returns></returns>
         public bool updateCategoriaProducto(ENCategoriaProducto en)
         {
             bool update = false;
@@ -142,7 +148,11 @@ namespace library
             return update;
         }
 
-        // Método para borrar una Categoría de Producto -> modo conectado
+        /// <summary>
+        /// Método para borrar una Categoría de Producto -> modo desconectado
+        /// </summary>
+        /// <param name="en"></param>
+        /// <returns></returns>
         public bool deleteCategoriaProducto(ENCategoriaProducto en)
         {
             bool delete = false;
@@ -180,7 +190,10 @@ namespace library
             return delete;
         }
 
-        // Método para enseñar todos las categorías de productos -> modo desconectado
+        /// <summary>
+        /// Método para enseñar todos las categorías de productos -> modo desconectado
+        /// </summary>
+        /// <returns></returns>
         public DataSet showAllCategoriaProducto()
         {
             DataSet bdvirtual = new DataSet();
@@ -209,6 +222,10 @@ namespace library
             }
         }
 
+        /// <summary>
+        /// Método para conseguir una Categoría de Producto -> modo desconectado
+        /// </summary>
+        /// <returns></returns>
         public DataSet getCategoriaProducto()
         {
             DataSet bdvirtual = new DataSet();

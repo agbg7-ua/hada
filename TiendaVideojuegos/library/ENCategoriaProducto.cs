@@ -105,7 +105,7 @@ namespace library
             return false;
         }
 
-        // Método para borrar una categría de producto
+        // Método para borrar una categoría de producto
         public bool deleteCategoriaProducto()
         {
             CADCategoriaProducto c = new CADCategoriaProducto();
@@ -127,6 +127,7 @@ namespace library
             return a;
         }
 
+        // Método para conseguir una Categoría de Producto
         public DataSet getCategoriaProducto()
         {
             CADCategoriaProducto c = new CADCategoriaProducto();
