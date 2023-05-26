@@ -105,12 +105,12 @@ namespace tiendaWeb
         protected global::System.Web.UI.WebControls.Label Label_error;
 
         /// <summary>
-        /// Control textboxVacio.
+        /// Control Label_vacio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label textboxVacio;
+        protected global::System.Web.UI.WebControls.Label Label_vacio;
     }
 }

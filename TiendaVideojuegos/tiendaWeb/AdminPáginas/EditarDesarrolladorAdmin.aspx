@@ -108,7 +108,7 @@
 
     <asp:Button ID="Button_guardar" OnClick="Button_guardar_Click" runat="server" Text="Guardar" Enabled="true" CssClass="btn" />
     <asp:Button ID="Button_cancelar" OnClick="Button_cancelar_Click" runat="server" Text="Cancelar" Enabled="true" CssClass="btn" />
-    <asp:Button ID="Button_recargar" OnClick="Button_recargar_Click" runat="server" Text="Recargar datos" Enabled="true" CssClass="btn" />
+    <%--<asp:Button ID="Button_recargar" OnClick="Button_recargar_Click" runat="server" Text="Recargar datos" Enabled="true" CssClass="btn" />--%>
     <%--    <asp:Button ID="Button3" runat="server" Text="Button" />
     <asp:Button ID="Button4" runat="server" Text="Button" />
     <asp:Button ID="Button5" runat="server" Text="Button" />--%>

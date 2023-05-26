@@ -27,24 +27,7 @@
 
     </div>
 
-    <%--    <asp:table runat="server" xmlns:asp="#unknown">
-        <asp:tablerow>
-            <asp:tablecell columnspan="2">
-                <asp:image runat="server" imageurl="Imagenes/gustav.png" height="120px" width="120px"></asp:image>
-            </asp:tablecell>
-            <asp:tablecell columnspan="2">
-                <asp:label runat="server" text="Nombre: " font-bold="true"></asp:label>
-                <asp:label id="label_nombre" runat="server" text='<%#Eval("Nombre") %>'></asp:label>
-                <br />
-                <asp:label runat="server" text="Fecha de creacion: " font-bold="true"></asp:label>
-                <asp:label id="label_fecha" runat="server" text='<%#Eval("Fecha") %>'></asp:label>
-                <br />
-                <asp:label runat="server" text="Pais de origen: " font-bold="true"></asp:label>
-                <asp:label id="label_pais" runat="server" text='<%#Eval("Pais") %>'></asp:label>
-            </asp:tablecell>
-        </asp:tablerow>
 
-    </asp:table>--%>
 
     <div class="col-auto text-center mx-auto">
         <asp:ListView runat="server" ID="ListView1" GroupItemCount="2">
@@ -55,13 +38,7 @@
                 </tr>
             </GroupTemplate>
 
-            <%--            <GroupSeparatorTemplate>
-                <tr id="Tr1" runat="server" visible="false">
-                    <td colspan="3" style="padding: 5px 5px 5px 5px;">
-                        <hr />
-                    </td>
-                </tr>
-            </GroupSeparatorTemplate>--%>
+
 
             <LayoutTemplate>
                 <table>
@@ -77,10 +54,7 @@
                         <asp:table runat="server" xmlns:asp="#unknown" width="500">
                             <asp:tablerow>
                                 <asp:tablecell columnspan="2">
-<%--                                    <asp:hyperlink id="HyperLink1" runat="server"
-                                        navigateurl='<%# "Desarrollador.aspx"%>'>
-                                        <asp:image runat="server" imageurl='<%#Eval("imagen") %>' height="120px" width="120px"></asp:image>
-                                    </asp:hyperlink>--%>
+
                                     <asp:imagebutton id="boton_lista" runat="server" imageurl='<%#Eval("imagen") %>'  height="120px" width="120px" OnClick="test" CommandArgument='<%# Eval("nombre") %>'></asp:imagebutton>
 
                                 </asp:tablecell>
@@ -111,7 +85,7 @@
         <asp:Label ID="Label_error" runat="server" Text=""></asp:Label>
         <br />
         <div style="width: 100%; height: 100px; align-content: center; text-align: center">
-            <asp:Label CssClass="labelVacio" runat="server" ID="textboxVacio" Text="No se encontraron desarrolladores, intentelo más tarde." Visible="false"></asp:Label>
+            <asp:Label CssClass="labelVacio" runat="server" ID="Label_vacio" Text="No se encontraron desarrolladores, intentelo más tarde." Visible="false"></asp:Label>
         </div>
     </div>
 </asp:Content>

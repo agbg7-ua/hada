@@ -38,6 +38,11 @@ namespace library
             this.constring = ConfigurationManager.ConnectionStrings["miconexion"].ToString();
         }
 
+        /// <summary>
+        /// Recupera la informacion de laorgeta a pa
+        /// </summary>
+        /// <param name="o"></param>
+        /// <returns></returns>
         public bool readOferta(ENOferta o)
         {
             bool read = false;
@@ -81,7 +86,12 @@ namespace library
 
             return read;
         }
-
+        /// <summary>
+        /// Actualiza la informacion de la primera oferta
+        /// </summary>
+        /// <param name="o"></param>
+        /// <param name="prod"></param>
+        /// <returns></returns>
         public bool primeraOferta(ENOferta o, ENProducto prod)
         {
             bool update = false;
@@ -122,6 +132,12 @@ namespace library
             return update;
         }
 
+        /// <summary>
+        /// Actualiza la informacion de la segunda oferta
+        /// </summary>
+        /// <param name="o"></param>
+        /// <param name="prod"></param>
+        /// <returns></returns>
         public bool segundaOferta(ENOferta o, ENProducto prod)
         {
             bool update = false;
@@ -164,6 +180,12 @@ namespace library
             return update;
         }
 
+        /// <summary>
+        /// Actualiza la informacion de la tercera oferta
+        /// </summary>
+        /// <param name="o"></param>
+        /// <param name="prod"></param>
+        /// <returns></returns>
         public bool terceraOferta(ENOferta o, ENProducto prod)
         {
             bool update = false;
@@ -206,7 +228,11 @@ namespace library
 
 
 
-
+        /// <summary>
+        /// Pone a NULL los campos de la sofertas indicada por id
+        /// </summary>
+        /// <param name="o"></param>
+        /// <returns></returns>
         public bool borrar(ENOferta o)
         {
             bool update = false;

@@ -51,6 +51,11 @@ namespace tiendaWeb.AdminPáginas
             Response.Redirect("InsertarDesarrolladorAdmin.aspx");
         }
 
+        /// <summary>
+        /// Guarda el di en una variale Session y redirige a la página de editar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ButtonEditar(object sender, EventArgs e)
         {
             LinkButton myButton = (LinkButton)sender;
@@ -62,6 +67,11 @@ namespace tiendaWeb.AdminPáginas
             Response.Redirect("EditarDesarrolladorAdmin.aspx?idProd=" + i);
         }
 
+        /// <summary>
+        /// Borra el desarrollador correspondiente en la linea
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ButtonBorrar(object sender, EventArgs e)
         {
             ENDesarrollador en = new ENDesarrollador();
