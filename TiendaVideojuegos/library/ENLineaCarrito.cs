@@ -56,6 +56,7 @@ namespace library
 
         public ENLineaCarrito()
         {
+            //Constructor  sin parametros
             this.id_carrito = 0;
             this.id_linea = 0;
             this.id_producto = 0;
@@ -67,6 +68,7 @@ namespace library
 
         public ENLineaCarrito(int id_carrito, int id_linea, int id_producto, int cantidad, float importe, DateTime fecha)
         {
+            //Constructor con parametros
             this.id_carrito = id_carrito;
             this.id_linea = id_linea;
             this.id_producto = id_producto;
@@ -77,6 +79,7 @@ namespace library
 
         public bool createLineaCarrito()
         {
+            //Crear una linea de carrito
             CADLineaCarrito cad = new CADLineaCarrito();
             ENCarrito en = new ENCarrito();
             en.id = this.id_carrito;
@@ -91,12 +94,14 @@ namespace library
 
         public bool readLineaCarrito()
         {
+            //Leer los datos de la linea de carrito
             CADLineaCarrito c = new CADLineaCarrito();
             return c.readLineaCarrito(this);
         }
 
         public DataSet updateLineaCarrito(int i)
         {
+            //Actualizar la linea de carrito
             CADLineaCarrito cad = new CADLineaCarrito();
             DataSet a = new DataSet();
             ENLineaCarrito en = new ENLineaCarrito();
@@ -121,6 +126,7 @@ namespace library
 
         public bool deleteLineaCarrito()
         {
+            //Eliminar la linea de carrito
             CADLineaCarrito cad = new CADLineaCarrito();
 
             if (cad.readLineaCarrito(this))
@@ -133,6 +139,7 @@ namespace library
 
         public bool vaciarCarrito(ENCarrito en)
         {
+            //Vaciar carrito eliminando todas las lineas de carrito asociadas
             CADLineaCarrito c = new CADLineaCarrito();
 
             if (en.readCarrito() == true)
@@ -145,6 +152,7 @@ namespace library
 
         public DataSet showLineasCarritoByCarrito(ENCarrito en)
         {
+            //Muestra todas las lineas de carrito asociadas a un carrito especifico
             CADLineaCarrito c = new CADLineaCarrito();
             DataSet a = new DataSet();
 
@@ -158,6 +166,7 @@ namespace library
 
         public bool deleteByProducto(ENProducto en)
         {
+            //Elimina una linea de carrito especifica basada  en un producto
             CADLineaCarrito lcar = new CADLineaCarrito();
             return lcar.deleteByProducto(en);
         }

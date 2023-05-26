@@ -27,6 +27,7 @@ namespace library
 
         public bool createCarrito(ENCarrito en)
         {
+            //Crear un nuevo carrito en la BBDD
             bool creado = false;
             DataSet bdvirtual = new DataSet();
             SqlConnection c = new SqlConnection(constring);
@@ -65,6 +66,7 @@ namespace library
         }
         public bool updateCarrito(ENCarrito en)
         {
+            //Actualizar importe total de un carrito existente en BBDD tomando ENCarrito como parametro
             bool update = false;
             SqlConnection c = new SqlConnection(constring);
 
@@ -93,10 +95,9 @@ namespace library
             }
         }
 
-        //readCarrito
-
         public bool readCarrito(ENCarrito en)
         {
+            //Leer los detalles de un carrito de la BBDD utilizando su Id
             bool read = false;
             DataSet bdvirtual = new DataSet();
             SqlConnection c = new SqlConnection(constring);
@@ -142,6 +143,7 @@ namespace library
 
         public bool readCarritoByUser(ENCarrito car, ENUsuario en)
         {
+            //Leer detalles de  un carrito de la BBDD utilizando el nombre de usuario asociado
             bool read = false;
             DataSet bdvirtual = new DataSet();
             SqlConnection c = new SqlConnection(constring);
@@ -187,6 +189,7 @@ namespace library
 
         public DataSet deleteCarrito(ENCarrito en, int Id)
         {
+            //Eliminar carrito de la BBDD utilizando su Id
             DataSet bdvirtual = new DataSet();
             SqlConnection c = new SqlConnection(constring);
 
@@ -220,6 +223,7 @@ namespace library
 
         public DataSet showCarrito(ENCarrito en)
         {
+            //Mostrar los detalles de un carrito de la BBDD utilizando su Id
             DataSet bdvirtual = new DataSet();
             SqlConnection c = new SqlConnection(constring);
 
@@ -247,9 +251,9 @@ namespace library
             }
         }
 
-        //show carrito by name de usuario
         public DataSet showCarritoByUser(ENUsuario en)
         {
+            //Mostrar los detalles de un carrito de la BBDD utilizando nombre de usuario asociado
             DataSet bdvirtual = new DataSet();
             SqlConnection c = new SqlConnection(constring);
 

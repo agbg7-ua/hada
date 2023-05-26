@@ -16,11 +16,15 @@ namespace library
 
         public CADLineaCarrito()
         {
+            //Inicalizar cadena de conexion 
             this.constring = ConfigurationManager.ConnectionStrings["miconexion"].ToString();
         }
 
         public bool createLineaCarrito(ENLineaCarrito en)
         {
+            //Crear nueva linea de carrito en la base de datos
+            //SqlDataAdapter para llenar un DataSet
+            //Luego agregar nueva fila al DataTable con los valores proporcionados en ENLineaCarrito
             bool created = false;
             DataSet bdvirtual = new DataSet();
             SqlConnection c = new SqlConnection(constring);
@@ -38,6 +42,7 @@ namespace library
                 nuevafila[4] = en.importe;
                 nuevafila[5] = en.fecha;
                 t.Rows.Add(nuevafila);
+                //SqlCommandBuilder para actualizar la BBDD y devuelve un valor booleano 
                 SqlCommandBuilder cbuilder = new SqlCommandBuilder(da);
                 da.Update(bdvirtual, "LineaCarrito");
                 created = true;
@@ -60,6 +65,7 @@ namespace library
 
         public bool readLineaCarrito(ENLineaCarrito en)
         {
+            //Leer datos de una linea de carrito existente en la BBDD
             bool read = false;
             SqlConnection c = null;
 
@@ -68,7 +74,9 @@ namespace library
                 c = new SqlConnection(constring);
                 c.Open();
                 SqlCommand readSql = new SqlCommand("Select * from LineaCarrito", c);
+               //SqlDataReader para ejecutar la consulta SQL y recorrer los resultados
                 SqlDataReader dr = readSql.ExecuteReader();
+                //Actualizar los atributos de ENLineaCarrito y devuelve true,si no se encuentra la linea de carrito false
                 while (dr.Read())
                 {
                     if (dr["id_linea"].ToString() == en.id_linea.ToString() && dr["id_carrito"].ToString() == en.id_carrito.ToString())
@@ -100,6 +108,8 @@ namespace library
         }
         public DataSet updateLineaCarrito(ENLineaCarrito en, int i)
         {
+            //Actualizar una linea de carrito existente en la base de datos 
+            //Devuelve el DataSet actualizado
             DataSet bdvirtual = new DataSet();
             SqlConnection c = new SqlConnection(constring);
 
@@ -135,6 +145,8 @@ namespace library
         }
         public bool deleteLineaCarrito(ENLineaCarrito en)
         {
+            //Eliminar una linea de carrito de la BBDD con comando SQL
+            //Devolver true si eliminacion fue exitosa, de lo contrario false
             bool delete = false;
             SqlConnection c = null;
             String comando = "Delete From LineaCarrito where id_linea=" + en.id_linea + " and id_carrito=" + en.id_carrito;
@@ -169,6 +181,8 @@ namespace library
 
         public bool vaciarCarrito(ENCarrito en)
         {
+            //Eliminar todas las lineas de carrito asociadas al carrito que queremos eliminar
+            //Devolver true si  operacion fue exitosa, si no devolver false
             bool delete = false;
             SqlConnection c = null;
             string comando;
@@ -205,6 +219,8 @@ namespace library
 
         public DataSet showLineasCarritoByCarrito(ENCarrito en)
         {
+            //Mostrar todas las lineas de carrito de un carrito especifico
+            //Devolver el DataSet con las lineas de carrito
             DataSet bdvirtual = new DataSet();
             SqlConnection c = new SqlConnection(constring);
 
@@ -233,6 +249,7 @@ namespace library
 
         public bool deleteByProducto(ENProducto en)
         {
+            //Eliminar una linea de carrito (un producto) y devolver valor booleano dependiendo del exito de la operacion
             bool delete = false;
             SqlConnection c = null;
             string comando;
