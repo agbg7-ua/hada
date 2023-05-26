@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
 using library;
 
 namespace tiendaWeb
@@ -29,6 +30,13 @@ namespace tiendaWeb
         }
         protected void comentButton(object sender, EventArgs e)
         {
+            ENUsuario usu = new ENUsuario();
+            string producto;
+            if(Request.QueryString["idProd"] != null)
+            {
+                producto = Request.Params["idProd"];
+                Session["Datos1"] = producto;
+            }
             Response.Redirect("~/NuevoComentario.aspx");
         }
 

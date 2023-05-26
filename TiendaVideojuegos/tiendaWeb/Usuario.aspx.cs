@@ -36,5 +36,20 @@ namespace tiendaWeb
             Session["Datos1"] = usuario;
             Response.Redirect("~/EditUsuario.aspx");
         }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            ENUsuario usu = new ENUsuario();
+            usu.username = (string)Session["Datos"];
+            if (usu.deleteUsuario())
+            {
+               Response.Redirect("~/Registro.aspx");
+            }
+            else
+            {
+                outputmsg.Text = "No se pudo eliminar el usuario";
+            }
+            
+        }
     }
 }

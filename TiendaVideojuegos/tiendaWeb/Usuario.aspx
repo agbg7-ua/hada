@@ -7,13 +7,13 @@
         <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark"> Tu Perfil </p>
     </div>
 
-
-     <div class="container" style="width: 50%; float:left; height:650px;text-align:center;border:3px solid black;border-bottom:3px solid black;border-top:3px solid black">
+<div style="height:100%; width:100%; background-color:white">
+     <div class="container" style="width: 50%; float:left; height:700px;text-align:center;border:3px solid black;border-bottom:3px solid black;border-top:3px solid black">
             <asp:Image ID="Image1" runat="server" ImageUrl="Imagenes/profile.jpg"  alt="Avatar" class="avatar" style="margin:3px"/><br>
             <b style="font-size:20px;margin:3px">Nombre de Usuario:<br /></b><asp:Label ID="Username" runat="server" style="font-size:20px;margin:3px"></asp:Label><br />
             <b style="font-size:20px;margin:3px">Email:<br /></b><asp:Label ID="EmailUsu" runat="server" style="font-size:20px;margin:3px"> </asp:Label>
      </div>
-     <div class="container" style="width: 50%; float:right; height:650px;border-bottom:3px solid black;text-align:center;border-top:3px solid black">
+     <div class="container" style="width: 50%; float:right; height:700px;border-bottom:3px solid black;text-align:center;border-top:3px solid black">
         <h3 style="text-align: center;">Información</h3><br />
             <b style="font-size:20px;margin:3px">Nombre:<br /></b><asp:Label ID="NameUsu" runat="server" style="font-size:20px;margin:3px"> </asp:Label><br />
             <b style="font-size:20px;margin:3px"> Apellidos:<br /></b><asp:Label ID="SurnameUsu" runat="server" style="font-size:20px;margin:3px"> </asp:Label><br />
@@ -24,8 +24,11 @@
             <b style="font-size:20px;margin:3px"> Localidad:<br /></b><asp:Label ID="LocationUsu" runat="server" style="font-size:20px;margin:3px"></asp:Label><br />
             <b style="font-size:20px;margin:3px"> Provincia:<br /></b><asp:Label ID="ProvUsu" runat="server" style="font-size:20px;margin:3px">  </asp:Label><br />
             <asp:Button class="regbutton" ID="Button1" runat="server" style="margin:3px" Text="Editar usuario" OnClick="Button1_Click"/>
+            <asp:Button class="regbutton2" ID="Button2" runat="server" style="margin:3px" Text="Eliminar usuario" OnClick="Button2_Click"/>
+            <asp:Label ID ="outputmsg" runat="server" Text="Label" style =" color:red"><br /></asp:Label>
 
      </div>
+</div>
      <style>
        body {
         background-size:100%;
@@ -52,6 +55,15 @@
     }
     .regbutton{
       background-color: forestgreen;
+      color: white;
+      padding: 16px 20px;
+      border: none;
+      cursor: pointer;
+      width: 90%;
+      opacity: 0.9;
+    }
+        .regbutton2{
+      background-color: red;
       color: white;
       padding: 16px 20px;
       border: none;

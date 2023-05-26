@@ -6,11 +6,11 @@
         <div class="border border-white navbar navbar-expand-lg bg-dark">
         <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark"> Comentarios </p>
     </div>
-<div class="game" style="width: 55%; float:left; height:295px; border: 3px solid black;">
-    <div class="image" style="width: 30%; float:left; height:288px;">
+<div class="game" style=" height:400px; border: 3px solid black;">
+    <div class="image" style="width: 30%; float:left; height:388px;">
     <asp:Image ID="myImage" runat="server" ImageUrl=" " Width=100% Height=100%/>
         </div>
-    <div class="desc" style="width: 68%; float:right; height:288px">
+    <div class="desc" style="width: 68%; float:right; height:288px; font-size:x-large">
         <br/>
 
         <asp:Label ID="nameText" runat="server" style="margin:5px; font-size:20px; font-weight:bold"></asp:Label><br />
@@ -20,76 +20,8 @@
     </div>
     </div>
 
-</div>
-<div class ="father" style="width: 45%; float:right; height:295px;border-bottom: 3px solid black; border-top: 3px solid black">
-    <span class="heading">Puntuación de los usuarios</span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star"></span>
-    <p>4.1 de media basado en 251 reseñas.</p>
-    <hr style="border:3px solid #f1f1f1">
-
-
-    <div class="row">
-      <div class="side">
-        <div>5 star</div>
-      </div>
-      <div class="middle">
-        <div class="bar-container">
-          <div class="bar-5"></div>
-        </div>
-      </div>
-      <div class="side right">
-        <div>150</div>
-      </div>
-      <div class="side">
-        <div>4 star</div>
-      </div>
-      <div class="middle">
-        <div class="bar-container">
-          <div class="bar-4"></div>
-        </div>
-      </div>
-      <div class="side right">
-        <div>63</div>
-      </div>
-      <div class="side">
-        <div>3 star</div>
-      </div>
-      <div class="middle">
-        <div class="bar-container">
-          <div class="bar-3"></div>
-        </div>
-      </div>
-      <div class="side right">
-        <div>15</div>
-      </div>
-      <div class="side">
-        <div>2 star</div>
-      </div>
-      <div class="middle">
-        <div class="bar-container">
-          <div class="bar-2"></div>
-        </div>
-      </div>
-      <div class="side right">
-        <div>6</div>
-      </div>
-      <div class="side">
-        <div>1 star</div>
-      </div>
-      <div class="middle">
-        <div class="bar-container">
-          <div class="bar-1"></div>
-        </div>
-      </div>
-      <div class="side right">
-        <div>20</div>
-      </div>
-    </div>
-        </div>
+</div><br />
+        <h6>Filtrar por valoraciones</h6>
         <div class="dropdown">
             <asp:dropdownlist runat="server" id="ddlTest"  OnSelectedIndexChanged="ddlTest_SelectedIndexChanged" AutoPostBack="true"> 
                  <asp:listitem text="Valoraciones con 5 estrellas" value="5" Selected="True"></asp:listitem>
