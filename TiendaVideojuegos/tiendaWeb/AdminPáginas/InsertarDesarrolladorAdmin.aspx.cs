@@ -36,11 +36,17 @@ namespace tiendaWeb.AdminPáginas
             }
         }
 
+        /// <summary>
+        /// Devuelve a la pagina anterior
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ButtonVolver(object sender, EventArgs e)
         {
             Response.Redirect("DesarrolladorAdmin.aspx");
         }
 
+        /// <summary>
         protected void TextBox_nombre_TextChanged(object sender, EventArgs e)
         {
             Button_cancelar.Enabled = true;
@@ -48,6 +54,12 @@ namespace tiendaWeb.AdminPáginas
             //Button_recargar.Enabled = true;
         }
 
+
+        /// <summary>
+        /// Guarda los datos del desarrollador en la base de datos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Button_guardar_Click(object sender, EventArgs e)
         {
             try
@@ -74,20 +86,22 @@ namespace tiendaWeb.AdminPáginas
             }
         }
 
+        /// <summary>
+        /// Cancela la operacion de insertar y develve a la pagina anterior
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Button_cancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("DesarrolladorAdmin.aspx");
         }
 
-        //protected void Button_recargar_Click(object sender, EventArgs e)
-        //{
-        //    ProductImage.ImageUrl = backup.imagen;
-        //    TextBox_nombre.Text = backup.nombre;
-        //    TextBox_descripcion.Text = backup.descripcion;
-        //    //TextBox_origen.Text = backup.origen;
-        //    TextBox_web.Text = backup.web;
-        //}
 
+        /// <summary>
+        /// Carga la imagen elegida en el control de imagen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Button_upload_image_Click(object sender, EventArgs e)
         {
             string base_save = "~/Imagenes/";
@@ -101,7 +115,6 @@ namespace tiendaWeb.AdminPáginas
             catch (Exception ex)
             {
                 Label_info.Text = ex.Message;
-                // TODO Mensaje de error(info en la pagina
             }
         }
     }

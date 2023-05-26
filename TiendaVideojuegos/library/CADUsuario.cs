@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
+using System.Security.Cryptography;
 
 namespace library
 {
@@ -21,8 +22,10 @@ namespace library
         public bool signIn(ENUsuario usu)
         {
             bool create = false;
+            string hashed_pass = hashPassword(usu.password);
             SqlConnection conection = new SqlConnection(constring);
-            String str = "Insert INTO Usuario (username,nombre,apellidos,email,contraseña,edad,calle,pueblo,provincia,codigo_postal,telefono,admin) VALUES('" + usu.username + "', '" + usu.nombre + "', '" + usu.apellidos + "', '" + usu.email + "', '" + usu.password +
+
+            String str = "Insert INTO Usuario (username,nombre,apellidos,email,contraseña,edad,calle,pueblo,provincia,codigo_postal,telefono,admin) VALUES('" + usu.username + "', '" + usu.nombre + "', '" + usu.apellidos + "', '" + usu.email + "', '" + hashed_pass +
                 "', " + usu.edad + ", '" + usu.calle + "', '" + usu.pueblo + "', '" + usu.provincia + "', '" + usu.codigo_postal +
                 "', '" + usu.telefono + "', '" + usu.admin + "')";
             try
@@ -54,6 +57,12 @@ namespace library
         public bool updateUsuario(ENUsuario usu)
         {
             bool update = false;
+            string hashed_pass = null;
+            if (usu.password != null)
+            {
+                hashed_pass = hashPassword(usu.password);
+            }
+            
             SqlConnection c = null;
             String comando = "Update Usuario set nombre='" + usu.nombre + "', apellidos='" + usu.apellidos + "', edad=" + usu.edad + ", calle='" + usu.calle + "', pueblo='" + usu.pueblo + "', provincia='" + usu.provincia + "', codigo_postal='" + usu.codigo_postal + 
                 "', telefono='" + usu.telefono + "' where username='" + usu.username + "'";
@@ -260,6 +269,15 @@ namespace library
             }
 
             return update;
+        }
+
+
+        public string hashPassword(string password)
+        {
+            SHA1 sha1 = new SHA1CryptoServiceProvider();
+            byte[] inputBytes = (new UnicodeEncoding()).GetBytes(password);
+            byte[] hash = sha1.ComputeHash(inputBytes);
+            return Convert.ToBase64String(hash);
         }
     }
 }
