@@ -205,6 +205,12 @@ namespace library
         }
 
 
+        /// <summary>
+        /// Recupera los datos del Desarrollador a partir de un nombre
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public ENDesarrollador obtener_by_nombre(String nombre)
         {
             ENDesarrollador en = new ENDesarrollador();
@@ -296,6 +302,11 @@ namespace library
 
 
 
+        /// <summary>
+        /// Obtiene una lista de todos los desarrolladores con fecha entre 'inicio' y 'final'
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public List<ENDesarrollador> obtener_todos()
         {
             List<ENDesarrollador> lista_final = new List<ENDesarrollador>();
@@ -332,6 +343,10 @@ namespace library
             return lista_final;
         }
 
+        /// <summary>
+        /// Obitnen un desarrollador
+        /// </summary>
+        /// <returns></returns>
         public DataSet getDesarrollador()
         {
             DataSet bdvirtual = new DataSet();
@@ -360,7 +375,11 @@ namespace library
             }
         }
 
-        // funtion that filter a list of developers by name, date and/or origin
+        /// <summary>
+        /// Filtra los desarrolladores por nombre , fecha y origen
+        /// </summary>
+        /// <param name="original"></param>
+        /// <returns></returns>
         public List<ENDesarrollador> filtrar(ENDesarrollador original)
         {
             string nombre = original.nombre;
@@ -388,6 +407,11 @@ namespace library
         }
 
 
+        /// <summary>
+        /// Obtiene una lista con todos los paises registrados como origen de
+        /// las desarrolladoras
+        /// </summary>
+        /// <returns></returns>
         public List<string> obtener_paises()
         {
             List<string> countries = new List<string>();
@@ -406,6 +430,12 @@ namespace library
         }
 
 
+        /// <summary>
+        /// Obtiene una lista con los productos de un desarrollador
+        /// </summary>
+        /// <param name="origen"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public List<ENProducto> obtener_juegos(ENDesarrollador origen)
         {
             // get a list of all games of a developer

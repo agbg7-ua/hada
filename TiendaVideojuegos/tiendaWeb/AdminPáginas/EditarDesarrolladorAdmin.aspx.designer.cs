@@ -222,15 +222,6 @@ namespace tiendaWeb.AdminPáginas
         protected global::System.Web.UI.WebControls.Button Button_cancelar;
 
         /// <summary>
-        /// Control Button_recargar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_recargar;
-
-        /// <summary>
         /// Control volver.
         /// </summary>
         /// <remarks>

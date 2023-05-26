@@ -20,15 +20,7 @@ namespace tiendaWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (!IsPostBack)
-            //{
-            //    foreach (ListViewItem item in ListView1.Items)
-            //    {
-            //        Button boton_lista = (Button)item.FindControl("boton_lista");
-            //        string commandArgument = boton_lista.CommandArgument;
-            //        Page.ClientScript.RegisterForEventValidation(boton_lista.UniqueID, commandArgument);
-            //    }
-            //}
+
 
             if (!IsPostBack)
             {
@@ -40,20 +32,16 @@ namespace tiendaWeb
                     List<ENDesarrollador> list = new List<ENDesarrollador>();
                     list = en.obtener_todos();
 
-
-
-                    //List<Item2> list = new List<Item2>();
-                    //list.Add(new Item2() { Nombre = "Bungie", Fecha = DateTime.Now.ToString().Split(' ')[0], Pais="Alemania" , ImagenURL="Imagenes/uno.png"});
-                    //list.Add(new Item2() { Nombre = "Anapurna ", Fecha = DateTime.Now.AddDays(700).ToString().Split(' ')[0], Pais = "EEUU", ImagenURL = "Imagenes/ana.png"});
-                    //list.Add(new Item2() { Nombre = "Desarrolladora 2 ", Fecha = DateTime.Now.AddDays(700).ToString().Split(' ')[0], Pais = "EEUU", ImagenURL = "Imagenes/sinimagen.jpeg" });
-                    //list.Add(new Item2() { Nombre = "Bungie", Fecha = DateTime.Now.ToString().Split(' ')[0], Pais = "Alemania", ImagenURL = "Imagenes/uno.png" });
-                    //list.Add(new Item2() { Nombre = "Anapurna ", Fecha = DateTime.Now.AddDays(700).ToString().Split(' ')[0], Pais = "EEUU", ImagenURL = "Imagenes/ana.png" });
-                    //list.Add(new Item2() { Nombre = "Desarrolladora 2 ", Fecha = DateTime.Now.AddDays(700).ToString().Split(' ')[0], Pais = "EEUU", ImagenURL = "Imagenes/sinimagen.jpeg" });
+                        
 
 
                     ListView1.DataSource = list;
                     ListView1.DataBind();
 
+                    if (list.Count == 0)
+                    {
+                        Label_vacio.Visible = true;
+                    }
 
                     List<string> paises = new List<string>();
                     paises = en.obtener_paises();
@@ -74,7 +62,11 @@ namespace tiendaWeb
         }
 
 
-
+        /// <summary>
+        /// Guarda el id del Desarrollador seleccionado en un variable Session y redirige a la página de Desarrollador
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void test(object sender, EventArgs e)
         {
             ImageButton b = (ImageButton)sender;
@@ -84,6 +76,11 @@ namespace tiendaWeb
             Response.Redirect("Desarrollador.aspx");
         }
 
+        /// <summary>
+        /// Aplica la busqueda de Desarrolladores segun los parametros introducidos en los controladores de la página
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Button_buscar_Click(object sender, EventArgs e)
         {
             ENDesarrollador en = new ENDesarrollador();
@@ -128,6 +125,11 @@ namespace tiendaWeb
 
         }
 
+        /// <summary>
+        /// Limpia los controladores de la página y muestra todos los Desarrolladores
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
             DropDownList1.Text = "Seleccionar Pais de origen";

@@ -61,31 +61,38 @@ namespace tiendaWeb.AdminPáginas
                     Label_info.Text += ex.Message;
                 }
 
-
-
-
-
-                //ProductImage.ImageUrl = en.imagen;
-                //nombre.Attributes.Add("placeholder", en.nombre);
-                //precio.Attributes.Add("placeholder", en.pvp.ToString());
-                //descripcion.Attributes.Add("placeholder", en.descripcion);
-
-                //clasificacion.SelectedValue = en.clasificacion.ToString();
             }
         }
 
+
+        /// <summary>
+        /// Vuelve a la pagina general de desarrolladores
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ButtonVolver(object sender, EventArgs e)
         {
             Response.Redirect("DesarrolladorAdmin.aspx");
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void TextBox_nombre_TextChanged(object sender, EventArgs e)
         {
             Button_cancelar.Enabled = true;
             Button_guardar.Enabled = true;
-            Button_recargar.Enabled = true;
+            //Button_recargar.Enabled = true;
         }
 
+
+        /// <summary>
+        /// Guarda los cambios del Desarrollador en la base de datos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Button_guardar_Click(object sender, EventArgs e)
         {
             try
