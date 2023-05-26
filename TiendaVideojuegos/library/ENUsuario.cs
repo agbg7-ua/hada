@@ -182,8 +182,10 @@ namespace library
             CADUsuario usu = new CADUsuario();
             en.username = this.username;
             bool read = false;
+
             if (usu.readUsuario(en))
             {
+                this.password = usu.hashPassword(this.password);
                 if (en.password == this.password)
                 {
                     read = true;

@@ -47,7 +47,7 @@
                 <label for="nombre">Nombre</label>
                 <div class="invalid-feedback">
                     <asp:requiredfieldvalidator id="nombrevacio" runat="server" ControlToValidate="nombre" ErrorMessage="Nombre es un campo obligatorio" SetFocusOnError="true" Display="Dynamic" ValidationGroup="signup"></asp:requiredfieldvalidator>
-                    <asp:RegularExpressionValidator runat="server" ControlToValidate="username1" ErrorMessage="Nombre no debe superar los 30 caracteres" ValidationExpression="[a-zA-Z]{1,30}$" ValidationGroup="signup"></asp:RegularExpressionValidator>
+                    <%--<asp:RegularExpressionValidator runat="server" ControlToValidate="username1" ErrorMessage="Nombre no debe superar los 30 caracteres" ValidationExpression="[a-zA-Z' ']{1,30}$" ValidationGroup="signup"></asp:RegularExpressionValidator>--%>
                 </div>
             </div>
             <div class="form-floating mb-3">
@@ -55,7 +55,7 @@
                 <label for="apellidos">Apellidos</label>
                 <div class="invalid-feedback">
                     <asp:requiredfieldvalidator id="apellidosvacio" runat="server" ControlToValidate="apellidos" ErrorMessage="Apellidos es un campo obligatorio" SetFocusOnError="true" Display="Dynamic" ValidationGroup="signup"></asp:requiredfieldvalidator>
-                    <asp:RegularExpressionValidator runat="server" ControlToValidate="username1" ErrorMessage="Apellidos no debe superar los 30 caracteres" ValidationExpression="[a-zA-Z' ']{1,30}$" ValidationGroup="signup"></asp:RegularExpressionValidator>
+                    <%--<asp:RegularExpressionValidator runat="server" ControlToValidate="username1" ErrorMessage="Apellidos no debe superar los 30 caracteres" ValidationExpression="[a-zA-Z' ']{1,30}$" ValidationGroup="signup"></asp:RegularExpressionValidator>--%>
                 </div>
             </div>
             <div class="form-floating mb-3">
