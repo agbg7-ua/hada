@@ -47,6 +47,41 @@ namespace tiendaWeb.AdminPáginas
                 DropDownList_juego_3.DataTextField = "nombre";
                 DropDownList_juego_3.DataValueField = "id";
                 DropDownList_juego_3.DataBind();
+
+                ENOferta o1 = new ENOferta();
+                o1.id = 1;
+                ENOferta o2 = new ENOferta();
+                o2.id = 2;
+                ENOferta o3 = new ENOferta();
+                o3.id = 3;
+                o1.readOferta();
+                o2.readOferta();
+                o3.readOferta();
+
+                float porcentaje;
+                int final;
+
+                enp.id = o1.id_producto;
+                enp.readProducto();
+                DropDownList_juego_1.SelectedIndex = DropDownList_juego_1.Items.IndexOf(DropDownList_juego_1.Items.FindByText(enp.nombre));
+                porcentaje = o1.oferta*100 / enp.pvp;
+                final = 100 - (int)porcentaje;
+                TextBox_precio_1.Text = final.ToString();
+
+                enp.id = o2.id_producto;
+                enp.readProducto();
+                DropDownList_juego_2.SelectedIndex = DropDownList_juego_2.Items.IndexOf(DropDownList_juego_2.Items.FindByText(enp.nombre));
+                porcentaje = o2.oferta * 100 / enp.pvp;
+                final = 100 - (int)porcentaje;
+                TextBox_precio_2.Text = final.ToString();
+
+                enp.id = o3.id_producto;
+                enp.readProducto();
+                DropDownList_juego_3.SelectedIndex = DropDownList_juego_3.Items.IndexOf(DropDownList_juego_3.Items.FindByText(enp.nombre));
+                porcentaje = o3.oferta * 100 / enp.pvp;
+                final = 100 - (int)porcentaje;
+                TextBox_precio_3.Text = final.ToString();
+
             }
 
 

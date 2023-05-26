@@ -88,10 +88,16 @@ CREATE TABLE [dbo].[Comentario] (
 CREATE TABLE [dbo].[Oferta] (
     [id] 		INT  		IDENTITY (1, 1) NOT NULL,
     [oferta]      	DECIMAL (7,2)  	NULL,
-    [id_producto]      	INT  	NOT NULL,
+    [id_producto]      	INT  	 NULL,
     PRIMARY KEY CLUSTERED ([id] ASC),
     CONSTRAINT [fk_Oferta_Producto] FOREIGN KEY ([id_producto]) REFERENCES [dbo].[Producto] ([id])
 );
+
+SET IDENTITY_INSERT [dbo].[Oferta] ON
+INSERT INTO [dbo].[Oferta] ([id], [oferta], [id_producto]) VALUES (1, NULL, NULL)
+INSERT INTO [dbo].[Oferta] ([id], [oferta], [id_producto]) VALUES (2, NULL, NULL)
+INSERT INTO [dbo].[Oferta] ([id], [oferta], [id_producto]) VALUES (3, NULL, NULL)
+SET IDENTITY_INSERT [dbo].[Oferta] OFF
 
 -- --------------------------------------------------------------------------------------------
 -- PEDIDO 
