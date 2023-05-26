@@ -115,13 +115,11 @@ namespace library
             catch (SqlException ex)
             {
                 update = false;
-                throw ex;
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
             }
             catch (Exception ex)
             {
                 update = false;
-                throw ex;
                 Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
             }
             finally

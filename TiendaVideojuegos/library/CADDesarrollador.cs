@@ -168,7 +168,6 @@ namespace library
         public ENDesarrollador obtener_by_id(int id)
         {
             ENDesarrollador en = new ENDesarrollador();
-            bool obtenido = false;
             SqlConnection c = new SqlConnection(constring);
             try
             {
@@ -190,7 +189,6 @@ namespace library
                     en.fecha_creacion = DateTime.Parse(dr["fecha_creacion"].ToString());
                     en.web = dr["web"].ToString();
                     en.imagen = dr["imagen"].ToString();
-                    obtenido = true;
                 }
             }
             catch (Exception ex)
@@ -466,7 +464,6 @@ namespace library
             {
                 c.Close();
             }
-            return lista;
         }
     }
 }
