@@ -18,31 +18,41 @@ namespace library
         }
         public bool createComentario(ENComentario coment)
         {
-            bool create = false;
+            bool created = false;
+            DataSet bdvirtual = new DataSet();
+            SqlConnection c = new SqlConnection(constring);
+
             try
             {
-                SqlConnection conection = null;
-                conection = new SqlConnection(constring);
-                conection.Open();
-                string str = "Insert INTO[dbo].[Comentario](id_producto,id,id_usuario,fecha,comentario,valoracion) VALUES('" + coment.id_producto + "', '" + coment.id + "', '" + coment.id_usuario + "', '" + coment.date + "', '" + coment.text +
-                "', " + coment.valoracion +  ")";
-                SqlCommand cons = new SqlCommand(str, conection);
-                cons.ExecuteNonQuery();
-                create = true;
-                conection.Close();
+                SqlDataAdapter da = new SqlDataAdapter("Select * From Comentario", c);
+                da.Fill(bdvirtual, "Comentario");
+                DataTable t = new DataTable();
+                t = bdvirtual.Tables["Comentario"];
+                DataRow nuevafila = t.NewRow();
+                nuevafila[0] = coment.id_producto;
+                nuevafila[2] = coment.id_usuario;
+                nuevafila[3] = coment.date;
+                nuevafila[4] = coment.text;
+                nuevafila[5] = coment.valoracion;
+                t.Rows.Add(nuevafila);
+                SqlCommandBuilder cbuilder = new SqlCommandBuilder(da);
+                da.Update(bdvirtual, "Comentario");
+                created = true;
             }
-            catch (SqlException e)
+            catch (SqlException ex)
             {
-                create = false;
-                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("User operation has failed. Error: {0}", ex.Message);
+            }
+            finally
+            {
+                if (c != null) c.Close();
+            }
 
-            }
-            catch (Exception e)
-            {
-                create = false;
-                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
-            }
-            return create;
+            return created;
         }
         public bool updateComentario(ENComentario coment)
         {
@@ -175,7 +185,7 @@ namespace library
 
             try
             {
-                String comando = "Select * From Comentario where valoracion=" + coment.valoracion + "mostrar =1 and borrado=0";
+                String comando = "Select * From Comentario where valoracion=" + coment.valoracion + " and mostrar =1 and borrado=0";
                 SqlDataAdapter ada = new SqlDataAdapter(comando, conect);
                 ada.Fill(dataset, "Comentario");
                 return dataset;
@@ -222,14 +232,14 @@ namespace library
                 if (conect != null) conect.Close();
             }
         }
-        public DataSet showAll(ENProducto producto)
+        public DataSet showAll(ENProducto en)
         {
             DataSet dataset = new DataSet();
             SqlConnection conect = new SqlConnection(constring);
 
             try
             {
-                String comando = "Select * From Comentario where id_producto=" +producto.id + "mostrar=1 and borrado=0";
+                String comando = "Select * From Comentario where id_producto=" + en.id;
                 SqlDataAdapter ada = new SqlDataAdapter(comando, conect);
                 ada.Fill(dataset, "Comentario");
                 return dataset;

@@ -17,29 +17,32 @@ namespace tiendaWeb
         DataSet d = new DataSet();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Request.QueryString["idProd"] != null)
+            producto.id = Convert.ToInt32(Request.Params["idProd"]);
+            producto.readProducto();
+            descText.Text = producto.descripcion;
+            nameText.Text = producto.nombre;
+            myImage.ImageUrl = producto.imagen;
+
+            d = comentario.showAll(producto);
+
+            if ((d.Tables.Count != 0) && (d.Tables[0].Rows.Count > 0))
             {
-                string idProducto = Request.Params["idProd"];
-                producto.id = Convert.ToInt32(idProducto);
-                producto.readProducto();
-                descText.Text = producto.descripcion;
-                nameText.Text = producto.nombre;
-                myImage.ImageUrl = producto.imagen;
-                d = comentario.showAll(producto);
+                listView.DataSource = d;
+                listView.DataBind();
             }
+            else
+            {
+                textboxVacio.Visible = true;
+                textboxVacio.Text = " No se encontraron comentarios con las características especificadas";
+            }
+            
         }
         protected void comentButton(object sender, EventArgs e)
         {
-            ENUsuario usu = new ENUsuario();
-            string producto;
-            if(Request.QueryString["idProd"] != null)
-            {
-                producto = Request.Params["idProd"];
-                Session["Datos1"] = producto;
-            }
-            Response.Redirect("~/NuevoComentario.aspx");
+            Response.Redirect("~/NuevoComentario.aspx?idProd=" + producto.id);
         }
 
+        /*
         protected void ddlTest_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(ddlTest.SelectedValue == "1")
@@ -75,14 +78,15 @@ namespace tiendaWeb
 
             if ((d.Tables.Count != 0) && (d.Tables[0].Rows.Count > 0))
             {
-                gridView.DataSource = d;
-                gridView.DataBind();
+                listView.DataSource = d;
+                listView.DataBind();
             }
             else
             {
-
-                outputMsg.Text = " No se encontraron comentarios con las características especificadas";
+                textboxVacio.Visible = true;
+                textboxVacio.Text = " No se encontraron comentarios con las características especificadas";
             }
         }
+        */
     }
 }
