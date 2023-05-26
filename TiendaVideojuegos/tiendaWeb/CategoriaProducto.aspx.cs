@@ -14,6 +14,12 @@ namespace tiendaWeb
         ENCategoriaProducto catproducto = new ENCategoriaProducto();
 
         DataSet d = new DataSet();
+
+        /// <summary>
+        /// Page_Load de la página
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             // Llamamos al EN que lista todas las Categorías de Productos

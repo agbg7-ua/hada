@@ -16,8 +16,14 @@ namespace tiendaWeb.AdminPáginas
 
         DataSet d = new DataSet();
 
+        /// <summary>
+        /// Page_Load de la página
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Comprobamos que el usuario esté registrado que sea administrador
             if (!Page.IsPostBack)
             {
                 if (Session["username"] != null)
@@ -37,7 +43,8 @@ namespace tiendaWeb.AdminPáginas
 
             d = pedido.listarPedidos();
 
-            if (d.Tables[0].Rows.Count > 0)
+            // Rellenamos el ListView
+            if ((d.Tables.Count != 0) && (d.Tables[0].Rows.Count > 0))
             {
                 listView.DataSource = d;
                 listView.DataBind();
@@ -48,6 +55,11 @@ namespace tiendaWeb.AdminPáginas
             }
         }
 
+        /// <summary>
+        /// Botón de ver Pedido
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ButtonVer(object sender, EventArgs e)
         {
             LinkButton myButton = (LinkButton)sender;
@@ -56,11 +68,18 @@ namespace tiendaWeb.AdminPáginas
             Response.Redirect("VerPedidoAdmin.aspx?idPedido=" + i);
         }
 
+        /// <summary>
+        /// Botón de borrar Pedido
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ButtonBorrar(object sender, EventArgs e)
         {
+            // Recogemos el id del pedido seleccionado
             LinkButton myButton = (LinkButton)sender;
             pedido.id = Convert.ToInt32(myButton.CommandArgument.ToString());
 
+            // Llamamos al EN de eliminar pedido
             pedido.deletePedido();
             Response.Redirect("PedidoAdmin.aspx");
         }

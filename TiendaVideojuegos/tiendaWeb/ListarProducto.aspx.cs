@@ -15,6 +15,11 @@ namespace tiendaWeb
         ENUsuario usu = new ENUsuario();
         DataSet d = new DataSet();
 
+        /// <summary>
+        /// Page_Load de la página
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -23,7 +28,11 @@ namespace tiendaWeb
             }
         }
 
-        // Dropdownlist --> opción seleccionada sobre cómo listar los Productos
+        /// <summary>
+        /// Dropdownlist --> opción seleccionada sobre cómo listar los Productos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ddlTest_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlTest.SelectedValue == "2")
@@ -55,7 +64,11 @@ namespace tiendaWeb
             }
         }
 
-        // Método que enseña el botón de comprar únicamente a alguien que haya iniciado sesión
+        /// <summary>
+        /// Método que enseña el botón de comprar únicamente a alguien que haya iniciado sesión
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Buttons(object sender, ListViewItemEventArgs e)
         {
             // Recorremos el ListView
@@ -77,7 +90,11 @@ namespace tiendaWeb
             }
         }
 
-        // Creamos un pedido y una línea de pedido del Producto seleccionado
+        /// <summary>
+        /// Creamos un pedido y una línea de pedido del Producto seleccionado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ButtonComprar(Object sender, EventArgs e)
         {
             LinkButton buy = (LinkButton)sender;

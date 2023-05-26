@@ -2,10 +2,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <!-- Cabecera de página -->
     <div class="border border-white navbar navbar-expand-lg bg-dark">
         <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark"> Administración de Carritos </p>
     </div>
 
+    <!-- ListView para listar las Carritos de los Usuarios -->
     <asp:ListView runat="server" ID="listView">
         <GroupTemplate>
             <tr>
@@ -14,6 +17,8 @@
         </GroupTemplate>
 
         <LayoutTemplate>
+            <!-- table para mostrar los carritos -->
+            <!-- Columnas: id, usuario, importe y opciones -->
             <table class="table table-hover border-bottom border-dark" style="padding-left: 20px;">
                 <thead class="thead-dark">
                     <tr>
@@ -45,6 +50,7 @@
             <td>
                 <%# Eval("importe_total") %>€
             </td>
+            <!-- Botón de ver carrito pasando el id de usuario -->
             <td>
                 <asp:LinkButton runat="server" ID="ver" CssClass="btn btn-primary" OnClientClick="ButtonVer" OnClick="ButtonVer" Text="Ver" CommandArgument='<%#Eval("id_usuario") %>' />
             </td>
@@ -52,6 +58,7 @@
     </asp:ListView>
     <br />
 
+    <!-- Label que aparecerá cuando no haya carritos -->
     <div style="width:100%; height: 100px; align-content:center; text-align:center">
         <asp:Label CssClass="labelVacio" runat="server" ID="textboxVacio" Text="No se encontraron productos, intentelo más tarde." Visible="false" ></asp:Label>
     </div>

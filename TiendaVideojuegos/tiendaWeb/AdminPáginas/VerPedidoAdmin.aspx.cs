@@ -18,8 +18,14 @@ namespace tiendaWeb.AdminPáginas
 
         DataSet d = new DataSet();
 
+        /// <summary>
+        /// Page_Load de la página
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Comprobamos que el usuario esté registrado que sea administrador
             if (!Page.IsPostBack)
             {
                 if (Session["username"] != null)
@@ -40,13 +46,16 @@ namespace tiendaWeb.AdminPáginas
             ped.id = Convert.ToInt32(Request.Params["idPedido"]);
             ped.readPedido();
 
+            // Recogemos el id del pedido para mostrarlo como título de página
             titulo.Text = "Pedido nº " + ped.id + " de " + ped.id_usuario;
 
+            // Mostramos el total del carrito
             total.Text = "Total: " + ped.importe_total + "€";
 
             d = lped.listaLineasPedido(ped);
 
-            if (d.Tables[0].Rows.Count > 0)
+            // Rellenamos el ListView
+            if ((d.Tables.Count != 0) && (d.Tables[0].Rows.Count > 0))
             {
                 listView.DataSource = d;
                 listView.DataBind();
@@ -57,16 +66,11 @@ namespace tiendaWeb.AdminPáginas
             }
         }
 
-        protected void catchId()
-        {
-            lped.id_linea = Convert.ToInt32(Request.Params["idPedido"]);
-            lped.readLineaPedido();
-            ped.id = lped.id_pedido;
-            ped.readPedido();
-
-            titulo.Text = "Pedido nº " + ped.id + "de " + ped.id_usuario;
-        }
-
+        /// <summary>
+        /// Método para mostrar la imagen y nombre de producto correspondiente a cada línea
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ImagenProducto(object sender, ListViewItemEventArgs e)
         {
             if (e.Item.ItemType == ListViewItemType.DataItem)

@@ -85,7 +85,6 @@
     <Content Include="AdminPáginas\UsuarioAdmin.aspx" />
     <Content Include="AdminPáginas\VerCarritoAdmin.aspx" />
     <Content Include="AdminPáginas\VerPedidoAdmin.aspx" />
-    <Content Include="AdminPáginas\VerUsuarioAdmin.aspx" />
     <Content Include="App_Data\Database.mdf" />
     <Content Include="App_Data\Database_log.ldf">
       <DependentUpon>Database.mdf</DependentUpon>
@@ -224,13 +223,6 @@
     </Compile>
     <Compile Include="AdminPáginas\VerPedidoAdmin.aspx.designer.cs">
       <DependentUpon>VerPedidoAdmin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AdminPáginas\VerUsuarioAdmin.aspx.cs">
-      <DependentUpon>VerUsuarioAdmin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AdminPáginas\VerUsuarioAdmin.aspx.designer.cs">
-      <DependentUpon>VerUsuarioAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="BuscarProducto.aspx.cs">
       <DependentUpon>BuscarProducto.aspx</DependentUpon>

@@ -16,8 +16,14 @@ namespace tiendaWeb.AdminPáginas
 
         DataSet d = new DataSet();
 
+        /// <summary>
+        /// Page_Load de la página
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Comprobamos que el usuario esté registrado que sea administrador
             if (!Page.IsPostBack)
             {
                 if (Session["username"] != null)
@@ -35,9 +41,11 @@ namespace tiendaWeb.AdminPáginas
                 }
             }
 
+            // EN para listar las categorías
             d = catproducto.showAllCategoriaProducto();
 
-            if (d.Tables[0].Rows.Count > 0)
+            // Rellenamos el ListView
+            if ((d.Tables.Count != 0) && (d.Tables[0].Rows.Count > 0))
             {
                 listView.DataSource = d;
                 listView.DataBind();
@@ -48,11 +56,21 @@ namespace tiendaWeb.AdminPáginas
             }
         }
 
+        /// <summary>
+        /// Botón de añadir categoría
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ButtonAñadir(object sender, EventArgs e)
         {
             Response.Redirect("InsertarCategoriaProductoAdmin.aspx");
         }
 
+        /// <summary>
+        /// Botón de editar categoría
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ButtonEditar(object sender, EventArgs e)
         {
             LinkButton myButton = (LinkButton)sender;
@@ -61,15 +79,22 @@ namespace tiendaWeb.AdminPáginas
             Response.Redirect("EditarCategoriaProductoAdmin.aspx?idProd=" + i);
         }
 
+        /// <summary>
+        /// Botón de borrar categoría
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ButtonBorrar(object sender, EventArgs e)
         {
             ENCategoriaProducto en = new ENCategoriaProducto();
 
+            // Recogemos el id de la categoría seleccionada
             LinkButton myButton = (LinkButton)sender;
             int i = int.Parse(myButton.CommandArgument.ToString());
 
             en.id = i;
 
+            // Llamamos al EN de eliminar categoría
             en.deleteCategoriaProducto();
             Response.Redirect("CategoriaProductoAdmin.aspx");
         }

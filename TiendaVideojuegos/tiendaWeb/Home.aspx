@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="css/carousel.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <!-- Carrusel que muestra tres imágenes de Videojuegos inspirado de Bootstrap -->
     <div id="carouselExampleIndicators" class="carousel slide justify-content-center" data-ride="carousel" style="background-color: #c3c3c3;">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>

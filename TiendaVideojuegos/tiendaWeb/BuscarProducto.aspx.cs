@@ -16,6 +16,11 @@ namespace tiendaWeb
         ENUsuario usu = new ENUsuario();
         string name;
 
+        /// <summary>
+        /// Page_Load de la página
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             // Recogemos lo escrito en la barra de búsqueda
@@ -36,7 +41,9 @@ namespace tiendaWeb
             }
         }
 
-        // Recoger lo escrito en la barra de búsqueda
+        /// <summary>
+        /// Recoger lo escrito en la barra de búsqueda
+        /// </summary>
         protected void catchSearch()
         {
             name = Request.Params["b"];
@@ -44,7 +51,11 @@ namespace tiendaWeb
             titulo.Text = "Resultados de la Búsqueda: \"" + name + "\"";
         }
 
-        // Método que enseña el botón de comprar únicamente a alguien que haya iniciado sesión
+        /// <summary>
+        /// Método que enseña el botón de comprar únicamente a alguien que haya iniciado sesión
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Buttons(object sender, ListViewItemEventArgs e)
         {
             // Recorremos el ListView
@@ -66,7 +77,11 @@ namespace tiendaWeb
             }
         }
 
-        // Creamos un pedido y una línea de pedido del Producto seleccionado
+        /// <summary>
+        /// Creamos un pedido y una línea de pedido del Producto seleccionado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ButtonComprar(Object sender, EventArgs e)
         {
             LinkButton buy = (LinkButton)sender;

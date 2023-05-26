@@ -12,8 +12,14 @@ namespace tiendaWeb
     {
         ENUsuario usu = new ENUsuario();
 
+        /// <summary>
+        /// Page_Load de la página
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Visibilidad de los botones dependiendo de si un usuario está registrado, y de si es administrador o no
             if (!Page.IsPostBack)
             {
                 if (Session["username"] != null)

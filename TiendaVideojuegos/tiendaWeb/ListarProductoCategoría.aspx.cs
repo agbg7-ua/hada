@@ -16,6 +16,11 @@ namespace tiendaWeb
         ENUsuario usu = new ENUsuario();
         DataSet d = new DataSet();
 
+        /// <summary>
+        /// Page_Load de la página
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack) 
@@ -23,8 +28,10 @@ namespace tiendaWeb
                 ddlTest_SelectedIndexChanged(this, e);
             }
         }
-        
-        // Recoger género seleccionado
+
+        /// <summary>
+        /// Recoger género seleccionado
+        /// </summary>
         protected void catchId()
         {
             enCat.id = Convert.ToInt32(Request.Params["idCat"]);
@@ -33,8 +40,12 @@ namespace tiendaWeb
             enCat.readCategoriaProducto();
             titulo.Text = "Videojuegos del Género " + enCat.nombre;
         }
-        
-        // Dropdownlist --> opción seleccionada sobre cómo listar los Productos
+
+        /// <summary>
+        /// Dropdownlist --> opción seleccionada sobre cómo listar los Productos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ddlTest_SelectedIndexChanged(object sender, EventArgs e)
         {
             catchId();
@@ -68,7 +79,11 @@ namespace tiendaWeb
             }
         }
 
-        // Método que enseña el botón de comprar únicamente a alguien que haya iniciado sesión
+        /// <summary>
+        /// Método que enseña el botón de comprar únicamente a alguien que haya iniciado sesión
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Buttons(object sender, ListViewItemEventArgs e)
         {
             // Recorremos el ListView
@@ -90,7 +105,11 @@ namespace tiendaWeb
             }
         }
 
-        // Creamos un pedido y una línea de pedido del Producto seleccionado
+        /// <summary>
+        /// Creamos un pedido y una línea de pedido del Producto seleccionado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ButtonComprar(Object sender, EventArgs e)
         {
             LinkButton buy = (LinkButton)sender;

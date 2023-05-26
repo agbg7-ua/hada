@@ -14,8 +14,14 @@ namespace tiendaWeb.AdminPáginas
         ENUsuario usu = new ENUsuario();
         DataSet d = new DataSet();
 
+        /// <summary>
+        /// Page_Load de la página
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Comprobamos que el usuario esté registrado que sea administrador
             if (!Page.IsPostBack)
             {
                 if (Session["username"] != null)
@@ -35,7 +41,8 @@ namespace tiendaWeb.AdminPáginas
 
             d = usu.showAllUsers();
 
-            if (d.Tables[0].Rows.Count > 0)
+            // Rellenamos el ListView
+            if ((d.Tables.Count != 0) && (d.Tables[0].Rows.Count > 0))
             {
                 listView.DataSource = d;
                 listView.DataBind();
@@ -46,38 +53,44 @@ namespace tiendaWeb.AdminPáginas
             }
         }
 
-        protected void ButtonVer(object sender, EventArgs e)
-        {
-            LinkButton myButton = (LinkButton)sender;
-            string i = myButton.CommandArgument.ToString();
-
-            Response.Redirect("VerUsuarioAdmin.aspx?idUsu=" + i);
-        }
-
+        /// <summary>
+        /// Botón de borrar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ButtonBorrar(object sender, EventArgs e)
         {
             ENUsuario en = new ENUsuario();
 
+            // Recogemos el username del usuario seleccionado
             LinkButton myButton = (LinkButton)sender;
             string i = myButton.CommandArgument.ToString();
 
             en.username = i;
 
+            // Llamamos al EN de eliminar usuario
             en.deleteUsuario();
             Response.Redirect("UsuarioAdmin.aspx");
         }
 
+        /// <summary>
+        /// Botón para cambiar el estado de administrador de un usuario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ButtonCambiar(object sender, EventArgs e)
         {
             ENUsuario en = new ENUsuario();
             bool nuevo;
 
+            // Recogemos el username del usuario seleccionado
             LinkButton myButton = (LinkButton)sender;
             string i = myButton.CommandArgument.ToString();
 
             en.username = i;
             en.readUsuario();
 
+            // Y cambiamos el estado de admin
             if (en.admin == true)
             {
                 nuevo = false;
@@ -89,6 +102,7 @@ namespace tiendaWeb.AdminPáginas
 
             en.admin = nuevo;
 
+            // Actualizamos el usuario
             en.updateAdminUser();
             Response.Redirect("UsuarioAdmin.aspx");
         }
