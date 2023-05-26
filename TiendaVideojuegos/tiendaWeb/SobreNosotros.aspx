@@ -11,7 +11,7 @@
         padding: 10px;
     }
     </style>
-    <div class="center">
+    <div class="center" style="min-height: 100vh">
         <asp:Chart ID="Chart1" runat="server" Palette="Berry" Width="542px">
             <Titles>
                 <asp:Title Name="Title" Text="Productos más vendidos"></asp:Title>

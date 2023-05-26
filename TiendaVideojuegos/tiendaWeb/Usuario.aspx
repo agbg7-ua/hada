@@ -7,7 +7,7 @@
         <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark"> Tu Perfil </p>
     </div>
 
-<div style="height:100%; width:100%; background-color:white">
+<div style="min-height: 100vh; width:100%; background-color:white">
      <div class="container" style="width: 50%; float:left; height:700px;text-align:center;border:3px solid black;border-bottom:3px solid black;border-top:3px solid black">
             <asp:Image ID="Image1" runat="server" ImageUrl="Imagenes/profile.jpg"  alt="Avatar" class="avatar" style="margin:3px"/><br>
             <b style="font-size:20px;margin:3px">Nombre de Usuario:<br /></b><asp:Label ID="Username" runat="server" style="font-size:20px;margin:3px"></asp:Label><br />

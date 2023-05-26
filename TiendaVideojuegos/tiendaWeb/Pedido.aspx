@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    <div class= "col-auto text-center mx-auto">
+    <div class= "col-auto text-center mx-auto" style="min-height: 100vh">
 
             <asp:ListView runat="server" ID="listView" GroupItemCount="6">
 

@@ -11,7 +11,7 @@
     <br />
 
     <!-- Cuerpo de la página: botones que redirigen -->
-    <div class="container-fluid" style="height: 651px">
+    <div class="container-fluid" style="min-height: 100vh">
         <div style="width:100%; height: 100px; align-content:center; text-align:center">
             <blockquote class="blockquote">
                 <p style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"><strong>Bienvenido a Administración</strong></p>
