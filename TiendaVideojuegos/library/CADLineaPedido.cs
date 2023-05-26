@@ -233,5 +233,39 @@ namespace library
                 }
             }
         }
+
+        public DataTable top10Usuarios()
+        {
+            DataTable table = new DataTable();
+
+            SqlConnection c = new SqlConnection(constring);
+
+            try
+            {
+                c.Open();
+                string command = "SELECT TOP 10 U.username, U.nombre, U.apellidos, COUNT(P.id) AS total_pedidos FROM Usuario AS U JOIN Pedido AS P ON U.username = P.id_usuario GROUP BY U.username, U.nombre, U.apellidos ORDER BY total_pedidos DESC;";
+                SqlCommand cmd = new SqlCommand(command, c);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(table);
+                return table;
+            }
+            catch (SqlException sqlEx)
+            {
+                Console.WriteLine("Error: {0}", sqlEx.Message);
+                return table;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: {0}", ex.Message);
+                return table;
+            }
+            finally
+            {
+                if (c != null)
+                {
+                    c.Close();
+                }
+            }
+        }
     }
 }

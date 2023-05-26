@@ -19,6 +19,10 @@ namespace tiendaWeb
             d = lineaPedido.top10Productos();
             Chart1.DataSource = d;
             Chart1.Series[0].Points.DataBind(d.DefaultView, d.Columns[0].ColumnName, d.Columns[1].ColumnName, null);
+
+            d = lineaPedido.top10Usuarios();
+            Chart2.DataSource = d;
+            Chart2.Series[0].Points.DataBind(d.DefaultView, d.Columns[0].ColumnName, d.Columns[1].ColumnName, null);
         }
     }
 }

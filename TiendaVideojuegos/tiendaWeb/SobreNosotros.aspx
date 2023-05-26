@@ -11,19 +11,37 @@
         padding: 10px;
     }
     </style>
-    <div class="center" style="min-height: 100vh">
-        <asp:Chart ID="Chart1" runat="server" Palette="Berry" Width="542px">
-            <Titles>
-                <asp:Title Name="Title" Text="Productos más vendidos"></asp:Title>
-            </Titles>
-        <Series>
-            <asp:Series Name="Series1"></asp:Series>
-        </Series>
-        <ChartAreas>
-            <asp:ChartArea Name="ChartArea1">
+    <div style="min-height: 100vh;">
+        <div class="center">
+            <asp:Chart ID="Chart1" runat="server" Palette="Berry" Width="542px">
+                <Titles>
+                    <asp:Title Name="Title" Text="Productos más vendidos"></asp:Title>
+                </Titles>
+            <Series>
+                <asp:Series Name="Series1"></asp:Series>
+            </Series>
+            <ChartAreas>
+                <asp:ChartArea Name="ChartArea1">
                 
-            </asp:ChartArea>
-        </ChartAreas>
-    </asp:Chart>
+                </asp:ChartArea>
+            </ChartAreas>
+        </asp:Chart>
+        </div>
+
+        <div class="center">
+            <asp:Chart ID="Chart2" runat="server" Palette="Berry" Width="542px">
+                <Titles>
+                    <asp:Title Name="Title" Text="Usuarios con más compras"></asp:Title>
+                </Titles>
+            <Series>
+                <asp:Series Name="Series1"></asp:Series>
+            </Series>
+            <ChartAreas>
+                <asp:ChartArea Name="ChartArea1">
+                
+                </asp:ChartArea>
+            </ChartAreas>
+        </asp:Chart>
+        </div>
     </div>
 </asp:Content>
