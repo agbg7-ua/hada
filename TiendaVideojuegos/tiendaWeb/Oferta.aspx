@@ -8,7 +8,7 @@
         <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark"> Ofertas del mes </p>
     </div>
 
-    <div class="container-fluid" style="height: 699px;">
+    <div class="container-fluid" style="min-height: 100vh">
         <div class="row w-100" style="padding-left: 200px;">
             <div class="col col-md-4">
                 <ItemTemplate>

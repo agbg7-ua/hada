@@ -8,55 +8,56 @@
         <asp:LinkButton runat="server" id="añadir" CssClass="btn btn-outline-success" OnClientClick="ButtonAñadir" OnClick="ButtonAñadir" Text="Añadir" />
     </div>
 
-    <asp:ListView runat="server" ID="listView1">
-        <GroupTemplate>
-            <tr>
-                <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
-            </tr>
-        </GroupTemplate>
+    <div style="min-height: 100vh">
+        <asp:ListView runat="server" ID="listView1">
+            <GroupTemplate>
+                <tr>
+                    <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
+                </tr>
+            </GroupTemplate>
 
-        <LayoutTemplate>
-            <table class="table table-hover border-bottom border-dark">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>
-                            Id
-                        </th>
-                        <th>
-                            Imagen
-                        </th>
-                        <th>
-                            Nombre
-                        </th>
-                        <th>
-                            Opciones
-                        </th>
-                    </tr>
-                </thead>
-                <asp:PlaceHolder ID="groupPlaceHolder" runat="server" />
-            </table>
-        </LayoutTemplate>
+            <LayoutTemplate>
+                <table class="table table-hover border-bottom border-dark">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>
+                                Id
+                            </th>
+                            <th>
+                                Imagen
+                            </th>
+                            <th>
+                                Nombre
+                            </th>
+                            <th>
+                                Opciones
+                            </th>
+                        </tr>
+                    </thead>
+                    <asp:PlaceHolder ID="groupPlaceHolder" runat="server" />
+                </table>
+            </LayoutTemplate>
 
-        <ItemTemplate>
-            <td>
-                 <%# Eval("id") %>
-            </td>
-            <td>
-                 <asp:Image ID="Image1" runat="server" Width="100px" Height="100px" ImageUrl='<%# Eval("imagen") %>' />	
-            </td>
-            <td>
-                <%# Eval("nombre") %>
-            </td>
-            <td>
-                <asp:LinkButton runat="server" id="editar" CssClass="btn btn-warning" OnClientClick="ButtonEditar" OnClick="ButtonEditar" Text="Editar" CommandArgument='<%#Eval("id") %>' />
-                <asp:LinkButton runat="server" id="borrar" CssClass="btn btn-danger" OnClientClick="ButtonBorrar" OnClick="ButtonBorrar" Text="Borrar" CommandArgument='<%#Eval("id") %>' />
-            </td>
-        </ItemTemplate>
-    </asp:ListView>
-    <br />
+            <ItemTemplate>
+                <td>
+                     <%# Eval("id") %>
+                </td>
+                <td>
+                     <asp:Image ID="Image1" runat="server" Width="100px" Height="100px" ImageUrl='<%# Eval("imagen") %>' />	
+                </td>
+                <td>
+                    <%# Eval("nombre") %>
+                </td>
+                <td>
+                    <asp:LinkButton runat="server" id="editar" CssClass="btn btn-warning" OnClientClick="ButtonEditar" OnClick="ButtonEditar" Text="Editar" CommandArgument='<%#Eval("id") %>' />
+                    <asp:LinkButton runat="server" id="borrar" CssClass="btn btn-danger" OnClientClick="ButtonBorrar" OnClick="ButtonBorrar" Text="Borrar" CommandArgument='<%#Eval("id") %>' />
+                </td>
+            </ItemTemplate>
+        </asp:ListView>
+        <br />
 
-    <div style="width:100%; height: 100px; align-content:center; text-align:center">
-        <asp:Label CssClass="labelVacio" runat="server" ID="textboxVacio" Text="No se encontraron desarrolladores." Visible="false" ></asp:Label>
+        <div style="width:100%; height: 100px; align-content:center; text-align:center">
+            <asp:Label CssClass="labelVacio" runat="server" ID="textboxVacio" Text="No se encontraron desarrolladores." Visible="false" ></asp:Label>
+        </div>
     </div>
-
 </asp:Content>

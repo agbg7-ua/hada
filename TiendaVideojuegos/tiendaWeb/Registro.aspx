@@ -9,7 +9,8 @@
         <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark"> Inicio sesión/Registro </p>
     </div>
 
-     <div class="container" style="width: 50%; float:left; height:900px;">
+    <div style="min-height: 100vh">
+     <div class="container bg-white" style="width: 50%; float:left; height:1400px;">
         <h3 style="text-align:center; margin-top:20px">Inicia sesión</h3><br />
          <asp:Panel runat="server" ID="loginvalidation" DefaultButton="iniciabutton">
              <div class="form-floating mb-3">
@@ -39,7 +40,7 @@
             </div>
         </asp:Panel>
      </div>
-     <div class="container" style="width: 50%; float:right; height: 900px">
+     <div class="container bg-white" style="width: 50%; float:right; height: 1400px">
         <h3 style="text-align: center;margin-top:20px">Regístrate</h3><br />
         <asp:Panel runat="server" ID="signupvalidation" DefaultButton="registbutton">
             <div class="form-floating mb-3">
@@ -142,12 +143,9 @@
             </div>
         </asp:Panel>
     </div>
+        </div>
     <style>
 
-        .container {
-            border:3px solid black;
-            background-color:white;
-        }
 
         a {
             color: dodgerblue;
