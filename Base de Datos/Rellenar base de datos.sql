@@ -75,3 +75,9 @@ insert into LineaPedido values(5, 1, 1, 56.95)
 insert into LineaPedido values(5, 2, 1, 62.95)
 insert into LineaPedido values(5, 4, 1, 62.95)
 insert into LineaPedido values(6, 18, 5, 89.75)
+
+SET IDENTITY_INSERT [dbo].[Oferta] ON
+INSERT INTO [dbo].[Oferta] ([id], [oferta], [id_producto]) VALUES (1, CAST(48.47 AS Decimal(7, 2)), 4)
+INSERT INTO [dbo].[Oferta] ([id], [oferta], [id_producto]) VALUES (2, CAST(27.97 AS Decimal(7, 2)), 6)
+INSERT INTO [dbo].[Oferta] ([id], [oferta], [id_producto]) VALUES (3, CAST(21.98 AS Decimal(7, 2)), 17)
+SET IDENTITY_INSERT [dbo].[Oferta] OFF

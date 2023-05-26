@@ -93,11 +93,11 @@ CREATE TABLE [dbo].[Oferta] (
     CONSTRAINT [fk_Oferta_Producto] FOREIGN KEY ([id_producto]) REFERENCES [dbo].[Producto] ([id])
 );
 
-SET IDENTITY_INSERT [dbo].[Oferta] ON
-INSERT INTO [dbo].[Oferta] ([id], [oferta], [id_producto]) VALUES (1, NULL, NULL)
-INSERT INTO [dbo].[Oferta] ([id], [oferta], [id_producto]) VALUES (2, NULL, NULL)
-INSERT INTO [dbo].[Oferta] ([id], [oferta], [id_producto]) VALUES (3, NULL, NULL)
-SET IDENTITY_INSERT [dbo].[Oferta] OFF
+--SET IDENTITY_INSERT [dbo].[Oferta] ON
+--INSERT INTO [dbo].[Oferta] ([id], [oferta], [id_producto]) VALUES (1, NULL, NULL)
+--INSERT INTO [dbo].[Oferta] ([id], [oferta], [id_producto]) VALUES (2, NULL, NULL)
+--INSERT INTO [dbo].[Oferta] ([id], [oferta], [id_producto]) VALUES (3, NULL, NULL)
+--SET IDENTITY_INSERT [dbo].[Oferta] OFF
 
 -- --------------------------------------------------------------------------------------------
 -- PEDIDO 
