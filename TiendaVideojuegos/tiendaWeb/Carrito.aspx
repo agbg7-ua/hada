@@ -3,6 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <!--Contenido de la cabecera : titulo + icono  -->
     <div class="border border-white navbar navbar-expand-lg bg-dark">
         <p class="font-weight-bold h2 text-center mx-auto text-white bg-dark"> 
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart4" viewBox="0 0 30 30">
@@ -11,6 +12,7 @@
         Carrito </p>
     </div>
 
+    <!--Contenido del cuerpo de la pagina : elementos del carrito en una tabla + botones para vaciar/comprar el carrito-->
     <asp:ListView runat="server" ID="listView" OnItemDataBound="ImagenProducto">
         <GroupTemplate>
             <tr>
@@ -77,7 +79,7 @@
         <asp:Button runat="server" ID="comprar" CssClass="btn btn-warning" Text="Comprar" OnClick="ButtonComprar" OnClientClick="ButtonComprar"/>
         <asp:Button runat="server" ID="vaciar" CssClass="btn btn-danger" Text="Vaciar Carrito" OnClick="ButtonVaciar" OnClientClick="ButtonVaciar"/>
     </div>
-
+    <!-- Etiqueta texto para mostrar un mensaje cuando el carrito esta vacio -->
     <div style="width:100%; height: 100px; align-content:center; text-align:center">
         <asp:Label CssClass="labelVacio" runat="server" ID="textboxVacio" Text="No se encontraron productos, intentelo más tarde." Visible="false" ></asp:Label>
     </div>

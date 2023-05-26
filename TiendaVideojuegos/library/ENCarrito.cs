@@ -36,18 +36,21 @@ namespace library
 
         public ENCarrito()
         {
+            //Constructor sin parametros
             this.id_usuario = "";
             this.importe_total = 0;
         }
 
         public ENCarrito(int id, string id_usuario, float importe_total)
         {
+            //Constructor con parametros
             this.id_usuario = id_usuario;
             this.importe_total = importe_total;
         }
 
         public bool createCarrito()
         {
+            //Crear un carrito
             CADCarrito cad = new CADCarrito();
             ENUsuario usuario = new ENUsuario();
 
@@ -61,15 +64,16 @@ namespace library
 
         public DataSet showCarrito()
         {
+            //Mostrar los datos del carrito
             CADCarrito c = new CADCarrito();
             DataSet a = c.showCarrito(this);
             return a;
         }
 
-        //Update
-
+     
         public bool updateCarrito()
         {
+            //Actualizar el carrito
             CADCarrito cad = new CADCarrito();
 
             if (cad.readCarrito(this))
@@ -80,15 +84,16 @@ namespace library
             return false;
         }
 
-        //read 
         public bool readCarrito()
         {
+            //Leer los datos del carrito
             CADCarrito c = new CADCarrito();
             return c.readCarrito(this);
         }
 
         public bool readCarritoByUser(ENUsuario en)
         {
+            //Leer los datos del carrito por usuario
             CADCarrito c = new CADCarrito();
             return c.readCarritoByUser(this, en);
         }
@@ -97,6 +102,7 @@ namespace library
         public DataSet deleteCarrito(int Id)
 
         {
+            //Eliminar el carrito
             CADCarrito cad = new CADCarrito();
             DataSet d = cad.deleteCarrito(this, Id);
 
@@ -110,6 +116,7 @@ namespace library
 
         public DataSet showCarritoByUser(ENUsuario en)
         {
+            //Mostrar los datos del carrito por usuario
             DataSet a = new DataSet();
 
             if (en.readUsuario() == true)
@@ -125,6 +132,7 @@ namespace library
         // Mostrar todos los carritos
         public DataSet listarCarritos()
         {
+            //Listar todos los carritos 
             CADCarrito c = new CADCarrito();
             DataSet a = c.listarCarritos();
             return a;
