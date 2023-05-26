@@ -14,45 +14,127 @@ namespace tiendaWeb
         protected void Page_Load(object sender, EventArgs e)
         {
             ENUsuario usu = new ENUsuario();
-            usu.username = (string)Session["Datos"];
 
-            if (usu.readUsuario())
+            if (!Page.IsPostBack)
             {
-                TextBox2.Text = usu.nombre;
-                TextBox1.Text = usu.apellidos;
-                TextBox3.Text = usu.telefono;
-                TextBox4.Text = usu.calle;
-                TextBox5.Text = usu.codigo_postal;
-                TextBox6.Text = usu.pueblo;
-                TextBox7.Text = usu.provincia;
-                TextBox8.Text = usu.edad.ToString();
-                TextBox10.Text = usu.username;
-                TextBox9.Text = usu.email;
-
+                if (Session["username"] != null)
+                {
+                    usu.username = Session["username"].ToString();
+                    if (usu.readUsuario())
+                    {
+                        username.Text = usu.username;
+                        email.Text = usu.email;
+                        nombre.Attributes.Add("placeholder", usu.nombre);
+                        apellidos.Attributes.Add("placeholder", usu.apellidos);
+                        telefono.Attributes.Add("placeholder", usu.telefono);
+                        edad.Attributes.Add("placeholder", usu.edad.ToString());
+                        calle.Attributes.Add("placeholder", usu.calle);
+                        pueblo.Attributes.Add("placeholder", usu.pueblo);
+                        provincia.Attributes.Add("placeholder", usu.provincia);
+                        codpostal.Attributes.Add("placeholder", usu.codigo_postal);
+                    }
+                }
+                else
+                {
+                    Response.Redirect("~/Home.aspx");
+                }
             }
-    
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
             ENUsuario usu = new ENUsuario();
-            usu.nombre = TextBox2.Text;
-            usu.apellidos = TextBox1.Text;
-            usu.telefono = TextBox3.Text;
-            usu.calle = TextBox4.Text;
-            usu.codigo_postal = TextBox5.Text;
-            usu.pueblo = TextBox6.Text;
-            usu.provincia = TextBox7.Text;
-            usu.edad = int.Parse(TextBox8.Text);
-            usu.username = TextBox10.Text;
-            usu.email = TextBox9.Text;
-            if (usu.updateUsuario())
+            string name, lastname, phone, street, town, province, postal;
+            int age;
+
+            usu.username = Session["username"].ToString();
+            usu.readUsuario();
+
+            Page.Validate("signup");
+            if (Page.IsValid)
             {
-                outputMsg.Text = "Usuario actualizado con exito.";
-            }
-            else
-            {
-                outputMsg.Text = "Usuario no actualizado";   
+                if (nombre.Text == "")
+                {
+                    name = usu.nombre;
+                    usu.nombre = name;
+                }
+                else
+                {
+                    usu.nombre = nombre.Text;
+                }
+                if (apellidos.Text == "")
+                {
+                    lastname = usu.apellidos;
+                    usu.apellidos = lastname;
+                }
+                else
+                {
+                    usu.apellidos = apellidos.Text;
+                }
+                if (telefono.Text == "")
+                {
+                    phone = usu.telefono;
+                    usu.telefono = phone;
+                }
+                else
+                {
+                    usu.telefono = telefono.Text;
+                }
+                if (edad.Text == "")
+                {
+                    age = usu.edad;
+                    usu.edad = age;
+                }
+                else
+                {
+                    usu.edad = Convert.ToInt32(edad.Text);
+                }
+                if (calle.Text == "")
+                {
+                    street = usu.calle;
+                    usu.calle = street;
+                }
+                else
+                {
+                    usu.calle = calle.Text;
+                }
+                if (pueblo.Text == "")
+                {
+                    town = usu.pueblo;
+                    usu.pueblo = town;
+                }
+                else
+                {
+                    usu.pueblo = pueblo.Text;
+                }
+                if (provincia.Text == "")
+                {
+                    province = usu.provincia;
+                    usu.provincia = province;
+                }
+                else
+                {
+                    usu.provincia = provincia.Text;
+                }
+                if (codpostal.Text == "")
+                {
+                    postal = usu.codigo_postal;
+                    usu.codigo_postal = postal;
+                }
+                else
+                {
+                    usu.codigo_postal = codpostal.Text;
+                }
+
+                if (usu.updateUsuario())
+                {
+                    Response.Redirect("Usuario.aspx");
+                }
+                else 
+                {
+                    Msg2.Text = "Oh oh, algo ha ido mal. Vuelva a revisar sus credenciales.";
+                }
+
             }
         }
     }

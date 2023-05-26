@@ -55,9 +55,8 @@ namespace library
         {
             bool update = false;
             SqlConnection c = null;
-            String comando = "Update Usuario set nombre='" + usu.nombre + "', apellidos='" + usu.apellidos + "', email='" + usu.email + "', password='" + usu.password + 
-                "', edad=" + usu.edad + ", calle='" + usu.calle + "', pueblo='" + usu.pueblo + "', provincia='" + usu.provincia + "', codigo_postal='" + usu.codigo_postal + 
-                "', telefono='" + usu.telefono + "', admin=" + usu.admin + " where username='" + usu.username + "'";
+            String comando = "Update Usuario set nombre='" + usu.nombre + "', apellidos='" + usu.apellidos + "', edad=" + usu.edad + ", calle='" + usu.calle + "', pueblo='" + usu.pueblo + "', provincia='" + usu.provincia + "', codigo_postal='" + usu.codigo_postal + 
+                "', telefono='" + usu.telefono + "' where username='" + usu.username + "'";
 
             try
             {
