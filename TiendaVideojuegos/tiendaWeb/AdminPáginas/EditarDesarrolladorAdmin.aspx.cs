@@ -15,7 +15,23 @@ namespace tiendaWeb.AdminPáginas
         ENDesarrollador backup = new ENDesarrollador();
         protected void Page_Load(object sender, EventArgs e)
         {
+            ENUsuario usu = new ENUsuario();
+            if (!Page.IsPostBack)
+            {
+                if (Session["username"] != null)
+                {
+                    usu.username = Session["username"].ToString();
 
+                    if (!usu.isAdminUsuario())
+                    {
+                        Response.Redirect("~/Home.aspx");
+                    }
+                }
+                else
+                {
+                    Response.Redirect("~/Home.aspx");
+                }
+            }
             if (!Page.IsPostBack)
             {
 

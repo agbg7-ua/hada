@@ -16,7 +16,24 @@ namespace tiendaWeb.AdminPáginas
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<ENDesarrollador> l = new List<ENDesarrollador>();
+            ENUsuario usu = new ENUsuario();
+            if (!Page.IsPostBack)
+            {
+                if (Session["username"] != null)
+                {
+                    usu.username = Session["username"].ToString();
+
+                    if (!usu.isAdminUsuario())
+                    {
+                        Response.Redirect("~/Home.aspx");
+                    }
+                }
+                else
+                {
+                    Response.Redirect("~/Home.aspx");
+                }
+            }
+                List<ENDesarrollador> l = new List<ENDesarrollador>();
             l  = en.obtener_todos();
             if (l.Count != 0)
             {

@@ -17,18 +17,22 @@ namespace tiendaWeb.AdminPáginas
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            ENUsuario usu = new ENUsuario();
             if (!Page.IsPostBack)
             {
-                try
+                if (Session["username"] != null)
                 {
+                    usu.username = Session["username"].ToString();
 
+                    if (!usu.isAdminUsuario())
+                    {
+                        Response.Redirect("~/Home.aspx");
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    Label_info.Text += ex.Message;
+                    Response.Redirect("~/Home.aspx");
                 }
-
-
             }
         }
 
